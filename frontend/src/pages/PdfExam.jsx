@@ -339,7 +339,8 @@ function PdfExam() {
           <div className="flex gap-3 sm:gap-4">
             <button
               onClick={handleNext}
-              className="flex-1 bg-primary-600 active:bg-primary-700 text-white font-bold py-3 sm:py-4 px-6 rounded-xl transition-all min-h-[56px] touch-manipulation"
+              className="flex-1 bg-primary-600 active:bg-primary-700 text-white font-bold py-3 sm:py-4 px-6 rounded-xl transition-all min-h-[56px] touch-manipulation active:scale-[0.98]"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               {currentQuestionIndex === totalQuestions - 1 ? 'Finish Exam' : 'Next Question'}
             </button>
