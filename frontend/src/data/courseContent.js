@@ -163,7 +163,8 @@ export const DAY_CONTENT = {
         description: "Official guide to traffic signs", 
         fileSize: "7.0 MB", 
         filePath: "/course-materials/standard/day-2/know-your-traffic-signs-dft.pdf",
-        downloadPath: "/course-materials/standard/day-2/know-your-traffic-signs-dft.pdf"
+        downloadPath: "/course-materials/standard/day-2/know-your-traffic-signs-dft.pdf",
+        videoPath: "/course-materials/standard/day-2/videos/road-signs-video.mp4"
       },
       { 
         title: "Traffic Signs - Easy Explanation", 
@@ -219,21 +220,24 @@ export const DAY_CONTENT = {
         description: "General rules and techniques for all drivers and riders", 
         fileSize: "1.9 MB", 
         filePath: "/course-materials/standard/day-2/General rules, techniques and advice for all drivers and riders (103 to 158).pdf",
-        downloadPath: "/course-materials/standard/day-2/General rules, techniques and advice for all drivers and riders (103 to 158).pdf"
+        downloadPath: "/course-materials/standard/day-2/General rules, techniques and advice for all drivers and riders (103 to 158).pdf",
+        videoPath: "/course-materials/standard/day-2/videos/rules-103-to-125.mp4"
       },
       { 
         title: "Motorcyclists (83-88)", 
         description: "Rules specifically for motorcyclists", 
         fileSize: "301 KB", 
         filePath: "/course-materials/standard/day-2/motorcyclists 83-88.pdf",
-        downloadPath: "/course-materials/standard/day-2/motorcyclists 83-88.pdf"
+        downloadPath: "/course-materials/standard/day-2/motorcyclists 83-88.pdf",
+        videoPath: "/course-materials/standard/day-2/videos/motorcyclists-83-88.mp4"
       },
       { 
         title: "Rules 36 to 46", 
         description: "Rules 36 to 46 from Highway Code", 
         fileSize: "222 KB", 
         filePath: "/course-materials/standard/day-2/rules 36 to 46 pdf marked.pdf",
-        downloadPath: "/course-materials/standard/day-2/rules 36 to 46 pdf marked.pdf"
+        downloadPath: "/course-materials/standard/day-2/rules 36 to 46 pdf marked.pdf",
+        videoPath: "/course-materials/standard/day-2/videos/powered-wheelchairs-36-46.mp4"
       }
     ],
     odtWordNotes: [
