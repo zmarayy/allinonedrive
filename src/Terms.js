@@ -486,7 +486,7 @@ function Terms() {
                   <div className="bg-white/20 backdrop-blur-sm rounded-xl p-6 border border-white/30">
                     <p className="text-gray-900 font-bold mb-2">All In One Drive</p>
                     <p className="text-gray-700 font-medium mb-1">
-                      <strong>Email:</strong> <a href="mailto:wahidi.lina@allinonedrive.com" className="text-primary-600 hover:text-primary-700 underline">wahidi.lina@allinonedrive.com</a>
+                      <strong>Email:</strong> <a href="mailto:linawahidi@allinonedrive.com" className="text-primary-600 hover:text-primary-700 underline">linawahidi@allinonedrive.com</a>
                     </p>
                     <p className="text-gray-700 font-medium mb-1">
                       <strong>Phone:</strong> +44 7908 853486
@@ -548,7 +548,7 @@ function Terms() {
                 </Link>
               </div>
               <p className="text-white/80 font-medium italic text-sm sm:text-base">
-                "Empowering independence. One lesson at a time."
+                "confidence first. Licence ready"
               </p>
             </div>
             
@@ -588,7 +588,7 @@ function Terms() {
                   <svg className="w-5 h-5 text-primary-400" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                   </svg>
-                  <span className="text-white/80 font-medium">wahidi.lina@allinonedrive.com</span>
+                  <span className="text-white/80 font-medium">linawahidi@allinonedrive.com</span>
                 </div>
                 
                 <div className="flex items-center space-x-3">

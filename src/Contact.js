@@ -147,10 +147,10 @@ function Contact() {
                   <div className="font-semibold text-gray-900 mb-1">Lina Wahidi</div>
                   <div className="text-sm text-gray-600 mb-2">CEO & Founder</div>
                   <a 
-                    href="mailto:wahidi.lina@allinonedrive.com" 
+                    href="mailto:linawahidi@allinonedrive.com" 
                     className="text-primary-600 hover:text-primary-700 font-semibold transition-colors text-sm"
                   >
-                    wahidi.lina@allinonedrive.com
+                    linawahidi@allinonedrive.com
                   </a>
                 </div>
                 <div className="bg-white/5 rounded-lg p-4">
@@ -204,13 +204,13 @@ function Contact() {
                 Click the button below to open your email client and send us a message
               </p>
               <a
-                href="mailto:wahidi.lina@allinonedrive.com"
+                href="mailto:linawahidi@allinonedrive.com"
                 className="inline-block bg-primary-600 hover:bg-primary-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 Open Email Client
               </a>
               <p className="text-sm text-gray-500 mt-4">
-                Or copy: <span className="font-semibold text-gray-700">wahidi.lina@allinonedrive.com</span>
+                Or copy: <span className="font-semibold text-gray-700">linawahidi@allinonedrive.com</span>
               </p>
             </div>
           </div>
@@ -282,7 +282,7 @@ function Contact() {
                 </Link>
               </div>
               <p className="text-white/80 font-medium italic text-sm sm:text-base">
-                "Empowering independence. One lesson at a time."
+                "confidence first. Licence ready"
               </p>
             </div>
             
@@ -323,7 +323,7 @@ function Contact() {
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                   </svg>
                   <div className="text-white/80 font-medium">
-                    <div>wahidi.lina@allinonedrive.com</div>
+                    <div>linawahidi@allinonedrive.com</div>
                     <div className="text-sm text-white/60">(CEO & Founder)</div>
                   </div>
                 </div>
