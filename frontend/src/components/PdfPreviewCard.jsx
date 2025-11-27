@@ -168,24 +168,24 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
 
       {/* PDF Preview Modal - Mobile Optimized */}
       {showPreview && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-0 sm:p-4 animate-fade-in">
-          <div className="bg-white rounded-none sm:rounded-lg shadow-2xl w-full h-full sm:w-full sm:max-w-6xl sm:max-h-[90vh] flex flex-col">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-2 sm:p-4 animate-fade-in">
+          <div className="bg-white rounded-lg sm:rounded-lg shadow-2xl w-full max-w-2xl max-h-[85vh] sm:max-h-[90vh] flex flex-col">
             {/* Modal Header - Mobile Optimized */}
-            <div className="flex items-center justify-between p-3 sm:p-4 border-b border-gray-200 bg-white sticky top-0 z-10">
-              <h3 className="text-base sm:text-lg font-bold text-gray-900 flex-1 truncate pr-2">{title}</h3>
+            <div className="flex items-center justify-between p-3 sm:p-4 border-b border-gray-200 bg-white sticky top-0 z-10 flex-shrink-0">
+              <h3 className="text-sm sm:text-lg font-bold text-gray-900 flex-1 truncate pr-2">{title}</h3>
               <button
                 onClick={handleClosePreview}
                 className="text-gray-500 active:text-gray-700 transition-colors p-2 -mr-2 min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation"
                 aria-label="Close preview"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
             {/* PDF Viewer - Mobile Optimized */}
-            <div className="flex-1 overflow-auto p-2 sm:p-4 bg-gray-50">
+            <div className="flex-1 overflow-auto p-3 sm:p-4 bg-gray-50 min-h-0">
               {/* Show iframe only on desktop, direct link on mobile */}
               {!isMobile ? (
                 <>
@@ -228,15 +228,15 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 </>
               ) : (
                 /* Mobile: Show direct link only */
-                <div className="flex flex-col items-center justify-center h-full min-h-[400px] p-4">
-                  <div className="text-6xl mb-6">📄</div>
-                  <p className="text-gray-700 font-semibold mb-2 text-center text-lg">Study This Material</p>
-                  <p className="text-gray-600 text-sm mb-6 text-center">Open the PDF in a new tab to view and study</p>
+                <div className="flex flex-col items-center justify-center p-6 py-8">
+                  <div className="text-5xl mb-4">📄</div>
+                  <p className="text-gray-700 font-semibold mb-2 text-center text-base">Study This Material</p>
+                  <p className="text-gray-600 text-xs mb-5 text-center">Open the PDF in a new tab to view and study</p>
                   <a
                     href={filePath}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full max-w-md bg-blue-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors min-h-[56px] touch-manipulation text-center shadow-lg"
+                    className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors min-h-[48px] touch-manipulation text-center shadow-lg text-sm"
                   >
                     Open PDF in New Tab (Better for Mobile)
                   </a>
