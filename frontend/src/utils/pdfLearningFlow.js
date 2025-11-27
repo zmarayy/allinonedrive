@@ -1,6 +1,6 @@
 /**
  * PDF Learning Flow Management
- * Each PDF requires: View → Flashcards (20) → Exam (15 questions, 70%+ to pass)
+ * New flow: Video → PDF → Flashcards (20) → Exam (15 questions, 70%+ to pass)
  */
 
 /**
@@ -37,7 +37,24 @@ export const isPdfCompleted = (dayNumber, pdfIndex) => {
 };
 
 /**
+ * Check if video was watched (imported from videoLearningFlow)
+ */
+export const isVideoWatched = (dayNumber, pdfIndex) => {
+  const key = `day-${dayNumber}-pdf-${pdfIndex}-video-watched`;
+  return localStorage.getItem(key) === 'true';
+};
+
+/**
+ * Mark video as watched (imported from videoLearningFlow)
+ */
+export const markVideoWatched = (dayNumber, pdfIndex) => {
+  const key = `day-${dayNumber}-pdf-${pdfIndex}-video-watched`;
+  localStorage.setItem(key, 'true');
+};
+
+/**
  * Check if PDF is unlocked (first PDF is always unlocked, others unlock after previous PDF is completed)
+ * Note: Video watching is optional but recommended
  */
 export const isPdfUnlocked = (dayNumber, pdfIndex) => {
   if (pdfIndex === 0) {

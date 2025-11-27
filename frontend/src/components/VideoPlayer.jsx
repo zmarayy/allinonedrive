@@ -27,8 +27,8 @@ function VideoPlayer({ title, videoPath, dayNumber, pdfIndex, onVideoWatched }) 
 
     const handleTimeUpdate = () => {
       updateProgress();
-      // Mark as watched if user watched at least 80% of the video
-      if (video.duration && video.currentTime / video.duration >= 0.8 && !hasWatched) {
+      // Mark as watched if user watched at least 50% of the video (more lenient for better UX)
+      if (video.duration && video.currentTime / video.duration >= 0.5 && !hasWatched) {
         markVideoWatched(dayNumber, pdfIndex);
         setHasWatched(true);
         if (onVideoWatched) {
@@ -79,11 +79,11 @@ function VideoPlayer({ title, videoPath, dayNumber, pdfIndex, onVideoWatched }) 
 
   return (
     <div className="w-full bg-black rounded-lg overflow-hidden">
-      <div className="relative aspect-video bg-black">
+      <div className="relative w-full bg-black" style={{ aspectRatio: '16/9' }}>
         <video
           ref={videoRef}
           src={videoPath}
-          className="w-full h-full"
+          className="w-full h-full object-contain"
           playsInline
           controls={false}
           onPlay={() => setIsPlaying(true)}

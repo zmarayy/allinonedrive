@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { markPdfOpened, isPdfOpened, areFlashcardsCompleted, isPdfExamPassed, isPdfCompleted, isPdfUnlocked } from '../utils/pdfLearningFlow';
+import { markPdfOpened, isPdfOpened, areFlashcardsCompleted, isPdfExamPassed, isPdfCompleted, isPdfUnlocked, isVideoWatched, markVideoWatched } from '../utils/pdfLearningFlow';
+import VideoPlayer from './VideoPlayer';
 
-function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, dayNumber, pdfIndex, onPdfViewed }) {
+function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, videoPath, dayNumber, pdfIndex, onPdfViewed }) {
   const navigate = useNavigate();
   const [showPreview, setShowPreview] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -83,6 +84,18 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
   // Recalculate status on every render to ensure it's up-to-date
   const isUnlocked = isPdfUnlocked(dayNumber, pdfIndex);
   const isCompleted = isPdfCompleted(dayNumber, pdfIndex);
+  const videoWatched = videoPath ? isVideoWatched(dayNumber, pdfIndex) : true; // If no video, consider it "watched"
+  const pdfOpened = isPdfOpened(dayNumber, pdfIndex);
+  const flashcardsDone = areFlashcardsCompleted(dayNumber, pdfIndex);
+  const examPassed = isPdfExamPassed(dayNumber, pdfIndex);
+  
+  const [showVideoModal, setShowVideoModal] = useState(false);
+  
+  const handleVideoWatched = () => {
+    if (videoPath && !videoWatched) {
+      markVideoWatched(dayNumber, pdfIndex);
+    }
+  };
 
   return (
     <>
@@ -110,8 +123,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
           </div>
         </div>
 
-        {/* Action Button - Mobile Optimized (Preview Only) */}
-        <div className="mt-4">
+        {/* Action Buttons - Learning Flow: Video → PDF → Flashcards → Exam */}
+        <div className="mt-4 space-y-2">
           {!isUnlocked ? (
             <div className="w-full bg-gray-200 text-gray-500 font-semibold text-sm sm:text-base px-4 py-3 sm:py-3 rounded-lg flex items-center justify-center space-x-2 min-h-[48px]">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,40 +141,107 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 <span>Material Completed ✓</span>
               </div>
               <div className="w-full flex gap-2">
+                {videoPath && (
+                  <button
+                    onClick={() => setShowVideoModal(true)}
+                    className="flex-1 bg-purple-600 active:bg-purple-700 text-white font-semibold text-sm sm:text-base px-3 py-2.5 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-1 min-h-[44px] sm:min-h-[48px] touch-manipulation shadow-md"
+                  >
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                    <span className="hidden sm:inline text-xs sm:text-sm">Video</span>
+                    <span className="sm:hidden">🎥</span>
+                  </button>
+                )}
                 <button
                   onClick={handlePreview}
-                  className="flex-1 bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-4 py-3 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 min-h-[48px] touch-manipulation shadow-md hover:shadow-lg"
-                  title="View PDF again"
+                  className="flex-1 bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-3 py-2.5 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-1 min-h-[44px] sm:min-h-[48px] touch-manipulation shadow-md"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                   </svg>
-                  <span className="hidden sm:inline">PDF</span>
+                  <span className="hidden sm:inline text-xs sm:text-sm">PDF</span>
                   <span className="sm:hidden">📄</span>
                 </button>
                 <button
                   onClick={() => navigate(`/pdf-flashcards/${dayNumber}/${pdfIndex}`)}
-                  className="flex-1 bg-blue-600 active:bg-blue-700 text-white font-semibold text-sm sm:text-base px-4 py-3 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 min-h-[48px] touch-manipulation shadow-md hover:shadow-lg"
-                  title="Redo this material"
+                  className="flex-1 bg-blue-600 active:bg-blue-700 text-white font-semibold text-sm sm:text-base px-3 py-2.5 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-1 min-h-[44px] sm:min-h-[48px] touch-manipulation shadow-md"
                 >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                   </svg>
-                  <span className="hidden sm:inline">Redo</span>
+                  <span className="hidden sm:inline text-xs sm:text-sm">Redo</span>
                   <span className="sm:hidden">🔄</span>
                 </button>
               </div>
             </div>
           ) : (
-            <button
-              onClick={handlePreview}
-              className="w-full bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-4 py-3 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 min-h-[48px] touch-manipulation shadow-md hover:shadow-lg"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-              </svg>
-              <span>Study This Material</span>
-            </button>
+            <div className="space-y-2">
+              {/* Step 1: Watch Video (if available) */}
+              {videoPath && !videoWatched && (
+                <button
+                  onClick={() => setShowVideoModal(true)}
+                  className="w-full bg-purple-600 active:bg-purple-700 text-white font-semibold text-sm sm:text-base px-4 py-3 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 min-h-[48px] touch-manipulation shadow-md hover:shadow-lg"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  <span>📹 Watch Video First (Recommended)</span>
+                </button>
+              )}
+              
+              {/* Step 2: Study PDF */}
+              {videoWatched && !pdfOpened && (
+                <button
+                  onClick={handlePreview}
+                  className="w-full bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-4 py-3 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 min-h-[48px] touch-manipulation shadow-md hover:shadow-lg"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                  <span>📚 Study This Material</span>
+                </button>
+              )}
+              
+              {/* Step 3: Study Flashcards */}
+              {pdfOpened && !flashcardsDone && (
+                <button
+                  onClick={() => navigate(`/pdf-flashcards/${dayNumber}/${pdfIndex}`)}
+                  className="w-full bg-blue-600 active:bg-blue-700 text-white font-semibold text-sm sm:text-base px-4 py-3 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 min-h-[48px] touch-manipulation shadow-md hover:shadow-lg"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                  <span>🎴 Study Flashcards (20 cards)</span>
+                </button>
+              )}
+              
+              {/* Step 4: Take Exam */}
+              {flashcardsDone && !examPassed && (
+                <button
+                  onClick={() => navigate(`/pdf-exam/${dayNumber}/${pdfIndex}`)}
+                  className="w-full bg-orange-600 active:bg-orange-700 text-white font-semibold text-sm sm:text-base px-4 py-3 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 min-h-[48px] touch-manipulation shadow-md hover:shadow-lg"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  <span>📝 Take Exam (15 Questions)</span>
+                </button>
+              )}
+              
+              {/* If no video, show PDF button directly */}
+              {!videoPath && !pdfOpened && (
+                <button
+                  onClick={handlePreview}
+                  className="w-full bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-4 py-3 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-2 min-h-[48px] touch-manipulation shadow-md hover:shadow-lg"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                  <span>📚 Study This Material</span>
+                </button>
+              )}
+            </div>
           )}
         </div>
       </div>
@@ -339,6 +419,56 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                   );
                 }
               })()}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Video Player Modal - Mobile Optimized */}
+      {showVideoModal && videoPath && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-3 sm:p-4 animate-fade-in">
+          <div className={`bg-white rounded-lg shadow-2xl w-full flex flex-col ${
+            isMobile ? 'max-w-full' : 'max-w-4xl max-h-[90vh]'
+          }`}>
+            {/* Modal Header */}
+            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-white flex-shrink-0">
+              <h3 className="text-sm sm:text-base font-bold text-gray-900 flex-1 truncate pr-2">{title} - Video</h3>
+              <button
+                onClick={() => {
+                  setShowVideoModal(false);
+                  handleVideoWatched();
+                }}
+                className="text-gray-500 active:text-gray-700 transition-colors p-1 min-w-[36px] min-h-[36px] flex items-center justify-center touch-manipulation"
+                aria-label="Close video"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Video Player */}
+            <div className="p-3 sm:p-4 bg-black">
+              <VideoPlayer
+                title={title}
+                videoPath={videoPath}
+                dayNumber={dayNumber}
+                pdfIndex={pdfIndex}
+                onVideoWatched={handleVideoWatched}
+              />
+            </div>
+
+            {/* Modal Footer */}
+            <div className="px-4 py-3 border-t border-gray-200 bg-gray-50 flex-shrink-0">
+              <button
+                onClick={() => {
+                  setShowVideoModal(false);
+                  handleVideoWatched();
+                }}
+                className="w-full bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-4 py-2.5 rounded-lg transition-colors min-h-[44px] touch-manipulation"
+              >
+                Close & Continue to PDF
+              </button>
             </div>
           </div>
         </div>

@@ -58,7 +58,7 @@ function PdfExam() {
   const [isExamComplete, setIsExamComplete] = useState(false);
   const [score, setScore] = useState(0);
   
-  // Check if user can take exam (must have studied PDF and completed flashcards)
+  // Check if user can take exam (must have studied PDF and completed flashcards, video is optional)
   const canTakeExam = isPdfOpened(dayNumber, pdfIdx) && areFlashcardsCompleted(dayNumber, pdfIdx);
 
   const currentQuestion = examQuestions[currentQuestionIndex];

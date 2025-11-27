@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { PDF_FLASHCARDS } from '../data/pdfContent';
-import { markFlashcardsCompleted, isPdfOpened } from '../utils/pdfLearningFlow';
+import { markFlashcardsCompleted, isPdfOpened, isVideoWatched } from '../utils/pdfLearningFlow';
 import BottomNavbar from '../components/BottomNavbar';
 
 function PdfFlashcards() {
@@ -15,7 +15,7 @@ function PdfFlashcards() {
   const [isFlipped, setIsFlipped] = useState(false);
   const [studiedCount, setStudiedCount] = useState(0);
   
-  // Check if PDF was opened (studied) first
+  // Check if PDF was opened (studied) first (video is optional)
   const hasStudied = isPdfOpened(dayNumber, pdfIdx);
   
   const currentCard = flashcards[currentIndex];

@@ -140,6 +140,7 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
                       fileSize={pdf.fileSize}
                       filePath={pdf.filePath || pdf.path}
                       downloadPath={pdf.downloadPath || pdf.filePath || pdf.path}
+                      videoPath={pdf.videoPath}
                       dayNumber={dayNumber}
                       pdfIndex={index}
                       onPdfViewed={handlePdfViewed}
