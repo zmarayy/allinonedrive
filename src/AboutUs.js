@@ -153,7 +153,7 @@ function AboutUs() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
-              Meet Lina – Our Founder
+              CEO & Founder
             </h2>
           </div>
           
@@ -184,12 +184,16 @@ function AboutUs() {
             {/* Right Column - Founder Story */}
             <div className="w-full lg:w-1/2">
               <div className="space-y-4 sm:space-y-6 text-gray-700 font-medium leading-relaxed">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
+                  Founder Story
+                </h3>
+                
                 <p className="text-base sm:text-lg">
-                  I believe nothing is impossible when you combine faith, education, and resilience. Driving has always symbolised freedom and independence for me, and I saw how many people, especially women, were held back by a lack of access, guidance, or confidence.
+                  I have never seen a driving licence as just a piece of plastic. For me, it is a small key that opens a bigger life: freedom to visit family, accept work and move on your own terms. I have lived that freedom and I know how different life feels when you are not waiting for lifts or relying on favours. As a Muslim, I believe that when Allah gives you knowledge and opportunity, it is a trust. You stand back up when life is hard, and you share what you have learned. That faith and responsibility sit at the heart of All In One Drive.
                 </p>
                 
                 <p className="text-base sm:text-lg">
-                  That's why I built All in One Drive. Our DVSA-approved structured course provides clarity, focus, and practical skills, helping learners navigate information overload and gain the confidence to succeed. It's more than a theory test; it's empowerment, independence, and control over one's journey. The course will be available in Pashto, Dari, Urdu, and English, enabling more learners to access it in a format that suits them best.
+                  Before building All In One Drive, I spent a year listening to learners, theory teachers and driving instructors. They told me the journey was confusing, the language was difficult and many people felt alone. Their message was clear: real success in driving does not happen alone; it happens when people move together. All In One Drive is my answer to that. It is not just an app, but a community and a clear system, including our seven-day structured theory course, designed from their feedback so that more people can unlock their own freedom, work and sense of belonging.
                 </p>
                 
                 <div className="bg-primary-50 rounded-xl p-4 sm:p-6 border border-primary-200">
