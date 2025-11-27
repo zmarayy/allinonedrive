@@ -208,9 +208,22 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                     href={filePath}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+                    className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors min-h-[48px] touch-manipulation"
                   >
                     Open PDF in New Tab
+                  </a>
+                </div>
+              )}
+              {/* Always show direct link option on mobile */}
+              {!loadError && isMobile && (
+                <div className="p-2 border-t border-gray-200 bg-gray-50">
+                  <a
+                    href={filePath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors min-h-[44px] touch-manipulation text-sm"
+                  >
+                    Open PDF in New Tab (Better for Mobile)
                   </a>
                 </div>
               )}
