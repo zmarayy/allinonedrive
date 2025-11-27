@@ -544,8 +544,8 @@ function HomePage() {
                   className="w-full h-full object-cover object-center"
                   style={{ objectPosition: 'center 30%' }}
                   onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = `
+                    const parent = e.target.parentElement;
+                    parent.innerHTML = `
                       <div class="text-center">
                         <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                           <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
