@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { markPdfOpened, isPdfOpened, areFlashcardsCompleted, isPdfExamPassed, isPdfCompleted, getPdfStatus, isPdfUnlocked } from '../utils/pdfLearningFlow';
+import { markPdfOpened, isPdfOpened, areFlashcardsCompleted, isPdfExamPassed, isPdfCompleted, isPdfUnlocked } from '../utils/pdfLearningFlow';
 
 function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, dayNumber, pdfIndex, onPdfViewed }) {
   const navigate = useNavigate();

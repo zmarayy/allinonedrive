@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import VideoCard from './VideoCard';
 import PdfPreviewCard from './PdfPreviewCard';
-import { isDayUnlocked, isDayCompleted, getDayStatus, isQuizPassed, completeDay } from '../utils/progressManager';
+import { isDayUnlocked, isDayCompleted, isQuizPassed, completeDay } from '../utils/progressManager';
 import { getCompletedPdfsForDay, areAllPdfsCompleted } from '../utils/pdfLearningFlow';
 import { useNavigate } from 'react-router-dom';
 
