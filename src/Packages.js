@@ -360,14 +360,6 @@ function Packages() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-green-500 mr-2">•</span>
-                    <span>Essential Driving Skills (EDS) topics (PDF)</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-500 mr-2">•</span>
-                    <span>Exam Topics (PDF)</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-500 mr-2">•</span>
                     <span>Flashcards</span>
                   </li>
                   <li className="flex items-start">
