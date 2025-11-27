@@ -135,7 +135,8 @@ function PdfFlashcards() {
           <button
             type="button"
             onClick={handleFlip}
-            className="glass-card p-6 sm:p-8 min-h-[300px] sm:min-h-[400px] w-full flex items-center justify-center cursor-pointer touch-manipulation active:scale-95 transition-transform"
+            className="glass-card p-6 sm:p-8 min-h-[300px] sm:min-h-[400px] w-full flex items-center justify-center cursor-pointer touch-manipulation active:scale-[0.98] transition-transform"
+            style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             <div className="text-center w-full">
               {!isFlipped ? (
@@ -165,12 +166,16 @@ function PdfFlashcards() {
             onClick={handlePrevious}
             disabled={currentIndex === 0}
             className="flex-1 bg-gray-200 active:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed text-gray-800 font-semibold py-3 sm:py-4 px-4 rounded-xl transition-all min-h-[48px] touch-manipulation"
+            style={{ WebkitTapHighlightColor: 'transparent' }}
+            aria-label="Previous flashcard"
           >
             ← Previous
           </button>
           <button
             onClick={handleFlip}
-            className="flex-1 bg-primary-600 active:bg-primary-700 text-white font-semibold py-3 sm:py-4 px-4 rounded-xl transition-all min-h-[48px] touch-manipulation"
+            className="flex-1 bg-primary-600 active:bg-primary-700 text-white font-semibold py-3 sm:py-4 px-4 rounded-xl transition-all min-h-[48px] touch-manipulation shadow-md active:shadow-lg"
+            style={{ WebkitTapHighlightColor: 'transparent' }}
+            aria-label={isFlipped ? 'Flip back to question' : 'Flip to see answer'}
           >
             {isFlipped ? 'Flip Back' : 'Flip Card'}
           </button>
@@ -178,6 +183,8 @@ function PdfFlashcards() {
             onClick={handleNext}
             disabled={currentIndex === flashcards.length - 1}
             className="flex-1 bg-gray-200 active:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed text-gray-800 font-semibold py-3 sm:py-4 px-4 rounded-xl transition-all min-h-[48px] touch-manipulation"
+            style={{ WebkitTapHighlightColor: 'transparent' }}
+            aria-label="Next flashcard"
           >
             Next →
           </button>

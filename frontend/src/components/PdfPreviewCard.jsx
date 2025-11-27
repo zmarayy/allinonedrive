@@ -141,14 +141,24 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               {isLoading && (
                 <div className="flex items-center justify-center h-64 sm:h-96">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
+                  <p className="ml-4 text-gray-600 font-medium">Loading PDF...</p>
                 </div>
               )}
               <iframe
-                src={`${filePath}#toolbar=1&navpanes=0&scrollbar=1`}
+                src={`${filePath}#toolbar=1&navpanes=0&scrollbar=1&zoom=page-width`}
                 className="w-full h-full min-h-[400px] sm:min-h-[600px] rounded-lg border border-gray-200"
                 title={title}
                 onLoad={() => setIsLoading(false)}
-                style={{ display: isLoading ? 'none' : 'block' }}
+                onError={() => {
+                  setIsLoading(false);
+                  alert('Failed to load PDF. Please check your connection and try again.');
+                }}
+                style={{ 
+                  display: isLoading ? 'none' : 'block',
+                  touchAction: 'pan-x pan-y pinch-zoom'
+                }}
+                allow="fullscreen"
+                loading="lazy"
               />
             </div>
 
