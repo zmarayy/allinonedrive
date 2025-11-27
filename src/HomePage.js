@@ -541,8 +541,8 @@ function HomePage() {
                 <img
                   src="/assets/images/Lina-wahidi.jpeg"
                   alt="Lina Wahidi - Founder & CEO"
-                  className="w-full h-full object-cover object-center"
-                  style={{ objectPosition: 'center 30%' }}
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: 'center 25%' }}
                   onError={(e) => {
                     const parent = e.target.parentElement;
                     parent.innerHTML = `

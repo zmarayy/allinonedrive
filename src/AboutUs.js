@@ -165,8 +165,8 @@ function AboutUs() {
                   <img
                     src="/assets/images/Lina-wahidi.jpeg"
                     alt="Lina Wahidi - CEO & Founder"
-                    className="w-full h-full object-cover object-center"
-                    style={{ objectPosition: 'center 30%' }}
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: 'center 25%' }}
                     onError={() => handleImageError('lina')}
                   />
                 ) : (
