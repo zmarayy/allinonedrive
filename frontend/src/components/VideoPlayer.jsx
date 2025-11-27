@@ -94,11 +94,12 @@ function VideoPlayer({ title, videoPath, dayNumber, pdfIndex, onVideoWatched }) 
         {!isPlaying && (
           <button
             onClick={togglePlay}
-            className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors touch-manipulation"
-            aria-label={isPlaying ? 'Pause' : 'Play'}
+            className="absolute inset-0 flex items-center justify-center bg-black/30 active:bg-black/40 transition-colors touch-manipulation"
+            style={{ WebkitTapHighlightColor: 'transparent' }}
+            aria-label="Play video"
           >
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
-              <svg className="w-8 h-8 sm:w-10 sm:h-10 text-gray-900 ml-1" fill="currentColor" viewBox="0 0 24 24">
+            <div className="w-14 h-14 sm:w-20 sm:h-20 bg-white/90 rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+              <svg className="w-7 h-7 sm:w-10 sm:h-10 text-gray-900 ml-1" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z" />
               </svg>
             </div>
@@ -109,8 +110,9 @@ function VideoPlayer({ title, videoPath, dayNumber, pdfIndex, onVideoWatched }) 
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 sm:p-4">
           {/* Progress Bar */}
           <div
-            className="w-full h-2 bg-white/20 rounded-full mb-3 cursor-pointer touch-manipulation"
+            className="w-full h-2.5 sm:h-3 bg-white/20 rounded-full mb-3 cursor-pointer touch-manipulation active:bg-white/30"
             onClick={handleSeek}
+            style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             <div
               className="h-full bg-primary-600 rounded-full transition-all"
@@ -119,11 +121,12 @@ function VideoPlayer({ title, videoPath, dayNumber, pdfIndex, onVideoWatched }) 
           </div>
 
           {/* Time and Controls */}
-          <div className="flex items-center justify-between text-white text-sm">
-            <div className="flex items-center space-x-3">
+          <div className="flex items-center justify-between text-white text-xs sm:text-sm">
+            <div className="flex items-center space-x-2 sm:space-x-3">
               <button
                 onClick={togglePlay}
-                className="p-2 hover:bg-white/20 rounded-full transition-colors touch-manipulation"
+                className="p-2 active:bg-white/20 rounded-full transition-colors touch-manipulation min-w-[44px] min-h-[44px] flex items-center justify-center"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
                 aria-label={isPlaying ? 'Pause' : 'Play'}
               >
                 {isPlaying ? (
@@ -136,7 +139,7 @@ function VideoPlayer({ title, videoPath, dayNumber, pdfIndex, onVideoWatched }) 
                   </svg>
                 )}
               </button>
-              <span className="font-medium">
+              <span className="font-medium text-xs sm:text-sm">
                 {formatTime(currentTime)} / {formatTime(duration)}
               </span>
             </div>
