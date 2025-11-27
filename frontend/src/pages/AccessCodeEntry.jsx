@@ -174,42 +174,40 @@ function AccessCodeEntry() {
               </a>
             </p>
             
-            {/* Development Mode - Only show in development */}
-            {(process.env.NODE_ENV === 'development' || window.location.hostname === 'localhost') && (
-              <div className="pt-4 border-t border-gray-200">
-                <p className="text-xs text-gray-400 mb-3">Development Mode</p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  <button
-                    type="button"
-                    onClick={() => handleDevMode('standard')}
-                    className="px-3 py-1.5 text-xs bg-gray-200 hover:bg-gray-300 text-gray-700 rounded transition-colors"
-                  >
-                    Test: Standard
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleDevMode('elite_self_study')}
-                    className="px-3 py-1.5 text-xs bg-blue-200 hover:bg-blue-300 text-blue-700 rounded transition-colors"
-                  >
-                    Test: Elite Self-Study
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleDevMode('elite_live_support')}
-                    className="px-3 py-1.5 text-xs bg-purple-200 hover:bg-purple-300 text-purple-700 rounded transition-colors"
-                  >
-                    Test: Elite Live Support
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => handleDevMode('driving_theory_full')}
-                    className="px-3 py-1.5 text-xs bg-green-200 hover:bg-green-300 text-green-700 rounded transition-colors"
-                  >
-                    Test: Full Package
-                  </button>
-                </div>
+            {/* Development Mode - Enabled for client testing */}
+            <div className="pt-4 border-t border-gray-200">
+              <p className="text-xs text-gray-400 mb-3">Quick Test Access</p>
+              <div className="flex flex-wrap gap-2 justify-center">
+                <button
+                  type="button"
+                  onClick={() => handleDevMode('standard')}
+                  className="px-3 py-1.5 text-xs bg-gray-200 hover:bg-gray-300 text-gray-700 rounded transition-colors"
+                >
+                  Test: Standard
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleDevMode('elite_self_study')}
+                  className="px-3 py-1.5 text-xs bg-blue-200 hover:bg-blue-300 text-blue-700 rounded transition-colors"
+                >
+                  Test: Elite Self-Study
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleDevMode('elite_live_support')}
+                  className="px-3 py-1.5 text-xs bg-purple-200 hover:bg-purple-300 text-purple-700 rounded transition-colors"
+                >
+                  Test: Elite Live Support
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleDevMode('driving_theory_full')}
+                  className="px-3 py-1.5 text-xs bg-green-200 hover:bg-green-300 text-green-700 rounded transition-colors"
+                >
+                  Test: Full Package
+                </button>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
