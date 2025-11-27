@@ -25,17 +25,21 @@
 
     <script>
       (function () {
-        const params = new URLSearchParams(window.location.search);
-        const redirectUrl = params.get('redirect');
-        const target =
-          (redirectUrl && decodeURIComponent(redirectUrl)) ||
-          'https://allinonedrive.netlify.app/access-code';
-
+        // Only redirect if:
+        // 1. We're on the marketing domain (allinonedrive.com, not allinonedrive.netlify.app)
+        // 2. AND we're in standalone mode (installed as PWA)
+        const hostname = window.location.hostname;
+        const isMarketingDomain = hostname === 'allinonedrive.com' || hostname === 'www.allinonedrive.com';
         const isStandalone =
           window.matchMedia('(display-mode: standalone)').matches ||
           window.navigator.standalone;
 
-        if (isStandalone) {
+        if (isMarketingDomain && isStandalone) {
+          const params = new URLSearchParams(window.location.search);
+          const redirectUrl = params.get('redirect');
+          const target =
+            (redirectUrl && decodeURIComponent(redirectUrl)) ||
+            'https://allinonedrive.netlify.app/access-code';
           window.location.replace(target);
         }
       })();
