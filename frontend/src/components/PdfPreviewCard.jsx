@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { markPdfOpened, isPdfOpened, areFlashcardsCompleted, isPdfExamPassed, isPdfCompleted, isPdfUnlocked } from '../utils/pdfLearningFlow';
 
 function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, dayNumber, pdfIndex, onPdfViewed }) {
   const navigate = useNavigate();
   const [showPreview, setShowPreview] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
+  const iframeRef = useRef(null);
+  const timeoutRef = useRef(null);
 
   const handlePreview = () => {
     setShowPreview(true);
     setIsLoading(true);
+    setLoadError(false);
     
     // Mark PDF as opened (not completed) when first viewed
     if (dayNumber && pdfIndex !== undefined && !isPdfOpened(dayNumber, pdfIndex)) {
@@ -17,6 +21,42 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
       if (onPdfViewed) {
         onPdfViewed(dayNumber, pdfIndex);
       }
+    }
+    
+    // Set timeout to stop loading after 10 seconds
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(() => {
+      if (isLoading) {
+        setIsLoading(false);
+        setLoadError(true);
+      }
+    }, 10000);
+  };
+  
+  useEffect(() => {
+    // Cleanup timeout on unmount
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+  
+  const handleIframeLoad = () => {
+    setIsLoading(false);
+    setLoadError(false);
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+  
+  const handleIframeError = () => {
+    setIsLoading(false);
+    setLoadError(true);
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
     }
   };
 
@@ -30,6 +70,21 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
 
   const handleClosePreview = () => {
     setShowPreview(false);
+    setIsLoading(true);
+    setLoadError(false);
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  };
+  
+  // Use Google Docs viewer as fallback for mobile
+  const getPdfViewerUrl = () => {
+    const fullUrl = window.location.origin + filePath;
+    // For mobile browsers, use Google Docs viewer as fallback
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      return `https://docs.google.com/viewer?url=${encodeURIComponent(fullUrl)}&embedded=true`;
+    }
+    return filePath;
   };
 
   // Recalculate status on every render to ensure it's up-to-date
@@ -138,28 +193,42 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
 
             {/* PDF Viewer - Mobile Optimized */}
             <div className="flex-1 overflow-auto p-2 sm:p-4 bg-gray-50">
-              {isLoading && (
-                <div className="flex items-center justify-center h-64 sm:h-96">
+              {isLoading && !loadError && (
+                <div className="flex flex-col items-center justify-center h-64 sm:h-96">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
-                  <p className="ml-4 text-gray-600 font-medium">Loading PDF...</p>
+                  <p className="ml-4 text-gray-600 font-medium mt-4">Loading PDF...</p>
                 </div>
               )}
-              <iframe
-                src={`${filePath}#toolbar=1&navpanes=0&scrollbar=1&zoom=page-width`}
-                className="w-full h-full min-h-[400px] sm:min-h-[600px] rounded-lg border border-gray-200"
-                title={title}
-                onLoad={() => setIsLoading(false)}
-                onError={() => {
-                  setIsLoading(false);
-                  alert('Failed to load PDF. Please check your connection and try again.');
-                }}
-                style={{ 
-                  display: isLoading ? 'none' : 'block',
-                  touchAction: 'pan-x pan-y pinch-zoom'
-                }}
-                allow="fullscreen"
-                loading="lazy"
-              />
+              {loadError && (
+                <div className="flex flex-col items-center justify-center h-64 sm:h-96 p-4">
+                  <div className="text-4xl mb-4">📄</div>
+                  <p className="text-gray-700 font-semibold mb-2 text-center">PDF couldn't load in viewer</p>
+                  <p className="text-gray-600 text-sm mb-4 text-center">Try opening it directly instead</p>
+                  <a
+                    href={filePath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+                  >
+                    Open PDF in New Tab
+                  </a>
+                </div>
+              )}
+              {!loadError && (
+                <iframe
+                  ref={iframeRef}
+                  src={`${filePath}#toolbar=1&navpanes=0&scrollbar=1&zoom=page-width`}
+                  className="w-full h-full min-h-[400px] sm:min-h-[600px] rounded-lg border border-gray-200"
+                  title={title}
+                  onLoad={handleIframeLoad}
+                  onError={handleIframeError}
+                  style={{ 
+                    display: isLoading ? 'none' : 'block',
+                    touchAction: 'pan-x pan-y pinch-zoom'
+                  }}
+                  allow="fullscreen"
+                />
+              )}
             </div>
 
             {/* Modal Footer - Mobile Optimized */}
