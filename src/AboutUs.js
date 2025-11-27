@@ -168,10 +168,6 @@ function AboutUs() {
             {/* Right Column - Founder Story */}
             <div className="w-full lg:w-1/2">
               <div className="space-y-4 sm:space-y-6 text-gray-700 font-medium leading-relaxed">
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
-                  Founder Story
-                </h3>
-                
                 <p className="text-base sm:text-lg">
                   I have never seen a driving licence as just a piece of plastic. For me, it is a small key that opens a bigger life: freedom to visit family, accept work and move on your own terms. I have lived that freedom and I know how different life feels when you are not waiting for lifts or relying on favours. As a Muslim, I believe that when Allah gives you knowledge and opportunity, it is a trust. You stand back up when life is hard, and you share what you have learned. That faith and responsibility sit at the heart of All In One Drive.
                 </p>
