@@ -112,9 +112,6 @@ function HomePage() {
       <section id="home" className="py-20 lg:py-32 relative">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center relative">
-            {/* Decorative colored accent bars */}
-            <div className="absolute -top-4 left-1/4 w-24 h-1 bg-gradient-to-r from-blue-700 to-blue-500 rounded-full opacity-60"></div>
-            <div className="absolute -top-4 right-1/4 w-24 h-1 bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-full opacity-60"></div>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
               Confidence first. Licence ready
             </h1>
