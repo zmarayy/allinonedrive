@@ -70,56 +70,64 @@ export const DAY_CONTENT = {
         description: "PDF notes covering rules for pedestrians", 
         fileSize: "1.6 MB", 
         filePath: "/course-materials/standard/day-1/rules-pedestrians-1-35.pdf",
-        downloadPath: "/course-materials/standard/day-1/rules-pedestrians-1-35.pdf"
+        downloadPath: "/course-materials/standard/day-1/rules-pedestrians-1-35.pdf",
+        videoPath: "/course-materials/standard/day-1/videos/rule-1-to-17.mp4" // Primary video, may need additional videos
       },
       { 
         title: "Rules for Drivers and Motorcyclists (89-102)", 
         description: "PDF notes for drivers and motorcyclists", 
         fileSize: "665 KB", 
         filePath: "/course-materials/standard/day-1/rules-drivers-motorcyclists-89-102.pdf",
-        downloadPath: "/course-materials/standard/day-1/rules-drivers-motorcyclists-89-102.pdf"
+        downloadPath: "/course-materials/standard/day-1/rules-drivers-motorcyclists-89-102.pdf",
+        videoPath: "/course-materials/standard/day-1/videos/drivers-motorcyclists-89-102.mp4"
       },
       { 
         title: "Rules for Cyclists (59-82)", 
         description: "PDF notes covering rules for cyclists", 
         fileSize: "506 KB", 
         filePath: "/course-materials/standard/day-1/rules-cyclists-59-82.pdf",
-        downloadPath: "/course-materials/standard/day-1/rules-cyclists-59-82.pdf"
+        downloadPath: "/course-materials/standard/day-1/rules-cyclists-59-82.pdf",
+        videoPath: "/course-materials/standard/day-1/videos/rule-59-to-82-cyclist.mp4"
       },
       { 
         title: "Animals (47-58)", 
         description: "PDF notes about animals on the road", 
         fileSize: "377 KB", 
         filePath: "/course-materials/standard/day-1/animals-47-58.pdf",
-        downloadPath: "/course-materials/standard/day-1/animals-47-58.pdf"
+        downloadPath: "/course-materials/standard/day-1/animals-47-58.pdf",
+        videoPath: "/course-materials/standard/day-1/videos/animals-47-58.mp4"
       },
       { 
         title: "Summary of Rules H1 to 3", 
         description: "Summary notes for rules H1 to 3", 
         fileSize: "67 KB", 
         filePath: "/course-materials/standard/day-1/summary-rules-h1-3.pdf",
-        downloadPath: "/course-materials/standard/day-1/summary-rules-h1-3.pdf"
+        downloadPath: "/course-materials/standard/day-1/summary-rules-h1-3.pdf",
+        videoPath: "/course-materials/standard/day-1/videos/hierarchy-1-to-3.mp4"
       },
       { 
         title: "Part One - Alertness on the Road", 
         description: "Alertness and awareness on the road", 
         fileSize: "90 KB", 
         filePath: "/course-materials/standard/day-1/part-one-alertness.pdf",
-        downloadPath: "/course-materials/standard/day-1/part-one-alertness.pdf"
+        downloadPath: "/course-materials/standard/day-1/part-one-alertness.pdf",
+        videoPath: "/course-materials/standard/day-1/videos/eds-alertness.mp4"
       },
       { 
         title: "Part Two - Attitude", 
         description: "Attitude while driving", 
         fileSize: "65 KB", 
         filePath: "/course-materials/standard/day-1/part-two-attitude.pdf",
-        downloadPath: "/course-materials/standard/day-1/part-two-attitude.pdf"
+        downloadPath: "/course-materials/standard/day-1/part-two-attitude.pdf",
+        videoPath: "/course-materials/standard/day-1/videos/eds-attitude.mp4"
       },
       { 
         title: "Annex 8", 
         description: "Annex 8 reference material", 
         fileSize: "47 KB", 
         filePath: "/course-materials/standard/day-1/annex-8.pdf",
-        downloadPath: "/course-materials/standard/day-1/annex-8.pdf"
+        downloadPath: "/course-materials/standard/day-1/annex-8.pdf",
+        videoPath: "/course-materials/standard/day-1/videos/annex-8.mp4"
       }
     ],
     odtWordNotes: [
