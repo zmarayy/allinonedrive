@@ -117,7 +117,7 @@ function HomePage() {
             </h1>
             
             <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto font-medium leading-relaxed px-4">
-              Our DVSA-approved structured course helps you master the driving theory in Pashto, Dari, Urdu, and English, so you never miss a step on your journey to passing and progressing in life.
+              DVSA-approved structured course helps you master the driving theory in Pashto, Dari, Urdu, and English, so you never miss a step on your journey to passing and progressing in life.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
