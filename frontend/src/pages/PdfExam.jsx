@@ -303,7 +303,9 @@ function PdfExam() {
                   key={index}
                   onClick={() => handleAnswerSelect(index)}
                   disabled={showFeedback}
-                  className={buttonClass}
+                  className={buttonClass + ' active:scale-[0.98]'}
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
+                  aria-label={`Answer option ${String.fromCharCode(65 + index)}: ${option}`}
                 >
                   <div className="flex items-center">
                     <span className="mr-3 font-bold">{String.fromCharCode(65 + index)}.</span>
