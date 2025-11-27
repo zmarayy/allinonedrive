@@ -118,26 +118,10 @@ function AboutUs() {
       <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center relative z-10">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6">
-              About All In One Drive
-            </h1>
-            
-            <p className="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-gray-700 mb-6 sm:mb-8 font-medium">
-              Driving Confidence. Fueling Independence.
-            </p>
-            
             <div className="max-w-4xl mx-auto">
-              <div className="text-base sm:text-lg lg:text-xl text-gray-600 font-medium leading-relaxed space-y-3 sm:space-y-4">
-                <p>
-                  All In One Drive is a simple, all-in-one system that supports the whole journey to getting a driving licence.
-                </p>
-                <p>
-                  Students, theory teachers, driving instructors and admin support are all brought together in one organised place, so no one feels confused, left out or stressed.
-                </p>
-                <p>
-                  Our aim is to make the process clear, structured and fair for everyone.
-                </p>
-              </div>
+              <p className="text-base sm:text-lg lg:text-xl xl:text-2xl text-gray-700 font-medium leading-relaxed">
+                All in One Drive exists to make the UK driving licence journey clear, calm and achievable for everyone. We remove confusion, fear and language barriers through structured teaching and full support from the first step to the final licence.
+              </p>
             </div>
           </div>
           
