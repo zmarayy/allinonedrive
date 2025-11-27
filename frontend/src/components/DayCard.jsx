@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import VideoCard from './VideoCard';
-import ResourceCard from './ResourceCard';
 import PdfPreviewCard from './PdfPreviewCard';
-import { isDayUnlocked, isDayCompleted, getDayStatus, isQuizPassed, canCompleteDay, completeDay } from '../utils/progressManager';
+import { isDayUnlocked, isDayCompleted, getDayStatus, isQuizPassed, completeDay } from '../utils/progressManager';
 import { getCompletedPdfsForDay, areAllPdfsCompleted } from '../utils/pdfLearningFlow';
 import { useNavigate } from 'react-router-dom';
 
 function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packageType }) {
   const navigate = useNavigate();
   const [completedPdfs, setCompletedPdfs] = useState(0);
-  const [dayStatus, setDayStatus] = useState('locked');
   const [canComplete, setCanComplete] = useState(false);
   
   const dayNumber = day.day;
@@ -18,7 +16,6 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
   const isCompleted = isDayCompleted(dayNumber);
   
   useEffect(() => {
-    setDayStatus(getDayStatus(dayNumber));
     setCompletedPdfs(getCompletedPdfsForDay(dayNumber, totalPdfs));
     // Can complete day only if all PDFs are completed AND quiz is passed
     const allPdfsDone = areAllPdfsCompleted(dayNumber, totalPdfs);

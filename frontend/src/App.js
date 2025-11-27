@@ -20,25 +20,6 @@ import { isCodeVerified } from './utils/codeAccess';
 import './App.css';
 
 /**
- * Detect if app is running as PWA (installed on home screen)
- */
-const isPWA = () => {
-  // Check if running in standalone mode (PWA)
-  if (window.matchMedia('(display-mode: standalone)').matches) {
-    return true;
-  }
-  // Check if running in standalone mode (iOS)
-  if (window.navigator.standalone === true) {
-    return true;
-  }
-  // Check if launched from home screen (Android)
-  if (window.matchMedia('(display-mode: fullscreen)').matches) {
-    return true;
-  }
-  return false;
-};
-
-/**
  * Root redirect component - redirects based on PWA mode
  * Since this is the PWA domain (allinonedrive.netlify.app), always redirect to access-code
  */

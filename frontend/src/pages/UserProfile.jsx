@@ -7,16 +7,6 @@ import { getCompletedPdfsForDay, isPdfCompleted } from '../utils/pdfLearningFlow
 import { DAY_CONTENT } from '../data/courseContent';
 import BottomNavbar from '../components/BottomNavbar';
 
-const lessonTopics = {
-  1: 'Highway Code Fundamentals',
-  2: 'Road Signs and Markings',
-  3: 'Vehicle Safety and Maintenance',
-  4: 'Hazard Perception Training',
-  5: 'Traffic Rules and Regulations',
-  6: 'Mock Test Practice',
-  7: 'Final Review and Exam Prep'
-};
-
 function UserProfile() {
   const navigate = useNavigate();
   const packageType = getStoredPackage();

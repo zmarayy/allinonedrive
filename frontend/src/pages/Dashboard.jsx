@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getUserPackage, getPackageDisplayName } from '../utils/packageAccess';
 import { clearCodeAccess } from '../utils/codeAccess';
-import { getOverallProgress, getCompletedDaysCount, getDayStatus, isDayUnlocked, isDayCompleted, isQuizPassed, canCompleteDay, resetProgress } from '../utils/progressManager';
+import { getOverallProgress, getCompletedDaysCount, getDayStatus, isDayCompleted, isQuizPassed, resetProgress } from '../utils/progressManager';
 import { getCompletedPdfsForDay, areAllPdfsCompleted, resetPdfProgress } from '../utils/pdfLearningFlow';
 import { DAY_CONTENT } from '../data/courseContent';
 import BottomNavbar from '../components/BottomNavbar';
@@ -14,7 +14,6 @@ function Dashboard() {
   const [completedDays, setCompletedDays] = useState(0);
   const [overallProgress, setOverallProgress] = useState(0);
   const [currentDay, setCurrentDay] = useState(1);
-  const [currentDayStatus, setCurrentDayStatus] = useState(null);
 
   // Load progress and find current day
   useEffect(() => {
@@ -35,17 +34,12 @@ function Dashboard() {
         }
       }
       setCurrentDay(activeDay);
-      setCurrentDayStatus(getDayStatus(activeDay));
     };
     
     updateProgress();
     const interval = setInterval(updateProgress, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  const handleStartLearning = () => {
-    navigate('/course-content');
-  };
 
   const handleLogout = () => {
     if (window.confirm('Are you sure you want to logout?')) {

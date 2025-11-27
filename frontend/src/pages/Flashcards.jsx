@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { FLASHCARD_CATEGORIES, GENERAL_FLASHCARDS, getFlashcardsByCategory, getTotalFlashcardCount } from '../data/generalFlashcards';
+import { FLASHCARD_CATEGORIES, getFlashcardsByCategory, getTotalFlashcardCount } from '../data/generalFlashcards';
 import BottomNavbar from '../components/BottomNavbar';
 
 function Flashcards() {

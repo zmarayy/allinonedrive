@@ -6,23 +6,6 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
   const navigate = useNavigate();
   const [showPreview, setShowPreview] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [pdfStatus, setPdfStatus] = useState('not-started');
-
-  useEffect(() => {
-    if (dayNumber && pdfIndex !== undefined) {
-      const status = getPdfStatus(dayNumber, pdfIndex);
-      setPdfStatus(status);
-      // Force re-render to update button state
-    }
-  }, [dayNumber, pdfIndex]);
-
-  // Refresh status when modal is shown
-  useEffect(() => {
-    if (showPreview && dayNumber && pdfIndex !== undefined) {
-      const status = getPdfStatus(dayNumber, pdfIndex);
-      setPdfStatus(status);
-    }
-  }, [showPreview, dayNumber, pdfIndex]);
 
   const handlePreview = () => {
     setShowPreview(true);
@@ -31,16 +14,9 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
     // Mark PDF as opened (not completed) when first viewed
     if (dayNumber && pdfIndex !== undefined && !isPdfOpened(dayNumber, pdfIndex)) {
       markPdfOpened(dayNumber, pdfIndex);
-      // Force status update immediately
-      const newStatus = getPdfStatus(dayNumber, pdfIndex);
-      setPdfStatus(newStatus);
       if (onPdfViewed) {
         onPdfViewed(dayNumber, pdfIndex);
       }
-    } else {
-      // Refresh status even if already opened
-      const currentStatus = getPdfStatus(dayNumber, pdfIndex);
-      setPdfStatus(currentStatus);
     }
   };
 
@@ -54,18 +30,11 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
 
   const handleClosePreview = () => {
     setShowPreview(false);
-    // Refresh status when closing
-    if (dayNumber && pdfIndex !== undefined) {
-      setPdfStatus(getPdfStatus(dayNumber, pdfIndex));
-    }
   };
 
   // Recalculate status on every render to ensure it's up-to-date
   const isUnlocked = isPdfUnlocked(dayNumber, pdfIndex);
   const isCompleted = isPdfCompleted(dayNumber, pdfIndex);
-  const hasStudied = isPdfOpened(dayNumber, pdfIndex);
-  const flashcardsDone = areFlashcardsCompleted(dayNumber, pdfIndex);
-  const examPassed = isPdfExamPassed(dayNumber, pdfIndex);
 
   return (
     <>
@@ -187,7 +156,6 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
             <div className="p-3 sm:p-4 border-t border-gray-200 bg-gray-50 sticky bottom-0">
               {(() => {
                 // Recalculate status fresh each render to ensure accuracy
-                const currentStatus = getPdfStatus(dayNumber, pdfIndex);
                 const isCompletedNow = isPdfCompleted(dayNumber, pdfIndex);
                 const hasStudiedNow = isPdfOpened(dayNumber, pdfIndex);
                 const flashcardsDoneNow = areFlashcardsCompleted(dayNumber, pdfIndex);

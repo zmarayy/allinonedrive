@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { PDF_EXAMS } from '../data/pdfContent';
-import { savePdfExamScore, isPdfExamPassed, areFlashcardsCompleted, isPdfOpened } from '../utils/pdfLearningFlow';
+import { savePdfExamScore, areFlashcardsCompleted, isPdfOpened } from '../utils/pdfLearningFlow';
 import BottomNavbar from '../components/BottomNavbar';
 
 // Helper function to shuffle array
@@ -114,7 +114,7 @@ function PdfExam() {
       setIsExamComplete(true);
       
       // Save score
-      const passed = savePdfExamScore(dayNumber, pdfIdx, finalScore, totalQuestions);
+      savePdfExamScore(dayNumber, pdfIdx, finalScore, totalQuestions);
     }
   };
 
