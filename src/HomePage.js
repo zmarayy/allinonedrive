@@ -116,10 +116,7 @@ function HomePage() {
             <div className="absolute -top-4 left-1/4 w-24 h-1 bg-gradient-to-r from-blue-700 to-blue-500 rounded-full opacity-60"></div>
             <div className="absolute -top-4 right-1/4 w-24 h-1 bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-full opacity-60"></div>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-              Confidence. Clarity.{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-primary-600 to-emerald-600">
-                Success.
-              </span>
+              confidence first. Licence ready
             </h1>
             
             <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto font-medium leading-relaxed px-4">
