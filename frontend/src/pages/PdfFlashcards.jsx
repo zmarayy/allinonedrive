@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { PDF_FLASHCARDS } from '../data/pdfContent';
-import { markFlashcardsCompleted, isPdfOpened, isVideoWatched } from '../utils/pdfLearningFlow';
+import { markFlashcardsCompleted, isPdfOpened } from '../utils/pdfLearningFlow';
 import BottomNavbar from '../components/BottomNavbar';
 
 function PdfFlashcards() {
