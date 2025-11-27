@@ -186,68 +186,61 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
 
             {/* PDF Viewer - Mobile Optimized */}
             <div className="flex-1 overflow-auto p-2 sm:p-4 bg-gray-50">
-              {isLoading && !loadError && (
-                <div className="flex flex-col items-center justify-center h-64 sm:h-96">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
-                  <p className="ml-4 text-gray-600 font-medium mt-4">Loading PDF...</p>
-                </div>
-              )}
-              {loadError && (
-                <div className="flex flex-col items-center justify-center h-64 sm:h-96 p-4">
-                  <div className="text-4xl mb-4">📄</div>
-                  <p className="text-gray-700 font-semibold mb-2 text-center">PDF couldn't load in viewer</p>
-                  <p className="text-gray-600 text-sm mb-4 text-center">Try opening it directly instead</p>
+              {/* Show iframe only on desktop, direct link on mobile */}
+              {!isMobile ? (
+                <>
+                  {isLoading && !loadError && (
+                    <div className="flex flex-col items-center justify-center h-64 sm:h-96">
+                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
+                      <p className="ml-4 text-gray-600 font-medium mt-4">Loading PDF...</p>
+                    </div>
+                  )}
+                  {loadError && (
+                    <div className="flex flex-col items-center justify-center h-64 sm:h-96 p-4">
+                      <div className="text-4xl mb-4">📄</div>
+                      <p className="text-gray-700 font-semibold mb-2 text-center">PDF couldn't load in viewer</p>
+                      <p className="text-gray-600 text-sm mb-4 text-center">Try opening it directly instead</p>
+                      <a
+                        href={filePath}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors min-h-[48px] touch-manipulation"
+                      >
+                        Open PDF in New Tab
+                      </a>
+                    </div>
+                  )}
+                  {!loadError && (
+                    <iframe
+                      ref={iframeRef}
+                      src={`${filePath}#toolbar=1&navpanes=0&scrollbar=1&zoom=page-width`}
+                      className="w-full h-full min-h-[400px] sm:min-h-[600px] rounded-lg border border-gray-200"
+                      title={title}
+                      onLoad={handleIframeLoad}
+                      onError={handleIframeError}
+                      style={{ 
+                        display: isLoading ? 'none' : 'block',
+                        touchAction: 'pan-x pan-y pinch-zoom'
+                      }}
+                      allow="fullscreen"
+                    />
+                  )}
+                </>
+              ) : (
+                /* Mobile: Show direct link only */
+                <div className="flex flex-col items-center justify-center h-full min-h-[400px] p-4">
+                  <div className="text-6xl mb-6">📄</div>
+                  <p className="text-gray-700 font-semibold mb-2 text-center text-lg">Study This Material</p>
+                  <p className="text-gray-600 text-sm mb-6 text-center">Open the PDF in a new tab to view and study</p>
                   <a
                     href={filePath}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors min-h-[48px] touch-manipulation"
-                  >
-                    Open PDF in New Tab
-                  </a>
-                </div>
-              )}
-              {/* Always show direct link option on mobile */}
-              {!loadError && isMobile && (
-                <div className="p-2 border-t border-gray-200 bg-gray-50">
-                  <a
-                    href={filePath}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors min-h-[44px] touch-manipulation text-sm"
+                    className="w-full max-w-md bg-blue-600 text-white px-6 py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors min-h-[56px] touch-manipulation text-center shadow-lg"
                   >
                     Open PDF in New Tab (Better for Mobile)
                   </a>
                 </div>
-              )}
-              {!loadError && (
-                <>
-                  <iframe
-                    ref={iframeRef}
-                    src={`${filePath}#toolbar=1&navpanes=0&scrollbar=1&zoom=page-width`}
-                    className="w-full h-full min-h-[400px] sm:min-h-[600px] rounded-lg border border-gray-200"
-                    title={title}
-                    onLoad={handleIframeLoad}
-                    onError={handleIframeError}
-                    style={{ 
-                      display: isLoading ? 'none' : 'block',
-                      touchAction: 'pan-x pan-y pinch-zoom'
-                    }}
-                    allow="fullscreen"
-                  />
-                  {/* Fallback object tag for better mobile support */}
-                  <object
-                    data={filePath}
-                    type="application/pdf"
-                    className="w-full h-full min-h-[400px] sm:min-h-[600px] rounded-lg border border-gray-200 hidden"
-                    style={{ display: 'none' }}
-                    aria-label={title}
-                  >
-                    <p className="text-center p-4">
-                      PDF cannot be displayed. <a href={filePath} target="_blank" rel="noopener noreferrer" className="text-primary-600 underline">Click here to download</a>
-                    </p>
-                  </object>
-                </>
               )}
             </div>
 

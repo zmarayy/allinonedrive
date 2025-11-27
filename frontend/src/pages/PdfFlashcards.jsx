@@ -31,9 +31,10 @@ function PdfFlashcards() {
   }, [dayNumber, pdfIdx]);
 
   const handleFlip = () => {
+    // Always allow flipping - no restrictions
+    setIsFlipped(!isFlipped);
+    // Mark as studied when flipped to answer (first time)
     if (!isFlipped) {
-      setIsFlipped(true);
-      // Mark as studied when flipped
       const key = `day-${dayNumber}-pdf-${pdfIdx}-flashcards-studied`;
       const newCount = Math.max(studiedCount, currentIndex + 1);
       localStorage.setItem(key, newCount.toString());

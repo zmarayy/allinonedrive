@@ -20,12 +20,12 @@ function Flashcards() {
   const categoryInfo = FLASHCARD_CATEGORIES.find(cat => cat.id === selectedCategory);
 
   const handleFlip = () => {
+    // Always allow flipping - no restrictions
+    setIsFlipped(!isFlipped);
+    // Mark as studied when flipped to answer (first time)
     if (!isFlipped && currentCard) {
-      setIsFlipped(true);
       const newCount = Math.max(studiedCount, currentIndex + 1);
       setStudiedCount(newCount);
-    } else {
-      setIsFlipped(false);
     }
   };
 
