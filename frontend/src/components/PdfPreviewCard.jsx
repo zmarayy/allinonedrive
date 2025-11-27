@@ -215,19 +215,33 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 </div>
               )}
               {!loadError && (
-                <iframe
-                  ref={iframeRef}
-                  src={`${filePath}#toolbar=1&navpanes=0&scrollbar=1&zoom=page-width`}
-                  className="w-full h-full min-h-[400px] sm:min-h-[600px] rounded-lg border border-gray-200"
-                  title={title}
-                  onLoad={handleIframeLoad}
-                  onError={handleIframeError}
-                  style={{ 
-                    display: isLoading ? 'none' : 'block',
-                    touchAction: 'pan-x pan-y pinch-zoom'
-                  }}
-                  allow="fullscreen"
-                />
+                <>
+                  <iframe
+                    ref={iframeRef}
+                    src={`${filePath}#toolbar=1&navpanes=0&scrollbar=1&zoom=page-width`}
+                    className="w-full h-full min-h-[400px] sm:min-h-[600px] rounded-lg border border-gray-200"
+                    title={title}
+                    onLoad={handleIframeLoad}
+                    onError={handleIframeError}
+                    style={{ 
+                      display: isLoading ? 'none' : 'block',
+                      touchAction: 'pan-x pan-y pinch-zoom'
+                    }}
+                    allow="fullscreen"
+                  />
+                  {/* Fallback object tag for better mobile support */}
+                  <object
+                    data={filePath}
+                    type="application/pdf"
+                    className="w-full h-full min-h-[400px] sm:min-h-[600px] rounded-lg border border-gray-200 hidden"
+                    style={{ display: 'none' }}
+                    aria-label={title}
+                  >
+                    <p className="text-center p-4">
+                      PDF cannot be displayed. <a href={filePath} target="_blank" rel="noopener noreferrer" className="text-primary-600 underline">Click here to download</a>
+                    </p>
+                  </object>
+                </>
               )}
             </div>
 
