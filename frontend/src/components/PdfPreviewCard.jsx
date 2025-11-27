@@ -77,8 +77,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
     }
   };
   
-  // Check if we're on mobile
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  // Check if we're on mobile (with safe check for SSR/build time)
+  const isMobile = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   // Recalculate status on every render to ensure it's up-to-date
   const isUnlocked = isPdfUnlocked(dayNumber, pdfIndex);
