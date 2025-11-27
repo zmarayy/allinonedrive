@@ -6,6 +6,7 @@ import Logo from './Logo';
 function AboutUs() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [imageErrors, setImageErrors] = useState({
+    lina: false,
     imtiaz: false,
     meral: false,
     hamza: false,
@@ -159,16 +160,24 @@ function AboutUs() {
           <div className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-12">
             {/* Left Column - Founder Image */}
             <div className="w-full lg:w-1/2">
-              <div className="bg-white/10 backdrop-blur-md rounded-2xl h-64 sm:h-80 lg:h-96 w-full flex items-center justify-center border border-white/20 shadow-xl">
-                <div className="text-center">
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
-                    <svg className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                    </svg>
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl h-64 sm:h-80 lg:h-96 w-full flex items-center justify-center border border-white/20 shadow-xl overflow-hidden relative">
+                {!imageErrors.lina ? (
+                  <img
+                    src="/assets/images/Lina-wahidi.jpeg"
+                    alt="Lina Wahidi - CEO & Founder"
+                    className="w-full h-full object-cover object-center"
+                    style={{ objectPosition: 'center 30%' }}
+                    onError={() => handleImageError('lina')}
+                  />
+                ) : (
+                  <div className="text-center">
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                      <span className="text-white text-2xl sm:text-4xl font-bold">LW</span>
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Lina Wahidi</h3>
+                    <p className="text-white/80 font-medium text-sm sm:text-base">CEO & Founder</p>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">Lina Wahidi</h3>
-                  <p className="text-white/80 font-medium text-sm sm:text-base">CEO & Founder</p>
-                </div>
+                )}
               </div>
             </div>
             

@@ -537,15 +537,26 @@ function HomePage() {
           <div className="flex flex-col md:flex-row items-center gap-8">
             {/* Left Column - Instructor Image */}
             <div className="w-full md:w-64 flex-shrink-0">
-              <div className="bg-white/10 backdrop-blur-sm rounded-xl h-64 w-full flex items-center justify-center border border-white/20">
-                <div className="text-center">
-                  <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                    </svg>
-                  </div>
-                  <p className="text-white/80 text-sm font-medium">Lina</p>
-                </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl h-64 w-full flex items-center justify-center border border-white/20 overflow-hidden relative">
+                <img
+                  src="/assets/images/Lina-wahidi.jpeg"
+                  alt="Lina Wahidi - Founder & CEO"
+                  className="w-full h-full object-cover object-center"
+                  style={{ objectPosition: 'center 30%' }}
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = `
+                      <div class="text-center">
+                        <div class="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                          </svg>
+                        </div>
+                        <p class="text-white/80 text-sm font-medium">Lina</p>
+                      </div>
+                    `;
+                  }}
+                />
               </div>
             </div>
             
