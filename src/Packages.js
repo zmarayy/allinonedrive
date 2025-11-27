@@ -372,10 +372,6 @@ function Packages() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-green-500 mr-2">•</span>
-                    <span>Exam Summary Sheets</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-green-500 mr-2">•</span>
                     <span>DVSA Questions & Answers</span>
                   </li>
                   <li className="flex items-start">
