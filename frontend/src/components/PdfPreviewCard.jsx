@@ -77,15 +77,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
     }
   };
   
-  // Use Google Docs viewer as fallback for mobile
-  const getPdfViewerUrl = () => {
-    const fullUrl = window.location.origin + filePath;
-    // For mobile browsers, use Google Docs viewer as fallback
-    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-      return `https://docs.google.com/viewer?url=${encodeURIComponent(fullUrl)}&embedded=true`;
-    }
-    return filePath;
-  };
+  // Check if we're on mobile
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   // Recalculate status on every render to ensure it's up-to-date
   const isUnlocked = isPdfUnlocked(dayNumber, pdfIndex);
