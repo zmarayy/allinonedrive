@@ -1,0 +1,41 @@
+[build]
+  # Build command - builds the React app
+  command = "npm run build"
+  
+  # Publish directory - where the built files are located
+  publish = "build"
+  
+  # Environment variables (these should be set in Netlify dashboard, but can be here for reference)
+  # [build.environment]
+  #   NODE_VERSION = "18"
+
+# Redirect rules for client-side routing (SPA)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+

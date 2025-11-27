@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+    <meta name="theme-color" content="#14b8a6" />
+    <meta
+      name="description"
+      content="DVSA-approved structured theory course. Learn in Pashto, Urdu, Dari & English."
+    />
+
+    <!-- PWA / Add to Home Screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="AllinOneDrive" />
+    <meta name="application-name" content="AllinOneDrive" />
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="%PUBLIC_URL%/apple-touch-icon-167.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="%PUBLIC_URL%/apple-touch-icon-152.png" />
+
+    <title>AllinOneDrive - DVSA Theory Course</title>
+
+    <script>
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        const redirectUrl = params.get('redirect');
+        const target =
+          (redirectUrl && decodeURIComponent(redirectUrl)) ||
+          'https://allinonedrive.netlify.app/access-code';
+
+        const isStandalone =
+          window.matchMedia('(display-mode: standalone)').matches ||
+          window.navigator.standalone;
+
+        if (isStandalone) {
+          window.location.replace(target);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,0 +1,771 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './App.css';
+import Logo from './Logo';
+
+function HomePage() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-200/90 to-slate-200 relative">
+      {/* More visible dark blue and green accent blurs */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-800/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/4 w-72 h-72 bg-blue-700/8 rounded-full blur-3xl pointer-events-none"></div>
+      {/* Sticky Glass Navbar */}
+      <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/10 border-b border-white/20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex items-center space-x-3">
+              <Logo className="w-10 h-10" />
+              <Link to="/" className="text-2xl font-bold text-primary-600 hover:text-primary-700 transition-colors">
+                All In One Drive
+              </Link>
+            </div>
+            
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex items-center space-x-8">
+              <Link to="/" className="text-primary-600 font-medium">
+                Home
+              </Link>
+              <Link to="/about" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+                About Us
+              </Link>
+              <Link to="/packages" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+                Packages
+              </Link>
+              <Link to="/contact" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+                Contact
+              </Link>
+              <Link to="/faq" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+                FAQ
+              </Link>
+              <Link to="/teach" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+                Teach With Us
+              </Link>
+              <Link to="/terms" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+                Terms
+              </Link>
+              <Link to="/app" className="text-gray-700 hover:text-primary-600 font-medium transition-colors">
+                App
+              </Link>
+            </div>
+            
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button 
+                onClick={toggleMobileMenu}
+                className="text-gray-700 hover:text-primary-600 transition-colors p-2"
+                aria-label="Toggle mobile menu"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {isMobileMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          {/* Mobile Navigation Menu */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden bg-white/20 backdrop-blur-md border-t border-white/20">
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                <Link to="/" className="block px-3 py-2 text-primary-600 font-medium rounded-md hover:bg-white/30 transition-colors" onClick={toggleMobileMenu}>
+                  Home
+                </Link>
+                <Link to="/about" className="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-white/30 hover:text-primary-600 transition-colors" onClick={toggleMobileMenu}>
+                  About Us
+                </Link>
+                <Link to="/packages" className="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-white/30 hover:text-primary-600 transition-colors" onClick={toggleMobileMenu}>
+                  Packages
+                </Link>
+                <Link to="/contact" className="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-white/30 hover:text-primary-600 transition-colors" onClick={toggleMobileMenu}>
+                  Contact
+                </Link>
+                <Link to="/faq" className="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-white/30 hover:text-primary-600 transition-colors" onClick={toggleMobileMenu}>
+                  FAQ
+                </Link>
+                <Link to="/teach" className="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-white/30 hover:text-primary-600 transition-colors" onClick={toggleMobileMenu}>
+                  Teach With Us
+                </Link>
+                <Link to="/terms" className="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-white/30 hover:text-primary-600 transition-colors" onClick={toggleMobileMenu}>
+                  Terms & Privacy
+                </Link>
+                <Link to="/app" className="block px-3 py-2 text-gray-700 font-medium rounded-md hover:bg-white/30 hover:text-primary-600 transition-colors" onClick={toggleMobileMenu}>
+                  App
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section id="home" className="py-20 lg:py-32 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center relative">
+            {/* Decorative colored accent bars */}
+            <div className="absolute -top-4 left-1/4 w-24 h-1 bg-gradient-to-r from-blue-700 to-blue-500 rounded-full opacity-60"></div>
+            <div className="absolute -top-4 right-1/4 w-24 h-1 bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-full opacity-60"></div>
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+              Confidence. Clarity.{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-primary-600 to-emerald-600">
+                Success.
+              </span>
+            </h1>
+            
+            <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto font-medium leading-relaxed px-4">
+              Our DVSA-approved structured course helps you master the driving theory in Pashto, Dari, Urdu, and English, so you never miss a step on your journey to passing and progressing in life.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
+              <Link to="/packages" className="bg-gradient-to-r from-blue-700 to-primary-600 hover:from-blue-800 hover:to-primary-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-full sm:w-auto text-center border-2 border-blue-600/30">
+                View Packages
+              </Link>
+              <Link to="/app" className="backdrop-blur-md bg-white/20 hover:bg-white/30 text-gray-700 font-semibold py-4 px-8 rounded-xl border-2 border-emerald-400/40 hover:border-emerald-500/60 transition-all duration-300 transform hover:scale-105 w-full sm:w-auto text-center">
+                Access the App
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Packages Preview Section */}
+      <section className="py-16 sm:py-20 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-16 relative">
+            {/* Colored accent line */}
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-blue-600 via-emerald-500 to-blue-600 rounded-full mb-4"></div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 mt-4">
+              Choose Your Learning Path
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 font-medium max-w-3xl mx-auto">
+              From self-study materials to live classes and personal support — find the perfect package for your needs
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
+            {/* Standard Package Preview */}
+            <div className="glass-card p-4 sm:p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 border-2 border-emerald-400/50 shadow-[0_0_20px_rgba(34,197,94,0.2)] flex flex-col h-full relative bg-gradient-to-br from-white/90 to-emerald-50/30">
+              <div className="text-center mb-4">
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">Standard</h3>
+                <div className="text-lg sm:text-xl font-bold text-primary-600 mb-2">£24.99</div>
+                <span className="text-xs text-green-600 font-semibold">45% OFF</span>
+              </div>
+              <ul className="text-xs sm:text-sm text-gray-600 space-y-1 mb-4 text-left flex-1">
+                <li>• PDF Materials</li>
+                <li>• Flashcards</li>
+                <li>• Summary Notes</li>
+              </ul>
+              <Link to="/packages" className="block w-full bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 text-center mt-auto border border-blue-500/30">
+                Learn More
+              </Link>
+            </div>
+
+            {/* Elite Package Preview */}
+            <div className="glass-card p-4 sm:p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 border-2 border-blue-400/50 shadow-[0_0_20px_rgba(59,130,246,0.2)] flex flex-col h-full relative bg-gradient-to-br from-white/90 to-blue-50/30">
+              <div className="text-center mb-4">
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">Elite</h3>
+                <div className="text-lg sm:text-xl font-bold text-primary-600 mb-2">£39.99</div>
+              </div>
+              <ul className="text-xs sm:text-sm text-gray-600 space-y-1 mb-4 text-left flex-1">
+                <li>• Everything in Standard</li>
+                <li>• Video Lessons</li>
+                <li>• 307 Rules Explained</li>
+              </ul>
+              <Link to="/packages" className="block w-full bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 text-center mt-auto border border-blue-500/30">
+                Learn More
+              </Link>
+            </div>
+
+            {/* Pro Package Preview */}
+            <div className="glass-card p-4 sm:p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 border-2 border-emerald-400/50 shadow-[0_0_20px_rgba(34,197,94,0.2)] flex flex-col h-full relative bg-gradient-to-br from-white/90 to-emerald-50/30">
+              <div className="text-center mb-4">
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">Pro</h3>
+                <div className="text-lg sm:text-xl font-bold text-primary-600 mb-2">£139.99</div>
+              </div>
+              <ul className="text-xs sm:text-sm text-gray-600 space-y-1 mb-4 text-left flex-1">
+                <li>• Everything in Elite</li>
+                <li>• Live Classes (Day 1 & 7)</li>
+                <li>• Online Teaching</li>
+              </ul>
+              <Link to="/packages" className="block w-full bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 text-center mt-auto border border-blue-500/30">
+                Learn More
+              </Link>
+            </div>
+
+            {/* Ultimate Pro Package Preview */}
+            <div className="glass-card p-4 sm:p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 border-2 border-blue-400/50 shadow-[0_0_20px_rgba(59,130,246,0.2)] flex flex-col h-full relative bg-gradient-to-br from-white/90 to-blue-50/30">
+              <div className="text-center mb-4">
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2">Ultimate Pro</h3>
+                <div className="text-lg sm:text-xl font-bold text-primary-600 mb-2">£199.99</div>
+              </div>
+              <ul className="text-xs sm:text-sm text-gray-600 space-y-1 mb-4 text-left flex-1">
+                <li>• Everything in Pro</li>
+                <li>• Day 2 Live Class</li>
+                <li>• WhatsApp Support</li>
+              </ul>
+              <Link to="/packages" className="block w-full bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-300 text-center mt-auto border border-blue-500/30">
+                Learn More
+              </Link>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <Link to="/packages" className="inline-block backdrop-blur-md bg-white/20 hover:bg-white/30 text-gray-700 font-semibold px-8 py-4 rounded-xl border border-white/30 transition-all duration-300 transform hover:scale-105">
+              View All Packages →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* PWA App Section */}
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-primary-50 via-blue-50/80 to-emerald-50/60 relative overflow-hidden">
+        {/* Colored accent shapes */}
+        <div className="absolute top-0 right-0 w-48 h-48 bg-blue-700/10 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-emerald-600/10 rounded-full blur-2xl"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Content */}
+            <div className="relative z-10">
+              <div className="inline-block mb-4">
+                <div className="w-16 h-1 bg-gradient-to-r from-blue-600 to-emerald-500 rounded-full"></div>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+                Learn Anytime, Anywhere
+              </h2>
+              <p className="text-lg text-gray-600 font-medium mb-6 leading-relaxed">
+                Access your course materials on your phone like a real app. Our Progressive Web App (PWA) works offline, saves your progress, and syncs across all your devices.
+              </p>
+              <ul className="space-y-4 mb-8">
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-primary-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1">Installable on Any Device</h3>
+                    <p className="text-gray-600 font-medium">Works on Android, iOS, and desktop — no app store required</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-primary-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1">Works Offline</h3>
+                    <p className="text-gray-600 font-medium">Download materials and study even without internet connection</p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-primary-600 mr-3 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <div>
+                    <h3 className="font-bold text-gray-900 mb-1">Progress Tracking</h3>
+                    <p className="text-gray-600 font-medium">Your progress automatically saves and syncs across devices</p>
+                  </div>
+                </li>
+              </ul>
+              <Link to="/app" className="inline-block bg-gradient-to-r from-blue-700 to-emerald-600 hover:from-blue-800 hover:to-emerald-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-blue-600/30">
+                Access the App →
+              </Link>
+            </div>
+
+            {/* Right Column - Visual */}
+            <div className="relative z-10">
+              <div className="glass-card p-8 rounded-2xl shadow-xl border-2 border-blue-300/30">
+                <div className="bg-gradient-to-br from-blue-100 via-emerald-50 to-blue-100 rounded-xl p-12 text-center">
+                  <div className="text-6xl mb-4">📱</div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">PWA App</h3>
+                  <p className="text-gray-600 font-medium">Install and use like a native app</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Key Features Section */}
+      <section className="py-16 sm:py-20 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12 sm:mb-16 relative">
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-emerald-500 via-blue-600 to-emerald-500 rounded-full"></div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 mt-4">
+              What You Get
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-600 font-medium max-w-3xl mx-auto">
+              Comprehensive learning materials designed to help you pass your theory test
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {/* Feature Card 1 - PDF Materials */}
+            <div className="backdrop-blur-md bg-white/10 border-2 border-emerald-300/40 rounded-xl p-4 sm:p-6 hover:bg-white/20 hover:border-emerald-400/60 transition-all duration-300 transform hover:scale-105 shadow-md">
+              <div className="text-4xl mb-4">📘</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                PDF Materials
+              </h3>
+              <p className="text-gray-600 font-medium">
+                Complete Highway Code, EDS topics, exam materials, and summary notes — all downloadable.
+              </p>
+            </div>
+            
+            {/* Feature Card 2 - Video Lessons */}
+            <div className="backdrop-blur-md bg-white/10 border-2 border-blue-300/40 rounded-xl p-4 sm:p-6 hover:bg-white/20 hover:border-blue-400/60 transition-all duration-300 transform hover:scale-105 shadow-md">
+              <div className="text-4xl mb-4">🎥</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Video Lessons
+              </h3>
+              <p className="text-gray-600 font-medium">
+                307 Highway Code rules explained, exam topics, and EDS skills — all in video format (Elite+).
+              </p>
+            </div>
+            
+            {/* Feature Card 3 - Live Classes */}
+            <div className="backdrop-blur-md bg-white/10 border-2 border-emerald-300/40 rounded-xl p-4 sm:p-6 hover:bg-white/20 hover:border-emerald-400/60 transition-all duration-300 transform hover:scale-105 shadow-md">
+              <div className="text-4xl mb-4">💻</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Live Online Classes
+              </h3>
+              <p className="text-gray-600 font-medium">
+                Interactive teaching sessions via Google Meet with qualified instructors (Pro+).
+              </p>
+            </div>
+            
+            {/* Feature Card 4 - Flashcards */}
+            <div className="backdrop-blur-md bg-white/10 border-2 border-blue-300/40 rounded-xl p-4 sm:p-6 hover:bg-white/20 hover:border-blue-400/60 transition-all duration-300 transform hover:scale-105 shadow-md">
+              <div className="text-4xl mb-4">📚</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Flashcards & Q&A
+              </h3>
+              <p className="text-gray-600 font-medium">
+                Practice with interactive flashcards and exam-style questions to test your knowledge.
+              </p>
+            </div>
+            
+            {/* Feature Card 5 - Multi-Language */}
+            <div className="backdrop-blur-md bg-white/10 border-2 border-emerald-300/40 rounded-xl p-4 sm:p-6 hover:bg-white/20 hover:border-emerald-400/60 transition-all duration-300 transform hover:scale-105 shadow-md">
+              <div className="text-4xl mb-4">🌍</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                Multi-Language Support
+              </h3>
+              <p className="text-gray-600 font-medium">
+                Available in Pashto, Urdu, Dari, and English — learn in your preferred language.
+              </p>
+            </div>
+            
+            {/* Feature Card 6 - WhatsApp Support */}
+            <div className="backdrop-blur-md bg-white/10 border-2 border-blue-300/40 rounded-xl p-4 sm:p-6 hover:bg-white/20 hover:border-blue-400/60 transition-all duration-300 transform hover:scale-105 shadow-md">
+              <div className="text-4xl mb-4">💬</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">
+                WhatsApp Support
+              </h3>
+              <p className="text-gray-600 font-medium">
+                Direct access to instructors for personalized help and guidance (Ultimate Pro).
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Official DVSA Guide Section */}
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-blue-50 via-emerald-50/50 to-primary-50 relative overflow-hidden">
+        {/* Colored accent shapes */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-emerald-600/8 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-700/8 rounded-full blur-3xl"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-12 relative">
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-28 h-1 bg-gradient-to-r from-emerald-500 via-blue-600 to-emerald-500 rounded-full"></div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 mt-4">
+              Based on Official DVSA Materials
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto font-medium">
+              Our course is built around the official DVSA guide and Highway Code, ensuring you learn exactly what you need to pass
+            </p>
+          </div>
+          
+          <div className="flex flex-col lg:flex-row items-center gap-12">
+            {/* Left Column - Image */}
+            <div className="w-full lg:w-1/2">
+              <div className="relative">
+                <div className="bg-white/20 backdrop-blur-md rounded-2xl p-6 shadow-xl border-2 border-blue-300/40">
+                  <img 
+                    src="/assets/images/officialDVSAguide.jpeg" 
+                    alt="Official DVSA Guide to Driving - The Essential Skills"
+                    className="w-full h-auto rounded-xl shadow-lg"
+                  />
+                </div>
+                {/* Decorative elements */}
+                <div className="absolute -top-4 -right-4 w-8 h-8 bg-emerald-500 rounded-full opacity-40 shadow-lg"></div>
+                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-blue-600 rounded-full opacity-40 shadow-lg"></div>
+                <div className="absolute top-1/2 -right-2 w-4 h-4 bg-blue-500 rounded-full opacity-30"></div>
+              </div>
+            </div>
+            
+            {/* Right Column - Content */}
+            <div className="w-full lg:w-1/2">
+              <div className="space-y-6">
+                <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 border-2 border-emerald-300/30">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                    The Essential Skills
+                  </h3>
+                  <p className="text-gray-600 font-medium mb-4">
+                    Our course covers all 14 chapters from the official DVSA guide, including:
+                  </p>
+                  <ul className="space-y-2 text-gray-600">
+                    <li className="flex items-center">
+                      <svg className="w-5 h-5 text-emerald-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="font-medium">Highway Code fundamentals</span>
+                    </li>
+                    <li className="flex items-center">
+                      <svg className="w-5 h-5 text-blue-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="font-medium">Road signs and markings</span>
+                    </li>
+                    <li className="flex items-center">
+                      <svg className="w-5 h-5 text-emerald-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="font-medium">Vehicle safety and maintenance</span>
+                    </li>
+                    <li className="flex items-center">
+                      <svg className="w-5 h-5 text-blue-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="font-medium">Hazard perception training</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="bg-gradient-to-r from-blue-100 via-emerald-50 to-blue-100 rounded-xl p-6 border-2 border-blue-300/50 shadow-lg">
+                  <div className="flex items-center mb-3">
+                    <svg className="w-6 h-6 text-blue-700 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span className="font-bold text-blue-800">DVSA Approved</span>
+                  </div>
+                  <p className="text-blue-700 font-medium">
+                    All our materials are based on the official DVSA guide, ensuring you learn exactly what's required for the theory test.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Statistics Section */}
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-blue-700 via-primary-600 to-emerald-600 text-white relative overflow-hidden">
+        {/* Additional accent shapes */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-emerald-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center mb-12 relative">
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-white/30 rounded-full"></div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 mt-4">
+              Why Choose All In One Drive?
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+              <div className="text-4xl sm:text-5xl font-bold mb-2 bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent">307</div>
+              <p className="text-white/90 font-medium">Highway Code Rules</p>
+            </div>
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+              <div className="text-4xl sm:text-5xl font-bold mb-2 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">4</div>
+              <p className="text-white/90 font-medium">Languages Supported</p>
+            </div>
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+              <div className="text-4xl sm:text-5xl font-bold mb-2 bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent">100%</div>
+              <p className="text-white/90 font-medium">DVSA Approved</p>
+            </div>
+            <div className="text-center bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+              <div className="text-4xl sm:text-5xl font-bold mb-2 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">24/7</div>
+              <p className="text-white/90 font-medium">App Access</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section className="py-20 px-6 relative overflow-hidden">
+        {/* Colored accent blurs */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-600/8 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-700/8 rounded-full blur-3xl"></div>
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="glass-card p-10 md:p-12 text-center shadow-xl border-2 border-blue-300/30 bg-gradient-to-br from-white/95 to-emerald-50/20">
+            <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-600 via-emerald-500 to-blue-600 rounded-full"></div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 mt-4">
+              Ready to Start Your Journey?
+            </h2>
+            <p className="text-xl text-gray-600 mb-8 font-medium leading-relaxed">
+              Choose a package that fits your learning style and start mastering the UK driving theory test today.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                to="/packages"
+                className="bg-gradient-to-r from-blue-700 to-emerald-600 hover:from-blue-800 hover:to-emerald-700 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl border-2 border-blue-600/30"
+              >
+                View All Packages
+              </Link>
+              <Link 
+                to="/app"
+                className="backdrop-blur-md bg-white/20 hover:bg-white/30 text-gray-700 font-semibold px-8 py-4 rounded-xl border-2 border-emerald-400/50 hover:border-emerald-500/70 transition-all duration-300 transform hover:scale-105"
+              >
+                Try the App
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About the Instructor Section */}
+      <section className="py-20 px-6 bg-gradient-to-r from-purple-900/40 to-black/40 text-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            {/* Left Column - Instructor Image */}
+            <div className="w-full md:w-64 flex-shrink-0">
+              <div className="bg-white/10 backdrop-blur-sm rounded-xl h-64 w-full flex items-center justify-center border border-white/20">
+                <div className="text-center">
+                  <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                  </div>
+                  <p className="text-white/80 text-sm font-medium">Lina</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right Column - Instructor Text */}
+            <div className="flex-1">
+                <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+                  Meet Your Teacher
+                </h2>
+              
+              <p className="text-xl text-white/90 mb-6 font-medium">
+                Built from experience, backed by passion.
+              </p>
+              
+              <div className="space-y-4 text-white/90 font-medium leading-relaxed">
+                <p>
+                  Hi, I'm Lina — a law graduate, experienced driver, and the founder of All In One Drive. I've spent 15 years behind the wheel and witnessed how many women in our community struggle to access proper driving education. That's why I created this course — to simplify the learning process, build confidence, and give you real independence through driving.
+                </p>
+                
+                <p className="text-white/80">
+                  This course is available in Pashto, Urdu, Dari, and English — so everyone can learn in the way that suits them best.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* What's Included in the Course Section */}
+      <section className="py-20 px-6 bg-gradient-to-b from-black/80 to-black text-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl lg:text-5xl font-bold text-center mb-12">
+            What's Included in the Course
+          </h2>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* Feature Card 1 - Summary Notes */}
+            <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-md border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="text-3xl mb-4">📘</div>
+              <h3 className="text-xl font-bold text-white mb-3">
+                Summary Notes
+              </h3>
+              <p className="text-white/90 font-medium leading-relaxed">
+                Easy-to-read notes covering key topics from the Highway Code.
+              </p>
+            </div>
+            
+            {/* Feature Card 2 - Flashcards & Q&A */}
+            <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-md border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="text-3xl mb-4">💡</div>
+              <h3 className="text-xl font-bold text-white mb-3">
+                Flashcards & Q&A
+              </h3>
+              <p className="text-white/90 font-medium leading-relaxed">
+                Revise fast with topic-by-topic flashcards and commonly asked theory questions.
+              </p>
+            </div>
+            
+            {/* Feature Card 3 - Marked PDFs */}
+            <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-md border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="text-3xl mb-4">📝</div>
+              <h3 className="text-xl font-bold text-white mb-3">
+                Marked PDFs
+              </h3>
+              <p className="text-white/90 font-medium leading-relaxed">
+                Practice questions and answers reviewed and corrected to guide your learning.
+              </p>
+            </div>
+            
+            {/* Feature Card 4 - Video Lessons */}
+            <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-md border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="text-3xl mb-4">🎥</div>
+              <h3 className="text-xl font-bold text-white mb-3">
+                5-Minute Video Lessons
+              </h3>
+              <p className="text-white/90 font-medium leading-relaxed">
+                Short, engaging video content to help you learn quickly.
+              </p>
+            </div>
+            
+            {/* Feature Card 5 - WhatsApp Support */}
+            <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-md border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="text-3xl mb-4">📱</div>
+              <h3 className="text-xl font-bold text-white mb-3">
+                WhatsApp Support
+              </h3>
+              <p className="text-white/90 font-medium leading-relaxed">
+                Get help and guidance throughout the week from your instructor.
+              </p>
+            </div>
+            
+            {/* Feature Card 6 - Multi-language Classes */}
+            <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl shadow-md border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="text-3xl mb-4">🌐</div>
+              <h3 className="text-xl font-bold text-white mb-3">
+                Classes in Four Languages
+              </h3>
+              <p className="text-white/90 font-medium leading-relaxed">
+                Pashto, Urdu, Dari & English — so everyone can understand and succeed.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer Section */}
+      <footer className="bg-black text-white py-8 sm:py-12 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
+            {/* Left Column - Logo & Tagline */}
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3">
+                <Logo className="w-6 h-6 sm:w-8 sm:h-8" />
+                <Link to="/" className="text-xl sm:text-2xl font-bold text-primary-400 hover:text-primary-300 transition-colors">
+                  All In One Drive
+                </Link>
+              </div>
+              <p className="text-white/80 font-medium italic text-sm sm:text-base">
+                "Empowering independence. One lesson at a time."
+              </p>
+            </div>
+            
+            {/* Middle Column - Quick Navigation */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold text-white mb-4">Quick Links</h3>
+              <div className="space-y-2">
+                <Link to="/" className="block text-primary-400 font-medium">
+                  Home
+                </Link>
+                <Link to="/about" className="block text-white/80 hover:text-primary-400 transition-colors duration-300">
+                  About Us
+                </Link>
+                <Link to="/packages" className="block text-white/80 hover:text-primary-400 transition-colors duration-300">
+                  Packages
+                </Link>
+                <Link to="/contact" className="block text-white/80 hover:text-primary-400 transition-colors duration-300">
+                  Contact
+                </Link>
+                <Link to="/faq" className="block text-white/80 hover:text-primary-400 transition-colors duration-300">
+                  FAQ
+                </Link>
+                <Link to="/teach" className="block text-white/80 hover:text-primary-400 transition-colors duration-300">
+                  Teach With Us
+                </Link>
+                <Link to="/terms" className="block text-white/80 hover:text-primary-400 transition-colors duration-300">
+                  Terms & Privacy
+                </Link>
+              </div>
+            </div>
+            
+            {/* Right Column - Contact Info & Social Media */}
+            <div className="space-y-4">
+              <h3 className="text-lg font-bold text-white mb-4">Contact Us</h3>
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3">
+                  <svg className="w-5 h-5 text-primary-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                  </svg>
+                  <span className="text-white/80 font-medium">wahidi.lina@allinonedrive.com</span>
+                </div>
+                
+                <div className="flex items-center space-x-3">
+                  <svg className="w-5 h-5 text-primary-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                  </svg>
+                  <span className="text-white/80 font-medium">+44 7908 853486</span>
+                </div>
+                
+                <div className="flex items-start space-x-3">
+                  <svg className="w-5 h-5 text-primary-400 mt-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                  <div className="text-white/80 font-medium text-sm leading-relaxed">
+                    Suite 6670, Unit 3A<br />
+                    34-35 Hatton Garden<br />
+                    Holborn, London EC1N 8DX
+                  </div>
+                </div>
+                
+                <div className="flex items-center space-x-3">
+                  <svg className="w-5 h-5 text-primary-400" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                  </svg>
+                  <span className="text-white/80 font-medium">WhatsApp: 9AM–3PM (Sat & Sun)</span>
+                </div>
+              </div>
+              
+              {/* Social Media Icons */}
+              <div className="pt-4">
+                <h4 className="text-sm font-semibold text-white mb-3">Follow Us</h4>
+                <div className="flex space-x-3 sm:space-x-4">
+                  <button className="text-white/60 hover:text-primary-400 transition-colors duration-300 p-1" aria-label="Follow us on Twitter">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                    </svg>
+                  </button>
+                  <button className="text-white/60 hover:text-primary-400 transition-colors duration-300 p-1" aria-label="Follow us on Facebook">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                    </svg>
+                  </button>
+                  <button className="text-white/60 hover:text-primary-400 transition-colors duration-300 p-1" aria-label="Follow us on YouTube">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Bottom Copyright */}
+          <div className="border-t border-white/20 pt-6 text-center">
+            <p className="text-white/60 text-sm">
+              © 2025 All In One Drive. All rights reserved.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export default HomePage;
