@@ -48,7 +48,6 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
   const handleCompleteDay = () => {
     if (canComplete) {
       completeDay(dayNumber);
-      setDayStatus('completed');
       alert(`🎉 Congratulations! Day ${dayNumber} completed! Day ${dayNumber + 1} is now unlocked.`);
       window.location.reload(); // Refresh to show updated status
     }
