@@ -120,7 +120,7 @@ function Packages() {
 
       // Add custom amount for complete package
       if (packageForCheckout === 'complete') {
-        requestBody.amount = 287500; // £2,875 in pence
+        requestBody.amount = 329999; // £3,299.99 in pence
       }
 
       // Create checkout session
@@ -217,7 +217,7 @@ function Packages() {
             {packageForCheckout === 'complete' && (
               <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
                 <p className="text-sm text-blue-800 font-medium text-center">
-                  Complete Package (£2,875) - Full service from start to finish
+                  Complete Package (£3,299.99) - Full service from start to finish
                 </p>
               </div>
             )}
@@ -710,7 +710,7 @@ function Packages() {
                 From Nothing to Full UK License – Complete Package
               </h2>
               <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-6">
-                £2,875
+                £3,299.99
               </div>
             </div>
 
