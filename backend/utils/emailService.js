@@ -11,7 +11,10 @@ const sendAccessCodeEmail = async (email, code, packageName) => {
       'standard': 'Standard Package',
       'elite_self_study': 'Elite Self-Study',
       'elite_live_support': 'Elite Live Support',
-      'driving_theory_full': 'Driving + Theory Full Package'
+      'driving_theory_full': 'Driving + Theory Full Package',
+      'complete': 'Complete Package - From Nothing to Full UK License',
+      'accelerator_morning': 'Elite 5-Day Theory Accelerator - Morning Power Session',
+      'accelerator_evening': 'Elite 5-Day Theory Accelerator - Evening Power Session'
     };
 
   const displayName = packageDisplayNames[packageName] || packageName;
@@ -106,7 +109,7 @@ const sendAccessCodeEmail = async (email, code, packageName) => {
             <div class="footer">
               <p>Best regards,<br>The All In One Drive Team</p>
               <p style="margin-top: 10px;">
-                <a href="mailto:wahidi.lina@allinonedrive.com" style="color: #14b8a6;">wahidi.lina@allinonedrive.com</a>
+                <a href="mailto:linawahidi@allinonedrive.com" style="color: #14b8a6;">linawahidi@allinonedrive.com</a>
               </p>
             </div>
           </div>
@@ -132,7 +135,7 @@ If you have any questions or need assistance, please don't hesitate to contact u
 
 Best regards,
 The All In One Drive Team
-wahidi.lina@allinonedrive.com
+linawahidi@allinonedrive.com
     `
   });
 

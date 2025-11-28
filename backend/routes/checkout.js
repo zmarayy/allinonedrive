@@ -11,7 +11,9 @@ const PACKAGE_PRICES = {
   elite_self_study: 3999,      // £39.99
   elite_live_support: 13999,   // £139.99
   driving_theory_full: 287500, // £2,875.00
-  complete: 287500             // £2,875.00 (legacy - same as driving_theory_full)
+  complete: 329999,            // £3,299.99
+  accelerator_morning: 34999,  // £349.99
+  accelerator_evening: 34999    // £349.99
 };
 
 /**
@@ -22,7 +24,9 @@ const PACKAGE_NAMES = {
   elite_self_study: 'Elite Self-Study',
   elite_live_support: 'Elite Live Support',
   driving_theory_full: 'Driving + Theory Full Package',
-  complete: 'Complete Package - From Nothing to Full UK License'
+  complete: 'Complete Package - From Nothing to Full UK License',
+  accelerator_morning: 'Elite 5-Day Theory Accelerator - Morning Power Session',
+  accelerator_evening: 'Elite 5-Day Theory Accelerator - Evening Power Session'
 };
 
 /**

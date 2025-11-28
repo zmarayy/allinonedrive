@@ -76,7 +76,7 @@ async function handleCheckoutSessionCompleted(session) {
     }
 
     // Validate package type
-    const validPackages = ['standard', 'elite_self_study', 'elite_live_support', 'driving_theory_full'];
+    const validPackages = ['standard', 'elite_self_study', 'elite_live_support', 'driving_theory_full', 'complete', 'accelerator_morning', 'accelerator_evening'];
     if (!validPackages.includes(packageType)) {
       console.error('❌ Invalid package type:', packageType);
       return;
@@ -110,12 +110,8 @@ async function handleCheckoutSessionCompleted(session) {
     const expiresAt = new Date(createdAt);
     expiresAt.setMonth(expiresAt.getMonth() + 1);
 
-    // Get IP from Stripe metadata or use default
-    // Note: Stripe webhooks come from Stripe's servers, so we'll lock to first verification IP
-    const clientIp = req.ip || req.connection.remoteAddress || req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown';
-    const ipAddress = Array.isArray(clientIp) ? clientIp[0] : clientIp.split(',')[0].trim();
-
     // Save to Firestore with IP lock (will be set on first verification)
+    // Note: IP address will be set when user first verifies the code
     const codeData = {
       code,
       email: customerEmail,
