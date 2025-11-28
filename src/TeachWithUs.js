@@ -206,7 +206,7 @@ function TeachWithUs() {
                         Comprehensive Training Program
                       </h3>
                       <p className="text-gray-700 font-medium leading-relaxed text-base sm:text-lg">
-                        New teachers receive between <span className="font-bold text-primary-700">one and two weeks of training</span> to help them become confident and effective instructors. You'll learn teaching methodologies, how to use our platform, and best practices for student engagement.
+                        New teachers receive between <span className="font-bold text-primary-700">one and two weeks of training</span> to help them become confident and effective teachers. You'll learn teaching methodologies, how to use our platform, and best practices for student engagement.
                       </p>
                     </div>
                   </div>
