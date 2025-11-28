@@ -273,28 +273,32 @@ export const DAY_CONTENT = {
         description: "Rules and guidance for driving in adverse weather conditions", 
         fileSize: "570 KB", 
         filePath: "/course-materials/standard/day-3/Driving in Adverse Weather (Rules 226–237).pdf",
-        downloadPath: "/course-materials/standard/day-3/Driving in Adverse Weather (Rules 226–237).pdf"
+        downloadPath: "/course-materials/standard/day-3/Driving in Adverse Weather (Rules 226–237).pdf",
+        videoPath: "/course-materials/standard/day-3/videos/weather-226-to-237.mp4"
       },
       { 
         title: "Safety and Your Vehicle", 
         description: "Vehicle safety checks and maintenance", 
         fileSize: "261 KB", 
         filePath: "/course-materials/standard/day-3/safety and your vehicle.pdf",
-        downloadPath: "/course-materials/standard/day-3/safety and your vehicle.pdf"
+        downloadPath: "/course-materials/standard/day-3/safety and your vehicle.pdf",
+        videoPath: "/course-materials/standard/day-3/videos/safety-and-your-vehicle.mp4"
       },
       { 
         title: "Part Five - Safety Margins", 
         description: "Safety margins and defensive driving techniques", 
         fileSize: "100 KB", 
         filePath: "/course-materials/standard/day-3/Part five Safety Margins.pdf",
-        downloadPath: "/course-materials/standard/day-3/Part five Safety Margins.pdf"
+        downloadPath: "/course-materials/standard/day-3/Part five Safety Margins.pdf",
+        videoPath: "/course-materials/standard/day-3/videos/safety-margins.mp4"
       },
       { 
         title: "Annex 6", 
         description: "Annex 6 reference material", 
         fileSize: "60 KB", 
         filePath: "/course-materials/standard/day-3/annex 6.pdf",
-        downloadPath: "/course-materials/standard/day-3/annex 6.pdf"
+        downloadPath: "/course-materials/standard/day-3/annex 6.pdf",
+        videoPath: "/course-materials/standard/day-3/videos/annex-6.mp4"
       }
     ],
     odtWordNotes: [
