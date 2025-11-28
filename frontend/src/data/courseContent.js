@@ -334,28 +334,32 @@ export const DAY_CONTENT = {
         description: "Complete guide to using the road", 
         fileSize: "2.8 MB", 
         filePath: "/course-materials/standard/day-4/Using the road (159 to 203).pdf",
-        downloadPath: "/course-materials/standard/day-4/Using the road (159 to 203).pdf"
+        downloadPath: "/course-materials/standard/day-4/Using the road (159 to 203).pdf",
+        videoPath: "/course-materials/standard/day-4/videos/using-the-road-159-to-203.mp4"
       },
       { 
         title: "Road Users Requiring Extra Care (204-225)", 
         description: "Guidance for vulnerable road users", 
         fileSize: "954 KB", 
         filePath: "/course-materials/standard/day-4/Road users requiring extra care (204 to 225).pdf",
-        downloadPath: "/course-materials/standard/day-4/Road users requiring extra care (204 to 225).pdf"
+        downloadPath: "/course-materials/standard/day-4/Road users requiring extra care (204 to 225).pdf",
+        videoPath: "/course-materials/standard/day-4/videos/road-users-extra-care-204-to-225.mp4"
       },
       { 
         title: "Part Seven - Vulnerable Road Users", 
         description: "Safety for vulnerable road users", 
         fileSize: "177 KB", 
         filePath: "/course-materials/standard/day-4/Part seven Vulnerable Road Users.pdf",
-        downloadPath: "/course-materials/standard/day-4/Part seven Vulnerable Road Users.pdf"
+        downloadPath: "/course-materials/standard/day-4/Part seven Vulnerable Road Users.pdf",
+        videoPath: "/course-materials/standard/day-4/videos/vulnerable-road-users.mp4"
       },
       { 
         title: "Part Six - Hazard Awareness", 
         description: "Developing hazard awareness skills", 
         fileSize: "77 KB", 
         filePath: "/course-materials/standard/day-4/Part sixHazard Awareness.pdf",
-        downloadPath: "/course-materials/standard/day-4/Part sixHazard Awareness.pdf"
+        downloadPath: "/course-materials/standard/day-4/Part sixHazard Awareness.pdf",
+        videoPath: "/course-materials/standard/day-4/videos/hazard-awareness.mp4"
       }
     ],
     odtWordNotes: [
@@ -391,14 +395,16 @@ export const DAY_CONTENT = {
         description: "Rules for waiting and parking", 
         fileSize: "596 KB", 
         filePath: "/course-materials/standard/day-5/Waiting and parking (238 to 252).pdf",
-        downloadPath: "/course-materials/standard/day-5/Waiting and parking (238 to 252).pdf"
+        downloadPath: "/course-materials/standard/day-5/Waiting and parking (238 to 252).pdf",
+        videoPath: "/course-materials/standard/day-5/videos/waiting-and-parking-238-to-252.mp4"
       },
       { 
         title: "Part Ten - Vehicle Handling", 
         description: "Vehicle handling techniques", 
         fileSize: "202 KB", 
         filePath: "/course-materials/standard/day-5/Part ten Vehicle Handling.pdf",
-        downloadPath: "/course-materials/standard/day-5/Part ten Vehicle Handling.pdf"
+        downloadPath: "/course-materials/standard/day-5/Part ten Vehicle Handling.pdf",
+        videoPath: "/course-materials/standard/day-5/videos/vehicle-handling-part-ten.mp4"
       },
       { 
         title: "Part Nine - Vehicle and Motorcycle Handling", 
@@ -419,7 +425,8 @@ export const DAY_CONTENT = {
         description: "Rules for other vehicle types", 
         fileSize: "79 KB", 
         filePath: "/course-materials/standard/day-5/Other Types of Vehicles.pdf",
-        downloadPath: "/course-materials/standard/day-5/Other Types of Vehicles.pdf"
+        downloadPath: "/course-materials/standard/day-5/Other Types of Vehicles.pdf",
+        videoPath: "/course-materials/standard/day-5/videos/other-types-of-vehicles.mp4"
       },
       { 
         title: "Annex 1 and 2", 
@@ -462,7 +469,8 @@ export const DAY_CONTENT = {
         description: "Complete guide to motorway driving", 
         fileSize: "1.1 MB", 
         filePath: "/course-materials/standard/day-6/Motorways (253 to 274).pdf",
-        downloadPath: "/course-materials/standard/day-6/Motorways (253 to 274).pdf"
+        downloadPath: "/course-materials/standard/day-6/Motorways (253 to 274).pdf",
+        videoPath: "/course-materials/standard/day-6/videos/motorways-253-to-274.mp4"
       },
       { 
         title: "Summary - Motorway Rules", 
@@ -476,7 +484,8 @@ export const DAY_CONTENT = {
         description: "Essential documents you need", 
         fileSize: "134 KB", 
         filePath: "/course-materials/standard/day-6/Essential documents.pdf",
-        downloadPath: "/course-materials/standard/day-6/Essential documents.pdf"
+        downloadPath: "/course-materials/standard/day-6/Essential documents.pdf",
+        videoPath: "/course-materials/standard/day-6/videos/essential-documents.mp4"
       }
     ],
     odtWordNotes: [
@@ -513,7 +522,8 @@ export const DAY_CONTENT = {
         description: "What to do in breakdowns and incidents", 
         fileSize: "911 KB", 
         filePath: "/course-materials/standard/day-7/Breakdowns and incidents (275 to 287).pdf",
-        downloadPath: "/course-materials/standard/day-7/Breakdowns and incidents (275 to 287).pdf"
+        downloadPath: "/course-materials/standard/day-7/Breakdowns and incidents (275 to 287).pdf",
+        videoPath: "/course-materials/standard/day-7/videos/breakdowns-and-incidents-275-to-287.mp4"
       },
       { 
         title: "Road Works, Level Crossings and Tramways (288-307)", 
@@ -534,7 +544,8 @@ export const DAY_CONTENT = {
         description: "Handling incidents and emergencies", 
         fileSize: "102 KB", 
         filePath: "/course-materials/standard/day-7/Part fiveteen Incidents, Accidents and Emergencies.pdf",
-        downloadPath: "/course-materials/standard/day-7/Part fiveteen Incidents, Accidents and Emergencies.pdf"
+        downloadPath: "/course-materials/standard/day-7/Part fiveteen Incidents, Accidents and Emergencies.pdf",
+        videoPath: "/course-materials/standard/day-7/videos/vehicle-loading.mp4"
       }
     ],
     odtWordNotes: [
