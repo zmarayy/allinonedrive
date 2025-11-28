@@ -308,10 +308,10 @@ function TeachWithUs() {
                       </h3>
                       <div className="space-y-3 sm:space-y-4">
                         <p className="text-gray-700 font-medium leading-relaxed text-base sm:text-lg">
-                          Theory teachers <span className="font-bold text-primary-700">do not pay any membership fee</span>. There is no upfront cost or monthly fee.
+                          Driving instructors <span className="font-bold text-primary-700">do not pay any membership fee</span>. There is no upfront cost or monthly fee.
                         </p>
                         <p className="text-gray-700 font-medium leading-relaxed text-base sm:text-lg">
-                          Instead, you pay <span className="font-bold text-primary-700">25% commission on each customer you get</span> through All In One Drive.
+                          Instead, you pay <span className="font-bold text-primary-700">£6.99 commission per hour</span> of lessons you get through All In One Drive.
                         </p>
                       </div>
                     </div>
@@ -327,11 +327,11 @@ function TeachWithUs() {
                         Simple & Fair Commission Model
                       </h3>
                       <p className="text-gray-700 font-medium leading-relaxed text-base sm:text-lg mb-3 sm:mb-4">
-                        The commission structure is simple and fair. You <span className="font-bold text-primary-700">only pay 25% commission when you get a customer</span> through All In One Drive. No customers, no commission to pay.
+                        The commission structure is simple and fair. You <span className="font-bold text-primary-700">only pay £6.99 per hour of lessons</span> you get through All In One Drive. No lessons, no commission to pay.
                       </p>
                       <div className="bg-white rounded-lg p-4 sm:p-5 border-2 border-amber-300 mt-3 sm:mt-4">
                         <p className="text-gray-800 font-semibold text-base sm:text-lg">
-                          <span className="text-amber-700 font-bold">In other words:</span> You only pay when you earn from each customer you bring in.
+                          <span className="text-amber-700 font-bold">In other words:</span> You only pay commission for the actual lesson hours you teach through our platform.
                         </p>
                       </div>
                     </div>
