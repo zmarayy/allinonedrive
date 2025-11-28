@@ -530,7 +530,8 @@ export const DAY_CONTENT = {
         description: "Rules for road works and crossings", 
         fileSize: "346 KB", 
         filePath: "/course-materials/standard/day-7/Road works, level crossings and tramways (288 to 307).pdf",
-        downloadPath: "/course-materials/standard/day-7/Road works, level crossings and tramways (288 to 307).pdf"
+        downloadPath: "/course-materials/standard/day-7/Road works, level crossings and tramways (288 to 307).pdf",
+        videoPath: "/course-materials/standard/day-7/videos/adas-system.mp4"
       },
       { 
         title: "AED QA Flashcards (UK)", 
