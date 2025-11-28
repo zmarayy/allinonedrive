@@ -253,7 +253,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
 
       {/* PDF Preview Modal - Mobile Optimized */}
       {showPreview && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-3 sm:p-4 animate-fade-in">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 animate-fade-in">
           <div className={`bg-white rounded-lg shadow-2xl w-full flex flex-col ${
             isMobile ? 'max-w-sm' : 'max-w-2xl max-h-[90vh]'
           }`}>
@@ -431,7 +431,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
 
       {/* Video Player Modal - Mobile Optimized */}
       {showVideoModal && videoPath && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-3 sm:p-4 animate-fade-in">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 animate-fade-in">
           <div className={`bg-white rounded-lg shadow-2xl w-full flex flex-col ${
             isMobile ? 'max-w-full' : 'max-w-4xl max-h-[90vh]'
           }`}>
