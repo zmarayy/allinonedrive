@@ -251,11 +251,11 @@ function TeachWithUs() {
                         Fair Membership Model
                       </h3>
                       <p className="text-gray-700 font-medium leading-relaxed text-base sm:text-lg mb-3 sm:mb-4">
-                        The membership model is designed to be fair. Theory teachers do <span className="font-bold text-primary-700">not pay for their membership until they are earning at least three times the value of that membership</span> from their teaching through All In One Drive.
+                        The membership model is designed to be fair. Theory teachers <span className="font-bold text-primary-700">do not pay a membership fee</span>. Instead, they pay <span className="font-bold text-primary-700">25% commission on each customer they get</span> through All In One Drive.
                       </p>
                       <div className="bg-white rounded-lg p-4 sm:p-5 border-2 border-amber-300 mt-3 sm:mt-4">
                         <p className="text-gray-800 font-semibold text-base sm:text-lg">
-                          <span className="text-amber-700 font-bold">What this means:</span> You can train, start teaching, and grow your income before any membership fee becomes due.
+                          <span className="text-amber-700 font-bold">What this means:</span> You can train, start teaching, and grow your income. You only pay when you earn from each customer.
                         </p>
                       </div>
                     </div>
