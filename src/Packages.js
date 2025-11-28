@@ -122,6 +122,11 @@ function Packages() {
       if (packageForCheckout === 'complete') {
         requestBody.amount = 329999; // £3,299.99 in pence
       }
+      
+      // Add custom amount for accelerator packages
+      if (packageForCheckout === 'accelerator_morning' || packageForCheckout === 'accelerator_evening') {
+        requestBody.amount = 34999; // £349.99 in pence
+      }
 
       // Create checkout session
       const response = await fetch(`${API_BASE_URL}/checkout/create-session`, {
@@ -218,6 +223,13 @@ function Packages() {
               <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
                 <p className="text-sm text-blue-800 font-medium text-center">
                   Complete Package (£3,299.99) - Full service from start to finish
+                </p>
+              </div>
+            )}
+            {(packageForCheckout === 'accelerator_morning' || packageForCheckout === 'accelerator_evening') && (
+              <div className="mt-4 p-4 bg-purple-50 rounded-lg border border-purple-200">
+                <p className="text-sm text-purple-800 font-medium text-center">
+                  Elite 5-Day Theory Accelerator (£349.99) - Launch Offer
                 </p>
               </div>
             )}
@@ -487,6 +499,242 @@ function Packages() {
               >
                 {loading === 'ultimate_pro' ? 'Loading...' : 'Buy Now'}
               </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Elite 5-Day Theory Accelerator Section */}
+      <section className="py-12 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              Elite 5-Day Theory Accelerator
+            </h2>
+            <p className="text-lg text-gray-600 font-medium max-w-2xl mx-auto">
+              Intensive live online courses with small groups and full support
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            {/* Morning Power Session */}
+            <div className="glass-card p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 border-2 border-purple-200 flex flex-col">
+              <div className="text-center mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-3">
+                  <span className="text-2xl">🌅</span>
+                </div>
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <span className="text-2xl">🔥</span>
+                  <span className="text-sm font-bold text-orange-600">Launch Offer: £349.99</span>
+                </div>
+                <p className="text-xs text-green-600 font-semibold mb-2">→ You save £150</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Morning Power Session</h3>
+                <p className="text-sm text-gray-600 italic">Perfect for: people who want to start the day productive and finish theory study before lunch.</p>
+              </div>
+              
+              <div className="space-y-3 mb-6 text-left flex-1">
+                <div>
+                  <p className="text-sm font-semibold text-gray-700 mb-2">Schedule:</p>
+                  <ul className="space-y-1 text-sm text-gray-600">
+                    <li className="flex items-center">
+                      <span className="text-purple-500 mr-2">📅</span>
+                      <span>Mon-Fri</span>
+                    </li>
+                    <li className="flex items-center">
+                      <span className="text-purple-500 mr-2">⏰</span>
+                      <span>10:00am – 2:00pm (online, live)</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <p className="text-sm font-semibold text-gray-700 mb-2">What's included:</p>
+                  <ul className="space-y-1.5 text-sm text-gray-600">
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>5 days live online course, intensive, structured lessons to make theory simple</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>7 days WhatsApp support, ask questions anytime during the week</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>Very small group, max 5 people</span>
+                    </li>
+                    <li className="flex items-start pl-5">
+                      <span className="text-gray-400 mr-2">→</span>
+                      <span className="text-xs italic">More attention, more questions, more confidence</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>Explained in your own language (where possible)</span>
+                    </li>
+                    <li className="flex items-start pl-5">
+                      <span className="text-gray-400 mr-2">→</span>
+                      <span className="text-xs italic">No stress about difficult English words</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>Application for provisional licence (if needed) done for you</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>One theory exam booking included</span>
+                    </li>
+                    <li className="flex items-start pl-5">
+                      <span className="text-gray-400 mr-2">→</span>
+                      <span className="text-xs italic">We book the test for you, no hassle</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>If you fail, you can repeat the course once for FREE</span>
+                    </li>
+                    <li className="flex items-start pl-5">
+                      <span className="text-gray-400 mr-2">→</span>
+                      <span className="text-xs italic">One extra full course, no extra charge</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>Access to learning app included</span>
+                    </li>
+                    <li className="flex items-start pl-5">
+                      <span className="text-gray-400 mr-2">→</span>
+                      <span className="text-xs italic">Practise questions and mock exams anytime</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="mt-4 p-3 bg-purple-50 rounded-lg border border-purple-200">
+                  <p className="text-xs font-semibold text-purple-800 mb-1">Investment:</p>
+                  <ul className="space-y-1 text-xs text-purple-700">
+                    <li>Launch price: £349.99</li>
+                    <li>Normal price: £499.99</li>
+                    <li className="font-bold">Save: £150</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div className="mt-auto">
+                <p className="text-xs text-gray-500 text-center mb-2">Limited to only 5 seats per group.</p>
+                <button 
+                  onClick={() => openEmailModal('accelerator_morning')}
+                  disabled={loading === 'accelerator_morning'}
+                  className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {loading === 'accelerator_morning' ? 'Loading...' : 'Buy Now'}
+                </button>
+              </div>
+            </div>
+
+            {/* Evening Power Session */}
+            <div className="glass-card p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 border-2 border-indigo-200 flex flex-col">
+              <div className="text-center mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-3">
+                  <span className="text-2xl">🌙</span>
+                </div>
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <span className="text-2xl">🔥</span>
+                  <span className="text-sm font-bold text-orange-600">Launch Offer: £349.99</span>
+                </div>
+                <p className="text-xs text-green-600 font-semibold mb-2">→ You save £150</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Evening Power Session</h3>
+                <p className="text-sm text-gray-600 italic">Perfect for: people who work or study in the day and want to study after work in a calm environment.</p>
+              </div>
+              
+              <div className="space-y-3 mb-6 text-left flex-1">
+                <div>
+                  <p className="text-sm font-semibold text-gray-700 mb-2">Schedule:</p>
+                  <ul className="space-y-1 text-sm text-gray-600">
+                    <li className="flex items-center">
+                      <span className="text-indigo-500 mr-2">📅</span>
+                      <span>Mon-Fri</span>
+                    </li>
+                    <li className="flex items-center">
+                      <span className="text-indigo-500 mr-2">⏰</span>
+                      <span>7:30pm – 10:30pm (online, live)</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <p className="text-sm font-semibold text-gray-700 mb-2">What's included:</p>
+                  <ul className="space-y-1.5 text-sm text-gray-600">
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>5 days live online course, intensive, structured lessons to make theory simple</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>7 days WhatsApp support, ask questions anytime during the week</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>Very small group, max 5 people</span>
+                    </li>
+                    <li className="flex items-start pl-5">
+                      <span className="text-gray-400 mr-2">→</span>
+                      <span className="text-xs italic">More attention, more questions, more confidence</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>Explained in your own language (where possible)</span>
+                    </li>
+                    <li className="flex items-start pl-5">
+                      <span className="text-gray-400 mr-2">→</span>
+                      <span className="text-xs italic">No stress about difficult English words</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>Application for provisional licence (if needed) done for you</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>One theory exam booking included</span>
+                    </li>
+                    <li className="flex items-start pl-5">
+                      <span className="text-gray-400 mr-2">→</span>
+                      <span className="text-xs italic">We book the test for you, no hassle</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>If you fail, you can repeat the course once for FREE</span>
+                    </li>
+                    <li className="flex items-start pl-5">
+                      <span className="text-gray-400 mr-2">→</span>
+                      <span className="text-xs italic">One extra full course, no extra charge</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✅</span>
+                      <span>Access to learning app included</span>
+                    </li>
+                    <li className="flex items-start pl-5">
+                      <span className="text-gray-400 mr-2">→</span>
+                      <span className="text-xs italic">Practise questions and mock exams anytime</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="mt-4 p-3 bg-indigo-50 rounded-lg border border-indigo-200">
+                  <p className="text-xs font-semibold text-indigo-800 mb-1">Investment:</p>
+                  <ul className="space-y-1 text-xs text-indigo-700">
+                    <li>Launch price: £349.99</li>
+                    <li>Normal price: £499.99</li>
+                    <li className="font-bold">Save: £150</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div className="mt-auto">
+                <p className="text-xs text-gray-500 text-center mb-2">Only 5 seats per evening group.</p>
+                <button 
+                  onClick={() => openEmailModal('accelerator_evening')}
+                  disabled={loading === 'accelerator_evening'}
+                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {loading === 'accelerator_evening' ? 'Loading...' : 'Buy Now'}
+                </button>
+              </div>
             </div>
           </div>
         </div>
