@@ -60,15 +60,105 @@ Based on the videos you showed me, here's how to name them to match the PDFs:
 4. **Place videos** in `frontend/public/course-materials/standard/day-X/videos/`
 5. **Let me know** when you've added them, and I'll update `courseContent.js` with the video paths
 
+## 📋 Day 4 Video Naming
+
+Based on the PDFs, here are the suggested video names:
+
+1. **Using the Road (159-203)**
+   - **Rename to:** `using-the-road-159-to-203.mp4`
+   - Matches: "Using the road (159 to 203).pdf"
+
+2. **Road Users Requiring Extra Care (204-225)**
+   - **Rename to:** `road-users-extra-care-204-to-225.mp4`
+   - Matches: "Road users requiring extra care (204 to 225).pdf"
+
+3. **Part Seven - Vulnerable Road Users**
+   - **Rename to:** `vulnerable-road-users.mp4`
+   - Matches: "Part seven Vulnerable Road Users.pdf"
+
+4. **Part Six - Hazard Awareness**
+   - **Rename to:** `hazard-awareness.mp4`
+   - Matches: "Part sixHazard Awareness.pdf"
+
+## 📋 Day 5 Video Naming
+
+Based on the PDFs, here are the suggested video names:
+
+1. **Waiting and Parking (238-252)**
+   - **Rename to:** `waiting-and-parking-238-to-252.mp4`
+   - Matches: "Waiting and parking (238 to 252).pdf"
+
+2. **Part Ten - Vehicle Handling**
+   - **Rename to:** `vehicle-handling-part-ten.mp4`
+   - Matches: "Part ten Vehicle Handling.pdf"
+
+3. **Part Nine - Vehicle and Motorcycle Handling**
+   - **Rename to:** `vehicle-motorcycle-handling-part-nine.mp4`
+   - Matches: "Part nine Vehicle and Motorcycle Handling.pdf"
+
+4. **General Rules, Techniques and Advice**
+   - **Rename to:** `general-rules-techniques-advice.mp4`
+   - Matches: "General rules, techniques and advice for all drivers and riders.pdf"
+
+5. **Other Types of Vehicles**
+   - **Rename to:** `other-types-of-vehicles.mp4`
+   - Matches: "Other Types of Vehicles.pdf"
+
+6. **Annex 1 and 2**
+   - **Rename to:** `annex-1-and-2.mp4`
+   - Matches: "annex 1 and 2.pdf"
+
+## 📋 Day 6 Video Naming
+
+Based on the PDFs, here are the suggested video names:
+
+1. **Motorways (253-274)**
+   - **Rename to:** `motorways-253-to-274.mp4`
+   - Matches: "Motorways (253 to 274).pdf"
+
+2. **Summary - Motorway Rules**
+   - **Rename to:** `motorway-rules-summary.mp4`
+   - Matches: "summary Motorway Rules.pdf"
+
+3. **Essential Documents**
+   - **Rename to:** `essential-documents.mp4`
+   - Matches: "Essential documents.pdf"
+
+## 📋 Day 7 Video Naming
+
+Based on the PDFs, here are the suggested video names:
+
+1. **Breakdowns and Incidents (275-287)**
+   - **Rename to:** `breakdowns-and-incidents-275-to-287.mp4`
+   - Matches: "Breakdowns and incidents (275 to 287).pdf"
+
+2. **Road Works, Level Crossings and Tramways (288-307)**
+   - **Rename to:** `road-works-crossings-tramways-288-to-307.mp4`
+   - Matches: "Road works, level crossings and tramways (288 to 307).pdf"
+
+3. **AED QA Flashcards (UK)**
+   - **Rename to:** `aed-qa-flashcards.mp4` (if there's a video for this)
+   - Matches: "AED_QA_Flashcards_UK.pdf"
+   - **Note:** This might not have a video, as it's a flashcard PDF
+
+4. **Part Fifteen - Incidents, Accidents and Emergencies**
+   - **Rename to:** `incidents-accidents-emergencies-part-fifteen.mp4`
+   - Matches: "Part fiveteen Incidents, Accidents and Emergencies.pdf"
+
 ## 📌 Next Steps
 
-Once you add videos for Days 4-7, I'll:
-1. Check the PDFs for each day
-2. Create the video path mappings
-3. Update `courseContent.js` to link videos to PDFs
-4. Ensure the Video → Study → Flashcards → Exam flow works for all days
+1. **Rename your videos** using the naming convention above
+2. **Place them** in the correct day folder: `frontend/public/course-materials/standard/day-X/videos/`
+3. **Let me know** when you've added videos for each day
+4. I'll then:
+   - Update `courseContent.js` with the video paths
+   - Link videos to their corresponding PDFs
+   - Ensure the Video → Study → Flashcards → Exam flow works for all days
 
 ---
 
-**Note:** For Days 4-7, once you add the videos, I'll create the specific naming guide based on the PDFs in those folders.
+**Important:** 
+- Match videos to PDFs based on content/topic, not just filename
+- If a video covers multiple PDFs, use the main/primary PDF it matches
+- If a PDF doesn't have a corresponding video, that's fine - the app will just show the PDF button first
 
