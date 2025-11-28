@@ -253,9 +253,9 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
 
       {/* PDF Preview Modal - Mobile Optimized */}
       {showPreview && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 animate-fade-in">
+        <div className="fixed inset-0 z-50 flex items-start justify-center p-3 sm:p-4 pt-4 sm:pt-8 animate-fade-in overflow-y-auto">
           <div className={`bg-white rounded-lg shadow-2xl w-full flex flex-col ${
-            isMobile ? 'max-w-sm' : 'max-w-2xl max-h-[90vh]'
+            isMobile ? 'max-w-sm mt-4' : 'max-w-2xl max-h-[90vh] mt-8'
           }`}>
             {/* Modal Header - Mobile Optimized */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-white flex-shrink-0">
@@ -431,9 +431,9 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
 
       {/* Video Player Modal - Mobile Optimized */}
       {showVideoModal && videoPath && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 animate-fade-in">
+        <div className="fixed inset-0 z-50 flex items-start justify-center p-3 sm:p-4 pt-4 sm:pt-8 animate-fade-in overflow-y-auto">
           <div className={`bg-white rounded-lg shadow-2xl w-full flex flex-col ${
-            isMobile ? 'max-w-full' : 'max-w-4xl max-h-[90vh]'
+            isMobile ? 'max-w-full mt-4' : 'max-w-4xl max-h-[90vh] mt-8'
           }`}>
             {/* Modal Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-white flex-shrink-0">
