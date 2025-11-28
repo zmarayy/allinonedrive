@@ -9,6 +9,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
   const [modalTop, setModalTop] = useState(0);
+  const [showVideoModal, setShowVideoModal] = useState(false);
+  const [videoModalTop, setVideoModalTop] = useState(0);
   const iframeRef = useRef(null);
   const timeoutRef = useRef(null);
   const cardRef = useRef(null);
@@ -125,9 +127,6 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
   const pdfOpened = isPdfOpened(dayNumber, pdfIndex);
   const flashcardsDone = areFlashcardsCompleted(dayNumber, pdfIndex);
   const examPassed = isPdfExamPassed(dayNumber, pdfIndex);
-  
-  const [showVideoModal, setShowVideoModal] = useState(false);
-  const [videoModalTop, setVideoModalTop] = useState(0);
   
   const handleVideoWatched = () => {
     if (videoPath && !videoWatched) {
