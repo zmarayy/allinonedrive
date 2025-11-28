@@ -304,14 +304,14 @@ function TeachWithUs() {
                     <div className="text-4xl sm:text-5xl flex-shrink-0 mx-auto sm:mx-0">💳</div>
                     <div className="flex-1 text-center sm:text-left">
                       <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
-                        Membership & Fee Structure
+                        Commission Structure
                       </h3>
                       <div className="space-y-3 sm:space-y-4">
                         <p className="text-gray-700 font-medium leading-relaxed text-base sm:text-lg">
-                          The standard annual membership fee is <span className="font-bold text-primary-700">£599.99</span>, which includes a <span className="font-bold text-primary-700">twenty five per cent saving</span> for instructors who choose to pay yearly.
+                          Theory teachers <span className="font-bold text-primary-700">do not pay any membership fee</span>. There is no upfront cost or monthly fee.
                         </p>
                         <p className="text-gray-700 font-medium leading-relaxed text-base sm:text-lg">
-                          There is also a <span className="font-bold text-primary-700">£5.00 commission</span> on each lesson delivered through All In One Drive.
+                          Instead, you pay <span className="font-bold text-primary-700">25% commission on each customer you get</span> through All In One Drive.
                         </p>
                       </div>
                     </div>
@@ -324,14 +324,14 @@ function TeachWithUs() {
                     <div className="text-4xl sm:text-5xl flex-shrink-0 mx-auto sm:mx-0">📈</div>
                     <div className="flex-1 text-center sm:text-left">
                       <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">
-                        Performance-Based Fee Structure
+                        Simple & Fair Commission Model
                       </h3>
                       <p className="text-gray-700 font-medium leading-relaxed text-base sm:text-lg mb-3 sm:mb-4">
-                        The fee structure is performance based. Instructors do <span className="font-bold text-primary-700">not pay a monthly membership fee in any period where they do not earn at least three times the membership amount</span> from lessons booked through the platform.
+                        The commission structure is simple and fair. You <span className="font-bold text-primary-700">only pay 25% commission when you get a customer</span> through All In One Drive. No customers, no commission to pay.
                       </p>
                       <div className="bg-white rounded-lg p-4 sm:p-5 border-2 border-amber-300 mt-3 sm:mt-4">
                         <p className="text-gray-800 font-semibold text-base sm:text-lg">
-                          <span className="text-amber-700 font-bold">In other words:</span> Membership is only charged when the service is clearly helping you generate meaningful income.
+                          <span className="text-amber-700 font-bold">In other words:</span> You only pay when you earn from each customer you bring in.
                         </p>
                       </div>
                     </div>
@@ -390,28 +390,28 @@ function TeachWithUs() {
                 </div>
               </div>
 
-              {/* Membership Fee */}
+              {/* Commission Structure */}
               <div className="bg-gradient-to-br from-blue-50 to-primary-50 border-2 border-blue-300 rounded-xl p-4 sm:p-6 lg:p-8 shadow-lg">
                 <div className="text-center">
                   <div className="text-4xl sm:text-5xl mb-3 sm:mb-4">💳</div>
                   <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">
-                    Membership Fee Structure
+                    Commission Structure
                   </h3>
                   
                   {/* Main Highlight */}
                   <div className="bg-white rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 shadow-md border-2 border-primary-200">
                     <p className="text-xl sm:text-2xl font-bold text-primary-700 mb-2">
-                      Pay Only When You Earn 2x Monthly
+                      No Membership Fee • 25% Commission Per Customer
                     </p>
                     <p className="text-base sm:text-lg text-gray-700 font-medium">
-                      No upfront costs • Start teaching immediately
+                      No upfront costs • Start teaching immediately • Pay only when you earn
                     </p>
                   </div>
 
                   {/* Simple Example */}
                   <div className="bg-white/80 rounded-lg p-4 sm:p-5 border border-blue-200">
                     <p className="text-sm sm:text-base text-gray-700 font-semibold">
-                      <span className="text-primary-600 font-bold">Example:</span> If membership is £100/month, you only pay when you earn £200+ that month.
+                      <span className="text-primary-600 font-bold">Example:</span> If a customer pays £100, you keep £75 and pay £25 (25%) commission to All In One Drive.
                     </p>
                   </div>
                 </div>
@@ -424,7 +424,7 @@ function TeachWithUs() {
                   Want to Know More?
                 </h3>
                 <p className="text-gray-700 font-medium mb-4 sm:mb-6 text-sm sm:text-base">
-                  Contact us to learn more about the membership fee amount, training schedule, and all the details about joining our team.
+                  Contact us to learn more about the commission structure, training schedule, and all the details about joining our team.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                   <a
