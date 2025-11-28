@@ -20,7 +20,7 @@ const sendAccessCodeEmail = async (email, code, packageName) => {
   const displayName = packageDisplayNames[packageName] || packageName;
 
   const { data, error } = await resend.emails.send({
-    from: process.env.RESEND_FROM_EMAIL || 'All In One Drive <onboarding@resend.dev>',
+    from: process.env.RESEND_FROM_EMAIL || 'All In One Drive <linawahidi@allinonedrive.com>',
     to: [email],
     subject: 'Your All In One Drive Access Code',
     html: `
