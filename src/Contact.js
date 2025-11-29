@@ -153,16 +153,6 @@ function Contact() {
                     linawahidi@allinonedrive.com
                   </a>
                 </div>
-                <div className="bg-white/5 rounded-lg p-4">
-                  <div className="font-semibold text-gray-900 mb-1">Razia Wahidi</div>
-                  <div className="text-sm text-gray-600 mb-2">Investor & Marketing Manager</div>
-                  <a 
-                    href="mailto:wahidi.razia@allinonedrive.com" 
-                    className="text-primary-600 hover:text-primary-700 font-semibold transition-colors text-sm"
-                  >
-                    wahidi.razia@allinonedrive.com
-                  </a>
-                </div>
               </div>
             </div>
             
@@ -325,16 +315,6 @@ function Contact() {
                   <div className="text-white/80 font-medium">
                     <div>linawahidi@allinonedrive.com</div>
                     <div className="text-sm text-white/60">(CEO & Founder)</div>
-                  </div>
-                </div>
-                
-                <div className="flex items-center space-x-3">
-                  <svg className="w-5 h-5 text-primary-400" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                  </svg>
-                  <div className="text-white/80 font-medium">
-                    <div>wahidi.razia@allinonedrive.com</div>
-                    <div className="text-sm text-white/60">(Investor & Marketing Manager)</div>
                   </div>
                 </div>
                 
