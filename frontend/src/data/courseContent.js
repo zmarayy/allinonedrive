@@ -494,7 +494,7 @@ export const DAY_CONTENT = {
         fileSize: "911 KB", 
         filePath: "/course-materials/standard/day-7/Breakdowns and incidents (275 to 287).pdf",
         downloadPath: "/course-materials/standard/day-7/Breakdowns and incidents (275 to 287).pdf",
-        videoPath: "/course-materials/standard/day-7/videos/breakdowns-and-incidents-275-to-287.mp4"
+        youtubeVideoId: "gmZj4jUanvM"
       },
       { 
         title: "Road works, level crossings and tramways (Rules 288 to 307)", 
@@ -502,7 +502,7 @@ export const DAY_CONTENT = {
         fileSize: "346 KB", 
         filePath: "/course-materials/standard/day-7/Road works, level crossings and tramways (288 to 307).pdf",
         downloadPath: "/course-materials/standard/day-7/Road works, level crossings and tramways (288 to 307).pdf",
-        videoPath: "/course-materials/standard/day-7/videos/adas-system.mp4"
+        youtubeVideoId: "iOqdzjmnecE"
       },
       { 
         title: "Annex 7 – First aid on the road", 
