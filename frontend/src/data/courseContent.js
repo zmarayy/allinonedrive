@@ -71,7 +71,7 @@ export const DAY_CONTENT = {
         fileSize: "67 KB", 
         filePath: "/course-materials/standard/day-1/summary-rules-h1-3.pdf",
         downloadPath: "/course-materials/standard/day-1/summary-rules-h1-3.pdf",
-        videoPath: "/course-materials/standard/day-1/videos/hierarchy-1-to-3.mp4"
+        youtubeVideoId: "plBDx890hN4"
       },
       { 
         title: "Rules for Pedestrians (Rules 1 to 35)", 
@@ -79,7 +79,7 @@ export const DAY_CONTENT = {
         fileSize: "1.6 MB", 
         filePath: "/course-materials/standard/day-1/rules-pedestrians-1-35.pdf",
         downloadPath: "/course-materials/standard/day-1/rules-pedestrians-1-35.pdf",
-        videoPath: "/course-materials/standard/day-1/videos/rule-1-to-17.mp4"
+        youtubeVideoId: "lvO12abEQ8I"
       },
       { 
         title: "Rules about Animals (Rules 47 to 58)", 
@@ -87,7 +87,7 @@ export const DAY_CONTENT = {
         fileSize: "377 KB", 
         filePath: "/course-materials/standard/day-1/animals-47-58.pdf",
         downloadPath: "/course-materials/standard/day-1/animals-47-58.pdf",
-        videoPath: "/course-materials/standard/day-1/videos/animals-47-58.mp4"
+        youtubeVideoId: "Lo-70wgI_Jk"
       },
       { 
         title: "Rules for Cyclists (Rules 59 to 82)", 
@@ -95,7 +95,7 @@ export const DAY_CONTENT = {
         fileSize: "506 KB", 
         filePath: "/course-materials/standard/day-1/rules-cyclists-59-82.pdf",
         downloadPath: "/course-materials/standard/day-1/rules-cyclists-59-82.pdf",
-        videoPath: "/course-materials/standard/day-1/videos/rule-59-to-82-cyclist.mp4"
+        youtubeVideoId: "MGA7K8GzABQ"
       },
       { 
         title: "Rules for Drivers and Motorcyclists (Rules 89 to 102)", 
@@ -103,7 +103,7 @@ export const DAY_CONTENT = {
         fileSize: "665 KB", 
         filePath: "/course-materials/standard/day-1/rules-drivers-motorcyclists-89-102.pdf",
         downloadPath: "/course-materials/standard/day-1/rules-drivers-motorcyclists-89-102.pdf",
-        videoPath: "/course-materials/standard/day-1/videos/drivers-motorcyclists-89-102.mp4"
+        youtubeVideoId: "B9HAtcdwZEc"
       },
       { 
         title: "Annex 8 – Safety code for new drivers", 
