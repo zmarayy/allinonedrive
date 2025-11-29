@@ -31,18 +31,18 @@ Please upload each video to YouTube (set as **Unlisted**) and fill in the YouTub
 
 ---
 
-## 📅 DAY 2 (4 videos needed)
+## 📅 DAY 2: Rules of the Road and Traffic Signs (4 videos needed)
 
-- [ ] **Know Your Traffic Signs (DFT)**
+- [ ] **Rules for users of powered wheelchairs and mobility scooters (Rules 36 to 46)**
   - YouTube Link: _________________________________
 
-- [ ] **General Rules, Techniques and Advice (103-158)**
+- [ ] **Rules for motorcyclists (Rules 83 to 88)**
   - YouTube Link: _________________________________
 
-- [ ] **Motorcyclists (83-88)**
+- [ ] **General rules, techniques and advice for all drivers and riders (Rules 103 to 158)**
   - YouTube Link: _________________________________
 
-- [ ] **Rules 36 to 46**
+- [ ] **Traffic signs**
   - YouTube Link: _________________________________
 
 ---
@@ -119,7 +119,7 @@ Please upload each video to YouTube (set as **Unlisted**) and fill in the YouTub
 
 - **Total Videos Needed:** 25 videos
 - **Day 1:** 5 videos (Annex 8 is PDF only, no video)
-- **Day 2:** 4 videos
+- **Day 2:** 4 videos (Light signals, Signals to other road users, Signals by authorised persons, Road markings, and Vehicle markings are PDF only)
 - **Day 3:** 4 videos
 - **Day 4:** 4 videos
 - **Day 5:** 3 videos

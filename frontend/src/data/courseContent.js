@@ -140,75 +140,18 @@ export const DAY_CONTENT = {
   },
   2: {
     day: 2,
-    title: "Day 2",
+    title: "Day 2: Rules of the Road and Traffic Signs",
     pdfNotes: [
       { 
-        title: "Know Your Traffic Signs (DFT)", 
-        description: "Official guide to traffic signs", 
-        fileSize: "7.0 MB", 
-        filePath: "/course-materials/standard/day-2/know-your-traffic-signs-dft.pdf",
-        downloadPath: "/course-materials/standard/day-2/know-your-traffic-signs-dft.pdf",
-        videoPath: "/course-materials/standard/day-2/videos/road-signs-video.mp4"
+        title: "Rules for users of powered wheelchairs and mobility scooters (Rules 36 to 46)", 
+        description: "Rules for users of powered wheelchairs and mobility scooters", 
+        fileSize: "222 KB", 
+        filePath: "/course-materials/standard/day-2/rules 36 to 46 pdf marked.pdf",
+        downloadPath: "/course-materials/standard/day-2/rules 36 to 46 pdf marked.pdf",
+        videoPath: "/course-materials/standard/day-2/videos/powered-wheelchairs-36-46.mp4"
       },
       { 
-        title: "Traffic Signs - Easy Explanation", 
-        description: "Easy to understand traffic signs guide", 
-        fileSize: "461 KB", 
-        filePath: "/course-materials/standard/day-2/traffic signs easy explanation.pdf",
-        downloadPath: "/course-materials/standard/day-2/traffic signs easy explanation.pdf"
-      },
-      { 
-        title: "The Highway Code - Traffic Signs", 
-        description: "Official traffic signs from Highway Code", 
-        fileSize: "831 KB", 
-        filePath: "/course-materials/standard/day-2/the-highway-code-traffic-signs.pdf",
-        downloadPath: "/course-materials/standard/day-2/the-highway-code-traffic-signs.pdf"
-      },
-      { 
-        title: "The Highway Code - Road Markings", 
-        description: "Road markings guide from Highway Code", 
-        fileSize: "785 KB", 
-        filePath: "/course-materials/standard/day-2/the-highway-code-road-markings.pdf",
-        downloadPath: "/course-materials/standard/day-2/the-highway-code-road-markings.pdf"
-      },
-      { 
-        title: "The Highway Code - Light Signals Controlling Traffic", 
-        description: "Traffic light signals guide", 
-        fileSize: "104 KB", 
-        filePath: "/course-materials/standard/day-2/the-highway-code-light-signals-controlling-traffic.pdf",
-        downloadPath: "/course-materials/standard/day-2/the-highway-code-light-signals-controlling-traffic.pdf"
-      },
-      { 
-        title: "The Highway Code - Signals by Authorised Persons", 
-        description: "Signals from police and other authorised persons", 
-        fileSize: "469 KB", 
-        filePath: "/course-materials/standard/day-2/the-highway-code-signals-by-authorised-persons.pdf",
-        downloadPath: "/course-materials/standard/day-2/the-highway-code-signals-by-authorised-persons.pdf"
-      },
-      { 
-        title: "The Highway Code - Signals to Other Road Users", 
-        description: "How to signal to other road users", 
-        fileSize: "100 KB", 
-        filePath: "/course-materials/standard/day-2/the-highway-code-signals-to-other-road-users.pdf",
-        downloadPath: "/course-materials/standard/day-2/the-highway-code-signals-to-other-road-users.pdf"
-      },
-      { 
-        title: "The Highway Code - Vehicle Markings", 
-        description: "Vehicle markings and identification", 
-        fileSize: "537 KB", 
-        filePath: "/course-materials/standard/day-2/the-highway-code-vehicle-markings.pdf",
-        downloadPath: "/course-materials/standard/day-2/the-highway-code-vehicle-markings.pdf"
-      },
-      { 
-        title: "General Rules, Techniques and Advice (103-158)", 
-        description: "General rules and techniques for all drivers and riders", 
-        fileSize: "1.9 MB", 
-        filePath: "/course-materials/standard/day-2/General rules, techniques and advice for all drivers and riders (103 to 158).pdf",
-        downloadPath: "/course-materials/standard/day-2/General rules, techniques and advice for all drivers and riders (103 to 158).pdf",
-        videoPath: "/course-materials/standard/day-2/videos/rules-103-to-125.mp4"
-      },
-      { 
-        title: "Motorcyclists (83-88)", 
+        title: "Rules for motorcyclists (Rules 83 to 88)", 
         description: "Rules specifically for motorcyclists", 
         fileSize: "301 KB", 
         filePath: "/course-materials/standard/day-2/motorcyclists 83-88.pdf",
@@ -216,12 +159,60 @@ export const DAY_CONTENT = {
         videoPath: "/course-materials/standard/day-2/videos/motorcyclists-83-88.mp4"
       },
       { 
-        title: "Rules 36 to 46", 
-        description: "Rules 36 to 46 from Highway Code", 
-        fileSize: "222 KB", 
-        filePath: "/course-materials/standard/day-2/rules 36 to 46 pdf marked.pdf",
-        downloadPath: "/course-materials/standard/day-2/rules 36 to 46 pdf marked.pdf",
-        videoPath: "/course-materials/standard/day-2/videos/powered-wheelchairs-36-46.mp4"
+        title: "General rules, techniques and advice for all drivers and riders (Rules 103 to 158)", 
+        description: "Signals, stopping procedures, lighting, control of the vehicle, speed limits, stopping distances, lines and lane markings, multi-lane carriageways, smoking, mobile phones and sat nav", 
+        fileSize: "1.9 MB", 
+        filePath: "/course-materials/standard/day-2/General rules, techniques and advice for all drivers and riders (103 to 158).pdf",
+        downloadPath: "/course-materials/standard/day-2/General rules, techniques and advice for all drivers and riders (103 to 158).pdf",
+        videoPath: "/course-materials/standard/day-2/videos/rules-103-to-125.mp4"
+      },
+      { 
+        title: "Light signals controlling traffic", 
+        description: "Traffic light signals, flashing red lights, motorway signals and lane control signals", 
+        fileSize: "104 KB", 
+        filePath: "/course-materials/standard/day-2/the-highway-code-light-signals-controlling-traffic.pdf",
+        downloadPath: "/course-materials/standard/day-2/the-highway-code-light-signals-controlling-traffic.pdf"
+        // PDF only - no video
+      },
+      { 
+        title: "Signals to other road users", 
+        description: "Direction indicators, brake lights, reversing lights, arm signals", 
+        fileSize: "100 KB", 
+        filePath: "/course-materials/standard/day-2/the-highway-code-signals-to-other-road-users.pdf",
+        downloadPath: "/course-materials/standard/day-2/the-highway-code-signals-to-other-road-users.pdf"
+        // PDF only - no video
+      },
+      { 
+        title: "Signals by authorised persons", 
+        description: "Police officers, people controlling traffic, DVSA officers, traffic officers, school crossing patrols", 
+        fileSize: "469 KB", 
+        filePath: "/course-materials/standard/day-2/the-highway-code-signals-by-authorised-persons.pdf",
+        downloadPath: "/course-materials/standard/day-2/the-highway-code-signals-by-authorised-persons.pdf"
+        // PDF only - no video
+      },
+      { 
+        title: "Traffic signs", 
+        description: "Signs giving orders, warning signs, direction signs, information signs and road works signs", 
+        fileSize: "7.0 MB", 
+        filePath: "/course-materials/standard/day-2/know-your-traffic-signs-dft.pdf",
+        downloadPath: "/course-materials/standard/day-2/know-your-traffic-signs-dft.pdf",
+        videoPath: "/course-materials/standard/day-2/videos/road-signs-video.mp4"
+      },
+      { 
+        title: "Road markings", 
+        description: "Across the carriageway, along the carriageway, at the edge and other markings", 
+        fileSize: "785 KB", 
+        filePath: "/course-materials/standard/day-2/the-highway-code-road-markings.pdf",
+        downloadPath: "/course-materials/standard/day-2/the-highway-code-road-markings.pdf"
+        // PDF only - no video
+      },
+      { 
+        title: "Vehicle markings", 
+        description: "Large goods vehicle rear markings, hazard warning plates, projection markers and other markings", 
+        fileSize: "537 KB", 
+        filePath: "/course-materials/standard/day-2/the-highway-code-vehicle-markings.pdf",
+        downloadPath: "/course-materials/standard/day-2/the-highway-code-vehicle-markings.pdf"
+        // PDF only - no video
       }
     ],
     odtWordNotes: [
