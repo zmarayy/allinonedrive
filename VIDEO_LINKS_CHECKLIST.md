@@ -10,31 +10,30 @@ Please upload each video to YouTube (set as **Unlisted**) and fill in the YouTub
 
 ---
 
-## 📅 DAY 1 (8 videos needed)
+## 📅 DAY 1: Alertness and Attitude (7 videos needed)
+
+- [ ] **Introduction - Who The Highway Code is for (Rules H1 to H3)**
+  - YouTube Link: _________________________________
 
 - [ ] **Rules for Pedestrians (1-35)**
   - YouTube Link: _________________________________
 
-- [ ] **Rules for Drivers and Motorcyclists (89-102)**
+- [ ] **Rules about Animals (47-58)**
   - YouTube Link: _________________________________
 
 - [ ] **Rules for Cyclists (59-82)**
   - YouTube Link: _________________________________
 
-- [ ] **Animals (47-58)**
+- [ ] **Rules for Drivers and Motorcyclists (89-102)**
   - YouTube Link: _________________________________
 
-- [ ] **Summary of Rules H1 to 3**
+- [ ] **DVSA Exam Questions and Answers - Alertness**
   - YouTube Link: _________________________________
 
-- [ ] **Part One - Alertness on the Road**
+- [ ] **DVSA Exam Questions and Answers - Attitude**
   - YouTube Link: _________________________________
 
-- [ ] **Part Two - Attitude**
-  - YouTube Link: _________________________________
-
-- [ ] **Annex 8**
-  - YouTube Link: _________________________________
+**Note:** Annex 8 does not require a video (PDF only)
 
 ---
 
@@ -124,8 +123,8 @@ Please upload each video to YouTube (set as **Unlisted**) and fill in the YouTub
 
 ## 📊 Summary
 
-- **Total Videos Needed:** 28 videos
-- **Day 1:** 8 videos
+- **Total Videos Needed:** 27 videos
+- **Day 1:** 7 videos (Annex 8 is PDF only, no video)
 - **Day 2:** 4 videos
 - **Day 3:** 4 videos
 - **Day 4:** 4 videos
