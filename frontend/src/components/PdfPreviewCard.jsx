@@ -87,7 +87,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
   // Check if we're on mobile (with safe check for SSR/build time)
   const isMobile = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  // State to force re-render when status changes
+  // State to force re-render when status changes (value not read, but setter triggers re-renders)
+  // eslint-disable-next-line no-unused-vars
   const [statusUpdate, setStatusUpdate] = useState(0);
   
   // Recalculate status on every render to ensure it's up-to-date

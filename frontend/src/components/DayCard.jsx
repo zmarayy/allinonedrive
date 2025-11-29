@@ -20,7 +20,6 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
       setCompletedPdfs(getCompletedPdfsForDay(dayNumber, totalPdfs));
       // Can complete day only if all PDFs are completed (quiz is optional for now)
       const allPdfsDone = areAllPdfsCompleted(dayNumber, totalPdfs);
-      const quizDone = isQuizPassed(dayNumber);
       // Allow completion if all PDFs done, quiz is optional
       setCanComplete(allPdfsDone);
     };
