@@ -486,38 +486,31 @@ export const DAY_CONTENT = {
   },
   7: {
     day: 7,
-    title: "Day 7",
+    title: "Day 7: Incidents, Emergencies and Vehicle Loading",
     pdfNotes: [
       { 
-        title: "Breakdowns and Incidents (275-287)", 
-        description: "What to do in breakdowns and incidents", 
+        title: "Breakdowns and incidents (Rules 275 to 287)", 
+        description: "Breakdowns on all roads and motorways, obstructions, incidents, incidents involving dangerous goods and documents", 
         fileSize: "911 KB", 
         filePath: "/course-materials/standard/day-7/Breakdowns and incidents (275 to 287).pdf",
         downloadPath: "/course-materials/standard/day-7/Breakdowns and incidents (275 to 287).pdf",
         videoPath: "/course-materials/standard/day-7/videos/breakdowns-and-incidents-275-to-287.mp4"
       },
       { 
-        title: "Road Works, Level Crossings and Tramways (288-307)", 
-        description: "Rules for road works and crossings", 
+        title: "Road works, level crossings and tramways (Rules 288 to 307)", 
+        description: "Rules at road works, on motorways and other high-speed roads, level crossings and tramways", 
         fileSize: "346 KB", 
         filePath: "/course-materials/standard/day-7/Road works, level crossings and tramways (288 to 307).pdf",
         downloadPath: "/course-materials/standard/day-7/Road works, level crossings and tramways (288 to 307).pdf",
         videoPath: "/course-materials/standard/day-7/videos/adas-system.mp4"
       },
       { 
-        title: "AED QA Flashcards (UK)", 
-        description: "Flashcards for theory test questions", 
+        title: "Annex 7 – First aid on the road", 
+        description: "Dealing with danger, getting help, helping those involved and providing emergency care", 
         fileSize: "274 KB", 
         filePath: "/course-materials/standard/day-7/AED_QA_Flashcards_UK.pdf",
         downloadPath: "/course-materials/standard/day-7/AED_QA_Flashcards_UK.pdf"
-      },
-      { 
-        title: "Part Fifteen - Incidents, Accidents and Emergencies", 
-        description: "Handling incidents and emergencies", 
-        fileSize: "102 KB", 
-        filePath: "/course-materials/standard/day-7/Part fiveteen Incidents, Accidents and Emergencies.pdf",
-        downloadPath: "/course-materials/standard/day-7/Part fiveteen Incidents, Accidents and Emergencies.pdf",
-        videoPath: "/course-materials/standard/day-7/videos/vehicle-loading.mp4"
+        // PDF only - no video
       }
     ],
     odtWordNotes: [

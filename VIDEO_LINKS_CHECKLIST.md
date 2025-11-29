@@ -86,29 +86,28 @@ Please upload each video to YouTube (set as **Unlisted**) and fill in the YouTub
 
 ---
 
-## 📅 DAY 7 (3 videos needed)
+## 📅 DAY 7: Incidents, Emergencies and Vehicle Loading (2 videos needed)
 
-- [ ] **Breakdowns and Incidents (275-287)**
+- [ ] **Breakdowns and incidents (Rules 275 to 287)**
   - YouTube Link: _________________________________
 
-- [ ] **Road Works, Level Crossings and Tramways (288-307)**
+- [ ] **Road works, level crossings and tramways (Rules 288 to 307)**
   - YouTube Link: _________________________________
 
-- [ ] **Part Fifteen - Incidents, Accidents and Emergencies**
-  - YouTube Link: _________________________________
+**Note:** Annex 7 – First aid on the road is PDF only (no video needed)
 
 ---
 
 ## 📊 Summary
 
-- **Total Videos Needed:** 17 videos
+- **Total Videos Needed:** 16 videos
 - **Day 1:** 5 videos (Annex 8 is PDF only, no video)
 - **Day 2:** 4 videos (Light signals, Signals to other road users, Signals by authorised persons, Road markings, and Vehicle markings are PDF only)
 - **Day 3:** 1 video (Annex 6, Safety and your vehicle, and Safety margins are PDF only)
 - **Day 4:** 2 videos (Hazard awareness and Vulnerable road users are PDF only)
 - **Day 5:** 1 video (Annex 1, Annex 2, Other types of vehicles, and Vehicle handling are PDF only)
 - **Day 6:** 1 video (Annex 3 and Annex 5 are PDF only)
-- **Day 7:** 3 videos
+- **Day 7:** 2 videos (Annex 7 is PDF only, no video)
 
 ---
 
