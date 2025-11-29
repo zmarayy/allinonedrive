@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { markPdfOpened, isPdfOpened, areFlashcardsCompleted, isPdfExamPassed, isPdfCompleted, isPdfUnlocked, isVideoWatched, markVideoWatched } from '../utils/pdfLearningFlow';
 import VideoPlayer from './VideoPlayer';
 
-function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, videoPath, dayNumber, pdfIndex, onPdfViewed }) {
+function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, videoPath, youtubeVideoId, dayNumber, pdfIndex, onPdfViewed }) {
   const navigate = useNavigate();
   const [showPreview, setShowPreview] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -123,13 +123,14 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
   // Recalculate status on every render to ensure it's up-to-date
   const isUnlocked = isPdfUnlocked(dayNumber, pdfIndex);
   const isCompleted = isPdfCompleted(dayNumber, pdfIndex);
-  const videoWatched = videoPath ? isVideoWatched(dayNumber, pdfIndex) : true; // If no video, consider it "watched"
+  const hasVideo = videoPath || youtubeVideoId;
+  const videoWatched = hasVideo ? isVideoWatched(dayNumber, pdfIndex) : true; // If no video, consider it "watched"
   const pdfOpened = isPdfOpened(dayNumber, pdfIndex);
   const flashcardsDone = areFlashcardsCompleted(dayNumber, pdfIndex);
   const examPassed = isPdfExamPassed(dayNumber, pdfIndex);
   
   const handleVideoWatched = () => {
-    if (videoPath && !videoWatched) {
+    if (hasVideo && !videoWatched) {
       markVideoWatched(dayNumber, pdfIndex);
     }
   };
@@ -195,7 +196,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 <span>Material Completed ✓</span>
               </div>
               <div className="w-full flex gap-2">
-                {videoPath && (
+                {hasVideo && (
                   <button
                     onClick={handleVideoClick}
                     className="flex-1 bg-purple-600 active:bg-purple-700 text-white font-semibold text-sm sm:text-base px-3 py-2.5 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-1 min-h-[44px] sm:min-h-[48px] touch-manipulation shadow-md"
@@ -232,7 +233,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
           ) : (
             <div className="space-y-2">
               {/* Step 1: Watch Video (if available) */}
-              {videoPath && !videoWatched && (
+              {hasVideo && !videoWatched && (
                 <button
                   onClick={handleVideoClick}
                   className="w-full bg-purple-600 active:bg-purple-700 text-white font-semibold text-sm sm:text-base px-4 py-3.5 sm:py-3 rounded-xl transition-all flex items-center justify-center space-x-2 min-h-[52px] sm:min-h-[48px] touch-manipulation shadow-lg active:scale-[0.98]"
@@ -288,7 +289,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               )}
               
               {/* If no video, show PDF button directly */}
-              {!videoPath && !pdfOpened && (
+              {!hasVideo && !pdfOpened && (
                 <button
                   onClick={handlePreview}
                   className="w-full bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-4 py-3.5 sm:py-3 rounded-xl transition-all flex items-center justify-center space-x-2 min-h-[52px] sm:min-h-[48px] touch-manipulation shadow-lg active:scale-[0.98]"
@@ -495,7 +496,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
       )}
 
       {/* Video Player Modal - Mobile Optimized */}
-      {showVideoModal && videoPath && (
+      {showVideoModal && hasVideo && (
         <div 
           className="fixed inset-0 z-50 flex items-start justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto"
           onClick={() => setShowVideoModal(false)}
@@ -533,6 +534,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               <VideoPlayer
                 title={title}
                 videoPath={videoPath}
+                youtubeVideoId={youtubeVideoId}
                 dayNumber={dayNumber}
                 pdfIndex={pdfIndex}
                 onVideoWatched={handleVideoWatched}
