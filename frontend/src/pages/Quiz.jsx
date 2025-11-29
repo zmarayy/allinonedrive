@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { saveQuizScore, isDayUnlocked, areAllPdfsViewed } from '../utils/progressManager';
+import { saveQuizScore, isDayUnlocked } from '../utils/progressManager';
+import { areAllPdfsCompleted } from '../utils/pdfLearningFlow';
 import { DAY_CONTENT } from '../data/courseContent';
 import BottomNavbar from '../components/BottomNavbar';
 
@@ -175,6 +176,246 @@ const quizData = {
         correctAnswer: 1
       }
     ]
+  },
+  4: {
+    lessonTitle: 'Day 4: Hazard Awareness and Vulnerable Road Users',
+    questions: [
+      {
+        id: 1,
+        question: 'What should you do when approaching a pedestrian crossing?',
+        options: [
+          'Speed up to cross quickly',
+          'Slow down and be prepared to stop',
+          'Honk your horn',
+          'Ignore pedestrians'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 2,
+        question: 'How should you treat cyclists on the road?',
+        options: [
+          'Give them plenty of space',
+          'Drive close to them',
+          'Ignore them',
+          'Honk at them'
+        ],
+        correctAnswer: 0
+      },
+      {
+        id: 3,
+        question: 'What should you do when you see children near the road?',
+        options: [
+          'Speed up',
+          'Slow down and be extra cautious',
+          'Ignore them',
+          'Honk your horn'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 4,
+        question: 'What should you do when approaching a roundabout?',
+        options: [
+          'Give way to traffic from the right',
+          'Speed up',
+          'Ignore other traffic',
+          'Drive on the left side'
+        ],
+        correctAnswer: 0
+      },
+      {
+        id: 5,
+        question: 'What should you do when you see a horse on the road?',
+        options: [
+          'Speed up and pass quickly',
+          'Slow down and give plenty of space',
+          'Honk your horn',
+          'Ignore it'
+        ],
+        correctAnswer: 1
+      }
+    ]
+  },
+  5: {
+    lessonTitle: 'Day 5: Other Vehicles and Vehicle Handling',
+    questions: [
+      {
+        id: 1,
+        question: 'Where should you park at night?',
+        options: [
+          'Anywhere',
+          'In a well-lit area facing traffic',
+          'On a blind corner',
+          'On a pedestrian crossing'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 2,
+        question: 'What should you do when parking on a hill?',
+        options: [
+          'Leave the car in neutral',
+          'Apply the handbrake and leave in gear',
+          'Leave the engine running',
+          'Park facing downhill only'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 3,
+        question: 'What is the minimum distance you should park from a junction?',
+        options: [
+          '5 meters',
+          '10 meters',
+          '15 meters',
+          '20 meters'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 4,
+        question: 'When should you use your parking lights?',
+        options: [
+          'Never',
+          'When parking at night on a road with speed limit over 30mph',
+          'Always when parking',
+          'Only in car parks'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 5,
+        question: 'What should you do if your vehicle breaks down on a motorway?',
+        options: [
+          'Stay in your vehicle',
+          'Get out and stand behind the barrier',
+          'Walk along the hard shoulder',
+          'Try to fix it yourself'
+        ],
+        correctAnswer: 1
+      }
+    ]
+  },
+  6: {
+    lessonTitle: 'Day 6: Motorway Rules and Essential Documents',
+    questions: [
+      {
+        id: 1,
+        question: 'What is the minimum speed on a motorway?',
+        options: [
+          'There is no minimum speed',
+          '30mph',
+          '40mph',
+          '50mph'
+        ],
+        correctAnswer: 0
+      },
+      {
+        id: 2,
+        question: 'Which lane should you normally use on a motorway?',
+        options: [
+          'The right lane',
+          'The left lane',
+          'The middle lane',
+          'Any lane'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 3,
+        question: 'What documents must you have when driving?',
+        options: [
+          'Driving license only',
+          'Driving license, insurance, and MOT certificate',
+          'Insurance only',
+          'No documents needed'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 4,
+        question: 'What should you do when joining a motorway?',
+        options: [
+          'Stop and wait',
+          'Accelerate to match traffic speed',
+          'Slow down',
+          'Honk your horn'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 5,
+        question: 'What does a red X above a motorway lane mean?',
+        options: [
+          'Lane closed',
+          'Speed limit',
+          'Overtaking allowed',
+          'Parking allowed'
+        ],
+        correctAnswer: 0
+      }
+    ]
+  },
+  7: {
+    lessonTitle: 'Day 7: Incidents, Emergencies and Vehicle Loading',
+    questions: [
+      {
+        id: 1,
+        question: 'What should you do if you witness a road accident?',
+        options: [
+          'Drive away quickly',
+          'Stop and help if safe to do so',
+          'Ignore it',
+          'Take photos only'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 2,
+        question: 'What should you do if you break down on a motorway?',
+        options: [
+          'Stay in your vehicle',
+          'Get out and stand behind the barrier',
+          'Walk along the hard shoulder',
+          'Try to fix it yourself'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 3,
+        question: 'What should you do at road works?',
+        options: [
+          'Speed up',
+          'Slow down and follow signs',
+          'Ignore signs',
+          'Drive on the wrong side'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 4,
+        question: 'What should you do at a level crossing when lights are flashing?',
+        options: [
+          'Speed up',
+          'Stop and wait',
+          'Drive through quickly',
+          'Ignore the lights'
+        ],
+        correctAnswer: 1
+      },
+      {
+        id: 5,
+        question: 'What is the first thing you should do in an emergency?',
+        options: [
+          'Panic',
+          'Ensure your own safety first',
+          'Call everyone you know',
+          'Take photos'
+        ],
+        correctAnswer: 1
+      }
+    ]
   }
 };
 
@@ -193,7 +434,7 @@ function Quiz() {
   
   const dayData = DAY_CONTENT[dayNumber];
   const totalPdfs = dayData?.pdfNotes?.length || 0;
-  const canTakeQuiz = isDayUnlocked(dayNumber) && areAllPdfsViewed(dayNumber, totalPdfs);
+  const canTakeQuiz = isDayUnlocked(dayNumber) && areAllPdfsCompleted(dayNumber, totalPdfs);
 
   const currentQuestion = quiz.questions[currentQuestionIndex];
   const totalQuestions = quiz.questions.length;
@@ -201,11 +442,10 @@ function Quiz() {
   
   // Redirect if can't take quiz
   useEffect(() => {
-    if (!canTakeQuiz && dayNumber) {
-      alert('Please study all PDFs for this day before taking the quiz.');
+    if (!canTakeQuiz && dayNumber && totalPdfs > 0) {
       navigate('/course-content');
     }
-  }, [canTakeQuiz, dayNumber, navigate]);
+  }, [canTakeQuiz, dayNumber, navigate, totalPdfs]);
 
   useEffect(() => {
     // Reset when day changes
@@ -307,7 +547,14 @@ function Quiz() {
                 <div className="space-y-3">
                   {passed ? (
                     <button
-                      onClick={() => navigate('/course-content')}
+                      onClick={() => {
+                        // Small delay to ensure localStorage is updated
+                        setTimeout(() => {
+                          navigate('/course-content');
+                          // Force page refresh to update all progress indicators
+                          window.location.reload();
+                        }, 100);
+                      }}
                       className="w-full bg-green-600 active:bg-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 min-h-[48px] touch-manipulation"
                     >
                       Continue to Day {dayNumber}
@@ -347,7 +594,7 @@ function Quiz() {
                 Study First!
               </h2>
               <p className="text-gray-600 font-medium mb-6">
-                Please study all PDFs for Day {dayNumber} before taking the quiz.
+                Please complete all materials (video → PDF → flashcards → exam) for Day {dayNumber} before taking the quiz.
               </p>
               <button
                 onClick={() => navigate('/course-content')}
