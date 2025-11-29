@@ -371,7 +371,7 @@ export const DAY_CONTENT = {
         fileSize: "596 KB", 
         filePath: "/course-materials/standard/day-5/Waiting and parking (238 to 252).pdf",
         downloadPath: "/course-materials/standard/day-5/Waiting and parking (238 to 252).pdf",
-        videoPath: "/course-materials/standard/day-5/videos/waiting-and-parking-238-to-252.mp4"
+        youtubeVideoId: "rgyxXM1qvMY"
       },
       { 
         title: "Annex 1 – You and your bicycle", 
