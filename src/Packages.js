@@ -206,9 +206,7 @@ function Packages() {
               </div>
               <div className="space-y-3">
                 <a
-                  href="https://allinonedrive.netlify.app/access-code"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="/app"
                   className="block w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                   Try the App for Free →

@@ -238,23 +238,19 @@ function AppPage() {
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start">
                     <span className="text-primary-600 font-bold mr-3 mt-1">1.</span>
-                    <span>Open the app in Chrome or Edge browser</span>
+                    <span>Click the "Launch the App Now" button below</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary-600 font-bold mr-3 mt-1">2.</span>
-                    <span>Tap the menu (three dots) in the top right corner</span>
+                    <span>Click <strong>Share</strong> (three dots menu)</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary-600 font-bold mr-3 mt-1">3.</span>
-                    <span>Select "Add to Home screen" or "Install app"</span>
+                    <span>Click <strong>"Add to Home Screen"</strong></span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary-600 font-bold mr-3 mt-1">4.</span>
-                    <span>Tap "Install" when prompted</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary-600 font-bold mr-3 mt-1">5.</span>
-                    <span>The app icon will appear on your home screen</span>
+                    <span>Go to your <strong>Home Screen</strong> and open the app</span>
                   </li>
                 </ul>
               </div>
@@ -270,23 +266,19 @@ function AppPage() {
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start">
                     <span className="text-primary-600 font-bold mr-3 mt-1">1.</span>
-                    <span>Open the app in Safari browser</span>
+                    <span>Click the "Launch the App Now" button below</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary-600 font-bold mr-3 mt-1">2.</span>
-                    <span>Tap the Share button at the bottom</span>
+                    <span>Click <strong>Share</strong> (square with arrow icon at bottom)</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary-600 font-bold mr-3 mt-1">3.</span>
-                    <span>Scroll down and select "Add to Home Screen"</span>
+                    <span>Click <strong>"Add to Home Screen"</strong></span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary-600 font-bold mr-3 mt-1">4.</span>
-                    <span>Customize the name if desired, then tap "Add"</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary-600 font-bold mr-3 mt-1">5.</span>
-                    <span>The app icon will appear on your home screen</span>
+                    <span>Go to your <strong>Home Screen</strong> and open the app</span>
                   </li>
                 </ul>
               </div>
