@@ -8,6 +8,10 @@
   # Functions directory (relative to base directory)
   functions = "netlify/functions"
   
+  # Install function dependencies automatically
+  [[plugins]]
+    package = "@netlify/plugin-functions-install-core"
+  
   # Environment variables (set these in Netlify dashboard)
   # [build.environment]
   #   NODE_VERSION = "18"
