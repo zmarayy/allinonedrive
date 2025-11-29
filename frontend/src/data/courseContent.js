@@ -432,30 +432,31 @@ export const DAY_CONTENT = {
   },
   6: {
     day: 6,
-    title: "Day 6",
+    title: "Day 6: Motorway Rules and Essential Documents",
     pdfNotes: [
       { 
-        title: "Motorways (253-274)", 
-        description: "Complete guide to motorway driving", 
+        title: "Motorways (Rules 253 to 274)", 
+        description: "Motorway signals, joining, driving on the motorway, lane discipline, overtaking, stopping and leaving the motorway", 
         fileSize: "1.1 MB", 
         filePath: "/course-materials/standard/day-6/Motorways (253 to 274).pdf",
         downloadPath: "/course-materials/standard/day-6/Motorways (253 to 274).pdf",
         videoPath: "/course-materials/standard/day-6/videos/motorways-253-to-274.mp4"
       },
       { 
-        title: "Summary - Motorway Rules", 
-        description: "Summary of motorway rules", 
+        title: "Annex 3 – Motor vehicle documentation and learner driver requirements", 
+        description: "Documents required, tax, MOT, insurance, learner driver rules", 
+        fileSize: "134 KB", 
+        filePath: "/course-materials/standard/day-6/Essential documents.pdf",
+        downloadPath: "/course-materials/standard/day-6/Essential documents.pdf"
+        // PDF only - no video
+      },
+      { 
+        title: "Annex 5 – Penalties", 
+        description: "Penalty points, disqualification, the penalty table, new drivers and other consequences of offending", 
         fileSize: "237 KB", 
         filePath: "/course-materials/standard/day-6/summary Motorway Rules.pdf",
         downloadPath: "/course-materials/standard/day-6/summary Motorway Rules.pdf"
-      },
-      { 
-        title: "Essential Documents", 
-        description: "Essential documents you need", 
-        fileSize: "134 KB", 
-        filePath: "/course-materials/standard/day-6/Essential documents.pdf",
-        downloadPath: "/course-materials/standard/day-6/Essential documents.pdf",
-        videoPath: "/course-materials/standard/day-6/videos/essential-documents.mp4"
+        // PDF only - no video
       }
     ],
     odtWordNotes: [

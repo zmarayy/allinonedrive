@@ -77,13 +77,12 @@ Please upload each video to YouTube (set as **Unlisted**) and fill in the YouTub
 
 ---
 
-## 📅 DAY 6 (2 videos needed)
+## 📅 DAY 6: Motorway Rules and Essential Documents (1 video needed)
 
-- [ ] **Motorways (253-274)**
+- [ ] **Motorways (Rules 253 to 274)**
   - YouTube Link: _________________________________
 
-- [ ] **Essential Documents**
-  - YouTube Link: _________________________________
+**Note:** Annex 3 and Annex 5 are PDF only (no videos needed)
 
 ---
 
@@ -102,13 +101,13 @@ Please upload each video to YouTube (set as **Unlisted**) and fill in the YouTub
 
 ## 📊 Summary
 
-- **Total Videos Needed:** 18 videos
+- **Total Videos Needed:** 17 videos
 - **Day 1:** 5 videos (Annex 8 is PDF only, no video)
 - **Day 2:** 4 videos (Light signals, Signals to other road users, Signals by authorised persons, Road markings, and Vehicle markings are PDF only)
 - **Day 3:** 1 video (Annex 6, Safety and your vehicle, and Safety margins are PDF only)
 - **Day 4:** 2 videos (Hazard awareness and Vulnerable road users are PDF only)
 - **Day 5:** 1 video (Annex 1, Annex 2, Other types of vehicles, and Vehicle handling are PDF only)
-- **Day 6:** 2 videos
+- **Day 6:** 1 video (Annex 3 and Annex 5 are PDF only)
 - **Day 7:** 3 videos
 
 ---
