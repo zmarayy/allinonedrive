@@ -251,7 +251,7 @@ function TeachWithUs() {
                         Fair Membership Model
                       </h3>
                       <p className="text-gray-700 font-medium leading-relaxed text-base sm:text-lg mb-3 sm:mb-4">
-                        The membership model is designed to be fair. Theory teachers <span className="font-bold text-primary-700">do not pay a membership fee</span>. Instead, they pay <span className="font-bold text-primary-700">25% commission on each customer they get</span> through All In One Drive.
+                        The membership model is designed to be fair. Theory teachers <span className="font-bold text-primary-700">do not pay a membership fee</span>. Instead, they pay <span className="font-bold text-primary-700">35% commission on each customer they get</span> through All In One Drive.
                       </p>
                       <div className="bg-white rounded-lg p-4 sm:p-5 border-2 border-amber-300 mt-3 sm:mt-4">
                         <p className="text-gray-800 font-semibold text-base sm:text-lg">
@@ -401,7 +401,7 @@ function TeachWithUs() {
                   {/* Main Highlight */}
                   <div className="bg-white rounded-xl p-4 sm:p-6 mb-4 sm:mb-6 shadow-md border-2 border-primary-200">
                     <p className="text-xl sm:text-2xl font-bold text-primary-700 mb-2">
-                      No Membership Fee • 25% Commission Per Customer
+                      No Membership Fee • 35% Commission Per Customer
                     </p>
                     <p className="text-base sm:text-lg text-gray-700 font-medium">
                       No upfront costs • Start teaching immediately • Pay only when you earn
@@ -411,7 +411,7 @@ function TeachWithUs() {
                   {/* Simple Example */}
                   <div className="bg-white/80 rounded-lg p-4 sm:p-5 border border-blue-200">
                     <p className="text-sm sm:text-base text-gray-700 font-semibold">
-                      <span className="text-primary-600 font-bold">Example:</span> If a customer pays £100, you keep £75 and pay £25 (25%) commission to All In One Drive.
+                      <span className="text-primary-600 font-bold">Example:</span> If a customer pays £100, you keep £65 and pay £35 (35%) commission to All In One Drive.
                     </p>
                   </div>
                 </div>
