@@ -1033,10 +1033,6 @@ function Packages() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 text-2xl mr-4 mt-1">✅</span>
-                  <span className="text-lg text-gray-700 font-medium">Theory test booking</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 text-2xl mr-4 mt-1">✅</span>
                   <span className="text-lg text-gray-700 font-medium">Application for provisional license</span>
                 </li>
                 <li className="flex items-start">
