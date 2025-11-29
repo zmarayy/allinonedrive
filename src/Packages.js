@@ -182,6 +182,49 @@ function Packages() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-blue-200/90 to-slate-200 relative">
+      {/* Launch Day Modal */}
+      {showLaunchDayModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fade-in">
+          <div className="glass-card p-8 max-w-md w-full mx-4 animate-slide-up border-2 border-primary-300 shadow-2xl">
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4">
+                <span className="text-3xl">🎉</span>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                Launch Day!
+              </h3>
+              <p className="text-gray-600 font-medium mb-4">
+                Today is our launch day! Due to system updates, purchases are temporarily unavailable.
+              </p>
+              <div className="bg-primary-50 border-2 border-primary-200 rounded-lg p-4 mb-4">
+                <p className="text-primary-800 font-semibold mb-2">
+                  🎁 Try the app for FREE!
+                </p>
+                <p className="text-sm text-primary-700">
+                  Check out our learning app and try the Standard package completely free. No purchase needed!
+                </p>
+              </div>
+              <div className="space-y-3">
+                <a
+                  href="https://allinonedrive.netlify.app/access-code"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                  Try the App for Free →
+                </a>
+                <button
+                  onClick={() => setShowLaunchDayModal(false)}
+                  className="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 px-6 rounded-lg transition-all duration-300"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      
       {/* Email Modal */}
       {showEmailModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fade-in">
