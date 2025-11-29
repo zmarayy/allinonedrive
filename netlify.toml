@@ -5,9 +5,16 @@
   # Publish directory - where the built files are located
   publish = "build"
   
+  # Functions directory (relative to base directory)
+  functions = "netlify/functions"
+  
   # Environment variables (these should be set in Netlify dashboard, but can be here for reference)
   # [build.environment]
   #   NODE_VERSION = "18"
+
+# Install function dependencies automatically
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
 
 # Redirect rules for client-side routing (SPA)
 [[redirects]]
