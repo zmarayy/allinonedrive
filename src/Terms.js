@@ -526,10 +526,10 @@ function Terms() {
               For questions, contact us at
             </p>
             <a 
-              href="mailto:support@allinonedrive.com"
+              href="mailto:linawahidi@allinonedrive.com"
               className="bg-white text-primary-600 hover:bg-gray-100 font-bold text-lg px-8 py-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-block"
             >
-              support@allinonedrive.com
+              linawahidi@allinonedrive.com
             </a>
           </div>
         </div>
