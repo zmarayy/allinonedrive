@@ -8,27 +8,13 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
   const [showPreview, setShowPreview] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
-  const [modalTop, setModalTop] = useState(0);
   const [showVideoModal, setShowVideoModal] = useState(false);
-  const [videoModalTop, setVideoModalTop] = useState(0);
   const iframeRef = useRef(null);
   const timeoutRef = useRef(null);
   const cardRef = useRef(null);
 
   const handlePreview = (e) => {
-    // Get the button's position to position modal next to it
-    if (e && e.currentTarget) {
-      const buttonRect = e.currentTarget.getBoundingClientRect();
-      const scrollY = window.scrollY || window.pageYOffset;
-      // Position modal at the same level as the button, with some padding
-      setModalTop(buttonRect.top + scrollY - 20);
-    } else if (cardRef.current) {
-      // Fallback: use card position
-      const cardRect = cardRef.current.getBoundingClientRect();
-      const scrollY = window.scrollY || window.pageYOffset;
-      setModalTop(cardRect.top + scrollY - 20);
-    }
-    
+    // Center modal in viewport - no need to track button position
     setShowPreview(true);
     setIsLoading(true);
     setLoadError(false);
@@ -62,27 +48,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
     };
   }, []);
   
-  useEffect(() => {
-    // Scroll modal into view when it opens
-    if (showPreview && modalTop > 0) {
-      const scrollPosition = modalTop - 100; // Position modal with some padding from top
-      window.scrollTo({
-        top: Math.max(0, scrollPosition),
-        behavior: 'smooth'
-      });
-    }
-  }, [showPreview, modalTop]);
-  
-  useEffect(() => {
-    // Scroll video modal into view when it opens
-    if (showVideoModal && videoModalTop > 0) {
-      const scrollPosition = videoModalTop - 100; // Position modal with some padding from top
-      window.scrollTo({
-        top: Math.max(0, scrollPosition),
-        behavior: 'smooth'
-      });
-    }
-  }, [showVideoModal, videoModalTop]);
+  // Modals are now centered, no need for scroll effects
   
   const handleIframeLoad = () => {
     setIsLoading(false);
@@ -136,16 +102,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
   };
   
   const handleVideoClick = (e) => {
-    // Get the button's position to position modal next to it
-    if (e && e.currentTarget) {
-      const buttonRect = e.currentTarget.getBoundingClientRect();
-      const scrollY = window.scrollY || window.pageYOffset;
-      setVideoModalTop(buttonRect.top + scrollY - 20);
-    } else if (cardRef.current) {
-      const cardRect = cardRef.current.getBoundingClientRect();
-      const scrollY = window.scrollY || window.pageYOffset;
-      setVideoModalTop(cardRect.top + scrollY - 20);
-    }
+    // Center modal in viewport - no need to track button position
     setShowVideoModal(true);
   };
 
@@ -309,19 +266,15 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
       {/* PDF Preview Modal - Mobile Optimized */}
       {showPreview && (
         <div 
-          className="fixed inset-0 z-50 flex items-start justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto"
           onClick={handleClosePreview}
+          style={{ paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' }}
         >
           <div 
             className={`bg-white rounded-lg shadow-2xl w-full flex flex-col ${
-              isMobile ? 'max-w-sm' : 'max-w-2xl max-h-[90vh]'
+              isMobile ? 'max-w-sm max-h-[90vh]' : 'max-w-2xl max-h-[90vh]'
             }`}
             onClick={(e) => e.stopPropagation()}
-            style={{
-              marginTop: typeof window !== 'undefined' 
-                ? `${Math.max(20, Math.min(modalTop - window.scrollY, window.innerHeight - 200))}px` 
-                : '20px'
-            }}
           >
             {/* Modal Header - Mobile Optimized */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-white flex-shrink-0">
@@ -498,19 +451,15 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
       {/* Video Player Modal - Mobile Optimized */}
       {showVideoModal && hasVideo && (
         <div 
-          className="fixed inset-0 z-50 flex items-start justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto"
           onClick={() => setShowVideoModal(false)}
+          style={{ paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' }}
         >
           <div 
             className={`bg-white rounded-lg shadow-2xl w-full flex flex-col ${
-              isMobile ? 'max-w-full' : 'max-w-4xl max-h-[90vh]'
+              isMobile ? 'max-w-full max-h-[90vh]' : 'max-w-4xl max-h-[90vh]'
             }`}
             onClick={(e) => e.stopPropagation()}
-            style={{
-              marginTop: typeof window !== 'undefined' 
-                ? `${Math.max(20, Math.min(videoModalTop - window.scrollY, window.innerHeight - 200))}px` 
-                : '20px'
-            }}
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-white flex-shrink-0">
