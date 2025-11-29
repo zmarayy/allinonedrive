@@ -90,31 +90,7 @@ function PdfExam() {
   // Check if user can take exam (must have studied PDF and completed flashcards, video is optional)
   const canTakeExam = isPdfOpened(dayNumber, pdfIdx) && areFlashcardsCompleted(dayNumber, pdfIdx);
 
-  const currentQuestion = examQuestions[currentQuestionIndex];
-  const totalQuestions = examQuestions.length;
-  const progress = totalQuestions > 0 ? ((currentQuestionIndex + 1) / totalQuestions) * 100 : 0;
-  
-  // Safety check: if no current question, show error state
-  if (!currentQuestion && examQuestions.length > 0) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-100 pb-20">
-        <div className="container mx-auto px-4 py-6">
-          <div className="glass-card p-8 text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Error Loading Exam</h2>
-            <p className="text-gray-600 mb-4">There was an issue loading the exam questions.</p>
-            <button
-              onClick={() => navigate('/course-content')}
-              className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold"
-            >
-              Back to Course
-            </button>
-          </div>
-        </div>
-        <BottomNavbar />
-      </div>
-    );
-  }
-
+  // ALL HOOKS MUST BE CALLED BEFORE ANY CONDITIONAL RETURNS
   useEffect(() => {
     // Reset when day/pdf changes and randomize questions
     const questions = PDF_EXAMS[dayNumber]?.[pdfIdx] || [];
@@ -156,6 +132,31 @@ function PdfExam() {
       navigate('/course-content');
     }
   }, [canTakeExam, dayNumber, pdfIdx, navigate]);
+
+  const currentQuestion = examQuestions[currentQuestionIndex];
+  const totalQuestions = examQuestions.length;
+  const progress = totalQuestions > 0 ? ((currentQuestionIndex + 1) / totalQuestions) * 100 : 0;
+  
+  // Safety check: if no current question, show error state
+  if (!currentQuestion && examQuestions.length > 0) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-100 pb-20">
+        <div className="container mx-auto px-4 py-6">
+          <div className="glass-card p-8 text-center">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Error Loading Exam</h2>
+            <p className="text-gray-600 mb-4">There was an issue loading the exam questions.</p>
+            <button
+              onClick={() => navigate('/course-content')}
+              className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold"
+            >
+              Back to Course
+            </button>
+          </div>
+        </div>
+        <BottomNavbar />
+      </div>
+    );
+  }
 
   const handleAnswerSelect = (optionIndex) => {
     if (showResult || isExamComplete || !currentQuestion) return;
