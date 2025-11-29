@@ -2279,151 +2279,2344 @@ export const PDF_EXAMS = {
       }
     ]
   },
-  // Day 2 PDFs - Placeholder structure (11 PDFs)
+  // Day 2 PDFs
   2: {
-    0: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 2 - Know Your Traffic Signs (DFT) - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    1: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 2 - Traffic Signs Easy Explanation - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    2: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 2 - Highway Code Traffic Signs - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    3: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 2 - Highway Code Road Markings - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    4: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 2 - Light Signals Controlling Traffic - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    5: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 2 - Signals by Authorised Persons - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    6: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 2 - Signals to Other Road Users - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    7: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 2 - Vehicle Markings - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    8: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 2 - General Rules Techniques Advice - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    9: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 2 - Motorcyclists - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    10: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 2 - Rules 36 to 46 - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    }))
+    0: [ // Rules for users of powered wheelchairs and mobility scooters (Rules 36 to 46) - 15 questions
+      {
+        id: 1,
+        question: "What is the maximum speed for Class 2 mobility scooters on pavements?",
+        options: [
+          "6 mph",
+          "4 mph",
+          "8 mph",
+          "10 mph"
+        ],
+        correctAnswer: 1,
+        explanation: "Class 2 mobility scooters should not exceed 4 mph on pavements."
+      },
+      {
+        id: 2,
+        question: "What is the maximum speed for Class 3 mobility scooters on the road?",
+        options: [
+          "4 mph",
+          "6 mph",
+          "8 mph",
+          "10 mph"
+        ],
+        correctAnswer: 2,
+        explanation: "Class 3 mobility scooters can travel up to 8 mph on the road."
+      },
+      {
+        id: 3,
+        question: "Can mobility scooters be used on motorways?",
+        options: [
+          "Yes, if they're Class 3",
+          "No, mobility scooters are not allowed on motorways",
+          "Yes, but only during daylight hours",
+          "Yes, if they have insurance"
+        ],
+        correctAnswer: 1,
+        explanation: "No, mobility scooters are not allowed on motorways under any circumstances."
+      },
+      {
+        id: 4,
+        question: "What lights must mobility scooters have when used at night?",
+        options: [
+          "Only front lights",
+          "Front and rear lights, and a rear reflector",
+          "Only rear lights",
+          "No lights required"
+        ],
+        correctAnswer: 1,
+        explanation: "Mobility scooters must have front and rear lights, and a rear reflector when used at night."
+      },
+      {
+        id: 5,
+        question: "What should mobility scooter users do when crossing the road?",
+        options: [
+          "Cross anywhere",
+          "Use pedestrian crossings and follow the same rules as pedestrians",
+          "Only cross at junctions",
+          "Cross quickly without looking"
+        ],
+        correctAnswer: 1,
+        explanation: "Mobility scooter users should use pedestrian crossings and follow the same rules as pedestrians."
+      },
+      {
+        id: 6,
+        question: "What should mobility scooter users wear for visibility?",
+        options: [
+          "Dark clothing",
+          "Light-coloured or fluorescent clothing, and reflective materials at night",
+          "No special requirements",
+          "Only at night"
+        ],
+        correctAnswer: 1,
+        explanation: "Mobility scooter users should wear light-coloured or fluorescent clothing, and reflective materials at night."
+      },
+      {
+        id: 7,
+        question: "What is the difference between Class 2 and Class 3 mobility scooters?",
+        options: [
+          "Class 2 is faster",
+          "Class 2 scooters are for pavement use only (max 4 mph), while Class 3 can be used on roads (max 8 mph)",
+          "Class 3 is slower",
+          "There is no difference"
+        ],
+        correctAnswer: 1,
+        explanation: "Class 2 scooters are for pavement use only (max 4 mph), while Class 3 can be used on roads (max 8 mph)."
+      },
+      {
+        id: 8,
+        question: "Can powered wheelchairs be used on dual carriageways?",
+        options: [
+          "Yes, if they're fast enough",
+          "No, powered wheelchairs and mobility scooters should not be used on dual carriageways",
+          "Yes, during daylight hours only",
+          "Yes, with special permission"
+        ],
+        correctAnswer: 1,
+        explanation: "No, powered wheelchairs and mobility scooters should not be used on dual carriageways."
+      },
+      {
+        id: 9,
+        question: "What should mobility scooter users do when approaching a junction?",
+        options: [
+          "Speed up",
+          "Slow down, look all around, and give way to traffic on the main road",
+          "Ignore traffic",
+          "Always have right of way"
+        ],
+        correctAnswer: 1,
+        explanation: "Mobility scooter users should slow down, look all around, and give way to traffic on the main road."
+      },
+      {
+        id: 10,
+        question: "What is the rule about mobility scooters and alcohol?",
+        options: [
+          "It's allowed in small amounts",
+          "Users must not be under the influence of alcohol or drugs when using a mobility scooter",
+          "Only applies on roads",
+          "No restrictions"
+        ],
+        correctAnswer: 1,
+        explanation: "Users must not be under the influence of alcohol or drugs when using a mobility scooter."
+      },
+      {
+        id: 11,
+        question: "What should mobility scooter users do when turning?",
+        options: [
+          "Turn without signaling",
+          "Signal clearly, check for traffic, and position themselves correctly before turning",
+          "Only signal on roads",
+          "Turn quickly"
+        ],
+        correctAnswer: 1,
+        explanation: "Mobility scooter users should signal clearly, check for traffic, and position themselves correctly before turning."
+      },
+      {
+        id: 12,
+        question: "What should mobility scooter users do when parking?",
+        options: [
+          "Park anywhere",
+          "Park in a safe place that doesn't obstruct pedestrians or traffic",
+          "Only park on roads",
+          "No restrictions"
+        ],
+        correctAnswer: 1,
+        explanation: "Mobility scooter users should park in a safe place that doesn't obstruct pedestrians or traffic."
+      },
+      {
+        id: 13,
+        question: "What should mobility scooter users do in poor weather?",
+        options: [
+          "Drive normally",
+          "Take extra care, reduce speed, and ensure they are visible to other road users",
+          "Stay home",
+          "Only drive on pavements"
+        ],
+        correctAnswer: 1,
+        explanation: "Mobility scooter users should take extra care, reduce speed, and ensure they are visible to other road users in poor weather."
+      },
+      {
+        id: 14,
+        question: "What is Rule 44 about mobility scooters and pedestrians?",
+        options: [
+          "Pedestrians must give way to scooters",
+          "Mobility scooter users should be considerate of pedestrians and give way to them on pavements",
+          "Scooters have priority",
+          "No specific rules"
+        ],
+        correctAnswer: 1,
+        explanation: "Rule 44 states that mobility scooter users should be considerate of pedestrians and give way to them on pavements."
+      },
+      {
+        id: 15,
+        question: "What is the most important rule for mobility scooter users?",
+        options: [
+          "Speed is most important",
+          "Always be aware of your surroundings, be visible, and follow all relevant road and pavement rules",
+          "Only follow road rules",
+          "No specific rules apply"
+        ],
+        correctAnswer: 1,
+        explanation: "The most important rule is to always be aware of your surroundings, be visible, and follow all relevant road and pavement rules."
+      }
+    ],
+    1: [ // Rules for motorcyclists (Rules 83 to 88) - 15 questions
+      {
+        id: 1,
+        question: "What should motorcyclists wear for safety?",
+        options: [
+          "Regular clothes",
+          "A helmet that meets safety standards, protective clothing, and high-visibility gear",
+          "Only a helmet",
+          "No special requirements"
+        ],
+        correctAnswer: 1,
+        explanation: "Motorcyclists should wear a helmet that meets safety standards, protective clothing, and high-visibility gear."
+      },
+      {
+        id: 2,
+        question: "What is Rule 85 about motorcyclists and visibility?",
+        options: [
+          "No visibility requirements",
+          "Motorcyclists should wear bright or fluorescent clothing and use dipped headlights during the day",
+          "Only at night",
+          "Only in bad weather"
+        ],
+        correctAnswer: 1,
+        explanation: "Rule 85 states that motorcyclists should wear bright or fluorescent clothing and use dipped headlights during the day."
+      },
+      {
+        id: 3,
+        question: "What should motorcyclists do when filtering through traffic?",
+        options: [
+          "Filter at any speed",
+          "Only filter when it's safe, at low speeds, and be aware of vehicles changing lanes or turning",
+          "Always filter",
+          "Never filter"
+        ],
+        correctAnswer: 1,
+        explanation: "Motorcyclists should only filter when it's safe, at low speeds, and be aware of vehicles changing lanes or turning."
+      },
+      {
+        id: 4,
+        question: "What is the rule about motorcyclists and lane positioning?",
+        options: [
+          "Always stay in the left lane",
+          "Position themselves where they can be seen and where they have the best view of the road ahead",
+          "Always stay in the right lane",
+          "No specific rules"
+        ],
+        correctAnswer: 1,
+        explanation: "Motorcyclists should position themselves where they can be seen and where they have the best view of the road ahead."
+      },
+      {
+        id: 5,
+        question: "What should motorcyclists do when approaching a junction?",
+        options: [
+          "Speed up",
+          "Slow down, check mirrors and blind spots, and be prepared to stop or give way",
+          "Ignore traffic",
+          "Always have right of way"
+        ],
+        correctAnswer: 1,
+        explanation: "Motorcyclists should slow down, check mirrors and blind spots, and be prepared to stop or give way."
+      },
+      {
+        id: 6,
+        question: "What is Rule 86 about motorcyclists and weather conditions?",
+        options: [
+          "No special rules",
+          "Motorcyclists should take extra care in wet, icy, or windy conditions",
+          "Only applies in snow",
+          "Only applies in fog"
+        ],
+        correctAnswer: 1,
+        explanation: "Rule 86 states that motorcyclists should take extra care in wet, icy, or windy conditions."
+      },
+      {
+        id: 7,
+        question: "What should motorcyclists do when overtaking?",
+        options: [
+          "Overtake quickly",
+          "Only overtake when it's safe, signal clearly, check mirrors and blind spots, and return to their lane safely",
+          "Never overtake",
+          "Overtake without signaling"
+        ],
+        correctAnswer: 1,
+        explanation: "Motorcyclists should only overtake when it's safe, signal clearly, check mirrors and blind spots, and return to their lane safely."
+      },
+      {
+        id: 8,
+        question: "What is the rule about motorcyclists and following distance?",
+        options: [
+          "No specific distance",
+          "Motorcyclists should maintain a safe following distance, at least two seconds behind the vehicle in front",
+          "Always stay very close",
+          "One second is enough"
+        ],
+        correctAnswer: 1,
+        explanation: "Motorcyclists should maintain a safe following distance, at least two seconds behind the vehicle in front."
+      },
+      {
+        id: 9,
+        question: "What should motorcyclists do when turning right?",
+        options: [
+          "Turn quickly",
+          "Signal clearly, check mirrors and blind spots, position correctly, and wait for a safe gap",
+          "Turn without signaling",
+          "Always have priority"
+        ],
+        correctAnswer: 1,
+        explanation: "Motorcyclists should signal clearly, check mirrors and blind spots, position correctly, and wait for a safe gap."
+      },
+      {
+        id: 10,
+        question: "What is Rule 87 about motorcyclists and passengers?",
+        options: [
+          "No rules about passengers",
+          "Rule 87 covers the rules for carrying passengers, including that passengers must also wear helmets",
+          "Passengers don't need helmets",
+          "Only one passenger allowed"
+        ],
+        correctAnswer: 1,
+        explanation: "Rule 87 covers the rules for carrying passengers, including that passengers must also wear helmets."
+      },
+      {
+        id: 11,
+        question: "What should motorcyclists do when riding in groups?",
+        options: [
+          "Ride side by side",
+          "Ride in a staggered formation on straight roads and single file on bends or when overtaking",
+          "Always ride single file",
+          "No specific rules"
+        ],
+        correctAnswer: 1,
+        explanation: "Motorcyclists should ride in a staggered formation on straight roads and single file on bends or when overtaking."
+      },
+      {
+        id: 12,
+        question: "What is the rule about motorcyclists and mobile phones?",
+        options: [
+          "Allowed if hands-free",
+          "Motorcyclists must not use a hand-held mobile phone while riding. It's illegal and extremely dangerous",
+          "Only at low speeds",
+          "Only when stopped"
+        ],
+        correctAnswer: 1,
+        explanation: "Motorcyclists must not use a hand-held mobile phone while riding. It's illegal and extremely dangerous."
+      },
+      {
+        id: 13,
+        question: "What should motorcyclists do when riding at night?",
+        options: [
+          "No special requirements",
+          "Use dipped headlights, wear reflective clothing, and be extra visible to other road users",
+          "Only use headlights",
+          "Avoid riding at night"
+        ],
+        correctAnswer: 1,
+        explanation: "Motorcyclists should use dipped headlights, wear reflective clothing, and be extra visible to other road users at night."
+      },
+      {
+        id: 14,
+        question: "What is Rule 88 about motorcyclists and vehicle condition?",
+        options: [
+          "No specific rules",
+          "Rule 88 states that motorcyclists must ensure their bike is roadworthy, properly maintained, and safe to ride",
+          "Only check the engine",
+          "Only check before long journeys"
+        ],
+        correctAnswer: 1,
+        explanation: "Rule 88 states that motorcyclists must ensure their bike is roadworthy, properly maintained, and safe to ride."
+      },
+      {
+        id: 15,
+        question: "What is the most important safety rule for motorcyclists?",
+        options: [
+          "Speed is most important",
+          "Always wear appropriate protective clothing, including a helmet, and ride defensively, assuming other drivers may not see you",
+          "Only wear a helmet",
+          "No special rules"
+        ],
+        correctAnswer: 1,
+        explanation: "The most important safety rule is to always wear appropriate protective clothing, including a helmet, and ride defensively, assuming other drivers may not see you."
+      }
+    ],
+    2: [ // General rules, techniques and advice for all drivers and riders (Rules 103 to 158) - 15 questions
+      {
+        id: 1,
+        question: "What is Rule 103 about signals?",
+        options: [
+          "Signals are optional",
+          "Rule 103 states that you must signal to warn other road users of your intentions",
+          "Only signal on motorways",
+          "Only signal when turning"
+        ],
+        correctAnswer: 1,
+        explanation: "Rule 103 states that you must signal to warn other road users of your intentions."
+      },
+      {
+        id: 2,
+        question: "What should you do before turning or changing direction?",
+        options: [
+          "Just turn",
+          "Use your indicators, check mirrors and blind spots, and signal in good time",
+          "Only check mirrors",
+          "Only signal"
+        ],
+        correctAnswer: 1,
+        explanation: "You should use your indicators, check mirrors and blind spots, and signal in good time before turning or changing direction."
+      },
+      {
+        id: 3,
+        question: "What is Rule 110 about speed limits?",
+        options: [
+          "Speed limits are suggestions",
+          "Rule 110 states that you must not exceed the speed limit and should adjust your speed according to road conditions",
+          "Only on motorways",
+          "Only in built-up areas"
+        ],
+        correctAnswer: 1,
+        explanation: "Rule 110 states that you must not exceed the speed limit and should adjust your speed according to road conditions."
+      },
+      {
+        id: 4,
+        question: "What is the two-second rule?",
+        options: [
+          "A rule about signaling",
+          "A guide for following distance - stay at least two seconds behind the vehicle in front in good conditions",
+          "A rule about speed",
+          "A rule about parking"
+        ],
+        correctAnswer: 1,
+        explanation: "The two-second rule is a guide for following distance - stay at least two seconds behind the vehicle in front in good conditions."
+      },
+      {
+        id: 5,
+        question: "What should you do when driving in wet conditions?",
+        options: [
+          "Drive normally",
+          "Increase your following distance, reduce speed, and be prepared for longer stopping distances",
+          "Only reduce speed",
+          "Only increase distance"
+        ],
+        correctAnswer: 1,
+        explanation: "You should increase your following distance, reduce speed, and be prepared for longer stopping distances in wet conditions."
+      },
+      {
+        id: 6,
+        question: "What is Rule 120 about lane discipline?",
+        options: [
+          "No specific rules",
+          "Rule 120 states that you should keep to the left lane unless overtaking or turning right",
+          "Always use the right lane",
+          "Use any lane"
+        ],
+        correctAnswer: 1,
+        explanation: "Rule 120 states that you should keep to the left lane unless overtaking or turning right."
+      },
+      {
+        id: 7,
+        question: "What should you do when changing lanes?",
+        options: [
+          "Just change",
+          "Use your mirrors, signal, check blind spots, and only change lanes when it's safe",
+          "Only signal",
+          "Only check mirrors"
+        ],
+        correctAnswer: 1,
+        explanation: "You should use your mirrors, signal, check blind spots, and only change lanes when it's safe."
+      },
+      {
+        id: 8,
+        question: "What is Rule 125 about overtaking?",
+        options: [
+          "Overtake whenever you want",
+          "Rule 125 covers the rules for overtaking safely, including when and how to overtake",
+          "Only on motorways",
+          "No specific rules"
+        ],
+        correctAnswer: 1,
+        explanation: "Rule 125 covers the rules for overtaking safely, including when and how to overtake."
+      },
+      {
+        id: 9,
+        question: "What should you do before overtaking?",
+        options: [
+          "Just overtake",
+          "Check mirrors and blind spots, signal, ensure you have enough space, and only overtake when it's safe",
+          "Only check mirrors",
+          "Only signal"
+        ],
+        correctAnswer: 1,
+        explanation: "You should check mirrors and blind spots, signal, ensure you have enough space, and only overtake when it's safe."
+      },
+      {
+        id: 10,
+        question: "What is Rule 130 about roundabouts?",
+        options: [
+          "No specific rules",
+          "Rule 130 states that you should give way to traffic from the right and choose the correct lane for your exit",
+          "Always have right of way",
+          "Only give way on large roundabouts"
+        ],
+        correctAnswer: 1,
+        explanation: "Rule 130 states that you should give way to traffic from the right and choose the correct lane for your exit."
+      },
+      {
+        id: 11,
+        question: "What should you do when approaching a roundabout?",
+        options: [
+          "Speed up",
+          "Slow down, check for traffic from the right, choose the correct lane, and signal appropriately",
+          "Just drive through",
+          "Always have priority"
+        ],
+        correctAnswer: 1,
+        explanation: "You should slow down, check for traffic from the right, choose the correct lane, and signal appropriately when approaching a roundabout."
+      },
+      {
+        id: 12,
+        question: "What is Rule 140 about mobile phones?",
+        options: [
+          "Always allowed",
+          "Rule 140 states that it's illegal to use a hand-held mobile phone while driving",
+          "Only illegal on motorways",
+          "Only illegal in built-up areas"
+        ],
+        correctAnswer: 1,
+        explanation: "Rule 140 states that it's illegal to use a hand-held mobile phone while driving."
+      },
+      {
+        id: 13,
+        question: "What should you do if you need to use your phone?",
+        options: [
+          "Use it while driving",
+          "Pull over in a safe place and stop before using your phone",
+          "Only at traffic lights",
+          "Only when stopped in traffic"
+        ],
+        correctAnswer: 1,
+        explanation: "You should pull over in a safe place and stop before using your phone."
+      },
+      {
+        id: 14,
+        question: "What is Rule 115 about stopping distances?",
+        options: [
+          "No specific rules",
+          "Rule 115 explains that stopping distances depend on speed, road conditions, and your reaction time",
+          "Always the same",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "Rule 115 explains that stopping distances depend on speed, road conditions, and your reaction time."
+      },
+      {
+        id: 15,
+        question: "What is the most important rule for all drivers?",
+        options: [
+          "Speed is most important",
+          "Always drive safely, follow the rules, and be considerate of other road users",
+          "Only follow speed limits",
+          "No specific rules"
+        ],
+        correctAnswer: 1,
+        explanation: "The most important rule is to always drive safely, follow the rules, and be considerate of other road users."
+      }
+    ],
+    3: [ // Light signals controlling traffic - 15 questions
+      {
+        id: 1,
+        question: "What does a red traffic light mean?",
+        options: [
+          "Slow down",
+          "Red means stop. You must stop behind the stop line or before entering the junction",
+          "Proceed with caution",
+          "Only stop if traffic is coming"
+        ],
+        correctAnswer: 1,
+        explanation: "Red means stop. You must stop behind the stop line or before entering the junction."
+      },
+      {
+        id: 2,
+        question: "What does a green traffic light mean?",
+        options: [
+          "Always safe to go",
+          "Green means go, but only if the way ahead is clear and it's safe to proceed",
+          "Speed up",
+          "No restrictions"
+        ],
+        correctAnswer: 1,
+        explanation: "Green means go, but only if the way ahead is clear and it's safe to proceed."
+      },
+      {
+        id: 3,
+        question: "What does an amber traffic light mean?",
+        options: [
+          "Speed up",
+          "Amber means stop, unless you've already crossed the stop line or you're so close that stopping would cause a collision",
+          "Always stop",
+          "Proceed with caution"
+        ],
+        correctAnswer: 1,
+        explanation: "Amber means stop, unless you've already crossed the stop line or you're so close that stopping would cause a collision."
+      },
+      {
+        id: 4,
+        question: "What are flashing red lights used for?",
+        options: [
+          "Normal traffic control",
+          "Flashing red lights are used at level crossings, lifting bridges, and fire stations to indicate you must stop",
+          "Only at junctions",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "Flashing red lights are used at level crossings, lifting bridges, and fire stations to indicate you must stop."
+      },
+      {
+        id: 5,
+        question: "What do motorway signals show?",
+        options: [
+          "Only speed limits",
+          "Motorway signals show speed limits, lane closures, and warnings about hazards ahead",
+          "Only lane closures",
+          "Only warnings"
+        ],
+        correctAnswer: 1,
+        explanation: "Motorway signals show speed limits, lane closures, and warnings about hazards ahead."
+      },
+      {
+        id: 6,
+        question: "What does a red X above a motorway lane mean?",
+        options: [
+          "Speed limit",
+          "A red X means the lane is closed. You must not drive in that lane",
+          "Lane open",
+          "Warning only"
+        ],
+        correctAnswer: 1,
+        explanation: "A red X means the lane is closed. You must not drive in that lane."
+      },
+      {
+        id: 7,
+        question: "What does a white diagonal arrow on a motorway signal mean?",
+        options: [
+          "Speed up",
+          "It means you should move into the lane indicated by the arrow",
+          "Slow down",
+          "No specific meaning"
+        ],
+        correctAnswer: 1,
+        explanation: "A white diagonal arrow means you should move into the lane indicated by the arrow."
+      },
+      {
+        id: 8,
+        question: "What should you do when you see a green arrow at traffic lights?",
+        options: [
+          "Always go",
+          "You may proceed in the direction of the arrow, but only if the way is clear",
+          "Wait for full green",
+          "Ignore it"
+        ],
+        correctAnswer: 1,
+        explanation: "You may proceed in the direction of the arrow, but only if the way is clear."
+      },
+      {
+        id: 9,
+        question: "What does a flashing amber light mean?",
+        options: [
+          "Stop",
+          "A flashing amber light means proceed with caution. You may go if the way is clear",
+          "Always stop",
+          "Speed up"
+        ],
+        correctAnswer: 1,
+        explanation: "A flashing amber light means proceed with caution. You may go if the way is clear."
+      },
+      {
+        id: 10,
+        question: "What should you do at a pelican crossing with flashing amber?",
+        options: [
+          "Always stop",
+          "You may proceed if the crossing is clear, but pedestrians still have priority",
+          "Speed up",
+          "Ignore pedestrians"
+        ],
+        correctAnswer: 1,
+        explanation: "You may proceed if the crossing is clear, but pedestrians still have priority."
+      },
+      {
+        id: 11,
+        question: "What are temporary traffic lights used for?",
+        options: [
+          "Normal traffic control",
+          "Temporary traffic lights are used at road works to control traffic flow safely",
+          "Only at junctions",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "Temporary traffic lights are used at road works to control traffic flow safely."
+      },
+      {
+        id: 12,
+        question: "What should you do when temporary traffic lights are red?",
+        options: [
+          "Proceed with caution",
+          "You must stop and wait, just like at permanent traffic lights",
+          "Only if traffic is coming",
+          "Ignore them"
+        ],
+        correctAnswer: 1,
+        explanation: "You must stop and wait, just like at permanent traffic lights."
+      },
+      {
+        id: 13,
+        question: "What should you do if traffic lights are not working?",
+        options: [
+          "Treat as green",
+          "Treat the junction as an unmarked junction. Give way to traffic from the right and proceed with caution",
+          "Always have right of way",
+          "Speed up"
+        ],
+        correctAnswer: 1,
+        explanation: "Treat the junction as an unmarked junction. Give way to traffic from the right and proceed with caution."
+      },
+      {
+        id: 14,
+        question: "What do red and amber lights together mean?",
+        options: [
+          "Go",
+          "Red and amber together mean stop. The light is about to turn green, but you must wait",
+          "Proceed with caution",
+          "Speed up"
+        ],
+        correctAnswer: 1,
+        explanation: "Red and amber together mean stop. The light is about to turn green, but you must wait."
+      },
+      {
+        id: 15,
+        question: "What is the rule about traffic lights and pedestrians?",
+        options: [
+          "Pedestrians always wait",
+          "You must give way to pedestrians who are crossing when the green man is showing",
+          "Pedestrians have no priority",
+          "Only at zebra crossings"
+        ],
+        correctAnswer: 1,
+        explanation: "You must give way to pedestrians who are crossing when the green man is showing."
+      }
+    ],
+    4: [ // Signals to other road users - 15 questions
+      {
+        id: 1,
+        question: "What are direction indicators used for?",
+        options: [
+          "Decoration",
+          "Direction indicators (indicators) are used to signal your intention to turn left or right, or change lanes",
+          "Only for turning",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "Direction indicators (indicators) are used to signal your intention to turn left or right, or change lanes."
+      },
+      {
+        id: 2,
+        question: "When should you use your indicators?",
+        options: [
+          "Only when turning",
+          "You should use indicators before turning, changing lanes, or pulling over, giving other road users time to react",
+          "Only on motorways",
+          "Only in built-up areas"
+        ],
+        correctAnswer: 1,
+        explanation: "You should use indicators before turning, changing lanes, or pulling over, giving other road users time to react."
+      },
+      {
+        id: 3,
+        question: "What should you do if your indicators are not working?",
+        options: [
+          "Don't signal",
+          "You should use arm signals to indicate your intentions to other road users",
+          "Only signal on motorways",
+          "Ignore it"
+        ],
+        correctAnswer: 1,
+        explanation: "You should use arm signals to indicate your intentions to other road users if your indicators are not working."
+      },
+      {
+        id: 4,
+        question: "What do brake lights indicate?",
+        options: [
+          "Nothing specific",
+          "Brake lights warn following traffic that you're slowing down or stopping",
+          "Only when stopping",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "Brake lights warn following traffic that you're slowing down or stopping."
+      },
+      {
+        id: 5,
+        question: "What is an arm signal for turning left?",
+        options: [
+          "Right arm up",
+          "Extend your left arm horizontally out of the window to signal a left turn",
+          "Right arm out",
+          "No arm signal needed"
+        ],
+        correctAnswer: 1,
+        explanation: "Extend your left arm horizontally out of the window to signal a left turn."
+      },
+      {
+        id: 6,
+        question: "What is an arm signal for turning right?",
+        options: [
+          "Left arm out",
+          "Extend your left arm out of the window and bend it upward at the elbow to signal a right turn",
+          "Right arm out",
+          "No arm signal needed"
+        ],
+        correctAnswer: 1,
+        explanation: "Extend your left arm out of the window and bend it upward at the elbow to signal a right turn."
+      },
+      {
+        id: 7,
+        question: "What is an arm signal for slowing down or stopping?",
+        options: [
+          "Left arm up",
+          "Extend your left arm out of the window and move it up and down to signal slowing down or stopping",
+          "Right arm out",
+          "No arm signal needed"
+        ],
+        correctAnswer: 1,
+        explanation: "Extend your left arm out of the window and move it up and down to signal slowing down or stopping."
+      },
+      {
+        id: 8,
+        question: "When should you use arm signals?",
+        options: [
+          "Never",
+          "Use arm signals when your indicators are not working, for additional emphasis, or when cycling",
+          "Only on motorways",
+          "Only in built-up areas"
+        ],
+        correctAnswer: 1,
+        explanation: "Use arm signals when your indicators are not working, for additional emphasis, or when cycling."
+      },
+      {
+        id: 9,
+        question: "What is the rule about signaling at roundabouts?",
+        options: [
+          "No signaling needed",
+          "You should signal right when taking any exit after the first, and signal left when taking the first exit",
+          "Always signal right",
+          "Only signal when leaving"
+        ],
+        correctAnswer: 1,
+        explanation: "You should signal right when taking any exit after the first, and signal left when taking the first exit."
+      },
+      {
+        id: 10,
+        question: "What should you do when overtaking?",
+        options: [
+          "No signaling needed",
+          "You should signal right before overtaking, and signal left when returning to your lane",
+          "Only signal right",
+          "Only signal left"
+        ],
+        correctAnswer: 1,
+        explanation: "You should signal right before overtaking, and signal left when returning to your lane."
+      },
+      {
+        id: 11,
+        question: "What is the rule about signaling and mirrors?",
+        options: [
+          "No connection",
+          "Always check your mirrors before signaling, and again before carrying out your maneuver",
+          "Only check after signaling",
+          "Only check mirrors"
+        ],
+        correctAnswer: 1,
+        explanation: "Always check your mirrors before signaling, and again before carrying out your maneuver."
+      },
+      {
+        id: 12,
+        question: "What should you do if you signal by mistake?",
+        options: [
+          "Ignore it",
+          "Cancel the signal as soon as possible to avoid confusing other road users",
+          "Continue anyway",
+          "Only cancel on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "Cancel the signal as soon as possible to avoid confusing other road users."
+      },
+      {
+        id: 13,
+        question: "What is the rule about signaling too early?",
+        options: [
+          "Always signal early",
+          "Don't signal too early as it may confuse other road users. Signal in good time but not too far in advance",
+          "No problem signaling early",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "Don't signal too early as it may confuse other road users. Signal in good time but not too far in advance."
+      },
+      {
+        id: 14,
+        question: "What should you do when changing lanes on a motorway?",
+        options: [
+          "Just change",
+          "You should check mirrors and blind spots, signal, and only change lanes when it's safe",
+          "Only signal",
+          "Only check mirrors"
+        ],
+        correctAnswer: 1,
+        explanation: "You should check mirrors and blind spots, signal, and only change lanes when it's safe."
+      },
+      {
+        id: 15,
+        question: "What is the most important thing about signaling?",
+        options: [
+          "Speed is most important",
+          "Signal clearly, in good time, and only when you intend to carry out the maneuver",
+          "Only signal when turning",
+          "No specific rules"
+        ],
+        correctAnswer: 1,
+        explanation: "The most important thing is to signal clearly, in good time, and only when you intend to carry out the maneuver."
+      }
+    ],
+    5: [ // Signals by authorised persons - 15 questions
+      {
+        id: 1,
+        question: "Who can give signals that you must obey?",
+        options: [
+          "Anyone",
+          "Police officers, traffic officers, DVSA officers, and people controlling traffic can give signals you must obey",
+          "Only police",
+          "Only traffic officers"
+        ],
+        correctAnswer: 1,
+        explanation: "Police officers, traffic officers, DVSA officers, and people controlling traffic can give signals you must obey."
+      },
+      {
+        id: 2,
+        question: "What should you do when a police officer signals you to stop?",
+        options: [
+          "Ignore it",
+          "You must stop immediately and follow their instructions",
+          "Only if you want to",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "You must stop immediately and follow their instructions when a police officer signals you to stop."
+      },
+      {
+        id: 3,
+        question: "What does a police officer's raised hand mean?",
+        options: [
+          "Go",
+          "A raised hand means stop. You must stop and wait for further instructions",
+          "Slow down",
+          "No specific meaning"
+        ],
+        correctAnswer: 1,
+        explanation: "A raised hand means stop. You must stop and wait for further instructions."
+      },
+      {
+        id: 4,
+        question: "What should you do when a traffic officer signals you?",
+        options: [
+          "Ignore it",
+          "You must follow their signals, which may override traffic lights or signs",
+          "Only if convenient",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "You must follow their signals, which may override traffic lights or signs."
+      },
+      {
+        id: 5,
+        question: "What is the rule about school crossing patrols?",
+        options: [
+          "No special rules",
+          "You must stop when a school crossing patrol shows the 'Stop' sign, and wait until they lower it",
+          "Only if children are crossing",
+          "Only during school hours"
+        ],
+        correctAnswer: 1,
+        explanation: "You must stop when a school crossing patrol shows the 'Stop' sign, and wait until they lower it."
+      },
+      {
+        id: 6,
+        question: "What should you do when someone is controlling traffic at road works?",
+        options: [
+          "Ignore them",
+          "You must follow their signals, which may include stopping, slowing down, or changing lanes",
+          "Only if convenient",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "You must follow their signals, which may include stopping, slowing down, or changing lanes."
+      },
+      {
+        id: 7,
+        question: "What does a DVSA officer do?",
+        options: [
+          "Nothing specific",
+          "DVSA officers can stop vehicles to check they're roadworthy and that drivers are licensed and insured",
+          "Only check licenses",
+          "Only check insurance"
+        ],
+        correctAnswer: 1,
+        explanation: "DVSA officers can stop vehicles to check they're roadworthy and that drivers are licensed and insured."
+      },
+      {
+        id: 8,
+        question: "What should you do if a police officer directs you through a red light?",
+        options: [
+          "Never do it",
+          "You may proceed if directed by a police officer, but only if it's safe to do so",
+          "Always do it",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "You may proceed if directed by a police officer, but only if it's safe to do so."
+      },
+      {
+        id: 9,
+        question: "What is the priority order for signals?",
+        options: [
+          "Traffic lights first",
+          "Signals from authorised persons take priority over traffic lights, signs, and road markings",
+          "Road signs first",
+          "Road markings first"
+        ],
+        correctAnswer: 1,
+        explanation: "Signals from authorised persons take priority over traffic lights, signs, and road markings."
+      },
+      {
+        id: 10,
+        question: "What should you do when approaching a person controlling traffic?",
+        options: [
+          "Speed up",
+          "You should slow down, be prepared to stop, and follow their signals",
+          "Ignore them",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "You should slow down, be prepared to stop, and follow their signals."
+      },
+      {
+        id: 11,
+        question: "What is the rule about ignoring signals from authorised persons?",
+        options: [
+          "No problem",
+          "It's illegal to ignore signals from authorised persons. You could face penalties",
+          "Only if inconvenient",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "It's illegal to ignore signals from authorised persons. You could face penalties."
+      },
+      {
+        id: 12,
+        question: "What should you do if you're unsure about a signal?",
+        options: [
+          "Proceed anyway",
+          "Stop and wait for clarification. It's better to be cautious than to proceed incorrectly",
+          "Speed up",
+          "Ignore it"
+        ],
+        correctAnswer: 1,
+        explanation: "Stop and wait for clarification. It's better to be cautious than to proceed incorrectly."
+      },
+      {
+        id: 13,
+        question: "What is the rule about traffic officers on motorways?",
+        options: [
+          "No special rules",
+          "Traffic officers can stop you, direct traffic, and close lanes. You must follow their instructions",
+          "Only stop you",
+          "Only direct traffic"
+        ],
+        correctAnswer: 1,
+        explanation: "Traffic officers can stop you, direct traffic, and close lanes. You must follow their instructions."
+      },
+      {
+        id: 14,
+        question: "What should you do if an authorised person signals you to pull over?",
+        options: [
+          "Ignore it",
+          "You must pull over safely and stop, then follow their instructions",
+          "Only if convenient",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "You must pull over safely and stop, then follow their instructions."
+      },
+      {
+        id: 15,
+        question: "What is the most important rule about authorised persons?",
+        options: [
+          "Ignore them if inconvenient",
+          "Always follow the signals from authorised persons. Their signals override normal traffic rules",
+          "Only follow police",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "Always follow the signals from authorised persons. Their signals override normal traffic rules."
+      }
+    ],
+    6: [ // Traffic signs - 15 questions
+      {
+        id: 1,
+        question: "What do circular signs with red borders indicate?",
+        options: [
+          "Information",
+          "Circular signs with red borders indicate prohibitions or mandatory actions that you must follow",
+          "Warnings",
+          "Directions"
+        ],
+        correctAnswer: 1,
+        explanation: "Circular signs with red borders indicate prohibitions or mandatory actions that you must follow."
+      },
+      {
+        id: 2,
+        question: "What do triangular signs warn of?",
+        options: [
+          "Prohibitions",
+          "Triangular signs warn of hazards ahead, such as bends, junctions, or road conditions",
+          "Directions",
+          "Information"
+        ],
+        correctAnswer: 1,
+        explanation: "Triangular signs warn of hazards ahead, such as bends, junctions, or road conditions."
+      },
+      {
+        id: 3,
+        question: "What do blue circular signs indicate?",
+        options: [
+          "Prohibitions",
+          "Blue circular signs indicate mandatory instructions, such as which direction you must go",
+          "Warnings",
+          "Information"
+        ],
+        correctAnswer: 1,
+        explanation: "Blue circular signs indicate mandatory instructions, such as which direction you must go."
+      },
+      {
+        id: 4,
+        question: "What does a 'Stop' sign mean?",
+        options: [
+          "Slow down",
+          "A 'Stop' sign means you must come to a complete stop and give way to traffic on the main road",
+          "Proceed with caution",
+          "Only stop if traffic is coming"
+        ],
+        correctAnswer: 1,
+        explanation: "A 'Stop' sign means you must come to a complete stop and give way to traffic on the main road."
+      },
+      {
+        id: 5,
+        question: "What does a 'Give Way' sign mean?",
+        options: [
+          "Always stop",
+          "A 'Give Way' sign means you must give way to traffic on the main road, but you don't need to stop if the way is clear",
+          "Speed up",
+          "No specific meaning"
+        ],
+        correctAnswer: 1,
+        explanation: "A 'Give Way' sign means you must give way to traffic on the main road, but you don't need to stop if the way is clear."
+      },
+      {
+        id: 6,
+        question: "What do speed limit signs show?",
+        options: [
+          "Minimum speed",
+          "Speed limit signs show the maximum speed you're allowed to travel on that road",
+          "Recommended speed",
+          "Average speed"
+        ],
+        correctAnswer: 1,
+        explanation: "Speed limit signs show the maximum speed you're allowed to travel on that road."
+      },
+      {
+        id: 7,
+        question: "What does a 'No Entry' sign mean?",
+        options: [
+          "Slow down",
+          "A 'No Entry' sign means you must not enter that road. It's a one-way street or restricted area",
+          "Proceed with caution",
+          "Only for large vehicles"
+        ],
+        correctAnswer: 1,
+        explanation: "A 'No Entry' sign means you must not enter that road. It's a one-way street or restricted area."
+      },
+      {
+        id: 8,
+        question: "What do warning signs look like?",
+        options: [
+          "Circular",
+          "Warning signs are triangular with a red border and a white or yellow background",
+          "Square",
+          "Rectangular"
+        ],
+        correctAnswer: 1,
+        explanation: "Warning signs are triangular with a red border and a white or yellow background."
+      },
+      {
+        id: 9,
+        question: "What does a 'No Overtaking' sign mean?",
+        options: [
+          "Overtake carefully",
+          "A 'No Overtaking' sign means you must not overtake other vehicles in that section of road",
+          "Only for large vehicles",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "A 'No Overtaking' sign means you must not overtake other vehicles in that section of road."
+      },
+      {
+        id: 10,
+        question: "What do direction signs show?",
+        options: [
+          "Speed limits",
+          "Direction signs show the route to destinations, distances, and junction information",
+          "Warnings",
+          "Prohibitions"
+        ],
+        correctAnswer: 1,
+        explanation: "Direction signs show the route to destinations, distances, and junction information."
+      },
+      {
+        id: 11,
+        question: "What does a 'Road Works' sign mean?",
+        options: [
+          "No special meaning",
+          "A 'Road Works' sign warns you of road works ahead. You should slow down and be prepared for delays",
+          "Speed up",
+          "Ignore it"
+        ],
+        correctAnswer: 1,
+        explanation: "A 'Road Works' sign warns you of road works ahead. You should slow down and be prepared for delays."
+      },
+      {
+        id: 12,
+        question: "What should you do when you see a warning sign?",
+        options: [
+          "Ignore it",
+          "You should slow down, be extra vigilant, and be prepared for the hazard ahead",
+          "Speed up",
+          "No action needed"
+        ],
+        correctAnswer: 1,
+        explanation: "You should slow down, be extra vigilant, and be prepared for the hazard ahead."
+      },
+      {
+        id: 13,
+        question: "What is the rule about obeying traffic signs?",
+        options: [
+          "Optional",
+          "You must obey all traffic signs. They're there for your safety and the safety of others",
+          "Only important ones",
+          "Only on motorways"
+        ],
+        correctAnswer: 1,
+        explanation: "You must obey all traffic signs. They're there for your safety and the safety of others."
+      },
+      {
+        id: 14,
+        question: "What do temporary signs indicate?",
+        options: [
+          "Permanent conditions",
+          "Temporary signs indicate temporary conditions such as road works, diversions, or temporary speed limits",
+          "Only speed limits",
+          "Only warnings"
+        ],
+        correctAnswer: 1,
+        explanation: "Temporary signs indicate temporary conditions such as road works, diversions, or temporary speed limits."
+      },
+      {
+        id: 15,
+        question: "What is the most important thing about traffic signs?",
+        options: [
+          "They're decorative",
+          "Always pay attention to traffic signs. They provide vital information about rules, hazards, and directions",
+          "Only important on motorways",
+          "Only in built-up areas"
+        ],
+        correctAnswer: 1,
+        explanation: "Always pay attention to traffic signs. They provide vital information about rules, hazards, and directions."
+      }
+    ],
+    7: [ // Road markings - 15 questions
+      {
+        id: 1,
+        question: "What does a solid white line mean?",
+        options: [
+          "You can cross it",
+          "A solid white line means you should not cross it unless it's safe and necessary, such as to avoid an obstruction",
+          "Always cross it",
+          "No specific meaning"
+        ],
+        correctAnswer: 1,
+        explanation: "A solid white line means you should not cross it unless it's safe and necessary, such as to avoid an obstruction."
+      },
+      {
+        id: 2,
+        question: "What does a broken white line mean?",
+        options: [
+          "Never cross it",
+          "A broken white line means you can cross it if it's safe to do so, such as when overtaking",
+          "Always stay in lane",
+          "No specific meaning"
+        ],
+        correctAnswer: 1,
+        explanation: "A broken white line means you can cross it if it's safe to do so, such as when overtaking."
+      },
+      {
+        id: 3,
+        question: "What do double white lines mean?",
+        options: [
+          "You can overtake",
+          "Double white lines mean you must not cross them to overtake. A solid line on your side means no overtaking",
+          "Always overtake",
+          "No specific meaning"
+        ],
+        correctAnswer: 1,
+        explanation: "Double white lines mean you must not cross them to overtake. A solid line on your side means no overtaking."
+      },
+      {
+        id: 4,
+        question: "What do yellow lines indicate?",
+        options: [
+          "Speed limits",
+          "Yellow lines indicate parking restrictions. Single yellow means no parking at certain times, double yellow means no parking at any time",
+          "Directions",
+          "Warnings"
+        ],
+        correctAnswer: 1,
+        explanation: "Yellow lines indicate parking restrictions. Single yellow means no parking at certain times, double yellow means no parking at any time."
+      },
+      {
+        id: 5,
+        question: "What does a yellow box junction mean?",
+        options: [
+          "You can wait in it",
+          "A yellow box junction means you must not enter it unless your exit is clear, except when turning right",
+          "Always enter it",
+          "No specific meaning"
+        ],
+        correctAnswer: 1,
+        explanation: "A yellow box junction means you must not enter it unless your exit is clear, except when turning right."
+      },
+      {
+        id: 6,
+        question: "What do white arrows on the road mean?",
+        options: [
+          "No specific meaning",
+          "White arrows indicate which direction you should travel in that lane",
+          "Speed limits",
+          "Warnings"
+        ],
+        correctAnswer: 1,
+        explanation: "White arrows indicate which direction you should travel in that lane."
+      },
+      {
+        id: 7,
+        question: "What does a 'Stop' line mean?",
+        options: [
+          "Slow down",
+          "A 'Stop' line means you must stop behind it, usually at traffic lights or junctions",
+          "Proceed with caution",
+          "No specific meaning"
+        ],
+        correctAnswer: 1,
+        explanation: "A 'Stop' line means you must stop behind it, usually at traffic lights or junctions."
+      },
+      {
+        id: 8,
+        question: "What do zigzag lines near crossings mean?",
+        options: [
+          "You can park",
+          "Zigzag lines near crossings mean you must not park, wait, or overtake in that area",
+          "You can wait",
+          "No specific meaning"
+        ],
+        correctAnswer: 1,
+        explanation: "Zigzag lines near crossings mean you must not park, wait, or overtake in that area."
+      },
+      {
+        id: 9,
+        question: "What does a hatched area mean?",
+        options: [
+          "You can enter it",
+          "A hatched area (diagonal stripes) means you should not enter it unless it's safe and necessary",
+          "Always enter it",
+          "No specific meaning"
+        ],
+        correctAnswer: 1,
+        explanation: "A hatched area (diagonal stripes) means you should not enter it unless it's safe and necessary."
+      },
+      {
+        id: 10,
+        question: "What do red lines indicate?",
+        options: [
+          "Parking allowed",
+          "Red lines indicate no stopping at any time, similar to double yellow lines but with stricter enforcement",
+          "Parking at certain times",
+          "No specific meaning"
+        ],
+        correctAnswer: 1,
+        explanation: "Red lines indicate no stopping at any time, similar to double yellow lines but with stricter enforcement."
+      },
+      {
+        id: 11,
+        question: "What is the rule about crossing solid white lines?",
+        options: [
+          "Always cross them",
+          "You should not cross solid white lines unless it's safe and necessary, such as to avoid an obstruction",
+          "Never cross them",
+          "No specific rules"
+        ],
+        correctAnswer: 1,
+        explanation: "You should not cross solid white lines unless it's safe and necessary, such as to avoid an obstruction."
+      },
+      {
+        id: 12,
+        question: "What should you do when you see road markings?",
+        options: [
+          "Ignore them",
+          "You should follow them. They provide important guidance about where you should position your vehicle",
+          "Only on motorways",
+          "Only in built-up areas"
+        ],
+        correctAnswer: 1,
+        explanation: "You should follow them. They provide important guidance about where you should position your vehicle."
+      },
+      {
+        id: 13,
+        question: "What do edge lines indicate?",
+        options: [
+          "Speed limits",
+          "Edge lines mark the edge of the carriageway and help you stay in your lane",
+          "Directions",
+          "Warnings"
+        ],
+        correctAnswer: 1,
+        explanation: "Edge lines mark the edge of the carriageway and help you stay in your lane."
+      },
+      {
+        id: 14,
+        question: "What is the most important thing about road markings?",
+        options: [
+          "They're decorative",
+          "Always follow road markings. They help keep traffic organized and safe",
+          "Only important on motorways",
+          "Only in built-up areas"
+        ],
+        correctAnswer: 1,
+        explanation: "Always follow road markings. They help keep traffic organized and safe."
+      },
+      {
+        id: 15,
+        question: "What should you do if road markings are unclear?",
+        options: [
+          "Ignore them",
+          "You should be extra cautious, follow general road rules, and position yourself safely",
+          "Speed up",
+          "No action needed"
+        ],
+        correctAnswer: 1,
+        explanation: "You should be extra cautious, follow general road rules, and position yourself safely if road markings are unclear."
+      }
+    ],
+    8: [ // Vehicle markings - 15 questions
+      {
+        id: 1,
+        question: "What are large goods vehicle rear markings?",
+        options: [
+          "Decorative",
+          "Large goods vehicle rear markings are reflective markings that help other drivers see large vehicles, especially at night",
+          "Only for decoration",
+          "No specific purpose"
+        ],
+        correctAnswer: 1,
+        explanation: "Large goods vehicle rear markings are reflective markings that help other drivers see large vehicles, especially at night."
+      },
+      {
+        id: 2,
+        question: "What do hazard warning plates show?",
+        options: [
+          "Nothing specific",
+          "Hazard warning plates show that a vehicle is carrying dangerous goods and indicate the type of hazard",
+          "Only for decoration",
+          "Only for large vehicles"
+        ],
+        correctAnswer: 1,
+        explanation: "Hazard warning plates show that a vehicle is carrying dangerous goods and indicate the type of hazard."
+      },
+      {
+        id: 3,
+        question: "What are projection markers used for?",
+        options: [
+          "Decoration",
+          "Projection markers indicate when a vehicle has parts that stick out, helping other drivers judge clearance",
+          "Only for large vehicles",
+          "No specific purpose"
+        ],
+        correctAnswer: 1,
+        explanation: "Projection markers indicate when a vehicle has parts that stick out, helping other drivers judge clearance."
+      },
+      {
+        id: 4,
+        question: "What should you do when you see a vehicle with hazard warning plates?",
+        options: [
+          "Ignore it",
+          "You should keep a safe distance, be extra cautious, and follow any specific instructions",
+          "Get closer",
+          "No special action"
+        ],
+        correctAnswer: 1,
+        explanation: "You should keep a safe distance, be extra cautious, and follow any specific instructions when you see a vehicle with hazard warning plates."
+      },
+      {
+        id: 5,
+        question: "What do L-plates indicate?",
+        options: [
+          "Nothing specific",
+          "L-plates indicate that a learner driver is driving the vehicle. You should be patient and give them extra space",
+          "Only for decoration",
+          "Only for motorcycles"
+        ],
+        correctAnswer: 1,
+        explanation: "L-plates indicate that a learner driver is driving the vehicle. You should be patient and give them extra space."
+      },
+      {
+        id: 6,
+        question: "What do P-plates indicate?",
+        options: [
+          "Nothing specific",
+          "P-plates indicate that a newly qualified driver is driving. They may be less experienced, so be considerate",
+          "Only for decoration",
+          "Only for motorcycles"
+        ],
+        correctAnswer: 1,
+        explanation: "P-plates indicate that a newly qualified driver is driving. They may be less experienced, so be considerate."
+      },
+      {
+        id: 7,
+        question: "What is the rule about displaying L-plates?",
+        options: [
+          "Optional",
+          "Learner drivers must display L-plates clearly on the front and rear of the vehicle",
+          "Only on the front",
+          "Only on the rear"
+        ],
+        correctAnswer: 1,
+        explanation: "Learner drivers must display L-plates clearly on the front and rear of the vehicle."
+      },
+      {
+        id: 8,
+        question: "What should you do when you see a vehicle with L-plates?",
+        options: [
+          "Ignore them",
+          "You should be patient, give them extra space, and be prepared for them to drive more cautiously",
+          "Get closer",
+          "No special action"
+        ],
+        correctAnswer: 1,
+        explanation: "You should be patient, give them extra space, and be prepared for them to drive more cautiously."
+      },
+      {
+        id: 9,
+        question: "What do disabled badges indicate?",
+        options: [
+          "Nothing specific",
+          "Disabled badges allow parking in designated spaces. You should respect these spaces and not use them unless you have a valid badge",
+          "Only for decoration",
+          "Only for certain vehicles"
+        ],
+        correctAnswer: 1,
+        explanation: "Disabled badges allow parking in designated spaces. You should respect these spaces and not use them unless you have a valid badge."
+      },
+      {
+        id: 10,
+        question: "What is the rule about vehicle markings and visibility?",
+        options: [
+          "No specific rules",
+          "Vehicle markings must be clean and visible. Dirty or obscured markings reduce safety",
+          "Only for large vehicles",
+          "Only at night"
+        ],
+        correctAnswer: 1,
+        explanation: "Vehicle markings must be clean and visible. Dirty or obscured markings reduce safety."
+      },
+      {
+        id: 11,
+        question: "What should you do when following a vehicle with projection markers?",
+        options: [
+          "Get closer",
+          "You should keep extra distance and be aware that parts of the vehicle may stick out further than expected",
+          "Ignore them",
+          "No special action"
+        ],
+        correctAnswer: 1,
+        explanation: "You should keep extra distance and be aware that parts of the vehicle may stick out further than expected."
+      },
+      {
+        id: 12,
+        question: "What do markings on emergency vehicles indicate?",
+        options: [
+          "Nothing specific",
+          "Markings on emergency vehicles help identify them and indicate their role, such as police, ambulance, or fire service",
+          "Only for decoration",
+          "Only for large vehicles"
+        ],
+        correctAnswer: 1,
+        explanation: "Markings on emergency vehicles help identify them and indicate their role, such as police, ambulance, or fire service."
+      },
+      {
+        id: 13,
+        question: "What is the rule about vehicle markings and safety?",
+        options: [
+          "No connection",
+          "Vehicle markings are there for safety. They help other road users see and understand vehicles better",
+          "Only for decoration",
+          "Only for large vehicles"
+        ],
+        correctAnswer: 1,
+        explanation: "Vehicle markings are there for safety. They help other road users see and understand vehicles better."
+      },
+      {
+        id: 14,
+        question: "What should you do if you see a vehicle with unusual markings?",
+        options: [
+          "Ignore it",
+          "You should be cautious, keep a safe distance, and be prepared for the vehicle to behave differently",
+          "Get closer",
+          "No special action"
+        ],
+        correctAnswer: 1,
+        explanation: "You should be cautious, keep a safe distance, and be prepared for the vehicle to behave differently."
+      },
+      {
+        id: 15,
+        question: "What is the most important thing about vehicle markings?",
+        options: [
+          "They're decorative",
+          "Vehicle markings help other road users see and understand your vehicle. Keep them visible and comply with regulations",
+          "Only for large vehicles",
+          "Only at night"
+        ],
+        correctAnswer: 1,
+        explanation: "Vehicle markings help other road users see and understand your vehicle. Keep them visible and comply with regulations."
+      }
+    ]
   },
-  // Day 3 PDFs - Placeholder structure (4 PDFs)
+  // Day 3 PDFs
   3: {
-    0: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 3 - Driving in Adverse Weather - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    1: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 3 - Safety and Your Vehicle - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    2: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 3 - Part Five Safety Margins - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    3: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 3 - Annex 6 - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    }))
+    0: [ // Driving in adverse weather conditions (Rules 226 to 237) - 15 questions
+      {
+        id: 1,
+        question: "What is Rule 226 about driving in wet weather?",
+        options: ["No special rules", "Rule 226 states that you should reduce speed, increase following distance, and use your lights in wet weather", "Only reduce speed", "Only use lights"],
+        correctAnswer: 1,
+        explanation: "Rule 226 states that you should reduce speed, increase following distance, and use your lights in wet weather."
+      },
+      {
+        id: 2,
+        question: "What should you do when driving in heavy rain?",
+        options: ["Drive normally", "You should reduce speed, use your headlights, increase following distance, and be prepared for reduced visibility", "Only reduce speed", "Only use headlights"],
+        correctAnswer: 1,
+        explanation: "You should reduce speed, use your headlights, increase following distance, and be prepared for reduced visibility in heavy rain."
+      },
+      {
+        id: 3,
+        question: "What is the rule about driving in icy conditions?",
+        options: ["Drive normally", "You should drive very slowly, avoid sudden movements, and be prepared for much longer stopping distances", "Only reduce speed", "Only avoid sudden movements"],
+        correctAnswer: 1,
+        explanation: "You should drive very slowly, avoid sudden movements, and be prepared for much longer stopping distances in icy conditions."
+      },
+      {
+        id: 4,
+        question: "What should you do when driving in snow?",
+        options: ["Drive normally", "You should drive slowly, use your lights, clear all windows and lights, and be prepared for very slippery conditions", "Only reduce speed", "Only use lights"],
+        correctAnswer: 1,
+        explanation: "You should drive slowly, use your lights, clear all windows and lights, and be prepared for very slippery conditions in snow."
+      },
+      {
+        id: 5,
+        question: "What is Rule 228 about driving in fog?",
+        options: ["No special rules", "Rule 228 states that you should use dipped headlights, reduce speed, and increase following distance in fog", "Only use headlights", "Only reduce speed"],
+        correctAnswer: 1,
+        explanation: "Rule 228 states that you should use dipped headlights, reduce speed, and increase following distance in fog."
+      },
+      {
+        id: 6,
+        question: "What should you do in foggy conditions?",
+        options: ["Drive normally", "You should use dipped headlights, reduce speed significantly, increase following distance, and be prepared to stop", "Only use headlights", "Only reduce speed"],
+        correctAnswer: 1,
+        explanation: "You should use dipped headlights, reduce speed significantly, increase following distance, and be prepared to stop in foggy conditions."
+      },
+      {
+        id: 7,
+        question: "What is the rule about using fog lights?",
+        options: ["Always use them", "You should only use fog lights when visibility is seriously reduced (less than 100m). Turn them off when visibility improves", "Never use them", "Only at night"],
+        correctAnswer: 1,
+        explanation: "You should only use fog lights when visibility is seriously reduced (less than 100m). Turn them off when visibility improves."
+      },
+      {
+        id: 8,
+        question: "What should you do when driving in windy weather?",
+        options: ["Drive normally", "You should be extra careful, especially when passing high-sided vehicles, and be prepared for sudden gusts", "Only reduce speed", "Only be careful"],
+        correctAnswer: 1,
+        explanation: "You should be extra careful, especially when passing high-sided vehicles, and be prepared for sudden gusts in windy weather."
+      },
+      {
+        id: 9,
+        question: "What is the rule about aquaplaning?",
+        options: ["No specific rules", "Aquaplaning occurs when water builds up between your tires and the road. Reduce speed and avoid sudden steering or braking", "Speed up", "Brake hard"],
+        correctAnswer: 1,
+        explanation: "Aquaplaning occurs when water builds up between your tires and the road. Reduce speed and avoid sudden steering or braking."
+      },
+      {
+        id: 10,
+        question: "What should you do if you start to aquaplane?",
+        options: ["Brake hard", "Ease off the accelerator, don't brake suddenly, and steer gently. Let the car slow down naturally", "Speed up", "Steer sharply"],
+        correctAnswer: 1,
+        explanation: "Ease off the accelerator, don't brake suddenly, and steer gently. Let the car slow down naturally if you start to aquaplane."
+      },
+      {
+        id: 11,
+        question: "What is the stopping distance in wet conditions?",
+        options: ["Same as dry", "Stopping distances are at least double in wet conditions compared to dry conditions", "Half of dry conditions", "No difference"],
+        correctAnswer: 1,
+        explanation: "Stopping distances are at least double in wet conditions compared to dry conditions."
+      },
+      {
+        id: 12,
+        question: "What should you do when visibility is reduced?",
+        options: ["Drive normally", "You should reduce speed, use appropriate lights, increase following distance, and be prepared to stop", "Only reduce speed", "Only use lights"],
+        correctAnswer: 1,
+        explanation: "You should reduce speed, use appropriate lights, increase following distance, and be prepared to stop when visibility is reduced."
+      },
+      {
+        id: 13,
+        question: "What is the rule about driving in strong winds?",
+        options: ["No special rules", "You should be extra careful, especially on exposed roads, and be prepared for vehicles being blown off course", "Only reduce speed", "Only be careful"],
+        correctAnswer: 1,
+        explanation: "You should be extra careful, especially on exposed roads, and be prepared for vehicles being blown off course in strong winds."
+      },
+      {
+        id: 14,
+        question: "What is the most important rule for adverse weather?",
+        options: ["Speed is most important", "Reduce your speed and increase your following distance. It's better to arrive late than not at all", "Only reduce speed", "Only increase distance"],
+        correctAnswer: 1,
+        explanation: "The most important rule is to reduce your speed and increase your following distance. It's better to arrive late than not at all."
+      },
+      {
+        id: 15,
+        question: "What should you remember about adverse weather?",
+        options: ["No special considerations", "Adverse weather significantly affects your ability to drive safely. Always adjust your driving accordingly", "Only affects visibility", "Only affects speed"],
+        correctAnswer: 1,
+        explanation: "Adverse weather significantly affects your ability to drive safely. Always adjust your driving accordingly."
+      }
+    ],
+    1: [ // Annex 6 – Vehicle maintenance, safety and security - 15 questions
+      {
+        id: 1,
+        question: "What should you check before every journey?",
+        options: ["Nothing", "You should check that lights, indicators, mirrors, windows, and number plates are clean and working", "Only the engine", "Only the fuel"],
+        correctAnswer: 1,
+        explanation: "You should check that lights, indicators, mirrors, windows, and number plates are clean and working before every journey."
+      },
+      {
+        id: 2,
+        question: "What is the rule about tire condition?",
+        options: ["No specific rules", "Tires must have at least 1.6mm of tread depth across the central three-quarters of the tire", "Any tread is fine", "Only check before long journeys"],
+        correctAnswer: 1,
+        explanation: "Tires must have at least 1.6mm of tread depth across the central three-quarters of the tire."
+      },
+      {
+        id: 3,
+        question: "What should you check regularly on your vehicle?",
+        options: ["Nothing", "You should check tire pressure and condition, lights, brakes, fluid levels, and that everything is working properly", "Only the engine", "Only the fuel"],
+        correctAnswer: 1,
+        explanation: "You should check tire pressure and condition, lights, brakes, fluid levels, and that everything is working properly."
+      },
+      {
+        id: 4,
+        question: "What is the rule about vehicle security?",
+        options: ["No specific rules", "You should always remove your keys and lock your vehicle when leaving it unattended", "Only at night", "Only in public places"],
+        correctAnswer: 1,
+        explanation: "You should always remove your keys and lock your vehicle when leaving it unattended."
+      },
+      {
+        id: 5,
+        question: "What should you do to prevent vehicle theft?",
+        options: ["Nothing", "Always lock your vehicle, remove valuables, park in well-lit areas, and use security devices if available", "Only lock it", "Only remove valuables"],
+        correctAnswer: 1,
+        explanation: "Always lock your vehicle, remove valuables, park in well-lit areas, and use security devices if available to prevent theft."
+      },
+      {
+        id: 6,
+        question: "What is the rule about vehicle maintenance?",
+        options: ["Optional", "You must ensure your vehicle is properly maintained and in good working order at all times", "Only before MOT", "Only when problems occur"],
+        correctAnswer: 1,
+        explanation: "You must ensure your vehicle is properly maintained and in good working order at all times."
+      },
+      {
+        id: 7,
+        question: "What is the rule about MOT certificates?",
+        options: ["Not required", "Your vehicle must have a valid MOT certificate if it's over 3 years old (or 1 year for some vehicles)", "Only for new vehicles", "Only for commercial vehicles"],
+        correctAnswer: 1,
+        explanation: "Your vehicle must have a valid MOT certificate if it's over 3 years old (or 1 year for some vehicles)."
+      },
+      {
+        id: 8,
+        question: "What should you do if your vehicle has a fault?",
+        options: ["Drive it anyway", "You should not drive it until the fault is fixed. Driving with a known fault is illegal and dangerous", "Only if serious", "Only on short journeys"],
+        correctAnswer: 1,
+        explanation: "You should not drive it until the fault is fixed. Driving with a known fault is illegal and dangerous."
+      },
+      {
+        id: 9,
+        question: "What is the rule about vehicle documentation?",
+        options: ["Not required", "You must have valid insurance, MOT (if required), and vehicle tax. Keep documents in the vehicle or with you", "Only insurance", "Only MOT"],
+        correctAnswer: 1,
+        explanation: "You must have valid insurance, MOT (if required), and vehicle tax. Keep documents in the vehicle or with you."
+      },
+      {
+        id: 10,
+        question: "What should you do to maintain vehicle safety?",
+        options: ["Nothing", "Have your vehicle serviced regularly, check it before journeys, and fix any problems immediately", "Only service it", "Only check before long journeys"],
+        correctAnswer: 1,
+        explanation: "Have your vehicle serviced regularly, check it before journeys, and fix any problems immediately to maintain vehicle safety."
+      },
+      {
+        id: 11,
+        question: "What should you do if a warning light comes on?",
+        options: ["Ignore it", "You should stop safely, check what the warning means, and don't continue driving if it's unsafe", "Only if serious", "Continue driving"],
+        correctAnswer: 1,
+        explanation: "You should stop safely, check what the warning means, and don't continue driving if it's unsafe."
+      },
+      {
+        id: 12,
+        question: "What is the most important thing about vehicle maintenance?",
+        options: ["Cost", "Regular maintenance and checks help prevent breakdowns and accidents. Don't ignore warning signs", "Only before MOT", "Only when problems occur"],
+        correctAnswer: 1,
+        explanation: "Regular maintenance and checks help prevent breakdowns and accidents. Don't ignore warning signs."
+      },
+      {
+        id: 13,
+        question: "What is the rule about driving with a known fault?",
+        options: ["Allowed if minor", "It's illegal and dangerous to drive with a known fault that affects safety or roadworthiness", "Only if serious", "Only on short journeys"],
+        correctAnswer: 1,
+        explanation: "It's illegal and dangerous to drive with a known fault that affects safety or roadworthiness."
+      },
+      {
+        id: 14,
+        question: "What should you do to keep your vehicle secure?",
+        options: ["Nothing", "Always lock it, remove valuables, park in safe places, and use additional security if available", "Only lock it", "Only remove valuables"],
+        correctAnswer: 1,
+        explanation: "Always lock it, remove valuables, park in safe places, and use additional security if available to keep your vehicle secure."
+      },
+      {
+        id: 15,
+        question: "What should you remember about vehicle safety?",
+        options: ["Not important", "Vehicle safety is your responsibility. Regular checks and maintenance help keep you and others safe", "Only before MOT", "Only when problems occur"],
+        correctAnswer: 1,
+        explanation: "Vehicle safety is your responsibility. Regular checks and maintenance help keep you and others safe."
+      }
+    ],
+    2: [ // Safety and your vehicle - 15 questions
+      {
+        id: 1,
+        question: "What should you check before driving?",
+        options: ["Nothing", "You should check that your vehicle is roadworthy, all lights work, mirrors are adjusted, and windows are clear", "Only the engine", "Only the fuel"],
+        correctAnswer: 1,
+        explanation: "You should check that your vehicle is roadworthy, all lights work, mirrors are adjusted, and windows are clear before driving."
+      },
+      {
+        id: 2,
+        question: "What is the rule about vehicle condition?",
+        options: ["Not important", "You must ensure your vehicle is in good condition, properly maintained, and safe to drive", "Only before MOT", "Only when problems occur"],
+        correctAnswer: 1,
+        explanation: "You must ensure your vehicle is in good condition, properly maintained, and safe to drive."
+      },
+      {
+        id: 3,
+        question: "What should you check on your tires?",
+        options: ["Nothing", "You should check tire pressure, tread depth (minimum 1.6mm), and that there are no cuts, bulges, or damage", "Only pressure", "Only tread depth"],
+        correctAnswer: 1,
+        explanation: "You should check tire pressure, tread depth (minimum 1.6mm), and that there are no cuts, bulges, or damage."
+      },
+      {
+        id: 4,
+        question: "What is the rule about lights?",
+        options: ["Not required", "All lights must be working, clean, and properly adjusted. Use them when required", "Only headlights", "Only at night"],
+        correctAnswer: 1,
+        explanation: "All lights must be working, clean, and properly adjusted. Use them when required."
+      },
+      {
+        id: 5,
+        question: "What should you check on your brakes?",
+        options: ["Nothing", "You should check that brakes work properly, brake fluid is at the correct level, and there are no leaks", "Only if they work", "Only fluid level"],
+        correctAnswer: 1,
+        explanation: "You should check that brakes work properly, brake fluid is at the correct level, and there are no leaks."
+      },
+      {
+        id: 6,
+        question: "What is the rule about mirrors?",
+        options: ["Not required", "Mirrors must be clean, properly adjusted, and give you a clear view behind and to the sides", "Only rear view", "Only side mirrors"],
+        correctAnswer: 1,
+        explanation: "Mirrors must be clean, properly adjusted, and give you a clear view behind and to the sides."
+      },
+      {
+        id: 7,
+        question: "What should you check on your windscreen?",
+        options: ["Nothing", "The windscreen must be clean, free from cracks or chips that obstruct your view, and wipers must work", "Only if clean", "Only wipers"],
+        correctAnswer: 1,
+        explanation: "The windscreen must be clean, free from cracks or chips that obstruct your view, and wipers must work."
+      },
+      {
+        id: 8,
+        question: "What is the most important safety check?",
+        options: ["Radio", "All safety checks are important, but ensuring brakes, steering, and tires are in good condition is critical", "Only brakes", "Only steering"],
+        correctAnswer: 1,
+        explanation: "All safety checks are important, but ensuring brakes, steering, and tires are in good condition is critical."
+      },
+      {
+        id: 9,
+        question: "What should you do before a long journey?",
+        options: ["Nothing", "Check your vehicle thoroughly, including tires, lights, fluids, and that everything is working properly", "Only check tires", "Only check lights"],
+        correctAnswer: 1,
+        explanation: "Check your vehicle thoroughly, including tires, lights, fluids, and that everything is working properly before a long journey."
+      },
+      {
+        id: 10,
+        question: "What is the rule about driving with faulty equipment?",
+        options: ["Allowed if minor", "It's illegal to drive with faulty equipment that affects safety, such as broken lights or brakes", "Only if serious", "Only on short journeys"],
+        correctAnswer: 1,
+        explanation: "It's illegal to drive with faulty equipment that affects safety, such as broken lights or brakes."
+      },
+      {
+        id: 11,
+        question: "What should you remember about vehicle safety?",
+        options: ["Not important", "Vehicle safety is your responsibility. Regular checks help prevent accidents and breakdowns", "Only before MOT", "Only when problems occur"],
+        correctAnswer: 1,
+        explanation: "Vehicle safety is your responsibility. Regular checks help prevent accidents and breakdowns."
+      },
+      {
+        id: 12,
+        question: "What should you do if you notice a problem with your vehicle?",
+        options: ["Ignore it", "You should have it checked and fixed as soon as possible. Don't ignore warning signs", "Only if serious", "Only before long journeys"],
+        correctAnswer: 1,
+        explanation: "You should have it checked and fixed as soon as possible. Don't ignore warning signs."
+      },
+      {
+        id: 13,
+        question: "What is the most important thing about vehicle condition?",
+        options: ["Cost", "Your vehicle must be safe and roadworthy. Never drive a vehicle that's unsafe", "Only before MOT", "Only when problems occur"],
+        correctAnswer: 1,
+        explanation: "Your vehicle must be safe and roadworthy. Never drive a vehicle that's unsafe."
+      },
+      {
+        id: 14,
+        question: "What is the rule about vehicle safety and the law?",
+        options: ["Not required", "You're legally required to ensure your vehicle is safe and roadworthy. Failure to do so can result in penalties", "Only before MOT", "Only when problems occur"],
+        correctAnswer: 1,
+        explanation: "You're legally required to ensure your vehicle is safe and roadworthy. Failure to do so can result in penalties."
+      },
+      {
+        id: 15,
+        question: "What should you do to maintain vehicle safety?",
+        options: ["Nothing", "Have regular services, check your vehicle before journeys, and fix any problems immediately", "Only service it", "Only check before long journeys"],
+        correctAnswer: 1,
+        explanation: "Have regular services, check your vehicle before journeys, and fix any problems immediately to maintain vehicle safety."
+      }
+    ],
+    3: [ // Safety margins - 15 questions
+      {
+        id: 1,
+        question: "What are safety margins?",
+        options: ["Speed limits", "Safety margins are the extra space and time you allow to react safely to hazards and unexpected situations", "Road markings", "Traffic signs"],
+        correctAnswer: 1,
+        explanation: "Safety margins are the extra space and time you allow to react safely to hazards and unexpected situations."
+      },
+      {
+        id: 2,
+        question: "What is the two-second rule?",
+        options: ["A rule about signaling", "A guide for following distance - stay at least two seconds behind the vehicle in front in good conditions", "A rule about speed", "A rule about parking"],
+        correctAnswer: 1,
+        explanation: "The two-second rule is a guide for following distance - stay at least two seconds behind the vehicle in front in good conditions."
+      },
+      {
+        id: 3,
+        question: "What should you do in wet conditions?",
+        options: ["Same as dry", "You should at least double your following distance to allow for longer stopping distances", "Only slightly increase", "No change needed"],
+        correctAnswer: 1,
+        explanation: "You should at least double your following distance to allow for longer stopping distances in wet conditions."
+      },
+      {
+        id: 4,
+        question: "What is the rule about safety margins and speed?",
+        options: ["No connection", "The faster you go, the larger your safety margin should be. Speed reduces your ability to react", "Same at all speeds", "Only at high speeds"],
+        correctAnswer: 1,
+        explanation: "The faster you go, the larger your safety margin should be. Speed reduces your ability to react."
+      },
+      {
+        id: 5,
+        question: "What should you do when following another vehicle?",
+        options: ["Stay close", "You should maintain a safe distance that allows you to stop safely if the vehicle in front stops suddenly", "Stay very close", "No specific distance"],
+        correctAnswer: 1,
+        explanation: "You should maintain a safe distance that allows you to stop safely if the vehicle in front stops suddenly."
+      },
+      {
+        id: 6,
+        question: "What is the rule about safety margins and weather?",
+        options: ["No difference", "In adverse weather, you should increase your safety margins significantly to allow for reduced visibility and longer stopping distances", "Only slightly increase", "No change needed"],
+        correctAnswer: 1,
+        explanation: "In adverse weather, you should increase your safety margins significantly to allow for reduced visibility and longer stopping distances."
+      },
+      {
+        id: 7,
+        question: "What should you do when approaching a hazard?",
+        options: ["Speed up", "You should reduce speed and increase your safety margin to give yourself time to react safely", "Maintain speed", "No change needed"],
+        correctAnswer: 1,
+        explanation: "You should reduce speed and increase your safety margin to give yourself time to react safely when approaching a hazard."
+      },
+      {
+        id: 8,
+        question: "What is the rule about safety margins and junctions?",
+        options: ["No special rules", "You should approach junctions slowly, be prepared to stop, and give yourself plenty of time to assess the situation", "Speed up", "No change needed"],
+        correctAnswer: 1,
+        explanation: "You should approach junctions slowly, be prepared to stop, and give yourself plenty of time to assess the situation."
+      },
+      {
+        id: 9,
+        question: "What should you do to maintain safety margins?",
+        options: ["Nothing", "Look ahead, anticipate hazards, reduce speed when necessary, and always leave enough space to react", "Only look ahead", "Only reduce speed"],
+        correctAnswer: 1,
+        explanation: "Look ahead, anticipate hazards, reduce speed when necessary, and always leave enough space to react to maintain safety margins."
+      },
+      {
+        id: 10,
+        question: "What is the most important thing about safety margins?",
+        options: ["Not important", "Safety margins give you time to react. Without them, you may not be able to stop or avoid hazards in time", "Only at high speeds", "Only in bad weather"],
+        correctAnswer: 1,
+        explanation: "Safety margins give you time to react. Without them, you may not be able to stop or avoid hazards in time."
+      },
+      {
+        id: 11,
+        question: "What should you do when your safety margin is reduced?",
+        options: ["Continue", "You should slow down and increase the distance to restore your safety margin", "Speed up", "No action needed"],
+        correctAnswer: 1,
+        explanation: "You should slow down and increase the distance to restore your safety margin when it's reduced."
+      },
+      {
+        id: 12,
+        question: "What is the rule about safety margins and overtaking?",
+        options: ["No special rules", "You should only overtake when you have a clear view ahead and enough space to complete the maneuver safely", "Always overtake", "No space needed"],
+        correctAnswer: 1,
+        explanation: "You should only overtake when you have a clear view ahead and enough space to complete the maneuver safely."
+      },
+      {
+        id: 13,
+        question: "What should you remember about safety margins?",
+        options: ["Not important", "Safety margins are not optional - they're essential for safe driving. Always maintain adequate margins", "Only at high speeds", "Only in bad weather"],
+        correctAnswer: 1,
+        explanation: "Safety margins are not optional - they're essential for safe driving. Always maintain adequate margins."
+      },
+      {
+        id: 14,
+        question: "What is the connection between speed and safety margins?",
+        options: ["No connection", "Higher speeds require larger safety margins because you need more time and space to stop safely", "Same at all speeds", "Only at high speeds"],
+        correctAnswer: 1,
+        explanation: "Higher speeds require larger safety margins because you need more time and space to stop safely."
+      },
+      {
+        id: 15,
+        question: "What is the rule about safety margins and defensive driving?",
+        options: ["No connection", "Defensive driving means maintaining good safety margins, anticipating hazards, and being prepared for the unexpected", "Only anticipating hazards", "Only being prepared"],
+        correctAnswer: 1,
+        explanation: "Defensive driving means maintaining good safety margins, anticipating hazards, and being prepared for the unexpected."
+      }
+    ]
   },
-  // Day 4 PDFs - Placeholder structure (4 PDFs)
+  // Day 4 PDFs
   4: {
-    0: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 4 - Using the Road - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    1: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 4 - Road Users Requiring Extra Care - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    2: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 4 - Part Seven Vulnerable Road Users - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    3: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 4 - Part Six Hazard Awareness - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    }))
+    0: [ // Using the road (Rules 159 to 203) - 15 questions
+      { id: 1, question: "What is Rule 159 about using the road?", options: ["No specific rules", "Rule 159 states that you should drive in the left-hand lane and only move to the right when overtaking or turning right", "Always use right lane", "Use any lane"], correctAnswer: 1, explanation: "Rule 159 states that you should drive in the left-hand lane and only move to the right when overtaking or turning right." },
+      { id: 2, question: "What should you do when overtaking?", options: ["Just overtake", "You should check mirrors and blind spots, signal, ensure you have enough space, and only overtake when it's safe", "Only signal", "Only check mirrors"], correctAnswer: 1, explanation: "You should check mirrors and blind spots, signal, ensure you have enough space, and only overtake when it's safe." },
+      { id: 3, question: "What should you do when being overtaken?", options: ["Speed up", "You should keep a steady speed, don't accelerate, and move left if safe to help the overtaking vehicle", "Slow down", "No action needed"], correctAnswer: 1, explanation: "You should keep a steady speed, don't accelerate, and move left if safe to help the overtaking vehicle." },
+      { id: 4, question: "What is Rule 170 about junctions?", options: ["No specific rules", "Rule 170 states that you should give way to traffic on the main road when emerging from a minor road", "Always have right of way", "Only on large junctions"], correctAnswer: 1, explanation: "Rule 170 states that you should give way to traffic on the main road when emerging from a minor road." },
+      { id: 5, question: "What should you do when approaching a junction?", options: ["Speed up", "You should slow down, check for traffic, give way where required, and only proceed when it's safe", "Just drive through", "Always have priority"], correctAnswer: 1, explanation: "You should slow down, check for traffic, give way where required, and only proceed when it's safe." },
+      { id: 6, question: "What is Rule 184 about roundabouts?", options: ["No specific rules", "Rule 184 states that you should give way to traffic from the right and choose the correct lane for your exit", "Always have right of way", "Only on large roundabouts"], correctAnswer: 1, explanation: "Rule 184 states that you should give way to traffic from the right and choose the correct lane for your exit." },
+      { id: 7, question: "What should you do when approaching a roundabout?", options: ["Speed up", "You should slow down, check for traffic from the right, choose the correct lane, and signal appropriately", "Just drive through", "Always have priority"], correctAnswer: 1, explanation: "You should slow down, check for traffic from the right, choose the correct lane, and signal appropriately." },
+      { id: 8, question: "What is Rule 191 about pedestrian crossings?", options: ["No specific rules", "Rule 191 states that you must give way to pedestrians who are crossing or waiting to cross at pedestrian crossings", "Pedestrians always wait", "Only at zebra crossings"], correctAnswer: 1, explanation: "Rule 191 states that you must give way to pedestrians who are crossing or waiting to cross at pedestrian crossings." },
+      { id: 9, question: "What should you do when approaching a pedestrian crossing?", options: ["Speed up", "You should slow down, be prepared to stop, and give way to pedestrians who are crossing or waiting to cross", "Just drive through", "Only if pedestrians are crossing"], correctAnswer: 1, explanation: "You should slow down, be prepared to stop, and give way to pedestrians who are crossing or waiting to cross." },
+      { id: 10, question: "What is Rule 200 about reversing?", options: ["No specific rules", "Rule 200 states that you should look all around, use mirrors, check blind spots, and reverse slowly and carefully", "Just reverse", "Only use mirrors"], correctAnswer: 1, explanation: "Rule 200 states that you should look all around, use mirrors, check blind spots, and reverse slowly and carefully." },
+      { id: 11, question: "What should you do when reversing?", options: ["Reverse quickly", "You should look all around, use mirrors, check blind spots, reverse slowly, and be prepared to stop", "Only use mirrors", "Only look behind"], correctAnswer: 1, explanation: "You should look all around, use mirrors, check blind spots, reverse slowly, and be prepared to stop." },
+      { id: 12, question: "What is the rule about using the road and lane discipline?", options: ["No specific rules", "You should keep to the left lane unless overtaking or turning right. Don't hog the middle or right lanes", "Always use right lane", "Use any lane"], correctAnswer: 1, explanation: "You should keep to the left lane unless overtaking or turning right. Don't hog the middle or right lanes." },
+      { id: 13, question: "What should you do when turning left?", options: ["Just turn", "You should signal left, check mirrors and blind spots, position correctly, and only turn when it's safe", "Only signal", "Only check mirrors"], correctAnswer: 1, explanation: "You should signal left, check mirrors and blind spots, position correctly, and only turn when it's safe." },
+      { id: 14, question: "What should you do when turning right?", options: ["Just turn", "You should signal right, check mirrors and blind spots, position correctly, and wait for a safe gap", "Only signal", "Only check mirrors"], correctAnswer: 1, explanation: "You should signal right, check mirrors and blind spots, position correctly, and wait for a safe gap." },
+      { id: 15, question: "What is the most important rule for using the road?", options: ["Speed is most important", "Always be aware of your surroundings, follow the rules, and be considerate of other road users", "Only follow speed limits", "No specific rules"], correctAnswer: 1, explanation: "The most important rule is to always be aware of your surroundings, follow the rules, and be considerate of other road users." }
+    ],
+    1: [ // Road users requiring extra care (Rules 204 to 225) - 15 questions
+      { id: 1, question: "What is Rule 204 about vulnerable road users?", options: ["No specific rules", "Rule 204 states that you should be extra careful around pedestrians, cyclists, motorcyclists, and other vulnerable road users", "Only pedestrians", "Only cyclists"], correctAnswer: 1, explanation: "Rule 204 states that you should be extra careful around pedestrians, cyclists, motorcyclists, and other vulnerable road users." },
+      { id: 2, question: "What should you do when approaching pedestrians?", options: ["Speed up", "You should slow down, be prepared to stop, and give them plenty of space, especially children and older people", "Just drive through", "Only if they're crossing"], correctAnswer: 1, explanation: "You should slow down, be prepared to stop, and give them plenty of space, especially children and older people." },
+      { id: 3, question: "What is Rule 206 about children?", options: ["No specific rules", "Rule 206 states that you should be extra careful around children, as they may not be aware of traffic and may act unpredictably", "Only at schools", "Only during school hours"], correctAnswer: 1, explanation: "Rule 206 states that you should be extra careful around children, as they may not be aware of traffic and may act unpredictably." },
+      { id: 4, question: "What should you do near schools?", options: ["Drive normally", "You should drive very slowly, be extra vigilant, and watch out for children who may run into the road", "Only during school hours", "Only if children are visible"], correctAnswer: 1, explanation: "You should drive very slowly, be extra vigilant, and watch out for children who may run into the road near schools." },
+      { id: 5, question: "What is Rule 208 about older people?", options: ["No specific rules", "Rule 208 states that you should be patient with older people, as they may move more slowly and need more time to cross", "Only at crossings", "Only during daylight"], correctAnswer: 1, explanation: "Rule 208 states that you should be patient with older people, as they may move more slowly and need more time to cross." },
+      { id: 6, question: "What should you do when passing cyclists?", options: ["Pass quickly", "You should give them plenty of space (at least 1.5m), be patient, and only overtake when it's safe", "Stay close", "No special action"], correctAnswer: 1, explanation: "You should give them plenty of space (at least 1.5m), be patient, and only overtake when it's safe." },
+      { id: 7, question: "What is Rule 211 about motorcyclists?", options: ["No specific rules", "Rule 211 states that you should be extra careful around motorcyclists, as they can be harder to see and are more vulnerable", "Only at junctions", "Only on motorways"], correctAnswer: 1, explanation: "Rule 211 states that you should be extra careful around motorcyclists, as they can be harder to see and are more vulnerable." },
+      { id: 8, question: "What should you do when passing horses?", options: ["Pass quickly", "You should slow down, pass wide and slow, be prepared to stop, and don't sound your horn", "Sound your horn", "Stay close"], correctAnswer: 1, explanation: "You should slow down, pass wide and slow, be prepared to stop, and don't sound your horn when passing horses." },
+      { id: 9, question: "What is Rule 215 about disabled people?", options: ["No specific rules", "Rule 215 states that you should be patient and considerate with disabled people, who may need more time or space", "Only at crossings", "Only during daylight"], correctAnswer: 1, explanation: "Rule 215 states that you should be patient and considerate with disabled people, who may need more time or space." },
+      { id: 10, question: "What should you do when you see a guide dog?", options: ["Ignore it", "You should be extra careful, as the person may not be able to see you. Give them plenty of time and space", "Speed up", "No special action"], correctAnswer: 1, explanation: "You should be extra careful, as the person may not be able to see you. Give them plenty of time and space." },
+      { id: 11, question: "What is the rule about vulnerable road users and speed?", options: ["No difference", "You should reduce your speed when near vulnerable road users to give yourself more time to react", "Only slightly reduce", "No change needed"], correctAnswer: 1, explanation: "You should reduce your speed when near vulnerable road users to give yourself more time to react." },
+      { id: 12, question: "What should you do when approaching a bus stop?", options: ["Speed up", "You should be prepared for people getting on or off the bus, and watch for pedestrians crossing in front of or behind the bus", "Just drive through", "Only if bus is there"], correctAnswer: 1, explanation: "You should be prepared for people getting on or off the bus, and watch for pedestrians crossing in front of or behind the bus." },
+      { id: 13, question: "What is the most important thing about vulnerable road users?", options: ["Not important", "They're more vulnerable than you in a car. Always give them extra care, space, and time", "Only at crossings", "Only during daylight"], correctAnswer: 1, explanation: "They're more vulnerable than you in a car. Always give them extra care, space, and time." },
+      { id: 14, question: "What should you do when passing a cyclist?", options: ["Pass quickly", "You should give them at least 1.5m of space, be patient, and only overtake when it's safe to do so", "Stay close", "No special action"], correctAnswer: 1, explanation: "You should give them at least 1.5m of space, be patient, and only overtake when it's safe to do so." },
+      { id: 15, question: "What is the most important rule for vulnerable road users?", options: ["Not important", "Always be extra careful around vulnerable road users. Their safety is your responsibility", "Only at crossings", "Only during daylight"], correctAnswer: 1, explanation: "Always be extra careful around vulnerable road users. Their safety is your responsibility." }
+    ],
+    2: [ // Hazard awareness - 15 questions
+      { id: 1, question: "What is hazard awareness?", options: ["Not important", "Hazard awareness is the ability to identify potential dangers on the road before they become a problem", "Only for experienced drivers", "Only in bad weather"], correctAnswer: 1, explanation: "Hazard awareness is the ability to identify potential dangers on the road before they become a problem." },
+      { id: 2, question: "What should you do to develop hazard awareness?", options: ["Nothing", "You should look well ahead, scan the road constantly, and anticipate what might happen next", "Only look ahead", "Only scan occasionally"], correctAnswer: 1, explanation: "You should look well ahead, scan the road constantly, and anticipate what might happen next." },
+      { id: 3, question: "What is the most important skill for hazard awareness?", options: ["Speed", "Looking ahead and anticipating potential hazards before they become dangerous", "Only looking ahead", "Only anticipating"], correctAnswer: 1, explanation: "Looking ahead and anticipating potential hazards before they become dangerous is the most important skill." },
+      { id: 4, question: "What should you look for when scanning the road?", options: ["Nothing specific", "You should look for other vehicles, pedestrians, cyclists, road conditions, signs, and anything that might be a hazard", "Only vehicles", "Only pedestrians"], correctAnswer: 1, explanation: "You should look for other vehicles, pedestrians, cyclists, road conditions, signs, and anything that might be a hazard." },
+      { id: 5, question: "What is the rule about hazard awareness and speed?", options: ["No connection", "You should reduce your speed when you identify a hazard to give yourself more time to react safely", "Only slightly reduce", "No change needed"], correctAnswer: 1, explanation: "You should reduce your speed when you identify a hazard to give yourself more time to react safely." },
+      { id: 6, question: "What should you do when you see a potential hazard?", options: ["Speed up", "You should reduce speed, increase your following distance, and be prepared to stop or take evasive action", "Maintain speed", "No change needed"], correctAnswer: 1, explanation: "You should reduce speed, increase your following distance, and be prepared to stop or take evasive action." },
+      { id: 7, question: "What is the connection between hazard awareness and safety?", options: ["No connection", "Good hazard awareness helps you avoid accidents by identifying dangers early and reacting in time", "Only for experienced drivers", "Only in bad weather"], correctAnswer: 1, explanation: "Good hazard awareness helps you avoid accidents by identifying dangers early and reacting in time." },
+      { id: 8, question: "What should you do to improve your hazard awareness?", options: ["Nothing", "Practice looking well ahead, scanning constantly, and thinking about what might happen next", "Only look ahead", "Only scan occasionally"], correctAnswer: 1, explanation: "Practice looking well ahead, scanning constantly, and thinking about what might happen next." },
+      { id: 9, question: "What is the rule about hazard awareness and mirrors?", options: ["No connection", "You should check your mirrors regularly, but your main focus should be looking ahead for hazards", "Only check mirrors", "Only look ahead"], correctAnswer: 1, explanation: "You should check your mirrors regularly, but your main focus should be looking ahead for hazards." },
+      { id: 10, question: "What should you remember about hazard awareness?", options: ["Not important", "Hazard awareness is a skill that improves with practice. Always be looking for potential dangers", "Only for experienced drivers", "Only in bad weather"], correctAnswer: 1, explanation: "Hazard awareness is a skill that improves with practice. Always be looking for potential dangers." },
+      { id: 11, question: "What is the most common type of hazard?", options: ["Weather", "Other road users, including vehicles, pedestrians, and cyclists, are the most common hazards", "Road conditions", "Traffic signs"], correctAnswer: 1, explanation: "Other road users, including vehicles, pedestrians, and cyclists, are the most common hazards." },
+      { id: 12, question: "What should you do when approaching a hazard?", options: ["Speed up", "You should reduce speed, increase your safety margin, and be prepared to stop or take evasive action", "Maintain speed", "No change needed"], correctAnswer: 1, explanation: "You should reduce speed, increase your safety margin, and be prepared to stop or take evasive action." },
+      { id: 13, question: "What is the rule about hazard awareness and junctions?", options: ["No special rules", "Junctions are common hazard locations. Always approach them slowly and be prepared for other vehicles or pedestrians", "Only large junctions", "Only during rush hour"], correctAnswer: 1, explanation: "Junctions are common hazard locations. Always approach them slowly and be prepared for other vehicles or pedestrians." },
+      { id: 14, question: "What should you do to anticipate hazards?", options: ["Nothing", "Look well ahead, think about what might happen, and be prepared for the unexpected", "Only look ahead", "Only think about it"], correctAnswer: 1, explanation: "Look well ahead, think about what might happen, and be prepared for the unexpected." },
+      { id: 15, question: "What is the most important thing about hazard awareness?", options: ["Not important", "The earlier you spot a hazard, the more time you have to react safely. Always look ahead", "Only for experienced drivers", "Only in bad weather"], correctAnswer: 1, explanation: "The earlier you spot a hazard, the more time you have to react safely. Always look ahead." }
+    ],
+    3: [ // Vulnerable road users - 15 questions
+      { id: 1, question: "Who are vulnerable road users?", options: ["Only pedestrians", "Vulnerable road users include pedestrians, cyclists, motorcyclists, horse riders, children, older people, and disabled people", "Only cyclists", "Only motorcyclists"], correctAnswer: 1, explanation: "Vulnerable road users include pedestrians, cyclists, motorcyclists, horse riders, children, older people, and disabled people." },
+      { id: 2, question: "Why are they called vulnerable?", options: ["They're slow", "They're called vulnerable because they're more likely to be seriously injured or killed in a collision with a vehicle", "They're small", "They're inexperienced"], correctAnswer: 1, explanation: "They're called vulnerable because they're more likely to be seriously injured or killed in a collision with a vehicle." },
+      { id: 3, question: "What should you do when near vulnerable road users?", options: ["Drive normally", "You should be extra careful, reduce speed, give them plenty of space, and be patient", "Only reduce speed", "Only be careful"], correctAnswer: 1, explanation: "You should be extra careful, reduce speed, give them plenty of space, and be patient." },
+      { id: 4, question: "What is the rule about vulnerable road users and speed?", options: ["No difference", "You should reduce your speed when near vulnerable road users to give yourself more time to react", "Only slightly reduce", "No change needed"], correctAnswer: 1, explanation: "You should reduce your speed when near vulnerable road users to give yourself more time to react." },
+      { id: 5, question: "What should you do when passing vulnerable road users?", options: ["Pass quickly", "You should give them plenty of space, be patient, and only pass when it's safe to do so", "Stay close", "No special action"], correctAnswer: 1, explanation: "You should give them plenty of space, be patient, and only pass when it's safe to do so." },
+      { id: 6, question: "What is the most important thing about vulnerable road users?", options: ["Not important", "They're people, not obstacles. Always treat them with respect and give them the care they need", "Only at crossings", "Only during daylight"], correctAnswer: 1, explanation: "They're people, not obstacles. Always treat them with respect and give them the care they need." },
+      { id: 7, question: "What should you do at pedestrian crossings?", options: ["Speed up", "You should slow down, be prepared to stop, and give way to pedestrians who are crossing or waiting to cross", "Just drive through", "Only if pedestrians are crossing"], correctAnswer: 1, explanation: "You should slow down, be prepared to stop, and give way to pedestrians who are crossing or waiting to cross." },
+      { id: 8, question: "What is the rule about vulnerable road users and junctions?", options: ["No special rules", "You should be extra careful at junctions, as vulnerable road users may be crossing or turning", "Only large junctions", "Only during rush hour"], correctAnswer: 1, explanation: "You should be extra careful at junctions, as vulnerable road users may be crossing or turning." },
+      { id: 9, question: "What should you do when you see a cyclist?", options: ["Ignore them", "You should give them at least 1.5m of space when passing, be patient, and only overtake when it's safe", "Stay close", "No special action"], correctAnswer: 1, explanation: "You should give them at least 1.5m of space when passing, be patient, and only overtake when it's safe." },
+      { id: 10, question: "What is the rule about vulnerable road users and awareness?", options: ["No special rules", "You should constantly be aware of vulnerable road users and be prepared to slow down or stop for them", "Only at crossings", "Only during daylight"], correctAnswer: 1, explanation: "You should constantly be aware of vulnerable road users and be prepared to slow down or stop for them." },
+      { id: 11, question: "What should you do when passing a horse?", options: ["Pass quickly", "You should slow down, pass wide and slow, be prepared to stop, and don't sound your horn", "Sound your horn", "Stay close"], correctAnswer: 1, explanation: "You should slow down, pass wide and slow, be prepared to stop, and don't sound your horn when passing a horse." },
+      { id: 12, question: "What is the most important rule for vulnerable road users?", options: ["Not important", "Always be extra careful around vulnerable road users. Their safety is your responsibility", "Only at crossings", "Only during daylight"], correctAnswer: 1, explanation: "Always be extra careful around vulnerable road users. Their safety is your responsibility." },
+      { id: 13, question: "What should you do near schools?", options: ["Drive normally", "You should drive very slowly, be extra vigilant, and watch out for children who may run into the road", "Only during school hours", "Only if children are visible"], correctAnswer: 1, explanation: "You should drive very slowly, be extra vigilant, and watch out for children who may run into the road near schools." },
+      { id: 14, question: "What is the rule about vulnerable road users and patience?", options: ["No special rules", "You should be patient with vulnerable road users, as they may need more time or space than other vehicles", "Only at crossings", "Only during daylight"], correctAnswer: 1, explanation: "You should be patient with vulnerable road users, as they may need more time or space than other vehicles." },
+      { id: 15, question: "What should you remember about vulnerable road users?", options: ["Not important", "They may not see you, may act unpredictably, and are more vulnerable in a collision. Always be extra careful", "Only at crossings", "Only during daylight"], correctAnswer: 1, explanation: "They may not see you, may act unpredictably, and are more vulnerable in a collision. Always be extra careful." }
+    ]
   },
-  // Day 5 PDFs - Placeholder structure (6 PDFs)
+  // Day 5 PDFs
   5: {
-    0: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 5 - Waiting and Parking - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    1: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 5 - Part Ten Vehicle Handling - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    2: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 5 - Part Nine Vehicle Motorcycle Handling - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    3: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 5 - General Rules Techniques Advice - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    4: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 5 - Other Types of Vehicles - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    5: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 5 - Annex 1 and 2 - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    }))
+    0: [ // Waiting and parking (Rules 238 to 252) - 15 questions
+      { id: 1, question: "What is Rule 238 about parking?", options: ["No specific rules", "Rule 238 states that you must not park where it would cause an obstruction or danger to other road users", "Only on roads", "Only in car parks"], correctAnswer: 1, explanation: "Rule 238 states that you must not park where it would cause an obstruction or danger to other road users." },
+      { id: 2, question: "Where should you not park?", options: ["Anywhere is fine", "You must not park on yellow or red lines, near junctions, on pedestrian crossings, or where it would cause an obstruction", "Only on yellow lines", "Only near junctions"], correctAnswer: 1, explanation: "You must not park on yellow or red lines, near junctions, on pedestrian crossings, or where it would cause an obstruction." },
+      { id: 3, question: "What is the rule about parking at night?", options: ["No special rules", "You should park in a well-lit area, facing the direction of traffic, and use parking lights if required", "Only in car parks", "Only on roads"], correctAnswer: 1, explanation: "You should park in a well-lit area, facing the direction of traffic, and use parking lights if required." },
+      { id: 4, question: "What should you do when parking on a hill?", options: ["No special action", "You should apply the handbrake, leave the car in gear (or 'Park' for automatics), and turn the wheels toward the kerb", "Only apply handbrake", "Only leave in gear"], correctAnswer: 1, explanation: "You should apply the handbrake, leave the car in gear (or 'Park' for automatics), and turn the wheels toward the kerb." },
+      { id: 5, question: "What is Rule 242 about parking distance from junctions?", options: ["No specific rules", "Rule 242 states that you must not park within 10 metres of a junction", "Only 5 metres", "Only 15 metres"], correctAnswer: 1, explanation: "Rule 242 states that you must not park within 10 metres of a junction." },
+      { id: 6, question: "What should you do when parking?", options: ["Park anywhere", "You should park in a safe, legal place, ensure your vehicle is secure, and not cause an obstruction", "Only in car parks", "Only on roads"], correctAnswer: 1, explanation: "You should park in a safe, legal place, ensure your vehicle is secure, and not cause an obstruction." },
+      { id: 7, question: "What is the rule about parking and visibility?", options: ["No specific rules", "You must not park where your vehicle would obstruct the view of other road users or create a hazard", "Only if blocking view", "Only if creating hazard"], correctAnswer: 1, explanation: "You must not park where your vehicle would obstruct the view of other road users or create a hazard." },
+      { id: 8, question: "What should you do when parking near a school?", options: ["Park normally", "You should be extra careful, park legally, and watch out for children who may run between parked cars", "Only during school hours", "Only if children are visible"], correctAnswer: 1, explanation: "You should be extra careful, park legally, and watch out for children who may run between parked cars." },
+      { id: 9, question: "What is Rule 245 about parking at night?", options: ["No specific rules", "Rule 245 states that on roads with speed limits over 30mph, you must use parking lights when parking at night", "Only on motorways", "Only in built-up areas"], correctAnswer: 1, explanation: "Rule 245 states that on roads with speed limits over 30mph, you must use parking lights when parking at night." },
+      { id: 10, question: "What is the rule about parking and double yellow lines?", options: ["Allowed at certain times", "Double yellow lines mean no parking at any time. You must not park there", "Only during day", "Only at night"], correctAnswer: 1, explanation: "Double yellow lines mean no parking at any time. You must not park there." },
+      { id: 11, question: "What should you do when parking on a single yellow line?", options: ["Always allowed", "You should check the times when parking is allowed. Single yellow lines usually have time restrictions", "Never allowed", "Only at night"], correctAnswer: 1, explanation: "You should check the times when parking is allowed. Single yellow lines usually have time restrictions." },
+      { id: 12, question: "What is the rule about parking and loading?", options: ["No restrictions", "You may stop to load or unload, but you must not park for longer than necessary", "Always allowed", "Never allowed"], correctAnswer: 1, explanation: "You may stop to load or unload, but you must not park for longer than necessary." },
+      { id: 13, question: "What should you do when parking near a fire station?", options: ["Park normally", "You should not park near a fire station entrance, as emergency vehicles need clear access", "Only if no fire engines", "Only during day"], correctAnswer: 1, explanation: "You should not park near a fire station entrance, as emergency vehicles need clear access." },
+      { id: 14, question: "What is the rule about parking and disabled spaces?", options: ["Anyone can park", "You must not park in disabled spaces unless you have a valid disabled badge displayed", "Only for short periods", "Only at certain times"], correctAnswer: 1, explanation: "You must not park in disabled spaces unless you have a valid disabled badge displayed." },
+      { id: 15, question: "What is the most important rule about parking?", options: ["Speed is most important", "Always park legally and safely. Don't cause an obstruction or create a hazard for other road users", "Only in car parks", "Only on roads"], correctAnswer: 1, explanation: "Always park legally and safely. Don't cause an obstruction or create a hazard for other road users." }
+    ],
+    1: [ // Annex 1 – You and your bicycle - 15 questions
+      { id: 1, question: "What equipment must a bicycle have?", options: ["Nothing required", "A bicycle must have working brakes, a bell or horn, and appropriate lights and reflectors when used at night", "Only brakes", "Only lights"], correctAnswer: 1, explanation: "A bicycle must have working brakes, a bell or horn, and appropriate lights and reflectors when used at night." },
+      { id: 2, question: "What should cyclists wear?", options: ["Regular clothes", "Cyclists should wear a helmet, bright or fluorescent clothing, and reflective materials for visibility", "Only a helmet", "No special requirements"], correctAnswer: 1, explanation: "Cyclists should wear a helmet, bright or fluorescent clothing, and reflective materials for visibility." },
+      { id: 3, question: "What is the rule about bicycle maintenance?", options: ["Not required", "You must ensure your bicycle is in good working order, with brakes, lights, and tires properly maintained", "Only brakes", "Only lights"], correctAnswer: 1, explanation: "You must ensure your bicycle is in good working order, with brakes, lights, and tires properly maintained." },
+      { id: 4, question: "What should cyclists check before riding?", options: ["Nothing", "Cyclists should check that brakes work, tires are inflated, lights work (if riding at night), and the bike is roadworthy", "Only brakes", "Only tires"], correctAnswer: 1, explanation: "Cyclists should check that brakes work, tires are inflated, lights work (if riding at night), and the bike is roadworthy." },
+      { id: 5, question: "What is the rule about cycling and visibility?", options: ["No special rules", "Cyclists should wear bright or fluorescent clothing and use lights at night to be visible to other road users", "Only at night", "Only in bad weather"], correctAnswer: 1, explanation: "Cyclists should wear bright or fluorescent clothing and use lights at night to be visible to other road users." },
+      { id: 6, question: "What should cyclists do to stay safe?", options: ["Nothing special", "Cyclists should wear appropriate safety equipment, follow the rules, and be aware of their surroundings", "Only wear helmet", "Only follow rules"], correctAnswer: 1, explanation: "Cyclists should wear appropriate safety equipment, follow the rules, and be aware of their surroundings." },
+      { id: 7, question: "What is the most important thing about cycling?", options: ["Speed", "Safety is the most important thing. Always wear a helmet, be visible, and follow the rules", "Only helmet", "Only visibility"], correctAnswer: 1, explanation: "Safety is the most important thing. Always wear a helmet, be visible, and follow the rules." },
+      { id: 8, question: "What is the rule about cycling and the law?", options: ["No rules apply", "Cyclists must follow the same rules as other road users and can be prosecuted for breaking the law", "Only some rules", "Only on roads"], correctAnswer: 1, explanation: "Cyclists must follow the same rules as other road users and can be prosecuted for breaking the law." },
+      { id: 9, question: "What should cyclists do to maintain their bicycle?", options: ["Nothing", "Cyclists should regularly check and maintain their bicycle, including brakes, tires, lights, and chain", "Only brakes", "Only tires"], correctAnswer: 1, explanation: "Cyclists should regularly check and maintain their bicycle, including brakes, tires, lights, and chain." },
+      { id: 10, question: "What is the connection between bicycle condition and safety?", options: ["No connection", "A well-maintained bicycle is safer and more reliable. Regular maintenance helps prevent accidents", "Only for reliability", "Only for speed"], correctAnswer: 1, explanation: "A well-maintained bicycle is safer and more reliable. Regular maintenance helps prevent accidents." },
+      { id: 11, question: "What should cyclists do before a journey?", options: ["Nothing", "Cyclists should check their bicycle is roadworthy, wear appropriate safety equipment, and plan their route", "Only check bike", "Only wear equipment"], correctAnswer: 1, explanation: "Cyclists should check their bicycle is roadworthy, wear appropriate safety equipment, and plan their route." },
+      { id: 12, question: "What is the rule about cycling and insurance?", options: ["Required", "Cyclists are not required to have insurance, but it's recommended for protection against accidents and theft", "Only for racing", "Only for commuting"], correctAnswer: 1, explanation: "Cyclists are not required to have insurance, but it's recommended for protection against accidents and theft." },
+      { id: 13, question: "What should cyclists remember about bicycle equipment?", options: ["Not important", "Proper equipment, including lights, reflectors, and a bell, is essential for safe cycling", "Only lights", "Only reflectors"], correctAnswer: 1, explanation: "Proper equipment, including lights, reflectors, and a bell, is essential for safe cycling." },
+      { id: 14, question: "What is the most important safety equipment for cyclists?", options: ["Lights", "A helmet is the most important safety equipment, as it protects the head in case of an accident", "Reflectors", "Bell"], correctAnswer: 1, explanation: "A helmet is the most important safety equipment, as it protects the head in case of an accident." },
+      { id: 15, question: "What is the most important thing for cyclists?", options: ["Speed", "Safety is the most important thing. Always wear a helmet, be visible, and follow all road rules", "Only helmet", "Only visibility"], correctAnswer: 1, explanation: "Safety is the most important thing. Always wear a helmet, be visible, and follow all road rules." }
+    ],
+    2: [ // Annex 2 – Motorcycle licence requirements - 15 questions
+      { id: 1, question: "What are the different motorcycle licence categories?", options: ["Only one category", "There are different categories (AM, A1, A2, A) depending on the size and power of the motorcycle", "Only two categories", "Only three categories"], correctAnswer: 1, explanation: "There are different categories (AM, A1, A2, A) depending on the size and power of the motorcycle." },
+      { id: 2, question: "What is the minimum age for a motorcycle licence?", options: ["18", "The minimum age varies by category, starting at 16 for mopeds (AM category)", "17", "19"], correctAnswer: 1, explanation: "The minimum age varies by category, starting at 16 for mopeds (AM category)." },
+      { id: 3, question: "What should you do to get a motorcycle licence?", options: ["Just apply", "You need to pass a theory test and practical test, and meet the age and medical requirements for your chosen category", "Only theory test", "Only practical test"], correctAnswer: 1, explanation: "You need to pass a theory test and practical test, and meet the age and medical requirements for your chosen category." },
+      { id: 4, question: "What is the rule about motorcycle licence progression?", options: ["No progression needed", "You may need to start with a lower category and progress to higher categories after gaining experience", "Start with highest", "No progression"], correctAnswer: 1, explanation: "You may need to start with a lower category and progress to higher categories after gaining experience." },
+      { id: 5, question: "What should you remember about motorcycle licences?", options: ["Not important", "You must have the correct licence category for the motorcycle you're riding. Riding without the correct licence is illegal", "Only for large bikes", "Only for small bikes"], correctAnswer: 1, explanation: "You must have the correct licence category for the motorcycle you're riding. Riding without the correct licence is illegal." },
+      { id: 6, question: "What is the connection between licence category and motorcycle size?", options: ["No connection", "Different licence categories allow you to ride different sizes and powers of motorcycles", "Same for all", "Only for large bikes"], correctAnswer: 1, explanation: "Different licence categories allow you to ride different sizes and powers of motorcycles." },
+      { id: 7, question: "What should you do if you want to ride a larger motorcycle?", options: ["Just ride it", "You may need to take additional tests and progress through the licence categories", "No tests needed", "Only one test"], correctAnswer: 1, explanation: "You may need to take additional tests and progress through the licence categories." },
+      { id: 8, question: "What is the most important thing about motorcycle licences?", options: ["Not important", "You must have a valid licence for the category of motorcycle you're riding. It's illegal to ride without the correct licence", "Only for large bikes", "Only for small bikes"], correctAnswer: 1, explanation: "You must have a valid licence for the category of motorcycle you're riding. It's illegal to ride without the correct licence." },
+      { id: 9, question: "What is the rule about motorcycle licences and age?", options: ["No age requirement", "You must meet the minimum age requirement for the licence category you're applying for", "Only 18+", "Only 21+"], correctAnswer: 1, explanation: "You must meet the minimum age requirement for the licence category you're applying for." },
+      { id: 10, question: "What should you do to maintain your motorcycle licence?", options: ["Nothing", "You should keep your licence valid, follow the rules, and not accumulate too many penalty points", "Only follow rules", "Only avoid points"], correctAnswer: 1, explanation: "You should keep your licence valid, follow the rules, and not accumulate too many penalty points." },
+      { id: 11, question: "What is the connection between licence and safety?", options: ["No connection", "Having the correct licence ensures you have the skills and knowledge to ride safely", "Only for skills", "Only for knowledge"], correctAnswer: 1, explanation: "Having the correct licence ensures you have the skills and knowledge to ride safely." },
+      { id: 12, question: "What should you remember about motorcycle licence categories?", options: ["Not important", "Different categories allow different motorcycles. Make sure you have the correct category for your bike", "All same", "Only for large bikes"], correctAnswer: 1, explanation: "Different categories allow different motorcycles. Make sure you have the correct category for your bike." },
+      { id: 13, question: "What is the rule about motorcycle licences and insurance?", options: ["No connection", "You must have valid insurance, and your insurance may be invalid if you don't have the correct licence", "Only insurance", "Only licence"], correctAnswer: 1, explanation: "You must have valid insurance, and your insurance may be invalid if you don't have the correct licence." },
+      { id: 14, question: "What should you remember about licence progression?", options: ["Not important", "Licence progression allows you to gain experience before moving to more powerful motorcycles", "No progression", "Start with highest"], correctAnswer: 1, explanation: "Licence progression allows you to gain experience before moving to more powerful motorcycles." },
+      { id: 15, question: "What should you do to ride legally?", options: ["Just ride", "Ensure you have a valid licence for your motorcycle category, valid insurance, and that you follow all road rules", "Only licence", "Only insurance"], correctAnswer: 1, explanation: "Ensure you have a valid licence for your motorcycle category, valid insurance, and that you follow all road rules." }
+    ],
+    3: [ // Other types of vehicles - 15 questions
+      { id: 1, question: "What are other types of vehicles?", options: ["Only cars", "Other types of vehicles include buses, lorries, trams, and other large or specialized vehicles", "Only buses", "Only lorries"], correctAnswer: 1, explanation: "Other types of vehicles include buses, lorries, trams, and other large or specialized vehicles." },
+      { id: 2, question: "What should you do when following a large vehicle?", options: ["Stay close", "You should keep a safe distance, as large vehicles have larger blind spots and need more space to stop", "Stay very close", "No specific distance"], correctAnswer: 1, explanation: "You should keep a safe distance, as large vehicles have larger blind spots and need more space to stop." },
+      { id: 3, question: "What is the rule about overtaking large vehicles?", options: ["Always overtake", "You should only overtake when it's safe, give them plenty of space, and be aware they may need more room", "Never overtake", "Only on motorways"], correctAnswer: 1, explanation: "You should only overtake when it's safe, give them plenty of space, and be aware they may need more room." },
+      { id: 4, question: "What should you do when a large vehicle is turning?", options: ["Pass on inside", "You should not try to pass on the inside, as large vehicles need more space to turn and may not see you", "Speed up", "Stay close"], correctAnswer: 1, explanation: "You should not try to pass on the inside, as large vehicles need more space to turn and may not see you." },
+      { id: 5, question: "What is the rule about trams?", options: ["No special rules", "Trams have priority on tram tracks. You must give way to trams and not drive on tram tracks", "Only at stops", "Only on tracks"], correctAnswer: 1, explanation: "Trams have priority on tram tracks. You must give way to trams and not drive on tram tracks." },
+      { id: 6, question: "What should you do when approaching a tram stop?", options: ["Speed up", "You should slow down and be prepared to stop, as passengers may be getting on or off the tram", "Just drive through", "Only if tram is there"], correctAnswer: 1, explanation: "You should slow down and be prepared to stop, as passengers may be getting on or off the tram." },
+      { id: 7, question: "What is the rule about buses?", options: ["No special rules", "You should give way to buses pulling out from bus stops, and be careful when passing buses", "Only at stops", "Only when pulling out"], correctAnswer: 1, explanation: "You should give way to buses pulling out from bus stops, and be careful when passing buses." },
+      { id: 8, question: "What should you do when a bus is indicating to pull out?", options: ["Speed up", "You should slow down and give way to the bus, as it has priority when leaving a bus stop", "Just drive through", "Only if convenient"], correctAnswer: 1, explanation: "You should slow down and give way to the bus, as it has priority when leaving a bus stop." },
+      { id: 9, question: "What is the rule about large vehicles and roundabouts?", options: ["No special rules", "Large vehicles may need to use more space on roundabouts. Be patient and give them room", "Only large roundabouts", "Only during rush hour"], correctAnswer: 1, explanation: "Large vehicles may need to use more space on roundabouts. Be patient and give them room." },
+      { id: 10, question: "What should you do when passing a large vehicle?", options: ["Pass quickly", "You should only pass when it's safe, give them plenty of space, and be aware of their blind spots", "Stay close", "No special action"], correctAnswer: 1, explanation: "You should only pass when it's safe, give them plenty of space, and be aware of their blind spots." },
+      { id: 11, question: "What is the most important thing about other types of vehicles?", options: ["Not important", "They're larger and need more space. Always give them extra room and be patient", "Only on motorways", "Only in built-up areas"], correctAnswer: 1, explanation: "They're larger and need more space. Always give them extra room and be patient." },
+      { id: 12, question: "What should you remember about large vehicles?", options: ["Not important", "Large vehicles have larger blind spots, need more space to stop, and may need more room to turn", "Only blind spots", "Only stopping distance"], correctAnswer: 1, explanation: "Large vehicles have larger blind spots, need more space to stop, and may need more room to turn." },
+      { id: 13, question: "What is the rule about other types of vehicles and awareness?", options: ["No special rules", "You should be aware of other types of vehicles and adjust your driving accordingly", "Only on motorways", "Only in built-up areas"], correctAnswer: 1, explanation: "You should be aware of other types of vehicles and adjust your driving accordingly." },
+      { id: 14, question: "What should you do to stay safe around other types of vehicles?", options: ["Nothing", "Keep a safe distance, be patient, give them plenty of space, and be aware of their limitations", "Only distance", "Only patience"], correctAnswer: 1, explanation: "Keep a safe distance, be patient, give them plenty of space, and be aware of their limitations." },
+      { id: 15, question: "What should you remember about trams?", options: ["Not important", "Trams have priority and cannot steer to avoid you. Always give way to trams", "Only at stops", "Only on tracks"], correctAnswer: 1, explanation: "Trams have priority and cannot steer to avoid you. Always give way to trams." }
+    ],
+    4: [ // Vehicle handling - 15 questions
+      { id: 1, question: "What is vehicle handling?", options: ["Not important", "Vehicle handling is your ability to control your vehicle safely in different situations and conditions", "Only in good weather", "Only on good roads"], correctAnswer: 1, explanation: "Vehicle handling is your ability to control your vehicle safely in different situations and conditions." },
+      { id: 2, question: "What should you do to handle your vehicle safely?", options: ["Nothing", "You should drive smoothly, avoid sudden movements, and adjust your driving to the road conditions", "Only smoothly", "Only avoid movements"], correctAnswer: 1, explanation: "You should drive smoothly, avoid sudden movements, and adjust your driving to the road conditions." },
+      { id: 3, question: "What is the rule about vehicle handling and speed?", options: ["No connection", "You should adjust your speed to match your ability to handle the vehicle and the road conditions", "Always same speed", "Only on motorways"], correctAnswer: 1, explanation: "You should adjust your speed to match your ability to handle the vehicle and the road conditions." },
+      { id: 4, question: "What should you do when cornering?", options: ["Speed up", "You should slow down before the corner, steer smoothly, and accelerate gently as you exit", "Maintain speed", "Brake hard"], correctAnswer: 1, explanation: "You should slow down before the corner, steer smoothly, and accelerate gently as you exit." },
+      { id: 5, question: "What is the rule about vehicle handling and weather?", options: ["No difference", "In poor weather, you need to handle your vehicle more carefully, reducing speed and avoiding sudden movements", "Only slightly careful", "No change needed"], correctAnswer: 1, explanation: "In poor weather, you need to handle your vehicle more carefully, reducing speed and avoiding sudden movements." },
+      { id: 6, question: "What should you do when braking?", options: ["Brake hard", "You should brake smoothly and progressively, avoiding sudden or harsh braking that could cause skidding", "Brake suddenly", "Brake late"], correctAnswer: 1, explanation: "You should brake smoothly and progressively, avoiding sudden or harsh braking that could cause skidding." },
+      { id: 7, question: "What is the rule about vehicle handling and steering?", options: ["No specific rules", "You should steer smoothly and avoid sudden steering movements that could cause loss of control", "Steer sharply", "Steer quickly"], correctAnswer: 1, explanation: "You should steer smoothly and avoid sudden steering movements that could cause loss of control." },
+      { id: 8, question: "What should you do when accelerating?", options: ["Accelerate quickly", "You should accelerate smoothly and progressively, especially in poor conditions", "Accelerate suddenly", "Accelerate hard"], correctAnswer: 1, explanation: "You should accelerate smoothly and progressively, especially in poor conditions." },
+      { id: 9, question: "What is the most important thing about vehicle handling?", options: ["Speed", "Smooth, controlled movements are essential. Avoid sudden acceleration, braking, or steering", "Only smooth", "Only controlled"], correctAnswer: 1, explanation: "Smooth, controlled movements are essential. Avoid sudden acceleration, braking, or steering." },
+      { id: 10, question: "What should you do to improve your vehicle handling?", options: ["Nothing", "Practice smooth driving, learn how your vehicle responds, and adjust your driving to conditions", "Only practice", "Only learn"], correctAnswer: 1, explanation: "Practice smooth driving, learn how your vehicle responds, and adjust your driving to conditions." },
+      { id: 11, question: "What should you do when your vehicle starts to skid?", options: ["Brake hard", "You should ease off the accelerator, steer gently in the direction of the skid, and avoid braking suddenly", "Steer sharply", "Accelerate"], correctAnswer: 1, explanation: "You should ease off the accelerator, steer gently in the direction of the skid, and avoid braking suddenly." },
+      { id: 12, question: "What is the connection between vehicle handling and safety?", options: ["No connection", "Good vehicle handling helps you maintain control and avoid accidents", "Only control", "Only accidents"], correctAnswer: 1, explanation: "Good vehicle handling helps you maintain control and avoid accidents." },
+      { id: 13, question: "What should you remember about vehicle handling?", options: ["Not important", "Smooth, controlled movements are key. Avoid sudden actions that could cause loss of control", "Only smooth", "Only controlled"], correctAnswer: 1, explanation: "Smooth, controlled movements are key. Avoid sudden actions that could cause loss of control." },
+      { id: 14, question: "What is the rule about vehicle handling and experience?", options: ["No connection", "Vehicle handling improves with experience. Practice in safe conditions to build your skills", "No improvement", "Only for experts"], correctAnswer: 1, explanation: "Vehicle handling improves with experience. Practice in safe conditions to build your skills." },
+      { id: 15, question: "What is the most important skill for vehicle handling?", options: ["Speed", "Smooth, controlled driving is the most important skill. Avoid sudden movements", "Only smooth", "Only controlled"], correctAnswer: 1, explanation: "Smooth, controlled driving is the most important skill. Avoid sudden movements." }
+    ]
   },
-  // Day 6 PDFs - Placeholder structure (3 PDFs)
+  // Day 6 PDFs
   6: {
-    0: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 6 - Motorways - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    1: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 6 - Summary Motorway Rules - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    2: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 6 - Essential Documents - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    }))
+    0: [ // Motorways (Rules 253 to 274) - 15 questions
+      { id: 1, question: "What is Rule 253 about motorways?", options: ["No specific rules", "Rule 253 states that motorways are high-speed roads with specific rules that must be followed", "Only speed limits", "Only lane discipline"], correctAnswer: 1, explanation: "Rule 253 states that motorways are high-speed roads with specific rules that must be followed." },
+      { id: 2, question: "What should you do when joining a motorway?", options: ["Join slowly", "You should use the slip road to build up speed, check for traffic, and merge safely into the left lane", "Join quickly", "Join at any speed"], correctAnswer: 1, explanation: "You should use the slip road to build up speed, check for traffic, and merge safely into the left lane." },
+      { id: 3, question: "What is the rule about motorway lane discipline?", options: ["Use any lane", "You should keep to the left lane unless overtaking. Don't hog the middle or right lanes", "Always use right lane", "Use middle lane"], correctAnswer: 1, explanation: "You should keep to the left lane unless overtaking. Don't hog the middle or right lanes." },
+      { id: 4, question: "What should you do when driving on a motorway?", options: ["Use any lane", "You should keep to the left lane, only move right to overtake, and return to the left lane after overtaking", "Stay in right lane", "Stay in middle lane"], correctAnswer: 1, explanation: "You should keep to the left lane, only move right to overtake, and return to the left lane after overtaking." },
+      { id: 5, question: "What is Rule 259 about motorway speed?", options: ["No speed limit", "Rule 259 states that you must not exceed the speed limit, which is usually 70mph for cars on motorways", "Always 70mph", "No limit"], correctAnswer: 1, explanation: "Rule 259 states that you must not exceed the speed limit, which is usually 70mph for cars on motorways." },
+      { id: 6, question: "What should you do when overtaking on a motorway?", options: ["Just overtake", "You should check mirrors and blind spots, signal, move to the right lane, overtake, then return to the left lane", "Only signal", "Only check mirrors"], correctAnswer: 1, explanation: "You should check mirrors and blind spots, signal, move to the right lane, overtake, then return to the left lane." },
+      { id: 7, question: "What is the rule about stopping on a motorway?", options: ["Allowed anywhere", "You must not stop on a motorway except in an emergency. Use the hard shoulder only if you break down", "Only at services", "Only at junctions"], correctAnswer: 1, explanation: "You must not stop on a motorway except in an emergency. Use the hard shoulder only if you break down." },
+      { id: 8, question: "What should you do if you break down on a motorway?", options: ["Stay in lane", "You should pull onto the hard shoulder, switch on hazard lights, exit the vehicle from the left side, and call for help", "Stay in vehicle", "Walk on motorway"], correctAnswer: 1, explanation: "You should pull onto the hard shoulder, switch on hazard lights, exit the vehicle from the left side, and call for help." },
+      { id: 9, question: "What is Rule 264 about motorway signals?", options: ["No specific rules", "Rule 264 states that you must obey motorway signals, which may show speed limits, lane closures, or warnings", "Only speed limits", "Only warnings"], correctAnswer: 1, explanation: "Rule 264 states that you must obey motorway signals, which may show speed limits, lane closures, or warnings." },
+      { id: 10, question: "What does a red X above a motorway lane mean?", options: ["Speed limit", "A red X means the lane is closed. You must not drive in that lane", "Lane open", "Warning only"], correctAnswer: 1, explanation: "A red X means the lane is closed. You must not drive in that lane." },
+      { id: 11, question: "What should you do when leaving a motorway?", options: ["Leave quickly", "You should move into the left lane in good time, use the slip road, and reduce your speed as you leave", "Stay in right lane", "Leave at any speed"], correctAnswer: 1, explanation: "You should move into the left lane in good time, use the slip road, and reduce your speed as you leave." },
+      { id: 12, question: "What is the rule about motorways and learner drivers?", options: ["Always allowed", "Learner drivers are not allowed on motorways unless they're with an approved instructor in a dual-control car", "Only with supervisor", "Only after test"], correctAnswer: 1, explanation: "Learner drivers are not allowed on motorways unless they're with an approved instructor in a dual-control car." },
+      { id: 13, question: "What should you do when approaching a motorway junction?", options: ["Speed up", "You should check the signs, move into the correct lane in good time, and signal appropriately", "Just drive through", "Only check signs"], correctAnswer: 1, explanation: "You should check the signs, move into the correct lane in good time, and signal appropriately." },
+      { id: 14, question: "What is the rule about motorways and following distance?", options: ["No specific distance", "You should maintain a safe following distance, at least two seconds, and more in poor conditions", "Only one second", "Only in good conditions"], correctAnswer: 1, explanation: "You should maintain a safe following distance, at least two seconds, and more in poor conditions." },
+      { id: 15, question: "What is the most important rule for motorways?", options: ["Speed is most important", "Keep to the left unless overtaking, maintain safe distances, and follow all motorway rules and signals", "Only lane discipline", "Only distances"], correctAnswer: 1, explanation: "Keep to the left unless overtaking, maintain safe distances, and follow all motorway rules and signals." }
+    ],
+    1: [ // Annex 3 – Motor vehicle documentation and learner driver requirements - 15 questions
+      { id: 1, question: "What documents must you have when driving?", options: ["Nothing", "You must have a valid driving licence, valid insurance, valid MOT (if required), and valid vehicle tax", "Only licence", "Only insurance"], correctAnswer: 1, explanation: "You must have a valid driving licence, valid insurance, valid MOT (if required), and valid vehicle tax." },
+      { id: 2, question: "What is the rule about driving licences?", options: ["Not required", "You must have a valid driving licence for the category of vehicle you're driving. It's illegal to drive without one", "Only for large vehicles", "Only for commercial vehicles"], correctAnswer: 1, explanation: "You must have a valid driving licence for the category of vehicle you're driving. It's illegal to drive without one." },
+      { id: 3, question: "What should you do if you're a learner driver?", options: ["Drive normally", "You must display L-plates, be supervised by a qualified driver, and follow all learner driver restrictions", "Only L-plates", "Only supervision"], correctAnswer: 1, explanation: "You must display L-plates, be supervised by a qualified driver, and follow all learner driver restrictions." },
+      { id: 4, question: "What is the rule about insurance?", options: ["Not required", "You must have valid insurance that covers you to drive the vehicle. Driving without insurance is illegal", "Only for new drivers", "Only for commercial vehicles"], correctAnswer: 1, explanation: "You must have valid insurance that covers you to drive the vehicle. Driving without insurance is illegal." },
+      { id: 5, question: "What should you do about vehicle tax?", options: ["Not required", "You must have valid vehicle tax. You can be fined and your vehicle can be clamped if you don't have tax", "Only for new vehicles", "Only for commercial vehicles"], correctAnswer: 1, explanation: "You must have valid vehicle tax. You can be fined and your vehicle can be clamped if you don't have tax." },
+      { id: 6, question: "What is the rule about MOT certificates?", options: ["Not required", "Your vehicle must have a valid MOT certificate if it's over 3 years old (or 1 year for some vehicles)", "Only for new vehicles", "Only for commercial vehicles"], correctAnswer: 1, explanation: "Your vehicle must have a valid MOT certificate if it's over 3 years old (or 1 year for some vehicles)." },
+      { id: 7, question: "What should you do with your documents?", options: ["Keep at home", "You should keep your documents in the vehicle or with you, and be able to produce them if asked by the police", "Only in vehicle", "Only with you"], correctAnswer: 1, explanation: "You should keep your documents in the vehicle or with you, and be able to produce them if asked by the police." },
+      { id: 8, question: "What is the rule about learner drivers and motorways?", options: ["Always allowed", "Learner drivers are not allowed on motorways unless with an approved instructor in a dual-control car", "Only with supervisor", "Only after test"], correctAnswer: 1, explanation: "Learner drivers are not allowed on motorways unless with an approved instructor in a dual-control car." },
+      { id: 9, question: "What should learner drivers remember?", options: ["No restrictions", "Learner drivers must display L-plates, be supervised, and follow all restrictions until they pass their test", "Only L-plates", "Only supervision"], correctAnswer: 1, explanation: "Learner drivers must display L-plates, be supervised, and follow all restrictions until they pass their test." },
+      { id: 10, question: "What is the most important document when driving?", options: ["Insurance", "All documents are important, but a valid driving licence is essential. You cannot drive without one", "MOT", "Tax"], correctAnswer: 1, explanation: "All documents are important, but a valid driving licence is essential. You cannot drive without one." },
+      { id: 11, question: "What should you do if your documents are lost or stolen?", options: ["Continue driving", "You should report it immediately and get replacements as soon as possible. Don't drive without valid documents", "Only report", "Only get replacements"], correctAnswer: 1, explanation: "You should report it immediately and get replacements as soon as possible. Don't drive without valid documents." },
+      { id: 12, question: "What is the rule about documents and the law?", options: ["Not required", "You must have all required documents. Driving without them is illegal and can result in penalties", "Only some documents", "Only for commercial vehicles"], correctAnswer: 1, explanation: "You must have all required documents. Driving without them is illegal and can result in penalties." },
+      { id: 13, question: "What is the connection between documents and insurance?", options: ["No connection", "Your insurance may be invalid if you don't have a valid licence or if your vehicle doesn't have a valid MOT", "Only licence", "Only MOT"], correctAnswer: 1, explanation: "Your insurance may be invalid if you don't have a valid licence or if your vehicle doesn't have a valid MOT." },
+      { id: 14, question: "What should you do to ensure your documents are valid?", options: ["Nothing", "Check expiry dates regularly, renew them in good time, and keep them in a safe place", "Only check dates", "Only renew"], correctAnswer: 1, explanation: "Check expiry dates regularly, renew them in good time, and keep them in a safe place." },
+      { id: 15, question: "What should you do to drive legally?", options: ["Just drive", "Ensure you have a valid licence, valid insurance, valid MOT (if required), and valid vehicle tax", "Only licence", "Only insurance"], correctAnswer: 1, explanation: "Ensure you have a valid licence, valid insurance, valid MOT (if required), and valid vehicle tax." }
+    ],
+    2: [ // Annex 5 – Penalties - 15 questions
+      { id: 1, question: "What are penalty points?", options: ["Not important", "Penalty points are added to your licence when you commit certain driving offences", "Only for serious offences", "Only for minor offences"], correctAnswer: 1, explanation: "Penalty points are added to your licence when you commit certain driving offences." },
+      { id: 2, question: "What happens if you get 12 penalty points?", options: ["Nothing", "If you get 12 penalty points within 3 years, you will be disqualified from driving for at least 6 months", "Only warning", "Only fine"], correctAnswer: 1, explanation: "If you get 12 penalty points within 3 years, you will be disqualified from driving for at least 6 months." },
+      { id: 3, question: "What is the rule about new drivers and penalty points?", options: ["No special rules", "New drivers who get 6 or more penalty points within 2 years of passing their test will have their licence revoked", "Only 12 points", "Only after 3 years"], correctAnswer: 1, explanation: "New drivers who get 6 or more penalty points within 2 years of passing their test will have their licence revoked." },
+      { id: 4, question: "What should you do to avoid penalties?", options: ["Nothing", "You should follow all road rules, drive safely, and not commit any driving offences", "Only follow rules", "Only drive safely"], correctAnswer: 1, explanation: "You should follow all road rules, drive safely, and not commit any driving offences." },
+      { id: 5, question: "What is the penalty for speeding?", options: ["No penalty", "Speeding can result in a fine, penalty points, and in serious cases, disqualification from driving", "Only fine", "Only points"], correctAnswer: 1, explanation: "Speeding can result in a fine, penalty points, and in serious cases, disqualification from driving." },
+      { id: 6, question: "What is the penalty for using a mobile phone while driving?", options: ["No penalty", "Using a mobile phone while driving can result in 6 penalty points and a fine", "Only fine", "Only points"], correctAnswer: 1, explanation: "Using a mobile phone while driving can result in 6 penalty points and a fine." },
+      { id: 7, question: "What should you remember about penalties?", options: ["Not important", "Penalties are there to encourage safe driving. Follow the rules to avoid them", "Only for serious offences", "Only for minor offences"], correctAnswer: 1, explanation: "Penalties are there to encourage safe driving. Follow the rules to avoid them." },
+      { id: 8, question: "What is the rule about penalties and insurance?", options: ["No connection", "Having penalty points can increase your insurance premiums, and some offences can invalidate your insurance", "Only premiums", "Only invalidation"], correctAnswer: 1, explanation: "Having penalty points can increase your insurance premiums, and some offences can invalidate your insurance." },
+      { id: 9, question: "What is the most important thing about penalties?", options: ["Not important", "The best way to avoid penalties is to drive safely and follow all road rules", "Only safety", "Only rules"], correctAnswer: 1, explanation: "The best way to avoid penalties is to drive safely and follow all road rules." },
+      { id: 10, question: "What should you do if you receive penalty points?", options: ["Ignore them", "You should drive more carefully to avoid accumulating more points, which could lead to disqualification", "Continue normally", "No action needed"], correctAnswer: 1, explanation: "You should drive more carefully to avoid accumulating more points, which could lead to disqualification." },
+      { id: 11, question: "What is the rule about penalties and employment?", options: ["No connection", "Having penalty points or being disqualified can affect your employment, especially if driving is part of your job", "Only disqualification", "Only employment"], correctAnswer: 1, explanation: "Having penalty points or being disqualified can affect your employment, especially if driving is part of your job." },
+      { id: 12, question: "What should you remember about the penalty table?", options: ["Not important", "Different offences have different penalties. Serious offences result in more points and higher fines", "Only points", "Only fines"], correctAnswer: 1, explanation: "Different offences have different penalties. Serious offences result in more points and higher fines." },
+      { id: 13, question: "What is the connection between penalties and safety?", options: ["No connection", "Penalties are designed to encourage safe driving and deter dangerous behaviour", "Only safety", "Only deterrence"], correctAnswer: 1, explanation: "Penalties are designed to encourage safe driving and deter dangerous behaviour." },
+      { id: 14, question: "What should you remember about new drivers and penalties?", options: ["No difference", "New drivers face stricter penalties. Getting 6 points within 2 years means losing your licence", "Only 12 points", "Only after 3 years"], correctAnswer: 1, explanation: "New drivers face stricter penalties. Getting 6 points within 2 years means losing your licence." },
+      { id: 15, question: "What is the most important thing to remember about penalties?", options: ["Not important", "Penalties are consequences of breaking the law. Drive safely and legally to avoid them", "Only consequences", "Only breaking law"], correctAnswer: 1, explanation: "Penalties are consequences of breaking the law. Drive safely and legally to avoid them." }
+    ]
   },
-  // Day 7 PDFs - Placeholder structure (4 PDFs)
+  // Day 7 PDFs
   7: {
-    0: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 7 - Breakdowns and Incidents - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    1: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 7 - Road Works Level Crossings Tramways - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    2: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 7 - AED QA Flashcards UK - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    })),
-    3: Array.from({ length: 20 }, (_, i) => ({
-      front: `Day 7 - Part Fifteen Incidents Accidents Emergencies - Question ${i + 1}`,
-      back: `This is a placeholder answer. Please add actual content from the PDF materials.`
-    }))
+    0: [ // Breakdowns and incidents (Rules 275 to 287) - 15 questions
+      { id: 1, question: "What is Rule 275 about breakdowns?", options: ["No specific rules", "Rule 275 states that if you break down, you should get your vehicle off the road if possible and switch on hazard lights", "Only hazard lights", "Only get off road"], correctAnswer: 1, explanation: "Rule 275 states that if you break down, you should get your vehicle off the road if possible and switch on hazard lights." },
+      { id: 2, question: "What should you do if you break down on a motorway?", options: ["Stay in lane", "You should pull onto the hard shoulder, switch on hazard lights, exit from the left side, and call for help", "Stay in vehicle", "Walk on motorway"], correctAnswer: 1, explanation: "You should pull onto the hard shoulder, switch on hazard lights, exit from the left side, and call for help." },
+      { id: 3, question: "What should you do if you break down on a normal road?", options: ["Stay in lane", "You should pull off the road if possible, switch on hazard lights, and place a warning triangle if you have one", "Stay in vehicle", "No action needed"], correctAnswer: 1, explanation: "You should pull off the road if possible, switch on hazard lights, and place a warning triangle if you have one." },
+      { id: 4, question: "What is Rule 277 about breakdowns and visibility?", options: ["No specific rules", "Rule 277 states that you should make your vehicle visible to other road users using hazard lights and warning devices", "Only hazard lights", "Only warning devices"], correctAnswer: 1, explanation: "Rule 277 states that you should make your vehicle visible to other road users using hazard lights and warning devices." },
+      { id: 5, question: "What should you do if you witness an accident?", options: ["Drive away", "You should stop if it's safe, call emergency services, and help if you can, but ensure your own safety first", "Only call services", "Only help"], correctAnswer: 1, explanation: "You should stop if it's safe, call emergency services, and help if you can, but ensure your own safety first." },
+      { id: 6, question: "What is the rule about incidents and stopping?", options: ["Never stop", "You should stop if you're involved in an accident, or if it's safe to help at the scene of an accident", "Only if involved", "Only if safe"], correctAnswer: 1, explanation: "You should stop if you're involved in an accident, or if it's safe to help at the scene of an accident." },
+      { id: 7, question: "What should you do if you're involved in an accident?", options: ["Drive away", "You must stop, exchange details with other parties, and report it to the police if required", "Only stop", "Only exchange details"], correctAnswer: 1, explanation: "You must stop, exchange details with other parties, and report it to the police if required." },
+      { id: 8, question: "What is Rule 281 about incidents and dangerous goods?", options: ["No specific rules", "Rule 281 states that if dangerous goods are involved, you should keep well away and call emergency services", "Only keep away", "Only call services"], correctAnswer: 1, explanation: "Rule 281 states that if dangerous goods are involved, you should keep well away and call emergency services." },
+      { id: 9, question: "What should you do if you see an incident involving dangerous goods?", options: ["Get closer", "You should keep well away, don't approach, and call emergency services immediately", "Approach carefully", "Only call services"], correctAnswer: 1, explanation: "You should keep well away, don't approach, and call emergency services immediately." },
+      { id: 10, question: "What is the rule about breakdowns and safety?", options: ["Vehicle first", "Your safety is the most important thing. Get yourself and passengers to a safe place away from traffic", "Only passengers", "Only yourself"], correctAnswer: 1, explanation: "Your safety is the most important thing. Get yourself and passengers to a safe place away from traffic." },
+      { id: 11, question: "What should you do when your vehicle breaks down?", options: ["Stay in vehicle", "You should get off the road if possible, make your vehicle visible, and call for help", "Only get off road", "Only make visible"], correctAnswer: 1, explanation: "You should get off the road if possible, make your vehicle visible, and call for help." },
+      { id: 12, question: "What is the most important thing about breakdowns?", options: ["Vehicle", "Your safety is the most important thing. Get to a safe place and make your vehicle visible", "Only safe place", "Only visibility"], correctAnswer: 1, explanation: "Your safety is the most important thing. Get to a safe place and make your vehicle visible." },
+      { id: 13, question: "What should you do if you break down in a tunnel?", options: ["Stay in vehicle", "You should switch on hazard lights, drive out if possible, or pull over and call for help immediately", "Only hazard lights", "Only drive out"], correctAnswer: 1, explanation: "You should switch on hazard lights, drive out if possible, or pull over and call for help immediately." },
+      { id: 14, question: "What is the rule about incidents and reporting?", options: ["Never report", "You must report incidents to the police if someone is injured, if you don't exchange details, or if required by law", "Only if injured", "Only if no exchange"], correctAnswer: 1, explanation: "You must report incidents to the police if someone is injured, if you don't exchange details, or if required by law." },
+      { id: 15, question: "What should you remember about breakdowns?", options: ["Not important", "Breakdowns can happen to anyone. Be prepared, stay safe, and know what to do", "Only preparation", "Only safety"], correctAnswer: 1, explanation: "Breakdowns can happen to anyone. Be prepared, stay safe, and know what to do." }
+    ],
+    1: [ // Road works, level crossings and tramways (Rules 288 to 307) - 15 questions
+      { id: 1, question: "What is Rule 288 about road works?", options: ["No specific rules", "Rule 288 states that you should slow down when approaching road works and follow all signs and signals", "Only slow down", "Only follow signs"], correctAnswer: 1, explanation: "Rule 288 states that you should slow down when approaching road works and follow all signs and signals." },
+      { id: 2, question: "What should you do when approaching road works?", options: ["Speed up", "You should slow down, be prepared to stop, follow temporary signs and signals, and be patient", "Just drive through", "Only slow down"], correctAnswer: 1, explanation: "You should slow down, be prepared to stop, follow temporary signs and signals, and be patient." },
+      { id: 3, question: "What is the rule about road works and speed limits?", options: ["No special rules", "You must obey temporary speed limits at road works, which are usually lower than the normal limit", "Only normal limits", "Only if workers visible"], correctAnswer: 1, explanation: "You must obey temporary speed limits at road works, which are usually lower than the normal limit." },
+      { id: 4, question: "What should you do at road works?", options: ["Speed up", "You should slow down, follow signs and signals, be patient, and watch out for workers and equipment", "Just drive through", "Only slow down"], correctAnswer: 1, explanation: "You should slow down, follow signs and signals, be patient, and watch out for workers and equipment." },
+      { id: 5, question: "What is Rule 291 about level crossings?", options: ["No specific rules", "Rule 291 states that you must stop when the barriers are down or warning lights are flashing at a level crossing", "Only barriers", "Only lights"], correctAnswer: 1, explanation: "Rule 291 states that you must stop when the barriers are down or warning lights are flashing at a level crossing." },
+      { id: 6, question: "What should you do when approaching a level crossing?", options: ["Speed up", "You should slow down, look and listen for trains, and be prepared to stop if the warning lights are flashing", "Just drive through", "Only slow down"], correctAnswer: 1, explanation: "You should slow down, look and listen for trains, and be prepared to stop if the warning lights are flashing." },
+      { id: 7, question: "What is the rule about level crossings and stopping?", options: ["Never stop", "You must stop when the barriers are down, lights are flashing, or a warning sound is heard", "Only barriers", "Only lights"], correctAnswer: 1, explanation: "You must stop when the barriers are down, lights are flashing, or a warning sound is heard." },
+      { id: 8, question: "What should you do if you're stuck on a level crossing?", options: ["Stay in vehicle", "You should get everyone out of the vehicle and move to a safe place, then call for help", "Only get out", "Only call help"], correctAnswer: 1, explanation: "You should get everyone out of the vehicle and move to a safe place, then call for help." },
+      { id: 9, question: "What is Rule 299 about tramways?", options: ["No specific rules", "Rule 299 states that trams have priority on tram tracks and you must give way to trams", "Only on tracks", "Only at stops"], correctAnswer: 1, explanation: "Rule 299 states that trams have priority on tram tracks and you must give way to trams." },
+      { id: 10, question: "What should you do when you see a tram?", options: ["Speed up", "You should give way to the tram, be patient, and don't try to race it or pass it unsafely", "Race it", "Pass quickly"], correctAnswer: 1, explanation: "You should give way to the tram, be patient, and don't try to race it or pass it unsafely." },
+      { id: 11, question: "What is the rule about tram tracks?", options: ["Drive on them", "You must not drive on tram tracks unless you're crossing them to turn or change direction, and you must give way to trams", "Always drive on them", "Only at junctions"], correctAnswer: 1, explanation: "You must not drive on tram tracks unless you're crossing them to turn or change direction, and you must give way to trams." },
+      { id: 12, question: "What should you do when crossing tram tracks?", options: ["Cross quickly", "You should cross at a shallow angle, be aware of trams, and give way to any approaching trams", "Cross at any angle", "Only be aware"], correctAnswer: 1, explanation: "You should cross at a shallow angle, be aware of trams, and give way to any approaching trams." },
+      { id: 13, question: "What is the most important rule for level crossings?", options: ["Speed up", "Never try to beat the barriers or warning lights. Always stop when required. It's not worth the risk", "Only barriers", "Only lights"], correctAnswer: 1, explanation: "Never try to beat the barriers or warning lights. Always stop when required. It's not worth the risk." },
+      { id: 14, question: "What should you remember about road works?", options: ["Not important", "Road works are there for safety and maintenance. Be patient, follow signs, and watch out for workers", "Only safety", "Only maintenance"], correctAnswer: 1, explanation: "Road works are there for safety and maintenance. Be patient, follow signs, and watch out for workers." },
+      { id: 15, question: "What should you remember about tramways?", options: ["Not important", "Trams have priority and cannot steer to avoid you. Always give way to trams", "Only priority", "Only steering"], correctAnswer: 1, explanation: "Trams have priority and cannot steer to avoid you. Always give way to trams." }
+    ],
+    2: [ // Annex 7 – First aid on the road - 15 questions
+      { id: 1, question: "What should you do first in an emergency?", options: ["Help immediately", "You should ensure your own safety first, then check for danger to yourself and others", "Only check danger", "Only help others"], correctAnswer: 1, explanation: "You should ensure your own safety first, then check for danger to yourself and others." },
+      { id: 2, question: "What is the rule about getting help?", options: ["Wait", "You should call emergency services (999) immediately if someone is injured or in danger", "Only if serious", "Only if injured"], correctAnswer: 1, explanation: "You should call emergency services (999) immediately if someone is injured or in danger." },
+      { id: 3, question: "What should you do if someone is injured?", options: ["Move them", "You should call for help, keep them still if possible, and only move them if they're in immediate danger", "Only call help", "Only keep still"], correctAnswer: 1, explanation: "You should call for help, keep them still if possible, and only move them if they're in immediate danger." },
+      { id: 4, question: "What is the most important thing in an emergency?", options: ["Help others", "Your safety is the most important thing. Don't put yourself in danger trying to help", "Only others", "Only danger"], correctAnswer: 1, explanation: "Your safety is the most important thing. Don't put yourself in danger trying to help." },
+      { id: 5, question: "What should you do if you're not trained in first aid?", options: ["Do nothing", "You should call for help and stay with the person if it's safe, but don't do anything you're not trained to do", "Only call help", "Only stay"], correctAnswer: 1, explanation: "You should call for help and stay with the person if it's safe, but don't do anything you're not trained to do." },
+      { id: 6, question: "What is the rule about first aid and safety?", options: ["Always help", "Only help if it's safe to do so. Your safety comes first", "Only if safe", "Only if trained"], correctAnswer: 1, explanation: "Only help if it's safe to do so. Your safety comes first." },
+      { id: 7, question: "What should you remember about first aid?", options: ["Not important", "First aid is about helping until professional help arrives. Call emergency services immediately", "Only helping", "Only professional"], correctAnswer: 1, explanation: "First aid is about helping until professional help arrives. Call emergency services immediately." },
+      { id: 8, question: "What is the most important thing about helping in emergencies?", options: ["Help immediately", "Call for professional help immediately. Don't delay getting expert medical assistance", "Only call", "Only professional"], correctAnswer: 1, explanation: "Call for professional help immediately. Don't delay getting expert medical assistance." },
+      { id: 9, question: "What should you do if you're trained in first aid?", options: ["Do everything", "You can provide basic first aid if it's safe, but always call for professional help first", "Only first aid", "Only call help"], correctAnswer: 1, explanation: "You can provide basic first aid if it's safe, but always call for professional help first." },
+      { id: 10, question: "What is the rule about first aid and moving injured people?", options: ["Always move", "You should not move injured people unless they're in immediate danger, as moving them could cause more harm", "Only if danger", "Only if safe"], correctAnswer: 1, explanation: "You should not move injured people unless they're in immediate danger, as moving them could cause more harm." },
+      { id: 11, question: "What should you do to help in an emergency?", options: ["Do everything", "Ensure your safety, call for help, stay with the person if safe, and provide basic comfort and reassurance", "Only safety", "Only call help"], correctAnswer: 1, explanation: "Ensure your safety, call for help, stay with the person if safe, and provide basic comfort and reassurance." },
+      { id: 12, question: "What is the connection between first aid and road safety?", options: ["No connection", "Knowing basic first aid can help you assist in road accidents, but always call for professional help", "Only first aid", "Only professional"], correctAnswer: 1, explanation: "Knowing basic first aid can help you assist in road accidents, but always call for professional help." },
+      { id: 13, question: "What should you remember about emergencies?", options: ["Not important", "Emergencies can be stressful. Stay calm, ensure your safety, and call for help immediately", "Only calm", "Only safety"], correctAnswer: 1, explanation: "Emergencies can be stressful. Stay calm, ensure your safety, and call for help immediately." },
+      { id: 14, question: "What is the most important rule for first aid?", options: ["Help immediately", "Call for professional help immediately. Don't delay getting expert medical assistance", "Only call", "Only professional"], correctAnswer: 1, explanation: "Call for professional help immediately. Don't delay getting expert medical assistance." },
+      { id: 15, question: "What should you do to be prepared for emergencies?", options: ["Nothing", "Consider learning basic first aid, carry a mobile phone, and know how to call emergency services", "Only learn", "Only carry phone"], correctAnswer: 1, explanation: "Consider learning basic first aid, carry a mobile phone, and know how to call emergency services." }
+    ]
   }
 };
 
