@@ -14,6 +14,13 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
   const cardRef = useRef(null);
 
   const handlePreview = (e) => {
+    // Validate filePath exists
+    if (!filePath) {
+      console.error('PDF filePath is missing for:', title);
+      alert('Error: PDF file not found. Please contact support.');
+      return;
+    }
+    
     // Center modal in viewport - no need to track button position
     setShowPreview(true);
     setIsLoading(true);
@@ -33,10 +40,13 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
       clearTimeout(timeoutRef.current);
     }
     timeoutRef.current = setTimeout(() => {
-      if (isLoading) {
-        setIsLoading(false);
-        setLoadError(true);
-      }
+      setIsLoading(prev => {
+        if (prev) {
+          setLoadError(true);
+          return false;
+        }
+        return prev;
+      });
     }, 10000);
   };
   
@@ -48,6 +58,28 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
       }
     };
   }, []);
+
+  // Handle Escape key to close modals
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        if (showPreview) {
+          setShowPreview(false);
+          setIsLoading(true);
+          setLoadError(false);
+          if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+          }
+        }
+        if (showVideoModal) {
+          setShowVideoModal(false);
+        }
+      }
+    };
+    
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [showPreview, showVideoModal]);
   
   // Modals are now centered, no need for scroll effects
   
@@ -285,7 +317,11 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
         <div 
           className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto"
           onClick={handleClosePreview}
-          style={{ paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' }}
+          style={{ 
+            paddingTop: 'env(safe-area-inset-top)', 
+            paddingBottom: 'env(safe-area-inset-bottom)',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)'
+          }}
         >
           <div 
             className={`bg-white rounded-lg shadow-2xl w-full flex flex-col ${
@@ -318,7 +354,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                       <p className="ml-4 text-gray-600 font-medium mt-4">Loading PDF...</p>
                     </div>
                   )}
-                  {loadError && (
+                  {loadError && filePath && (
                     <div className="flex flex-col items-center justify-center h-64 sm:h-96 p-4">
                       <div className="text-4xl mb-4">📄</div>
                       <p className="text-gray-700 font-semibold mb-2 text-center">PDF couldn't load in viewer</p>
@@ -333,7 +369,14 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                       </a>
                     </div>
                   )}
-                  {!loadError && (
+                  {loadError && !filePath && (
+                    <div className="flex flex-col items-center justify-center h-64 sm:h-96 p-4">
+                      <div className="text-4xl mb-4">⚠️</div>
+                      <p className="text-gray-700 font-semibold mb-2 text-center">PDF file not found</p>
+                      <p className="text-gray-600 text-sm mb-4 text-center">Please contact support if this issue persists.</p>
+                    </div>
+                  )}
+                  {!loadError && filePath && (
                     <iframe
                       ref={iframeRef}
                       src={`${filePath}#toolbar=1&navpanes=0&scrollbar=1&zoom=page-width`}
@@ -348,21 +391,38 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                       allow="fullscreen"
                     />
                   )}
+                  {!filePath && (
+                    <div className="flex flex-col items-center justify-center h-64 sm:h-96 p-4">
+                      <div className="text-4xl mb-4">⚠️</div>
+                      <p className="text-gray-700 font-semibold mb-2 text-center">PDF file not found</p>
+                      <p className="text-gray-600 text-sm mb-4 text-center">Please contact support if this issue persists.</p>
+                    </div>
+                  )}
                 </>
               ) : (
                 /* Mobile: Show direct link only - compact */
                 <div className="flex flex-col items-center px-4 py-5">
-                  <div className="text-4xl mb-3">📄</div>
-                  <p className="text-gray-700 font-semibold mb-1 text-center text-sm">Study This Material</p>
-                  <p className="text-gray-600 text-xs mb-4 text-center px-2">Open the PDF in a new tab to view and study</p>
-                  <a
-                    href={filePath}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full bg-blue-600 text-white px-4 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-colors min-h-[44px] touch-manipulation text-center shadow-md text-sm"
-                  >
-                    Open PDF in New Tab
-                  </a>
+                  {filePath ? (
+                    <>
+                      <div className="text-4xl mb-3">📄</div>
+                      <p className="text-gray-700 font-semibold mb-1 text-center text-sm">Study This Material</p>
+                      <p className="text-gray-600 text-xs mb-4 text-center px-2">Open the PDF in a new tab to view and study</p>
+                      <a
+                        href={filePath}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full bg-blue-600 text-white px-4 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-colors min-h-[44px] touch-manipulation text-center shadow-md text-sm"
+                      >
+                        Open PDF in New Tab
+                      </a>
+                    </>
+                  ) : (
+                    <>
+                      <div className="text-4xl mb-3">⚠️</div>
+                      <p className="text-gray-700 font-semibold mb-1 text-center text-sm">PDF file not found</p>
+                      <p className="text-gray-600 text-xs mb-4 text-center px-2">Please contact support if this issue persists.</p>
+                    </>
+                  )}
                 </div>
               )}
             </div>
