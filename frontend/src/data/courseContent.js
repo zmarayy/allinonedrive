@@ -74,7 +74,7 @@ export const DAY_CONTENT = {
         videoPath: "/course-materials/standard/day-1/videos/hierarchy-1-to-3.mp4"
       },
       { 
-        title: "Rules for Pedestrians (1-35)", 
+        title: "Rules for Pedestrians (Rules 1 to 35)", 
         description: "PDF notes covering rules for pedestrians", 
         fileSize: "1.6 MB", 
         filePath: "/course-materials/standard/day-1/rules-pedestrians-1-35.pdf",
@@ -82,7 +82,7 @@ export const DAY_CONTENT = {
         videoPath: "/course-materials/standard/day-1/videos/rule-1-to-17.mp4"
       },
       { 
-        title: "Rules about Animals (47-58)", 
+        title: "Rules about Animals (Rules 47 to 58)", 
         description: "PDF notes about animals on the road", 
         fileSize: "377 KB", 
         filePath: "/course-materials/standard/day-1/animals-47-58.pdf",
@@ -90,7 +90,7 @@ export const DAY_CONTENT = {
         videoPath: "/course-materials/standard/day-1/videos/animals-47-58.mp4"
       },
       { 
-        title: "Rules for Cyclists (59-82)", 
+        title: "Rules for Cyclists (Rules 59 to 82)", 
         description: "PDF notes covering rules for cyclists", 
         fileSize: "506 KB", 
         filePath: "/course-materials/standard/day-1/rules-cyclists-59-82.pdf",
@@ -98,7 +98,7 @@ export const DAY_CONTENT = {
         videoPath: "/course-materials/standard/day-1/videos/rule-59-to-82-cyclist.mp4"
       },
       { 
-        title: "Rules for Drivers and Motorcyclists (89-102)", 
+        title: "Rules for Drivers and Motorcyclists (Rules 89 to 102)", 
         description: "Vehicle condition, fitness to drive, alcohol and drugs, what to do before setting off, vehicle towing and loading, seat belts and child restraints", 
         fileSize: "665 KB", 
         filePath: "/course-materials/standard/day-1/rules-drivers-motorcyclists-89-102.pdf",
@@ -111,23 +111,7 @@ export const DAY_CONTENT = {
         fileSize: "47 KB", 
         filePath: "/course-materials/standard/day-1/annex-8.pdf",
         downloadPath: "/course-materials/standard/day-1/annex-8.pdf"
-        // No video for Annex 8 as per your structure
-      },
-      { 
-        title: "DVSA Exam Questions and Answers - Alertness", 
-        description: "Alertness and awareness on the road", 
-        fileSize: "90 KB", 
-        filePath: "/course-materials/standard/day-1/part-one-alertness.pdf",
-        downloadPath: "/course-materials/standard/day-1/part-one-alertness.pdf",
-        videoPath: "/course-materials/standard/day-1/videos/eds-alertness.mp4"
-      },
-      { 
-        title: "DVSA Exam Questions and Answers - Attitude", 
-        description: "Attitude while driving", 
-        fileSize: "65 KB", 
-        filePath: "/course-materials/standard/day-1/part-two-attitude.pdf",
-        downloadPath: "/course-materials/standard/day-1/part-two-attitude.pdf",
-        videoPath: "/course-materials/standard/day-1/videos/eds-attitude.mp4"
+        // No video for Annex 8 - PDF only
       }
     ],
     odtWordNotes: [
