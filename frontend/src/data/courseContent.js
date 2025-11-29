@@ -148,7 +148,7 @@ export const DAY_CONTENT = {
         fileSize: "222 KB", 
         filePath: "/course-materials/standard/day-2/rules 36 to 46 pdf marked.pdf",
         downloadPath: "/course-materials/standard/day-2/rules 36 to 46 pdf marked.pdf",
-        videoPath: "/course-materials/standard/day-2/videos/powered-wheelchairs-36-46.mp4"
+        youtubeVideoId: "Ouh-bVYZIoU"
       },
       { 
         title: "Rules for motorcyclists (Rules 83 to 88)", 
@@ -156,7 +156,7 @@ export const DAY_CONTENT = {
         fileSize: "301 KB", 
         filePath: "/course-materials/standard/day-2/motorcyclists 83-88.pdf",
         downloadPath: "/course-materials/standard/day-2/motorcyclists 83-88.pdf",
-        videoPath: "/course-materials/standard/day-2/videos/motorcyclists-83-88.mp4"
+        youtubeVideoId: "7hybereviRY"
       },
       { 
         title: "General rules, techniques and advice for all drivers and riders (Rules 103 to 158)", 
@@ -164,7 +164,7 @@ export const DAY_CONTENT = {
         fileSize: "1.9 MB", 
         filePath: "/course-materials/standard/day-2/General rules, techniques and advice for all drivers and riders (103 to 158).pdf",
         downloadPath: "/course-materials/standard/day-2/General rules, techniques and advice for all drivers and riders (103 to 158).pdf",
-        videoPath: "/course-materials/standard/day-2/videos/rules-103-to-125.mp4"
+        youtubeVideoId: "VjbPbeh1jBI"
       },
       { 
         title: "Light signals controlling traffic", 
@@ -196,7 +196,7 @@ export const DAY_CONTENT = {
         fileSize: "7.0 MB", 
         filePath: "/course-materials/standard/day-2/know-your-traffic-signs-dft.pdf",
         downloadPath: "/course-materials/standard/day-2/know-your-traffic-signs-dft.pdf",
-        videoPath: "/course-materials/standard/day-2/videos/road-signs-video.mp4"
+        youtubeVideoId: "2SLBoP9DJRc"
       },
       { 
         title: "Road markings", 
