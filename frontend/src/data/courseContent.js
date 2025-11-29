@@ -302,39 +302,39 @@ export const DAY_CONTENT = {
   },
   4: {
     day: 4,
-    title: "Day 4",
+    title: "Day 4: Hazard Awareness and Vulnerable Road Users",
     pdfNotes: [
       { 
-        title: "Using the Road (159-203)", 
-        description: "Complete guide to using the road", 
+        title: "Using the road (Rules 159 to 203)", 
+        description: "General rules, overtaking, road junctions, roundabouts, pedestrian crossings and reversing", 
         fileSize: "2.8 MB", 
         filePath: "/course-materials/standard/day-4/Using the road (159 to 203).pdf",
         downloadPath: "/course-materials/standard/day-4/Using the road (159 to 203).pdf",
         videoPath: "/course-materials/standard/day-4/videos/using-the-road-159-to-203.mp4"
       },
       { 
-        title: "Road Users Requiring Extra Care (204-225)", 
-        description: "Guidance for vulnerable road users", 
+        title: "Road users requiring extra care (Rules 204 to 225)", 
+        description: "Pedestrians, motorcyclists and cyclists, horses and other animals, children, older and disabled people and other vulnerable road users", 
         fileSize: "954 KB", 
         filePath: "/course-materials/standard/day-4/Road users requiring extra care (204 to 225).pdf",
         downloadPath: "/course-materials/standard/day-4/Road users requiring extra care (204 to 225).pdf",
         videoPath: "/course-materials/standard/day-4/videos/road-users-extra-care-204-to-225.mp4"
       },
       { 
-        title: "Part Seven - Vulnerable Road Users", 
-        description: "Safety for vulnerable road users", 
-        fileSize: "177 KB", 
-        filePath: "/course-materials/standard/day-4/Part seven Vulnerable Road Users.pdf",
-        downloadPath: "/course-materials/standard/day-4/Part seven Vulnerable Road Users.pdf",
-        videoPath: "/course-materials/standard/day-4/videos/vulnerable-road-users.mp4"
-      },
-      { 
-        title: "Part Six - Hazard Awareness", 
+        title: "Hazard awareness", 
         description: "Developing hazard awareness skills", 
         fileSize: "77 KB", 
         filePath: "/course-materials/standard/day-4/Part sixHazard Awareness.pdf",
-        downloadPath: "/course-materials/standard/day-4/Part sixHazard Awareness.pdf",
-        videoPath: "/course-materials/standard/day-4/videos/hazard-awareness.mp4"
+        downloadPath: "/course-materials/standard/day-4/Part sixHazard Awareness.pdf"
+        // PDF only - no video
+      },
+      { 
+        title: "Vulnerable road users", 
+        description: "Safety for vulnerable road users", 
+        fileSize: "177 KB", 
+        filePath: "/course-materials/standard/day-4/Part seven Vulnerable Road Users.pdf",
+        downloadPath: "/course-materials/standard/day-4/Part seven Vulnerable Road Users.pdf"
+        // PDF only - no video
       }
     ],
     odtWordNotes: [

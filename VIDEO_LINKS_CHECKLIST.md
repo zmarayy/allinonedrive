@@ -56,19 +56,15 @@ Please upload each video to YouTube (set as **Unlisted**) and fill in the YouTub
 
 ---
 
-## 📅 DAY 4 (4 videos needed)
+## 📅 DAY 4: Hazard Awareness and Vulnerable Road Users (2 videos needed)
 
-- [ ] **Using the Road (159-203)**
+- [ ] **Using the road (Rules 159 to 203)**
   - YouTube Link: _________________________________
 
-- [ ] **Road Users Requiring Extra Care (204-225)**
+- [ ] **Road users requiring extra care (Rules 204 to 225)**
   - YouTube Link: _________________________________
 
-- [ ] **Part Seven - Vulnerable Road Users**
-  - YouTube Link: _________________________________
-
-- [ ] **Part Six - Hazard Awareness**
-  - YouTube Link: _________________________________
+**Note:** Hazard awareness and Vulnerable road users are PDF only (no videos needed)
 
 ---
 
@@ -110,11 +106,11 @@ Please upload each video to YouTube (set as **Unlisted**) and fill in the YouTub
 
 ## 📊 Summary
 
-- **Total Videos Needed:** 22 videos
+- **Total Videos Needed:** 20 videos
 - **Day 1:** 5 videos (Annex 8 is PDF only, no video)
 - **Day 2:** 4 videos (Light signals, Signals to other road users, Signals by authorised persons, Road markings, and Vehicle markings are PDF only)
 - **Day 3:** 1 video (Annex 6, Safety and your vehicle, and Safety margins are PDF only)
-- **Day 4:** 4 videos
+- **Day 4:** 2 videos (Hazard awareness and Vulnerable road users are PDF only)
 - **Day 5:** 3 videos
 - **Day 6:** 2 videos
 - **Day 7:** 3 videos
