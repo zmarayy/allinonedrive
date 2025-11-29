@@ -47,19 +47,12 @@ Please upload each video to YouTube (set as **Unlisted**) and fill in the YouTub
 
 ---
 
-## 📅 DAY 3 (4 videos needed)
+## 📅 DAY 3: Safety of the Vehicle and Safety Margins (1 video needed)
 
-- [ ] **Driving in Adverse Weather (Rules 226-237)**
+- [ ] **Driving in adverse weather conditions (Rules 226 to 237)**
   - YouTube Link: _________________________________
 
-- [ ] **Safety and Your Vehicle**
-  - YouTube Link: _________________________________
-
-- [ ] **Part Five - Safety Margins**
-  - YouTube Link: _________________________________
-
-- [ ] **Annex 6**
-  - YouTube Link: _________________________________
+**Note:** Annex 6, Safety and your vehicle, and Safety margins are PDF only (no videos needed)
 
 ---
 
@@ -117,10 +110,10 @@ Please upload each video to YouTube (set as **Unlisted**) and fill in the YouTub
 
 ## 📊 Summary
 
-- **Total Videos Needed:** 25 videos
+- **Total Videos Needed:** 22 videos
 - **Day 1:** 5 videos (Annex 8 is PDF only, no video)
 - **Day 2:** 4 videos (Light signals, Signals to other road users, Signals by authorised persons, Road markings, and Vehicle markings are PDF only)
-- **Day 3:** 4 videos
+- **Day 3:** 1 video (Annex 6, Safety and your vehicle, and Safety margins are PDF only)
 - **Day 4:** 4 videos
 - **Day 5:** 3 videos
 - **Day 6:** 2 videos

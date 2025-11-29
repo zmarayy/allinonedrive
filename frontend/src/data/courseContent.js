@@ -241,39 +241,39 @@ export const DAY_CONTENT = {
   },
   3: {
     day: 3,
-    title: "Day 3",
+    title: "Day 3: Safety of the Vehicle and Safety Margins",
     pdfNotes: [
       { 
-        title: "Driving in Adverse Weather (Rules 226-237)", 
-        description: "Rules and guidance for driving in adverse weather conditions", 
+        title: "Driving in adverse weather conditions (Rules 226 to 237)", 
+        description: "Wet weather, icy and snowy weather, windy weather, fog and hot weather", 
         fileSize: "570 KB", 
         filePath: "/course-materials/standard/day-3/Driving in Adverse Weather (Rules 226–237).pdf",
         downloadPath: "/course-materials/standard/day-3/Driving in Adverse Weather (Rules 226–237).pdf",
         videoPath: "/course-materials/standard/day-3/videos/weather-226-to-237.mp4"
       },
       { 
-        title: "Safety and Your Vehicle", 
+        title: "Annex 6 – Vehicle maintenance, safety and security", 
+        description: "Vehicle checks, maintenance schedules, safety systems and vehicle security", 
+        fileSize: "60 KB", 
+        filePath: "/course-materials/standard/day-3/annex 6.pdf",
+        downloadPath: "/course-materials/standard/day-3/annex 6.pdf"
+        // PDF only - no video
+      },
+      { 
+        title: "Safety and your vehicle", 
         description: "Vehicle safety checks and maintenance", 
         fileSize: "261 KB", 
         filePath: "/course-materials/standard/day-3/safety and your vehicle.pdf",
-        downloadPath: "/course-materials/standard/day-3/safety and your vehicle.pdf",
-        videoPath: "/course-materials/standard/day-3/videos/safety-and-your-vehicle.mp4"
+        downloadPath: "/course-materials/standard/day-3/safety and your vehicle.pdf"
+        // PDF only - no video
       },
       { 
-        title: "Part Five - Safety Margins", 
+        title: "Safety margins", 
         description: "Safety margins and defensive driving techniques", 
         fileSize: "100 KB", 
         filePath: "/course-materials/standard/day-3/Part five Safety Margins.pdf",
-        downloadPath: "/course-materials/standard/day-3/Part five Safety Margins.pdf",
-        videoPath: "/course-materials/standard/day-3/videos/safety-margins.mp4"
-      },
-      { 
-        title: "Annex 6", 
-        description: "Annex 6 reference material", 
-        fileSize: "60 KB", 
-        filePath: "/course-materials/standard/day-3/annex 6.pdf",
-        downloadPath: "/course-materials/standard/day-3/annex 6.pdf",
-        videoPath: "/course-materials/standard/day-3/videos/annex-6.mp4"
+        downloadPath: "/course-materials/standard/day-3/Part five Safety Margins.pdf"
+        // PDF only - no video
       }
     ],
     odtWordNotes: [
