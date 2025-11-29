@@ -62,7 +62,12 @@ export const verifyAccessCode = async (code) => {
     // Get client IP address
     const ipAddress = await getClientIp();
 
-    const response = await fetch(`${API_BASE_URL}/verify-code`, {
+    // Determine the correct URL - use Netlify function if on Netlify
+    const verifyUrl = (typeof window !== 'undefined' && window.location.hostname.includes('netlify.app'))
+      ? '/.netlify/functions/verify-code'
+      : `${API_BASE_URL}/verify-code`;
+
+    const response = await fetch(verifyUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
