@@ -440,7 +440,7 @@ export const DAY_CONTENT = {
         fileSize: "1.1 MB", 
         filePath: "/course-materials/standard/day-6/Motorways (253 to 274).pdf",
         downloadPath: "/course-materials/standard/day-6/Motorways (253 to 274).pdf",
-        videoPath: "/course-materials/standard/day-6/videos/motorways-253-to-274.mp4"
+        youtubeVideoId: "VRjdHZe8Gho"
       },
       { 
         title: "Annex 3 – Motor vehicle documentation and learner driver requirements", 
