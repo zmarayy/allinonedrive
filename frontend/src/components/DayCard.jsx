@@ -16,19 +16,19 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
   const isCompleted = isDayCompleted(dayNumber);
   
   useEffect(() => {
-    setCompletedPdfs(getCompletedPdfsForDay(dayNumber, totalPdfs));
-    // Can complete day only if all PDFs are completed AND quiz is passed
-    const allPdfsDone = areAllPdfsCompleted(dayNumber, totalPdfs);
-    const quizDone = isQuizPassed(dayNumber);
-    setCanComplete(allPdfsDone && quizDone);
-    
-    // Refresh every second to update progress
-    const interval = setInterval(() => {
+    const updateProgress = () => {
       setCompletedPdfs(getCompletedPdfsForDay(dayNumber, totalPdfs));
+      // Can complete day only if all PDFs are completed (quiz is optional for now)
       const allPdfsDone = areAllPdfsCompleted(dayNumber, totalPdfs);
       const quizDone = isQuizPassed(dayNumber);
-      setCanComplete(allPdfsDone && quizDone);
-    }, 1000);
+      // Allow completion if all PDFs done, quiz is optional
+      setCanComplete(allPdfsDone);
+    };
+    
+    updateProgress();
+    
+    // Refresh every second to update progress
+    const interval = setInterval(updateProgress, 1000);
     
     return () => clearInterval(interval);
   }, [dayNumber, totalPdfs]);
@@ -37,8 +37,7 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
     // Refresh progress when PDF status changes
     setCompletedPdfs(getCompletedPdfsForDay(dayNum, totalPdfs));
     const allPdfsDone = areAllPdfsCompleted(dayNum, totalPdfs);
-    const quizDone = isQuizPassed(dayNum);
-    setCanComplete(allPdfsDone && quizDone);
+    setCanComplete(allPdfsDone);
   };
   
   const handleStartQuiz = () => {
@@ -166,21 +165,21 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
                   </p>
                 </div>
                 
-                {/* Quiz Section */}
+                {/* Quiz Section - Optional */}
                 {areAllPdfsCompleted(dayNumber, totalPdfs) && !isQuizPassed(dayNumber) && (
                   <div className="mt-4 bg-amber-50 rounded-lg p-4 border border-amber-200">
                     <h4 className="text-sm sm:text-base font-bold text-gray-900 mb-2 flex items-center">
                       <span className="mr-2">📝</span>
-                      Ready for Quiz!
+                      Optional Quiz Available
                     </h4>
                     <p className="text-xs sm:text-sm text-gray-600 font-medium mb-3">
-                      You've completed all materials. Now test your knowledge with the quiz.
+                      You've completed all materials. Test your knowledge with an optional quiz.
                     </p>
                     <button
                       onClick={handleStartQuiz}
                       className="w-full bg-amber-600 active:bg-amber-700 text-white font-semibold text-sm sm:text-base px-4 py-3 rounded-lg transition-colors min-h-[48px] touch-manipulation"
                     >
-                      Start Quiz
+                      Start Quiz (Optional)
                     </button>
                   </div>
                 )}
@@ -193,7 +192,7 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
                       Ready to Complete Day {dayNumber}!
                     </h4>
                     <p className="text-xs sm:text-sm text-gray-600 font-medium mb-3">
-                      You've studied all materials and passed the quiz. Complete this day to unlock Day {dayNumber + 1}.
+                      You've completed all materials for this day. Complete this day to unlock Day {dayNumber + 1}.
                     </p>
                     <button
                       onClick={handleCompleteDay}

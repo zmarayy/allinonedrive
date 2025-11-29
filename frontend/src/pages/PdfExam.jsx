@@ -167,7 +167,14 @@ function PdfExam() {
               <div className="space-y-3">
                 {passed ? (
                   <button
-                    onClick={() => navigate('/course-content')}
+                    onClick={() => {
+                      // Small delay to ensure localStorage is updated
+                      setTimeout(() => {
+                        navigate('/course-content');
+                        // Force page refresh to update all progress indicators
+                        window.location.reload();
+                      }, 100);
+                    }}
                     className="w-full bg-green-600 active:bg-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all min-h-[56px] touch-manipulation"
                   >
                     Continue to Next Material

@@ -22,6 +22,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
     // Mark PDF as opened (not completed) when first viewed
     if (dayNumber && pdfIndex !== undefined && !isPdfOpened(dayNumber, pdfIndex)) {
       markPdfOpened(dayNumber, pdfIndex);
+      setStatusUpdate(prev => prev + 1); // Force re-render
       if (onPdfViewed) {
         onPdfViewed(dayNumber, pdfIndex);
       }
@@ -86,6 +87,9 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
   // Check if we're on mobile (with safe check for SSR/build time)
   const isMobile = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
+  // State to force re-render when status changes
+  const [statusUpdate, setStatusUpdate] = useState(0);
+  
   // Recalculate status on every render to ensure it's up-to-date
   const isUnlocked = isPdfUnlocked(dayNumber, pdfIndex);
   const isCompleted = isPdfCompleted(dayNumber, pdfIndex);
@@ -95,9 +99,21 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
   const flashcardsDone = areFlashcardsCompleted(dayNumber, pdfIndex);
   const examPassed = isPdfExamPassed(dayNumber, pdfIndex);
   
+  // Refresh status periodically and when modal closes
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setStatusUpdate(prev => prev + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+  
   const handleVideoWatched = () => {
     if (hasVideo && !videoWatched) {
       markVideoWatched(dayNumber, pdfIndex);
+      setStatusUpdate(prev => prev + 1); // Force re-render
+      if (onPdfViewed) {
+        onPdfViewed(dayNumber, pdfIndex);
+      }
     }
   };
   
