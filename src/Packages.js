@@ -13,6 +13,7 @@ function Packages() {
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [emailForCheckout, setEmailForCheckout] = useState('');
   const [packageForCheckout, setPackageForCheckout] = useState(null);
+  const [showLaunchDayModal, setShowLaunchDayModal] = useState(false);
   const [formData, setFormData] = useState({
     location: '',
     transmission: '',
@@ -90,9 +91,14 @@ function Packages() {
    * Open email modal for checkout
    */
   const openEmailModal = (packageType) => {
-    setPackageForCheckout(packageType);
-    setEmailForCheckout('');
-    setShowEmailModal(true);
+    // Launch day - show message instead of checkout
+    setShowLaunchDayModal(true);
+    return;
+    
+    // Original code (disabled for launch day)
+    // setPackageForCheckout(packageType);
+    // setEmailForCheckout('');
+    // setShowEmailModal(true);
   };
 
   /**
@@ -166,8 +172,12 @@ function Packages() {
       e.preventDefault();
     }
     
-    // Open email modal for complete package
-    openEmailModal('complete');
+    // Launch day - show message instead of checkout
+    setShowLaunchDayModal(true);
+    return;
+    
+    // Original code (disabled for launch day)
+    // openEmailModal('complete');
   };
 
   return (

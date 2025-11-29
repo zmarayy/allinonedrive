@@ -169,7 +169,7 @@ function AccessCodeEntry() {
           <div className="mt-6 text-center space-y-3">
             <p className="text-sm text-gray-500">
               Don't have a code?{' '}
-              <a href="/packages" className="text-primary-600 hover:text-primary-700 font-semibold">
+              <a href="https://allinonedrive.com/packages" target="_blank" rel="noopener noreferrer" className="text-primary-600 hover:text-primary-700 font-semibold">
                 Purchase a package
               </a>
             </p>
