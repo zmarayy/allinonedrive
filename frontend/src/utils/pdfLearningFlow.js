@@ -54,7 +54,7 @@ export const markVideoWatched = (dayNumber, pdfIndex) => {
 
 /**
  * Check if PDF is unlocked (first PDF is always unlocked, others unlock after previous PDF is completed)
- * Note: Video watching is optional but recommended
+ * Note: Video watching is optional but recommended - if video exists, it should be watched first
  */
 export const isPdfUnlocked = (dayNumber, pdfIndex) => {
   if (pdfIndex === 0) {
