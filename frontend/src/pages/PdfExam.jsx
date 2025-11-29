@@ -16,7 +16,19 @@ const shuffleArray = (array) => {
 
 // Helper function to randomize question options
 const randomizeQuestion = (question) => {
-  if (!question || !question.options) return question;
+  // Validate question structure
+  if (!question || !question.options || !Array.isArray(question.options)) {
+    console.warn('Invalid question structure:', question);
+    return question;
+  }
+  
+  // Ensure correctAnswer is a valid index
+  if (typeof question.correctAnswer !== 'number' || 
+      question.correctAnswer < 0 || 
+      question.correctAnswer >= question.options.length) {
+    console.warn('Invalid correctAnswer for question:', question);
+    return question;
+  }
   
   // Create array of indices [0, 1, 2, 3]
   const indices = question.options.map((_, index) => index);
@@ -26,6 +38,12 @@ const randomizeQuestion = (question) => {
   // Find where the correct answer moved to
   const originalCorrectIndex = question.correctAnswer;
   const newCorrectIndex = shuffledIndices.indexOf(originalCorrectIndex);
+  
+  // Validate new correct index
+  if (newCorrectIndex === -1) {
+    console.warn('Could not find correct answer after shuffling:', question);
+    return question;
+  }
   
   // Create new options array with shuffled order
   const shuffledOptions = shuffledIndices.map(idx => question.options[idx]);
@@ -48,8 +66,19 @@ function PdfExam() {
   
   // Randomize each question's options when component loads or when day/pdf changes
   const [examQuestions, setExamQuestions] = useState(() => {
-    if (rawExamQuestions.length === 0) return [];
-    return rawExamQuestions.map(q => randomizeQuestion(q));
+    if (!rawExamQuestions || rawExamQuestions.length === 0) return [];
+    // Filter out any invalid questions before randomizing
+    const validQuestions = rawExamQuestions.filter(q => 
+      q && 
+      q.question && 
+      q.options && 
+      Array.isArray(q.options) && 
+      q.options.length > 0 &&
+      typeof q.correctAnswer === 'number' &&
+      q.correctAnswer >= 0 &&
+      q.correctAnswer < q.options.length
+    );
+    return validQuestions.map(q => randomizeQuestion(q));
   });
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
@@ -64,14 +93,52 @@ function PdfExam() {
   const currentQuestion = examQuestions[currentQuestionIndex];
   const totalQuestions = examQuestions.length;
   const progress = totalQuestions > 0 ? ((currentQuestionIndex + 1) / totalQuestions) * 100 : 0;
+  
+  // Safety check: if no current question, show error state
+  if (!currentQuestion && examQuestions.length > 0) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-100 pb-20">
+        <div className="container mx-auto px-4 py-6">
+          <div className="glass-card p-8 text-center">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Error Loading Exam</h2>
+            <p className="text-gray-600 mb-4">There was an issue loading the exam questions.</p>
+            <button
+              onClick={() => navigate('/course-content')}
+              className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold"
+            >
+              Back to Course
+            </button>
+          </div>
+        </div>
+        <BottomNavbar />
+      </div>
+    );
+  }
 
   useEffect(() => {
     // Reset when day/pdf changes and randomize questions
     const questions = PDF_EXAMS[dayNumber]?.[pdfIdx] || [];
-    if (questions.length > 0) {
-      const newQuestions = questions.map(q => randomizeQuestion(q));
-      setExamQuestions(newQuestions);
+    if (questions && questions.length > 0) {
+      // Filter out any invalid questions before randomizing
+      const validQuestions = questions.filter(q => 
+        q && 
+        q.question && 
+        q.options && 
+        Array.isArray(q.options) && 
+        q.options.length > 0 &&
+        typeof q.correctAnswer === 'number' &&
+        q.correctAnswer >= 0 &&
+        q.correctAnswer < q.options.length
+      );
+      if (validQuestions.length > 0) {
+        const newQuestions = validQuestions.map(q => randomizeQuestion(q));
+        setExamQuestions(newQuestions);
+      } else {
+        console.error(`No valid exam questions found for Day ${dayNumber}, PDF ${pdfIdx}`);
+        setExamQuestions([]);
+      }
     } else {
+      console.warn(`No exam questions found for Day ${dayNumber}, PDF ${pdfIdx}`);
       setExamQuestions([]);
     }
     setCurrentQuestionIndex(0);
@@ -91,7 +158,7 @@ function PdfExam() {
   }, [canTakeExam, dayNumber, pdfIdx, navigate]);
 
   const handleAnswerSelect = (optionIndex) => {
-    if (showResult || isExamComplete) return;
+    if (showResult || isExamComplete || !currentQuestion) return;
     
     setSelectedAnswer(optionIndex);
     setShowResult(true);
@@ -279,12 +346,12 @@ function PdfExam() {
         {/* Question Card */}
         <div className="glass-card p-5 sm:p-6 md:p-8 mb-4 sm:mb-6">
           <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">
-            {currentQuestion.question}
+            {currentQuestion?.question || 'Loading question...'}
           </h2>
 
           {/* Answer Options */}
           <div className="space-y-2 sm:space-y-3">
-            {currentQuestion.options.map((option, index) => {
+            {currentQuestion?.options?.map((option, index) => {
               const isSelected = selectedAnswer === index;
               const isCorrect = index === currentQuestion.correctAnswer;
               const showFeedback = showResult;
@@ -330,7 +397,7 @@ function PdfExam() {
           </div>
 
           {/* Explanation */}
-          {showResult && (
+          {showResult && currentQuestion?.explanation && (
             <div className={`mt-4 sm:mt-6 p-3 sm:p-4 rounded-lg ${
               selectedAnswer === currentQuestion.correctAnswer ? 'bg-green-50' : 'bg-amber-50'
             }`}>
