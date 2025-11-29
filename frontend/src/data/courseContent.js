@@ -310,7 +310,7 @@ export const DAY_CONTENT = {
         fileSize: "2.8 MB", 
         filePath: "/course-materials/standard/day-4/Using the road (159 to 203).pdf",
         downloadPath: "/course-materials/standard/day-4/Using the road (159 to 203).pdf",
-        videoPath: "/course-materials/standard/day-4/videos/using-the-road-159-to-203.mp4"
+        youtubeVideoId: "3i8jNQLaMQk"
       },
       { 
         title: "Road users requiring extra care (Rules 204 to 225)", 
@@ -318,7 +318,7 @@ export const DAY_CONTENT = {
         fileSize: "954 KB", 
         filePath: "/course-materials/standard/day-4/Road users requiring extra care (204 to 225).pdf",
         downloadPath: "/course-materials/standard/day-4/Road users requiring extra care (204 to 225).pdf",
-        videoPath: "/course-materials/standard/day-4/videos/road-users-extra-care-204-to-225.mp4"
+        youtubeVideoId: "AyJskzi7spI"
       },
       { 
         title: "Hazard awareness", 
