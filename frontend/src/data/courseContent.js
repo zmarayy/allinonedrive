@@ -249,7 +249,7 @@ export const DAY_CONTENT = {
         fileSize: "570 KB", 
         filePath: "/course-materials/standard/day-3/Driving in Adverse Weather (Rules 226–237).pdf",
         downloadPath: "/course-materials/standard/day-3/Driving in Adverse Weather (Rules 226–237).pdf",
-        videoPath: "/course-materials/standard/day-3/videos/weather-226-to-237.mp4"
+        youtubeVideoId: "FlPcxxXyjDk"
       },
       { 
         title: "Annex 6 – Vehicle maintenance, safety and security", 
