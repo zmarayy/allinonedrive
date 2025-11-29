@@ -3,7 +3,11 @@
  */
 
 // Get API URL from environment variable or use default
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+// For Netlify Functions, use relative paths
+const API_BASE_URL = process.env.REACT_APP_API_URL || 
+  (typeof window !== 'undefined' && window.location.hostname.includes('netlify.app') 
+    ? '/.netlify/functions' 
+    : 'http://localhost:5000/api');
 
 // Log API URL in development (helps debug)
 if (process.env.NODE_ENV === 'development') {

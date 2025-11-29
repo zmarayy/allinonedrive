@@ -5,6 +5,9 @@
   # Publish directory - React builds to 'build' folder
   publish = "build"
   
+  # Functions directory (relative to publish directory)
+  functions = "netlify/functions"
+  
   # Environment variables (set these in Netlify dashboard)
   # [build.environment]
   #   NODE_VERSION = "18"

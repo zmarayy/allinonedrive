@@ -128,8 +128,12 @@ function Packages() {
         requestBody.amount = 34999; // £349.99 in pence
       }
 
-      // Create checkout session
-      const response = await fetch(`${API_BASE_URL}/checkout/create-session`, {
+      // Create checkout session (use Netlify function if on Netlify, otherwise use backend)
+      const checkoutUrl = typeof window !== 'undefined' && window.location.hostname.includes('netlify.app')
+        ? '/.netlify/functions/create-session'
+        : `${API_BASE_URL}/checkout/create-session`;
+      
+      const response = await fetch(checkoutUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
