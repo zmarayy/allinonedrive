@@ -63,23 +63,31 @@ export function getContentForDay(dayNumber, packageLevel) {
 export const DAY_CONTENT = {
   1: {
     day: 1,
-    title: "Day 1",
+    title: "Day 1: Alertness and Attitude",
     pdfNotes: [
+      { 
+        title: "Introduction - Who The Highway Code is for (Rules H1 to H3)", 
+        description: "Who The Highway Code is for, how it is worded, consequences of not following the rules, self-driving vehicles and the hierarchy of road users", 
+        fileSize: "67 KB", 
+        filePath: "/course-materials/standard/day-1/summary-rules-h1-3.pdf",
+        downloadPath: "/course-materials/standard/day-1/summary-rules-h1-3.pdf",
+        videoPath: "/course-materials/standard/day-1/videos/hierarchy-1-to-3.mp4"
+      },
       { 
         title: "Rules for Pedestrians (1-35)", 
         description: "PDF notes covering rules for pedestrians", 
         fileSize: "1.6 MB", 
         filePath: "/course-materials/standard/day-1/rules-pedestrians-1-35.pdf",
         downloadPath: "/course-materials/standard/day-1/rules-pedestrians-1-35.pdf",
-        videoPath: "/course-materials/standard/day-1/videos/rule-1-to-17.mp4" // Primary video, may need additional videos
+        videoPath: "/course-materials/standard/day-1/videos/rule-1-to-17.mp4"
       },
       { 
-        title: "Rules for Drivers and Motorcyclists (89-102)", 
-        description: "PDF notes for drivers and motorcyclists", 
-        fileSize: "665 KB", 
-        filePath: "/course-materials/standard/day-1/rules-drivers-motorcyclists-89-102.pdf",
-        downloadPath: "/course-materials/standard/day-1/rules-drivers-motorcyclists-89-102.pdf",
-        videoPath: "/course-materials/standard/day-1/videos/drivers-motorcyclists-89-102.mp4"
+        title: "Rules about Animals (47-58)", 
+        description: "PDF notes about animals on the road", 
+        fileSize: "377 KB", 
+        filePath: "/course-materials/standard/day-1/animals-47-58.pdf",
+        downloadPath: "/course-materials/standard/day-1/animals-47-58.pdf",
+        videoPath: "/course-materials/standard/day-1/videos/animals-47-58.mp4"
       },
       { 
         title: "Rules for Cyclists (59-82)", 
@@ -90,23 +98,23 @@ export const DAY_CONTENT = {
         videoPath: "/course-materials/standard/day-1/videos/rule-59-to-82-cyclist.mp4"
       },
       { 
-        title: "Animals (47-58)", 
-        description: "PDF notes about animals on the road", 
-        fileSize: "377 KB", 
-        filePath: "/course-materials/standard/day-1/animals-47-58.pdf",
-        downloadPath: "/course-materials/standard/day-1/animals-47-58.pdf",
-        videoPath: "/course-materials/standard/day-1/videos/animals-47-58.mp4"
+        title: "Rules for Drivers and Motorcyclists (89-102)", 
+        description: "Vehicle condition, fitness to drive, alcohol and drugs, what to do before setting off, vehicle towing and loading, seat belts and child restraints", 
+        fileSize: "665 KB", 
+        filePath: "/course-materials/standard/day-1/rules-drivers-motorcyclists-89-102.pdf",
+        downloadPath: "/course-materials/standard/day-1/rules-drivers-motorcyclists-89-102.pdf",
+        videoPath: "/course-materials/standard/day-1/videos/drivers-motorcyclists-89-102.mp4"
       },
       { 
-        title: "Summary of Rules H1 to 3", 
-        description: "Summary notes for rules H1 to 3", 
-        fileSize: "67 KB", 
-        filePath: "/course-materials/standard/day-1/summary-rules-h1-3.pdf",
-        downloadPath: "/course-materials/standard/day-1/summary-rules-h1-3.pdf",
-        videoPath: "/course-materials/standard/day-1/videos/hierarchy-1-to-3.mp4"
+        title: "Annex 8 – Safety code for new drivers", 
+        description: "New Drivers Act, further training and advice for new drivers", 
+        fileSize: "47 KB", 
+        filePath: "/course-materials/standard/day-1/annex-8.pdf",
+        downloadPath: "/course-materials/standard/day-1/annex-8.pdf"
+        // No video for Annex 8 as per your structure
       },
       { 
-        title: "Part One - Alertness on the Road", 
+        title: "DVSA Exam Questions and Answers - Alertness", 
         description: "Alertness and awareness on the road", 
         fileSize: "90 KB", 
         filePath: "/course-materials/standard/day-1/part-one-alertness.pdf",
@@ -114,20 +122,12 @@ export const DAY_CONTENT = {
         videoPath: "/course-materials/standard/day-1/videos/eds-alertness.mp4"
       },
       { 
-        title: "Part Two - Attitude", 
+        title: "DVSA Exam Questions and Answers - Attitude", 
         description: "Attitude while driving", 
         fileSize: "65 KB", 
         filePath: "/course-materials/standard/day-1/part-two-attitude.pdf",
         downloadPath: "/course-materials/standard/day-1/part-two-attitude.pdf",
         videoPath: "/course-materials/standard/day-1/videos/eds-attitude.mp4"
-      },
-      { 
-        title: "Annex 8", 
-        description: "Annex 8 reference material", 
-        fileSize: "47 KB", 
-        filePath: "/course-materials/standard/day-1/annex-8.pdf",
-        downloadPath: "/course-materials/standard/day-1/annex-8.pdf",
-        videoPath: "/course-materials/standard/day-1/videos/annex-8.mp4"
       }
     ],
     odtWordNotes: [
