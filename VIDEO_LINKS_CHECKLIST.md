@@ -68,16 +68,12 @@ Please upload each video to YouTube (set as **Unlisted**) and fill in the YouTub
 
 ---
 
-## 📅 DAY 5 (3 videos needed)
+## 📅 DAY 5: Other Vehicles and Vehicle Handling (1 video needed)
 
-- [ ] **Waiting and Parking (238-252)**
+- [ ] **Waiting and parking (Rules 238 to 252)**
   - YouTube Link: _________________________________
 
-- [ ] **Part Ten - Vehicle Handling**
-  - YouTube Link: _________________________________
-
-- [ ] **Other Types of Vehicles**
-  - YouTube Link: _________________________________
+**Note:** Annex 1, Annex 2, Other types of vehicles, and Vehicle handling are PDF only (no videos needed)
 
 ---
 
@@ -106,12 +102,12 @@ Please upload each video to YouTube (set as **Unlisted**) and fill in the YouTub
 
 ## 📊 Summary
 
-- **Total Videos Needed:** 20 videos
+- **Total Videos Needed:** 18 videos
 - **Day 1:** 5 videos (Annex 8 is PDF only, no video)
 - **Day 2:** 4 videos (Light signals, Signals to other road users, Signals by authorised persons, Road markings, and Vehicle markings are PDF only)
 - **Day 3:** 1 video (Annex 6, Safety and your vehicle, and Safety margins are PDF only)
 - **Day 4:** 2 videos (Hazard awareness and Vulnerable road users are PDF only)
-- **Day 5:** 3 videos
+- **Day 5:** 1 video (Annex 1, Annex 2, Other types of vehicles, and Vehicle handling are PDF only)
 - **Day 6:** 2 videos
 - **Day 7:** 3 videos
 

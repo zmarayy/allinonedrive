@@ -363,52 +363,47 @@ export const DAY_CONTENT = {
   },
   5: {
     day: 5,
-    title: "Day 5",
+    title: "Day 5: Other Vehicles and Vehicle Handling",
     pdfNotes: [
       { 
-        title: "Waiting and Parking (238-252)", 
-        description: "Rules for waiting and parking", 
+        title: "Waiting and parking (Rules 238 to 252)", 
+        description: "General parking rules, parking at night, visibility and enforcement", 
         fileSize: "596 KB", 
         filePath: "/course-materials/standard/day-5/Waiting and parking (238 to 252).pdf",
         downloadPath: "/course-materials/standard/day-5/Waiting and parking (238 to 252).pdf",
         videoPath: "/course-materials/standard/day-5/videos/waiting-and-parking-238-to-252.mp4"
       },
       { 
-        title: "Part Ten - Vehicle Handling", 
-        description: "Vehicle handling techniques", 
-        fileSize: "202 KB", 
-        filePath: "/course-materials/standard/day-5/Part ten Vehicle Handling.pdf",
-        downloadPath: "/course-materials/standard/day-5/Part ten Vehicle Handling.pdf",
-        videoPath: "/course-materials/standard/day-5/videos/vehicle-handling-part-ten.mp4"
-      },
-      { 
-        title: "Part Nine - Vehicle and Motorcycle Handling", 
-        description: "Handling vehicles and motorcycles", 
-        fileSize: "100 KB", 
-        filePath: "/course-materials/standard/day-5/Part nine Vehicle and Motorcycle Handling.pdf",
-        downloadPath: "/course-materials/standard/day-5/Part nine Vehicle and Motorcycle Handling.pdf"
-      },
-      { 
-        title: "General Rules, Techniques and Advice", 
-        description: "General rules for all drivers and riders", 
-        fileSize: "123 KB", 
-        filePath: "/course-materials/standard/day-5/General rules, techniques and advice for all drivers and riders.pdf",
-        downloadPath: "/course-materials/standard/day-5/General rules, techniques and advice for all drivers and riders.pdf"
-      },
-      { 
-        title: "Other Types of Vehicles", 
-        description: "Rules for other vehicle types", 
-        fileSize: "79 KB", 
-        filePath: "/course-materials/standard/day-5/Other Types of Vehicles.pdf",
-        downloadPath: "/course-materials/standard/day-5/Other Types of Vehicles.pdf",
-        videoPath: "/course-materials/standard/day-5/videos/other-types-of-vehicles.mp4"
-      },
-      { 
-        title: "Annex 1 and 2", 
-        description: "Annex 1 and 2 reference material", 
+        title: "Annex 1 – You and your bicycle", 
+        description: "Information and rules about you and your bicycle", 
         fileSize: "88 KB", 
         filePath: "/course-materials/standard/day-5/annex 1 and 2.pdf",
         downloadPath: "/course-materials/standard/day-5/annex 1 and 2.pdf"
+        // PDF only - no video (Annex 1 is part of annex 1 and 2 PDF)
+      },
+      { 
+        title: "Annex 2 – Motorcycle licence requirements", 
+        description: "Information and rules on motorcycle licence categories and progression", 
+        fileSize: "88 KB", 
+        filePath: "/course-materials/standard/day-5/annex 1 and 2.pdf",
+        downloadPath: "/course-materials/standard/day-5/annex 1 and 2.pdf"
+        // PDF only - no video (Annex 2 is part of annex 1 and 2 PDF)
+      },
+      { 
+        title: "Other types of vehicles", 
+        description: "Rules for other vehicle types", 
+        fileSize: "79 KB", 
+        filePath: "/course-materials/standard/day-5/Other Types of Vehicles.pdf",
+        downloadPath: "/course-materials/standard/day-5/Other Types of Vehicles.pdf"
+        // PDF only - no video
+      },
+      { 
+        title: "Vehicle handling", 
+        description: "Vehicle handling techniques", 
+        fileSize: "202 KB", 
+        filePath: "/course-materials/standard/day-5/Part ten Vehicle Handling.pdf",
+        downloadPath: "/course-materials/standard/day-5/Part ten Vehicle Handling.pdf"
+        // PDF only - no video
       }
     ],
     odtWordNotes: [
