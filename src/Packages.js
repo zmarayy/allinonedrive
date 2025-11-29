@@ -978,7 +978,7 @@ function Packages() {
               <ul className="space-y-4 text-left max-w-2xl mx-auto">
                 <li className="flex items-start">
                   <span className="text-green-500 text-2xl mr-4 mt-1">✅</span>
-                  <span className="text-lg text-gray-700 font-medium">Full access to the <strong className="text-primary-600">Ultimate Pro Theory Package</strong></span>
+                  <span className="text-lg text-gray-700 font-medium">Full access to <strong className="text-primary-600">Elite 5-Day Theory Accelerator</strong></span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 text-2xl mr-4 mt-1">✅</span>
