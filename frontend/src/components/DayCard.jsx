@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import VideoCard from './VideoCard';
 import PdfPreviewCard from './PdfPreviewCard';
-import { isDayUnlocked, isDayCompleted, isQuizPassed, completeDay } from '../utils/progressManager';
-import { getCompletedPdfsForDay, areAllPdfsCompleted } from '../utils/pdfLearningFlow';
+import { isDayUnlocked, isDayCompleted, isQuizPassed } from '../utils/progressManager';
+import { getOpenedPdfsForDay } from '../utils/pdfLearningFlow';
 import { useNavigate } from 'react-router-dom';
 
 function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packageType }) {
@@ -17,11 +17,10 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
   
   useEffect(() => {
     const updateProgress = () => {
-      setCompletedPdfs(getCompletedPdfsForDay(dayNumber, totalPdfs));
-      // Can complete day only if all PDFs are completed (quiz is optional for now)
-      const allPdfsDone = areAllPdfsCompleted(dayNumber, totalPdfs);
-      // Allow completion if all PDFs done, quiz is optional
-      setCanComplete(allPdfsDone);
+      setCompletedPdfs(getOpenedPdfsForDay(dayNumber, totalPdfs));
+      // Day completion is now handled by quiz passing (70%+)
+      // Quiz automatically completes the day when passed
+      setCanComplete(isQuizPassed(dayNumber));
     };
     
     updateProgress();
@@ -34,21 +33,11 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
   
   const handlePdfViewed = (dayNum, pdfIdx) => {
     // Refresh progress when PDF status changes
-    setCompletedPdfs(getCompletedPdfsForDay(dayNum, totalPdfs));
-    const allPdfsDone = areAllPdfsCompleted(dayNum, totalPdfs);
-    setCanComplete(allPdfsDone);
+    setCompletedPdfs(getOpenedPdfsForDay(dayNum, totalPdfs));
   };
   
   const handleStartQuiz = () => {
     navigate(`/quiz/${dayNumber}`);
-  };
-  
-  const handleCompleteDay = () => {
-    if (canComplete) {
-      completeDay(dayNumber);
-      alert(`🎉 Congratulations! Day ${dayNumber} completed! Day ${dayNumber + 1} is now unlocked.`);
-      window.location.reload(); // Refresh to show updated status
-    }
   };
   
   if (!dayData) return null;
@@ -104,7 +93,7 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
               </div>
               {!isCompleted && (
                 <p className="text-xs sm:text-sm text-gray-600 font-medium">
-                  {completedPdfs}/{totalPdfs} PDFs completed
+                  {completedPdfs}/{totalPdfs} PDFs viewed
                 </p>
               )}
             </div>
@@ -150,7 +139,7 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
                 {/* Progress Indicator */}
                 <div className="mt-4 bg-white rounded-lg p-3 border border-emerald-200">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-semibold text-gray-700">Completion Progress</span>
+                    <span className="text-sm font-semibold text-gray-700">Viewing Progress</span>
                     <span className="text-sm font-bold text-emerald-600">{completedPdfs}/{totalPdfs}</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
@@ -160,45 +149,39 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
                     ></div>
                   </div>
                   <p className="text-xs text-gray-500 mt-2">
-                    Each material requires: Study → Flashcards (20) → Exam (15 questions, 70%+ to pass)
+                    All materials are unlocked. Study at your own pace, then take the end-of-day exam (70%+ to unlock next day).
                   </p>
                 </div>
                 
-                {/* Quiz Section - Optional */}
-                {areAllPdfsCompleted(dayNumber, totalPdfs) && !isQuizPassed(dayNumber) && (
-                  <div className="mt-4 bg-amber-50 rounded-lg p-4 border border-amber-200">
+                {/* End-of-Day Exam Section - Mandatory */}
+                {!isQuizPassed(dayNumber) && (
+                  <div className="mt-4 bg-amber-50 rounded-lg p-4 border-2 border-amber-300">
                     <h4 className="text-sm sm:text-base font-bold text-gray-900 mb-2 flex items-center">
                       <span className="mr-2">📝</span>
-                      Optional Quiz Available
+                      End-of-Day Exam Required
                     </h4>
                     <p className="text-xs sm:text-sm text-gray-600 font-medium mb-3">
-                      You've completed all materials. Test your knowledge with an optional quiz.
+                      Complete the exam with 70% or higher to unlock Day {dayNumber + 1}. All materials are available for study.
                     </p>
                     <button
                       onClick={handleStartQuiz}
-                      className="w-full bg-amber-600 active:bg-amber-700 text-white font-semibold text-sm sm:text-base px-4 py-3 rounded-lg transition-colors min-h-[48px] touch-manipulation"
+                      className="w-full bg-amber-600 active:bg-amber-700 text-white font-semibold text-sm sm:text-base px-4 py-3 rounded-lg transition-colors min-h-[48px] touch-manipulation shadow-lg"
                     >
-                      Start Quiz (Optional)
+                      Take Day {dayNumber} Exam
                     </button>
                   </div>
                 )}
                 
-                {/* Complete Day Button */}
-                {canComplete && !isCompleted && (
+                {/* Day Completed Message */}
+                {isCompleted && (
                   <div className="mt-4 bg-green-50 rounded-lg p-4 border-2 border-green-300">
                     <h4 className="text-sm sm:text-base font-bold text-gray-900 mb-2 flex items-center">
                       <span className="mr-2">🎉</span>
-                      Ready to Complete Day {dayNumber}!
+                      Day {dayNumber} Completed!
                     </h4>
-                    <p className="text-xs sm:text-sm text-gray-600 font-medium mb-3">
-                      You've completed all materials for this day. Complete this day to unlock Day {dayNumber + 1}.
+                    <p className="text-xs sm:text-sm text-gray-600 font-medium">
+                      You passed the exam! Day {dayNumber + 1} is now unlocked.
                     </p>
-                    <button
-                      onClick={handleCompleteDay}
-                      className="w-full bg-green-600 active:bg-green-700 text-white font-semibold text-sm sm:text-base px-4 py-3 rounded-lg transition-colors min-h-[48px] touch-manipulation shadow-lg"
-                    >
-                      Complete Day {dayNumber} ✓
-                    </button>
                   </div>
                 )}
               </div>

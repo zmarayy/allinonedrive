@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { saveQuizScore, isDayUnlocked } from '../utils/progressManager';
-import { areAllPdfsCompleted } from '../utils/pdfLearningFlow';
 import { DAY_CONTENT } from '../data/courseContent';
 import BottomNavbar from '../components/BottomNavbar';
 
@@ -432,9 +431,8 @@ function Quiz() {
   const [isQuizComplete, setIsQuizComplete] = useState(false);
   const [score, setScore] = useState(0);
   
-  const dayData = DAY_CONTENT[dayNumber];
-  const totalPdfs = dayData?.pdfNotes?.length || 0;
-  const canTakeQuiz = isDayUnlocked(dayNumber) && areAllPdfsCompleted(dayNumber, totalPdfs);
+  // Quiz is available if day is unlocked (all PDFs are available from start)
+  const canTakeQuiz = isDayUnlocked(dayNumber);
 
   const currentQuestion = quiz.questions[currentQuestionIndex];
   const totalQuestions = quiz.questions.length;
@@ -442,10 +440,10 @@ function Quiz() {
   
   // Redirect if can't take quiz
   useEffect(() => {
-    if (!canTakeQuiz && dayNumber && totalPdfs > 0) {
+    if (!canTakeQuiz && dayNumber) {
       navigate('/course-content');
     }
-  }, [canTakeQuiz, dayNumber, navigate, totalPdfs]);
+  }, [canTakeQuiz, dayNumber, navigate]);
 
   useEffect(() => {
     // Reset when day changes
@@ -505,7 +503,7 @@ function Quiz() {
 
   if (isQuizComplete) {
     const percentage = Math.round((score / totalQuestions) * 100);
-    const passed = percentage >= 80;
+    const passed = percentage >= 70; // Changed from 80% to 70%
 
     return (
       <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-100 pb-20">
@@ -532,13 +530,13 @@ function Quiz() {
                 {passed ? (
                   <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
                     <p className="text-green-800 font-semibold text-sm sm:text-base">
-                      ✅ Great job! You passed with {percentage}%. You can now complete Day {dayNumber}.
+                      ✅ Great job! You passed with {percentage}%. Day {dayNumber + 1} is now unlocked!
                     </p>
                   </div>
                 ) : (
                   <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
                     <p className="text-amber-800 font-semibold text-sm sm:text-base">
-                      You need 80% to pass. You got {percentage}%. Review the materials and try again!
+                      You need 70% to pass and unlock Day {dayNumber + 1}. You got {percentage}%. Review the materials and try again!
                     </p>
                   </div>
                 )}
@@ -557,7 +555,7 @@ function Quiz() {
                       }}
                       className="w-full bg-green-600 active:bg-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 min-h-[48px] touch-manipulation"
                     >
-                      Continue to Day {dayNumber}
+                      Continue to Day {dayNumber + 1}
                     </button>
                   ) : (
                     <button
@@ -594,7 +592,7 @@ function Quiz() {
                 Study First!
               </h2>
               <p className="text-gray-600 font-medium mb-6">
-                Please complete all materials (video → PDF → flashcards → exam) for Day {dayNumber} before taking the quiz.
+                Day {dayNumber} is not unlocked yet. Complete Day {dayNumber - 1} exam (70%+) to unlock this day.
               </p>
               <button
                 onClick={() => navigate('/course-content')}

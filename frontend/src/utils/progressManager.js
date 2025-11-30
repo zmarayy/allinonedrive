@@ -114,16 +114,21 @@ export const areAllPdfsViewed = (dayNumber, totalPdfs) => {
 
 /**
  * Save quiz score for a day
+ * NEW: Requires 70% to pass and unlock next day
  */
 export const saveQuizScore = (dayNumber, score, totalQuestions) => {
   localStorage.setItem(`day-${dayNumber}-quiz-score`, `${score}/${totalQuestions}`);
   localStorage.setItem(`day-${dayNumber}-quiz-date`, new Date().toISOString());
   
-  // If score is 80% or higher, mark as quiz passed
+  // If score is 70% or higher, mark as quiz passed and complete the day
   const percentage = (score / totalQuestions) * 100;
-  if (percentage >= 80) {
+  if (percentage >= 70) {
     localStorage.setItem(`day-${dayNumber}-quiz-passed`, 'true');
+    // Automatically complete the day and unlock next day
+    completeDay(dayNumber);
+    return true; // Passed
   }
+  return false; // Failed
 };
 
 /**
@@ -135,7 +140,7 @@ export const getQuizScore = (dayNumber) => {
 };
 
 /**
- * Check if quiz is passed (80% or higher)
+ * Check if quiz is passed (70% or higher)
  */
 export const isQuizPassed = (dayNumber) => {
   return localStorage.getItem(`day-${dayNumber}-quiz-passed`) === 'true';
@@ -143,10 +148,10 @@ export const isQuizPassed = (dayNumber) => {
 
 /**
  * Check if day can be completed
- * Requires: All PDFs viewed + Quiz passed
+ * NEW: Only requires quiz to be passed (70%+)
  */
-export const canCompleteDay = (dayNumber, totalPdfs) => {
-  return areAllPdfsViewed(dayNumber, totalPdfs) && isQuizPassed(dayNumber);
+export const canCompleteDay = (dayNumber) => {
+  return isQuizPassed(dayNumber);
 };
 
 /**
