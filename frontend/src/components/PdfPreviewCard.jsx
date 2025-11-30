@@ -194,85 +194,42 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
           </div>
         </div>
 
-        {/* Action Buttons - Simplified Flow: Video → PDF (all unlocked from start) */}
-        <div className="mt-4 space-y-2">
-          {isCompleted ? (
-            <div className="w-full space-y-2">
-              <div className="w-full bg-green-100 text-green-700 font-semibold text-sm sm:text-base px-4 py-3 sm:py-3 rounded-lg flex items-center justify-center space-x-2 min-h-[48px]">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+        {/* Action Buttons - Video and PDF side by side */}
+        <div className="mt-4">
+          {hasVideo ? (
+            <div className="w-full flex gap-2">
+              <button
+                onClick={handleVideoClick}
+                className="flex-1 bg-purple-600 active:bg-purple-700 text-white font-semibold text-sm sm:text-base px-3 py-2.5 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-1 min-h-[44px] sm:min-h-[48px] touch-manipulation shadow-md"
+              >
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M8 5v14l11-7z" />
                 </svg>
-                <span>Material Viewed ✓</span>
-              </div>
-              <div className="w-full flex gap-2">
-                {hasVideo && (
-                  <button
-                    onClick={handleVideoClick}
-                    className="flex-1 bg-purple-600 active:bg-purple-700 text-white font-semibold text-sm sm:text-base px-3 py-2.5 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-1 min-h-[44px] sm:min-h-[48px] touch-manipulation shadow-md"
-                  >
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                    <span className="hidden sm:inline text-xs sm:text-sm">Video</span>
-                    <span className="sm:hidden">🎥</span>
-                  </button>
-                )}
-                <button
-                  onClick={handlePreview}
-                  className="flex-1 bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-3 py-2.5 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-1 min-h-[44px] sm:min-h-[48px] touch-manipulation shadow-md"
-                >
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-                  <span className="hidden sm:inline text-xs sm:text-sm">PDF</span>
-                  <span className="sm:hidden">📄</span>
-                </button>
-              </div>
+                <span className="hidden sm:inline text-xs sm:text-sm">Video</span>
+                <span className="sm:hidden">🎥</span>
+              </button>
+              <button
+                onClick={handlePreview}
+                className="flex-1 bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-3 py-2.5 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-1 min-h-[44px] sm:min-h-[48px] touch-manipulation shadow-md"
+              >
+                <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                <span className="hidden sm:inline text-xs sm:text-sm">PDF</span>
+                <span className="sm:hidden">📄</span>
+              </button>
             </div>
           ) : (
-            <div className="space-y-2">
-              {/* Step 1: Watch Video (if available) */}
-              {hasVideo && !videoWatched && (
-                <button
-                  onClick={handleVideoClick}
-                  className="w-full bg-purple-600 active:bg-purple-700 text-white font-semibold text-sm sm:text-base px-4 py-3.5 sm:py-3 rounded-xl transition-all flex items-center justify-center space-x-2 min-h-[52px] sm:min-h-[48px] touch-manipulation shadow-lg active:scale-[0.98]"
-                  style={{ WebkitTapHighlightColor: 'transparent' }}
-                >
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                  <span className="font-bold">📹 Watch Video First (Recommended)</span>
-                </button>
-              )}
-              
-              {/* Step 2: Study PDF (always available if day is unlocked) */}
-              {videoWatched && (
-                <button
-                  onClick={handlePreview}
-                  className="w-full bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-4 py-3.5 sm:py-3 rounded-xl transition-all flex items-center justify-center space-x-2 min-h-[52px] sm:min-h-[48px] touch-manipulation shadow-lg active:scale-[0.98]"
-                  style={{ WebkitTapHighlightColor: 'transparent' }}
-                >
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                  <span className="font-bold">📚 Study This Material</span>
-                </button>
-              )}
-              
-              {/* If no video, show PDF button directly */}
-              {!hasVideo && (
-                <button
-                  onClick={handlePreview}
-                  className="w-full bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-4 py-3.5 sm:py-3 rounded-xl transition-all flex items-center justify-center space-x-2 min-h-[52px] sm:min-h-[48px] touch-manipulation shadow-lg active:scale-[0.98]"
-                  style={{ WebkitTapHighlightColor: 'transparent' }}
-                >
-                  <svg className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                  <span className="font-bold">📚 Study This Material</span>
-                </button>
-              )}
-            </div>
+            <button
+              onClick={handlePreview}
+              className="w-full bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-4 py-3 sm:py-3 rounded-lg transition-colors flex items-center justify-center space-x-1 min-h-[44px] sm:min-h-[48px] touch-manipulation shadow-md"
+            >
+              <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+              <span className="hidden sm:inline text-xs sm:text-sm">PDF</span>
+              <span className="sm:hidden">📄</span>
+            </button>
           )}
         </div>
       </div>
