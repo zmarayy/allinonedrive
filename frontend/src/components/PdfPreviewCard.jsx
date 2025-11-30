@@ -89,6 +89,23 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
+    
+    // Disable right-click and download in iframe
+    try {
+      const iframe = iframeRef.current;
+      if (iframe && iframe.contentDocument) {
+        // Disable context menu
+        iframe.contentDocument.addEventListener('contextmenu', (e) => e.preventDefault());
+        // Disable text selection
+        iframe.contentDocument.body.style.userSelect = 'none';
+        iframe.contentDocument.body.style.webkitUserSelect = 'none';
+        // Disable drag
+        iframe.contentDocument.addEventListener('dragstart', (e) => e.preventDefault());
+      }
+    } catch (e) {
+      // Cross-origin restrictions may prevent access
+      console.log('Cannot access iframe content (expected for security)');
+    }
   };
   
   const handleIframeError = () => {
@@ -159,9 +176,11 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
     <>
       <div 
         ref={cardRef}
-        className={`bg-white rounded-lg p-3 sm:p-4 border border-gray-200 shadow-sm transition-all duration-300 ${
+        className={`bg-white rounded-lg p-3 sm:p-4 border border-gray-200 shadow-sm transition-all duration-300 select-none ${
           !isUnlocked ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-md'
         }`}
+        onContextMenu={(e) => e.preventDefault()}
+        style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
       >
         {/* Header */}
         <div className="flex items-start justify-between mb-3">
@@ -324,10 +343,13 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
           }}
         >
           <div 
-            className={`bg-white rounded-lg shadow-2xl w-full flex flex-col ${
+            className={`bg-white rounded-lg shadow-2xl w-full flex flex-col select-none ${
               isMobile ? 'max-w-sm max-h-[90vh]' : 'max-w-2xl max-h-[90vh]'
             }`}
             onClick={(e) => e.stopPropagation()}
+            onContextMenu={(e) => e.preventDefault()}
+            onDragStart={(e) => e.preventDefault()}
+            style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
           >
             {/* Modal Header - Mobile Optimized */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-white flex-shrink-0">
@@ -343,86 +365,67 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               </button>
             </div>
 
-            {/* PDF Viewer - Mobile Optimized */}
-            <div className="overflow-auto bg-gray-50">
-              {/* Show iframe only on desktop, direct link on mobile */}
-              {!isMobile ? (
-                <>
-                  {isLoading && !loadError && (
-                    <div className="flex flex-col items-center justify-center h-64 sm:h-96">
-                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
-                      <p className="ml-4 text-gray-600 font-medium mt-4">Loading PDF...</p>
-                    </div>
-                  )}
-                  {loadError && filePath && (
-                    <div className="flex flex-col items-center justify-center h-64 sm:h-96 p-4">
-                      <div className="text-4xl mb-4">📄</div>
-                      <p className="text-gray-700 font-semibold mb-2 text-center">PDF couldn't load in viewer</p>
-                      <p className="text-gray-600 text-sm mb-4 text-center">Try opening it directly instead</p>
-                      <a
-                        href={filePath}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors min-h-[48px] touch-manipulation"
-                      >
-                        Open PDF in New Tab
-                      </a>
-                    </div>
-                  )}
-                  {loadError && !filePath && (
-                    <div className="flex flex-col items-center justify-center h-64 sm:h-96 p-4">
-                      <div className="text-4xl mb-4">⚠️</div>
-                      <p className="text-gray-700 font-semibold mb-2 text-center">PDF file not found</p>
-                      <p className="text-gray-600 text-sm mb-4 text-center">Please contact support if this issue persists.</p>
-                    </div>
-                  )}
-                  {!loadError && filePath && (
-                    <iframe
-                      ref={iframeRef}
-                      src={`${filePath}#toolbar=1&navpanes=0&scrollbar=1&zoom=page-width`}
-                      className="w-full h-full min-h-[400px] sm:min-h-[600px] rounded-lg border border-gray-200"
-                      title={title}
-                      onLoad={handleIframeLoad}
-                      onError={handleIframeError}
-                      style={{ 
-                        display: isLoading ? 'none' : 'block',
-                        touchAction: 'pan-x pan-y pinch-zoom'
-                      }}
-                      allow="fullscreen"
-                    />
-                  )}
-                  {!filePath && (
-                    <div className="flex flex-col items-center justify-center h-64 sm:h-96 p-4">
-                      <div className="text-4xl mb-4">⚠️</div>
-                      <p className="text-gray-700 font-semibold mb-2 text-center">PDF file not found</p>
-                      <p className="text-gray-600 text-sm mb-4 text-center">Please contact support if this issue persists.</p>
-                    </div>
-                  )}
-                </>
-              ) : (
-                /* Mobile: Show direct link only - compact */
-                <div className="flex flex-col items-center px-4 py-5">
-                  {filePath ? (
-                    <>
-                      <div className="text-4xl mb-3">📄</div>
-                      <p className="text-gray-700 font-semibold mb-1 text-center text-sm">Study This Material</p>
-                      <p className="text-gray-600 text-xs mb-4 text-center px-2">Open the PDF in a new tab to view and study</p>
-                      <a
-                        href={filePath}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full bg-blue-600 text-white px-4 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition-colors min-h-[44px] touch-manipulation text-center shadow-md text-sm"
-                      >
-                        Open PDF in New Tab
-                      </a>
-                    </>
-                  ) : (
-                    <>
-                      <div className="text-4xl mb-3">⚠️</div>
-                      <p className="text-gray-700 font-semibold mb-1 text-center text-sm">PDF file not found</p>
-                      <p className="text-gray-600 text-xs mb-4 text-center px-2">Please contact support if this issue persists.</p>
-                    </>
-                  )}
+            {/* PDF Viewer - Download Disabled */}
+            <div 
+              className="overflow-auto bg-gray-50 select-none"
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
+              style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
+            >
+              {isLoading && !loadError && (
+                <div className="flex flex-col items-center justify-center h-64 sm:h-96">
+                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
+                  <p className="ml-4 text-gray-600 font-medium mt-4">Loading PDF...</p>
+                </div>
+              )}
+              {loadError && !filePath && (
+                <div className="flex flex-col items-center justify-center h-64 sm:h-96 p-4">
+                  <div className="text-4xl mb-4">⚠️</div>
+                  <p className="text-gray-700 font-semibold mb-2 text-center">PDF file not found</p>
+                  <p className="text-gray-600 text-sm mb-4 text-center">Please contact support if this issue persists.</p>
+                </div>
+              )}
+              {loadError && filePath && (
+                <div className="flex flex-col items-center justify-center h-64 sm:h-96 p-4">
+                  <div className="text-4xl mb-4">📄</div>
+                  <p className="text-gray-700 font-semibold mb-2 text-center">PDF couldn't load in viewer</p>
+                  <p className="text-gray-600 text-sm mb-4 text-center">Please try refreshing the page</p>
+                </div>
+              )}
+              {!loadError && filePath && (
+                <div 
+                  className="relative"
+                  onContextMenu={(e) => e.preventDefault()}
+                  onDragStart={(e) => e.preventDefault()}
+                >
+                  <iframe
+                    ref={iframeRef}
+                    src={`${filePath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width`}
+                    className="w-full h-full min-h-[400px] sm:min-h-[600px] rounded-lg border border-gray-200 pointer-events-auto"
+                    title={title}
+                    onLoad={handleIframeLoad}
+                    onError={handleIframeError}
+                    style={{ 
+                      display: isLoading ? 'none' : 'block',
+                      touchAction: 'pan-x pan-y pinch-zoom',
+                      userSelect: 'none',
+                      WebkitUserSelect: 'none'
+                    }}
+                    allow="fullscreen"
+                  />
+                  {/* Overlay to prevent right-click and text selection */}
+                  <div 
+                    className="absolute inset-0 pointer-events-none"
+                    onContextMenu={(e) => e.preventDefault()}
+                    style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
+                  />
+                </div>
+              )}
+              {!filePath && !loadError && (
+                <div className="flex flex-col items-center justify-center h-64 sm:h-96 p-4">
+                  <div className="text-4xl mb-4">⚠️</div>
+                  <p className="text-gray-700 font-semibold mb-2 text-center">PDF file not found</p>
+                  <p className="text-gray-600 text-sm mb-4 text-center">Please contact support if this issue persists.</p>
                 </div>
               )}
             </div>
