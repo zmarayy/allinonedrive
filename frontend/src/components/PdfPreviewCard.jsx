@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { markPdfOpened, isPdfOpened, isPdfCompleted, isPdfUnlocked, isVideoWatched, markVideoWatched } from '../utils/pdfLearningFlow';
+import { markPdfOpened, isPdfOpened, isVideoWatched, markVideoWatched } from '../utils/pdfLearningFlow';
 import VideoPlayer from './VideoPlayer';
 
 function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, videoPath, youtubeVideoId, dayNumber, pdfIndex, onPdfViewed }) {
-  const navigate = useNavigate();
   const [showPreview, setShowPreview] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
@@ -135,11 +133,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
   
   // Recalculate status on every render to ensure it's up-to-date
   // All materials are now open - no locking system
-  const isUnlocked = true; // Always unlocked - all study materials are open
-  const isCompleted = isPdfCompleted(dayNumber, pdfIndex);
   const hasVideo = videoPath || youtubeVideoId;
   const videoWatched = hasVideo ? isVideoWatched(dayNumber, pdfIndex) : true; // If no video, consider it "watched"
-  const pdfOpened = isPdfOpened(dayNumber, pdfIndex);
   
   // Refresh status periodically and when modal closes
   useEffect(() => {

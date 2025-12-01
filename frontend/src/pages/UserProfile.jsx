@@ -172,8 +172,6 @@ function UserProfile() {
                 const isCompleted = isDayCompleted(day);
                 const status = getDayStatus(day);
                 const examPassed = isQuizPassed(day);
-                const dayData = DAY_CONTENT[day];
-                const totalPdfs = dayData?.pdfNotes?.length || 0;
                 
                 return (
                   <div

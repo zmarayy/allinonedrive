@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PdfPreviewCard from './PdfPreviewCard';
 import { isDayUnlocked, isDayCompleted, isQuizPassed } from '../utils/progressManager';
 import { useNavigate } from 'react-router-dom';

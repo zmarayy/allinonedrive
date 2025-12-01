@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { PDF_EXAMS } from '../data/pdfContent';
-import { savePdfExamScore, areFlashcardsCompleted, isPdfOpened } from '../utils/pdfLearningFlow';
+// Unused imports removed for build
 import BottomNavbar from '../components/BottomNavbar';
 
 // Helper function to shuffle array

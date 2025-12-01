@@ -4,7 +4,7 @@ import { getUserPackage, getPackageDisplayName } from '../utils/packageAccess';
 import { clearCodeAccess } from '../utils/codeAccess';
 import { getOverallProgress, getCompletedDaysCount, getDayStatus, isDayCompleted, isQuizPassed, resetProgress } from '../utils/progressManager';
 import { resetPdfProgress } from '../utils/pdfLearningFlow';
-import { DAY_CONTENT } from '../data/courseContent';
+// DAY_CONTENT import removed - not used
 import BottomNavbar from '../components/BottomNavbar';
 
 function Dashboard() {
@@ -58,7 +58,6 @@ function Dashboard() {
   };
 
   // Get current day info
-  const currentDayData = DAY_CONTENT[currentDay];
   const quizPassed = isQuizPassed(currentDay);
   const isCompleted = isDayCompleted(currentDay);
 
