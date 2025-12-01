@@ -279,51 +279,38 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
 
             {/* PDF Viewer - Download Disabled - Mobile Optimized */}
             <div 
-              className="bg-white select-none flex-1"
+              className="overflow-hidden bg-white select-none flex-1"
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
               style={{ 
                 userSelect: 'none', 
                 WebkitUserSelect: 'none',
                 backgroundColor: '#ffffff',
+                position: 'relative',
                 flex: '1 1 auto',
                 minHeight: '400px',
-                position: 'relative',
                 width: '100%',
-                height: '100%',
-                overflow: 'auto'
+                height: '100%'
               }}
             >
               {isLoading && !loadError && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <div className="absolute inset-0 flex flex-col items-center justify-center z-10 bg-white">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
                   <p className="ml-4 text-gray-600 font-medium mt-4">Loading PDF...</p>
                 </div>
               )}
               {loadError && !filePath && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-4 z-10 bg-white">
                   <div className="text-4xl mb-4">⚠️</div>
                   <p className="text-gray-700 font-semibold mb-2 text-center">PDF file not found</p>
                   <p className="text-gray-600 text-sm mb-4 text-center">Please contact support if this issue persists.</p>
                 </div>
               )}
               {loadError && filePath && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-4 z-10 bg-white">
                   <div className="text-4xl mb-4">📄</div>
                   <p className="text-gray-700 font-semibold mb-2 text-center">PDF couldn't load in viewer</p>
                   <p className="text-gray-600 text-sm mb-4 text-center">Please try refreshing the page</p>
-                  {isMobile && (
-                    <button
-                      onClick={() => {
-                        const basePath = filePath.startsWith('/') ? filePath : '/' + filePath;
-                        const encodedPath = encodeURI(basePath);
-                        window.open(encodedPath, '_blank');
-                      }}
-                      className="mt-4 bg-emerald-600 text-white px-6 py-2 rounded-lg font-semibold"
-                    >
-                      Open PDF in New Tab
-                    </button>
-                  )}
                 </div>
               )}
               {!loadError && filePath && (
@@ -334,27 +321,18 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                     const basePath = filePath.startsWith('/') ? filePath : '/' + filePath;
                     // Use encodeURI which preserves slashes but encodes spaces and special chars
                     const encodedPath = encodeURI(basePath);
-                    // For mobile, use simpler parameters - some mobile browsers don't support complex PDF parameters
-                    if (isMobile) {
-                      // Try with minimal parameters for mobile compatibility
-                      return encodedPath;
-                    }
-                    // Desktop can use full parameters
-                    return `${encodedPath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width`;
+                    // Use simple parameters that work on all devices
+                    return `${encodedPath}#toolbar=0&navpanes=0&scrollbar=1`;
                   })()}
-                  className="w-full h-full bg-white"
                   title={title}
                   onLoad={handleIframeLoad}
                   onError={handleIframeError}
                   style={{ 
                     width: '100%',
                     height: '100%',
-                    minHeight: '400px',
                     border: 'none',
                     backgroundColor: '#ffffff',
-                    opacity: isLoading ? 0 : 1,
-                    visibility: isLoading ? 'hidden' : 'visible',
-                    transition: 'opacity 0.3s ease-in-out',
+                    display: isLoading ? 'none' : 'block',
                     position: 'absolute',
                     top: 0,
                     left: 0,
@@ -362,12 +340,10 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                     bottom: 0
                   }}
                   allow="fullscreen"
-                  frameBorder="0"
-                  scrolling="auto"
                 />
               )}
               {!filePath && !loadError && (
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-4 z-10 bg-white">
                   <div className="text-4xl mb-4">⚠️</div>
                   <p className="text-gray-700 font-semibold mb-2 text-center">PDF file not found</p>
                   <p className="text-gray-600 text-sm mb-4 text-center">Please contact support if this issue persists.</p>
