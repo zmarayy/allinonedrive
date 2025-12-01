@@ -295,7 +295,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
 
             {/* PDF Viewer - Download Disabled - Mobile Optimized */}
             <div 
-              className="overflow-hidden bg-white select-none flex-1"
+              className="bg-white select-none flex-1"
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
               style={{ 
@@ -306,7 +306,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 minHeight: '400px',
                 position: 'relative',
                 width: '100%',
-                height: '100%'
+                height: '100%',
+                overflow: 'hidden'
               }}
             >
               {isLoading && !loadError && (
@@ -342,60 +343,31 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 </div>
               )}
               {!loadError && filePath && (
-                <>
-                  {isMobile ? (
-                    // Mobile: Show direct link button since iframes don't work for PDFs on mobile browsers
-                    <div className="w-full h-full flex flex-col items-center justify-center p-6">
-                      <div className="text-center">
-                        <div className="text-6xl mb-4">📄</div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
-                        <p className="text-sm text-gray-600 mb-6 px-4">
-                          Mobile browsers work better when opening PDFs directly. Tap the button below to view the PDF in your browser.
-                        </p>
-                        <button
-                          onClick={() => {
-                            const basePath = filePath.startsWith('/') ? filePath : '/' + filePath;
-                            const encodedPath = encodeURI(basePath);
-                            window.open(encodedPath, '_blank');
-                            handleClosePreview();
-                          }}
-                          className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-base px-6 py-4 rounded-lg transition-colors shadow-lg"
-                        >
-                          Open PDF in Browser
-                        </button>
-                        <button
-                          onClick={handleClosePreview}
-                          className="w-full mt-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold text-base px-6 py-3 rounded-lg transition-colors"
-                        >
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
-                  ) : (
-                    // Desktop - use iframe only
-                    <iframe
-                      ref={iframeRef}
-                      src={(() => {
-                        const basePath = filePath.startsWith('/') ? filePath : '/' + filePath;
-                        const encodedPath = encodeURI(basePath);
-                        return `${encodedPath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width`;
-                      })()}
-                      className="w-full h-full border-2 border-gray-300 bg-white"
-                      title={title}
-                      onLoad={handleIframeLoad}
-                      onError={handleIframeError}
-                      style={{ 
-                        display: isLoading ? 'none' : 'block',
-                        width: '100%',
-                        height: '100%',
-                        minHeight: '400px',
-                        border: 'none',
-                        backgroundColor: '#ffffff'
-                      }}
-                      allow="fullscreen"
-                    />
-                  )}
-                </>
+                <iframe
+                  ref={iframeRef}
+                  src={(() => {
+                    // Properly encode the file path to handle spaces and special characters
+                    const basePath = filePath.startsWith('/') ? filePath : '/' + filePath;
+                    // Use encodeURI which preserves slashes but encodes spaces and special chars
+                    const encodedPath = encodeURI(basePath);
+                    // Use appropriate zoom for device
+                    const zoomParam = isMobile ? 'zoom=auto' : 'zoom=page-width';
+                    return `${encodedPath}#toolbar=0&navpanes=0&scrollbar=1&${zoomParam}`;
+                  })()}
+                  className="w-full h-full bg-white"
+                  title={title}
+                  onLoad={handleIframeLoad}
+                  onError={handleIframeError}
+                  style={{ 
+                    display: isLoading ? 'none' : 'block',
+                    width: '100%',
+                    height: '100%',
+                    minHeight: '400px',
+                    border: 'none',
+                    backgroundColor: '#ffffff'
+                  }}
+                  allow="fullscreen"
+                />
               )}
               {!filePath && !loadError && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
