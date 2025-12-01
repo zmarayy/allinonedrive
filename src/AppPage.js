@@ -218,19 +218,19 @@ function AppPage() {
               <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
                 {/* Step 1 */}
                 <div className="flex flex-col items-center flex-1 max-w-xs">
-                  <div className="relative w-full mb-4">
+                  <div className="relative w-full">
                     <div className="aspect-[9/16] bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl border-2 border-primary-300/50 overflow-hidden shadow-lg">
                       <img 
                         src="/images/app-install-guide/guide1.jpg" 
                         alt="Step 1: How to install the app"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain bg-white"
                         onError={(e) => {
                           // Fallback if image doesn't exist
                           e.target.style.display = 'none';
                           e.target.nextElementSibling.style.display = 'flex';
                         }}
                       />
-                      <div className="hidden w-full h-full items-center justify-center text-center p-6">
+                      <div className="hidden w-full h-full items-center justify-center text-center p-6 bg-white">
                         <div>
                           <div className="text-4xl mb-3">📱</div>
                           <p className="text-gray-600 font-medium text-sm">
@@ -243,9 +243,6 @@ function AppPage() {
                       1
                     </div>
                   </div>
-                  <p className="text-sm text-gray-600 font-medium text-center px-2">
-                    Step 1 Description
-                  </p>
                 </div>
 
                 {/* Arrow */}
@@ -262,19 +259,19 @@ function AppPage() {
 
                 {/* Step 2 */}
                 <div className="flex flex-col items-center flex-1 max-w-xs">
-                  <div className="relative w-full mb-4">
+                  <div className="relative w-full">
                     <div className="aspect-[9/16] bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl border-2 border-primary-300/50 overflow-hidden shadow-lg">
                       <img 
                         src="/images/app-install-guide/guide2.jpg" 
                         alt="Step 2: How to install the app"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain bg-white"
                         onError={(e) => {
                           // Fallback if image doesn't exist
                           e.target.style.display = 'none';
                           e.target.nextElementSibling.style.display = 'flex';
                         }}
                       />
-                      <div className="hidden w-full h-full items-center justify-center text-center p-6">
+                      <div className="hidden w-full h-full items-center justify-center text-center p-6 bg-white">
                         <div>
                           <div className="text-4xl mb-3">📱</div>
                           <p className="text-gray-600 font-medium text-sm">
@@ -287,9 +284,6 @@ function AppPage() {
                       2
                     </div>
                   </div>
-                  <p className="text-sm text-gray-600 font-medium text-center px-2">
-                    Step 2 Description
-                  </p>
                 </div>
 
                 {/* Arrow */}
@@ -306,19 +300,19 @@ function AppPage() {
 
                 {/* Step 3 */}
                 <div className="flex flex-col items-center flex-1 max-w-xs">
-                  <div className="relative w-full mb-4">
+                  <div className="relative w-full">
                     <div className="aspect-[9/16] bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl border-2 border-primary-300/50 overflow-hidden shadow-lg">
                       <img 
                         src="/images/app-install-guide/guide3.jpg" 
                         alt="Step 3: How to install the app"
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-contain bg-white"
                         onError={(e) => {
                           // Fallback if image doesn't exist
                           e.target.style.display = 'none';
                           e.target.nextElementSibling.style.display = 'flex';
                         }}
                       />
-                      <div className="hidden w-full h-full items-center justify-center text-center p-6">
+                      <div className="hidden w-full h-full items-center justify-center text-center p-6 bg-white">
                         <div>
                           <div className="text-4xl mb-3">📱</div>
                           <p className="text-gray-600 font-medium text-sm">
@@ -331,9 +325,6 @@ function AppPage() {
                       3
                     </div>
                   </div>
-                  <p className="text-sm text-gray-600 font-medium text-center px-2">
-                    Step 3 Description
-                  </p>
                 </div>
               </div>
             </div>
@@ -351,19 +342,15 @@ function AppPage() {
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start">
                     <span className="text-primary-600 font-bold mr-3 mt-1">1.</span>
-                    <span>Click the "Launch the App Now" button below</span>
+                    <span>Click the <strong>Share</strong> icon</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary-600 font-bold mr-3 mt-1">2.</span>
-                    <span>Click <strong>Share</strong> (three dots menu)</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary-600 font-bold mr-3 mt-1">3.</span>
                     <span>Click <strong>"Add to Home Screen"</strong></span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-primary-600 font-bold mr-3 mt-1">4.</span>
-                    <span>Go to your <strong>Home Screen</strong> and open the app</span>
+                    <span className="text-primary-600 font-bold mr-3 mt-1">3.</span>
+                    <span>Click <strong>"Add"</strong></span>
                   </li>
                 </ul>
               </div>
@@ -379,19 +366,15 @@ function AppPage() {
                 <ul className="space-y-3 text-gray-700">
                   <li className="flex items-start">
                     <span className="text-primary-600 font-bold mr-3 mt-1">1.</span>
-                    <span>Click the "Launch the App Now" button below</span>
+                    <span>Click the <strong>Share</strong> icon</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-primary-600 font-bold mr-3 mt-1">2.</span>
-                    <span>Click <strong>Share</strong> (square with arrow icon at bottom)</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-primary-600 font-bold mr-3 mt-1">3.</span>
                     <span>Click <strong>"Add to Home Screen"</strong></span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-primary-600 font-bold mr-3 mt-1">4.</span>
-                    <span>Go to your <strong>Home Screen</strong> and open the app</span>
+                    <span className="text-primary-600 font-bold mr-3 mt-1">3.</span>
+                    <span>Click <strong>"Add"</strong></span>
                   </li>
                 </ul>
               </div>
