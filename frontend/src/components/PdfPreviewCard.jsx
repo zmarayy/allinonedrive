@@ -89,17 +89,37 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
       clearTimeout(timeoutRef.current);
     }
     
-    // Disable right-click and download in iframe
+    // Check if iframe actually loaded content (for mobile PDF issues)
     try {
       const iframe = iframeRef.current;
-      if (iframe && iframe.contentDocument) {
-        // Disable context menu
-        iframe.contentDocument.addEventListener('contextmenu', (e) => e.preventDefault());
-        // Disable text selection
-        iframe.contentDocument.body.style.userSelect = 'none';
-        iframe.contentDocument.body.style.webkitUserSelect = 'none';
-        // Disable drag
-        iframe.contentDocument.addEventListener('dragstart', (e) => e.preventDefault());
+      if (iframe) {
+        // For mobile, check if iframe has content after a short delay
+        if (isMobile) {
+          setTimeout(() => {
+            try {
+              if (iframe.contentDocument && iframe.contentDocument.body) {
+                const bodyContent = iframe.contentDocument.body.innerHTML;
+                // If body is empty or just whitespace, PDF might not have loaded
+                if (!bodyContent || bodyContent.trim().length === 0) {
+                  console.log('PDF iframe appears empty on mobile, may need fallback');
+                }
+              }
+            } catch (e) {
+              // Cross-origin - this is expected
+            }
+          }, 1000);
+        }
+        
+        // Disable right-click and download in iframe
+        if (iframe.contentDocument) {
+          // Disable context menu
+          iframe.contentDocument.addEventListener('contextmenu', (e) => e.preventDefault());
+          // Disable text selection
+          iframe.contentDocument.body.style.userSelect = 'none';
+          iframe.contentDocument.body.style.webkitUserSelect = 'none';
+          // Disable drag
+          iframe.contentDocument.addEventListener('dragstart', (e) => e.preventDefault());
+        }
       }
     } catch (e) {
       // Cross-origin restrictions may prevent access
@@ -283,7 +303,10 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 WebkitUserSelect: 'none',
                 backgroundColor: '#ffffff',
                 flex: '1 1 auto',
-                minHeight: 0
+                minHeight: '400px',
+                position: 'relative',
+                width: '100%',
+                height: '100%'
               }}
             >
               {isLoading && !loadError && (
@@ -304,47 +327,46 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                   <div className="text-4xl mb-4">📄</div>
                   <p className="text-gray-700 font-semibold mb-2 text-center">PDF couldn't load in viewer</p>
                   <p className="text-gray-600 text-sm mb-4 text-center">Please try refreshing the page</p>
+                  {isMobile && (
+                    <button
+                      onClick={() => {
+                        const basePath = filePath.startsWith('/') ? filePath : '/' + filePath;
+                        const encodedPath = encodeURI(basePath);
+                        window.open(encodedPath, '_blank');
+                      }}
+                      className="mt-4 bg-emerald-600 text-white px-6 py-2 rounded-lg font-semibold"
+                    >
+                      Open PDF in New Tab
+                    </button>
+                  )}
                 </div>
               )}
               {!loadError && filePath && (
-                <div 
-                  className="relative w-full h-full"
-                  onContextMenu={(e) => e.preventDefault()}
-                  onDragStart={(e) => e.preventDefault()}
-                >
-                  <iframe
-                    ref={iframeRef}
-                    src={(() => {
-                      // Properly encode the file path to handle spaces and special characters
-                      const basePath = filePath.startsWith('/') ? filePath : '/' + filePath;
-                      // Use encodeURI which preserves slashes but encodes spaces and special chars
-                      const encodedPath = encodeURI(basePath);
-                      // Use page-width zoom like the working course content version
-                      return `${encodedPath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width`;
-                    })()}
-                    className="w-full h-full rounded-lg border-2 border-gray-300 pointer-events-auto bg-white"
-                    title={title}
-                    onLoad={handleIframeLoad}
-                    onError={handleIframeError}
-                    style={{ 
-                      display: isLoading ? 'none' : 'block',
-                      touchAction: 'pan-x pan-y pinch-zoom',
-                      userSelect: 'none',
-                      WebkitUserSelect: 'none',
-                      width: '100%',
-                      height: '100%',
-                      border: '2px solid #d1d5db',
-                      backgroundColor: '#ffffff'
-                    }}
-                    allow="fullscreen"
-                  />
-                  {/* Overlay to prevent right-click and text selection */}
-                  <div 
-                    className="absolute inset-0 pointer-events-none"
-                    onContextMenu={(e) => e.preventDefault()}
-                    style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
-                  />
-                </div>
+                <iframe
+                  ref={iframeRef}
+                  src={(() => {
+                    // Properly encode the file path to handle spaces and special characters
+                    const basePath = filePath.startsWith('/') ? filePath : '/' + filePath;
+                    // Use encodeURI which preserves slashes but encodes spaces and special chars
+                    const encodedPath = encodeURI(basePath);
+                    // For mobile, use auto zoom to ensure PDF displays properly
+                    const zoomParam = isMobile ? 'zoom=auto' : 'zoom=page-width';
+                    return `${encodedPath}#toolbar=0&navpanes=0&scrollbar=1&${zoomParam}`;
+                  })()}
+                  className="w-full h-full border-2 border-gray-300 bg-white"
+                  title={title}
+                  onLoad={handleIframeLoad}
+                  onError={handleIframeError}
+                  style={{ 
+                    display: isLoading ? 'none' : 'block',
+                    width: '100%',
+                    height: '100%',
+                    minHeight: '400px',
+                    border: 'none',
+                    backgroundColor: '#ffffff'
+                  }}
+                  allow="fullscreen"
+                />
               )}
               {!filePath && !loadError && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
