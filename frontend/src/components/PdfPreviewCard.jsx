@@ -236,12 +236,12 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
           style={{ 
             paddingTop: 'env(safe-area-inset-top)', 
             paddingBottom: 'env(safe-area-inset-bottom)',
-            backgroundColor: 'rgba(0, 0, 0, 0.5)'
+            backgroundColor: 'rgba(0, 0, 0, 0.85)'
           }}
         >
           <div 
-            className={`bg-white rounded-lg shadow-2xl w-full flex flex-col select-none ${
-              isMobile ? 'max-w-full max-h-[95vh] m-2' : 'max-w-2xl max-h-[90vh]'
+            className={`bg-white rounded-lg shadow-2xl w-full flex flex-col select-none border-4 border-gray-300 ${
+              isMobile ? 'max-w-full max-h-[95vh] m-2' : 'max-w-4xl max-h-[95vh]'
             }`}
             onClick={(e) => e.stopPropagation()}
             onContextMenu={(e) => e.preventDefault()}
@@ -249,34 +249,36 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
             style={{ 
               userSelect: 'none', 
               WebkitUserSelect: 'none',
-              height: isMobile ? '95vh' : 'auto'
+              height: isMobile ? '95vh' : '95vh',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.75)'
             }}
           >
             {/* Modal Header - Mobile Optimized */}
-            <div className="flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 border-b border-gray-200 bg-white flex-shrink-0">
-              <h3 className="text-xs sm:text-sm font-bold text-gray-900 flex-1 truncate pr-2">{title}</h3>
+            <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b-2 border-gray-300 bg-gray-50 flex-shrink-0">
+              <h3 className="text-sm sm:text-base font-bold text-gray-900 flex-1 truncate pr-2">{title}</h3>
               <button
                 onClick={handleClosePreview}
-                className="text-gray-500 active:text-gray-700 transition-colors p-1.5 min-w-[40px] min-h-[40px] flex items-center justify-center touch-manipulation rounded-lg hover:bg-gray-100 active:bg-gray-200"
+                className="text-gray-700 active:text-gray-900 transition-colors p-2 min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation rounded-lg hover:bg-gray-200 active:bg-gray-300 bg-white border border-gray-300"
                 aria-label="Close preview"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
             {/* PDF Viewer - Download Disabled - Mobile Optimized */}
             <div 
-              className="overflow-hidden bg-gray-50 select-none flex-1"
+              className="overflow-hidden bg-white select-none flex-1"
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
               style={{ 
                 userSelect: 'none', 
                 WebkitUserSelect: 'none',
-                height: isMobile ? 'calc(95vh - 140px)' : 'calc(90vh - 140px)',
+                height: isMobile ? 'calc(95vh - 160px)' : 'calc(95vh - 160px)',
                 minHeight: isMobile ? '400px' : '500px',
-                maxHeight: isMobile ? 'calc(95vh - 140px)' : 'calc(90vh - 140px)'
+                maxHeight: isMobile ? 'calc(95vh - 160px)' : 'calc(95vh - 160px)',
+                backgroundColor: '#ffffff'
               }}
             >
               {isLoading && !loadError && (
@@ -311,8 +313,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 >
                   <iframe
                     ref={iframeRef}
-                    src={`${filePath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width`}
-                    className="w-full h-full rounded-lg border border-gray-200 pointer-events-auto"
+                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width`}
+                    className="w-full h-full rounded-lg border-2 border-gray-300 pointer-events-auto bg-white"
                     title={title}
                     onLoad={handleIframeLoad}
                     onError={handleIframeError}
@@ -323,9 +325,11 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                       WebkitUserSelect: 'none',
                       width: '100%',
                       height: '100%',
-                      border: 'none'
+                      border: '2px solid #d1d5db',
+                      backgroundColor: '#ffffff'
                     }}
                     allow="fullscreen"
+                    sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
                   />
                   {/* Overlay to prevent right-click and text selection */}
                   <div 
@@ -345,10 +349,10 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
             </div>
 
             {/* Modal Footer - Mobile Optimized */}
-            <div className="p-3 sm:p-4 border-t border-gray-200 bg-gray-50 flex-shrink-0">
+            <div className="p-4 sm:p-5 border-t-2 border-gray-300 bg-gray-50 flex-shrink-0">
               <button
                 onClick={handleClosePreview}
-                className="bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-6 py-3 rounded-lg transition-colors min-h-[48px] sm:min-h-[52px] touch-manipulation w-full shadow-md active:shadow-lg"
+                className="bg-emerald-600 active:bg-emerald-700 text-white font-bold text-base sm:text-lg px-8 py-3.5 rounded-lg transition-colors min-h-[52px] sm:min-h-[56px] touch-manipulation w-full shadow-lg active:shadow-xl border-2 border-emerald-700"
               >
                 Close
               </button>
