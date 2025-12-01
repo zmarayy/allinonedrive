@@ -219,18 +219,18 @@ function AppPage() {
                 {/* Step 1 */}
                 <div className="flex flex-col items-center flex-1 max-w-xs">
                   <div className="relative w-full">
-                    <div className="aspect-[9/16] bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl border-2 border-primary-300/50 overflow-hidden shadow-lg">
+                    <div className="aspect-[9/16] rounded-xl border-2 border-primary-300/50 overflow-hidden shadow-lg">
                       <img 
                         src="/images/app-install-guide/guide1.jpg" 
                         alt="Step 1: How to install the app"
-                        className="w-full h-full object-contain bg-white"
+                        className="w-full h-full object-cover"
                         onError={(e) => {
                           // Fallback if image doesn't exist
                           e.target.style.display = 'none';
                           e.target.nextElementSibling.style.display = 'flex';
                         }}
                       />
-                      <div className="hidden w-full h-full items-center justify-center text-center p-6 bg-white">
+                      <div className="hidden w-full h-full items-center justify-center text-center p-6 bg-gray-100">
                         <div>
                           <div className="text-4xl mb-3">📱</div>
                           <p className="text-gray-600 font-medium text-sm">
@@ -260,18 +260,18 @@ function AppPage() {
                 {/* Step 2 */}
                 <div className="flex flex-col items-center flex-1 max-w-xs">
                   <div className="relative w-full">
-                    <div className="aspect-[9/16] bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl border-2 border-primary-300/50 overflow-hidden shadow-lg">
+                    <div className="aspect-[9/16] rounded-xl border-2 border-primary-300/50 overflow-hidden shadow-lg">
                       <img 
                         src="/images/app-install-guide/guide2.jpg" 
                         alt="Step 2: How to install the app"
-                        className="w-full h-full object-contain bg-white"
+                        className="w-full h-full object-cover"
                         onError={(e) => {
                           // Fallback if image doesn't exist
                           e.target.style.display = 'none';
                           e.target.nextElementSibling.style.display = 'flex';
                         }}
                       />
-                      <div className="hidden w-full h-full items-center justify-center text-center p-6 bg-white">
+                      <div className="hidden w-full h-full items-center justify-center text-center p-6 bg-gray-100">
                         <div>
                           <div className="text-4xl mb-3">📱</div>
                           <p className="text-gray-600 font-medium text-sm">
@@ -301,18 +301,18 @@ function AppPage() {
                 {/* Step 3 */}
                 <div className="flex flex-col items-center flex-1 max-w-xs">
                   <div className="relative w-full">
-                    <div className="aspect-[9/16] bg-gradient-to-br from-primary-100 to-primary-200 rounded-xl border-2 border-primary-300/50 overflow-hidden shadow-lg">
+                    <div className="aspect-[9/16] rounded-xl border-2 border-primary-300/50 overflow-hidden shadow-lg">
                       <img 
                         src="/images/app-install-guide/guide3.jpg" 
                         alt="Step 3: How to install the app"
-                        className="w-full h-full object-contain bg-white"
+                        className="w-full h-full object-cover"
                         onError={(e) => {
                           // Fallback if image doesn't exist
                           e.target.style.display = 'none';
                           e.target.nextElementSibling.style.display = 'flex';
                         }}
                       />
-                      <div className="hidden w-full h-full items-center justify-center text-center p-6 bg-white">
+                      <div className="hidden w-full h-full items-center justify-center text-center p-6 bg-gray-100">
                         <div>
                           <div className="text-4xl mb-3">📱</div>
                           <p className="text-gray-600 font-medium text-sm">
@@ -427,8 +427,10 @@ function AppPage() {
 
             {/* Additional Info */}
             <div className="mt-12 text-center animate-fade-in animation-delay-600">
-              <p className="text-sm text-gray-500">
-                Sign in or create an account to start learning
+              <p className="text-sm text-gray-600">
+                <Link to="/packages" className="text-primary-600 hover:text-primary-700 font-semibold underline transition-colors">
+                  Get your access code here
+                </Link>
               </p>
               {!isMobile && (
                 <p className="text-xs text-gray-400 mt-2">
