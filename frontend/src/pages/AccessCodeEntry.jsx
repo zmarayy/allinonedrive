@@ -105,6 +105,9 @@ function AccessCodeEntry() {
             <p className="text-gray-600 font-medium">
               Enter the code you received after purchasing your package
             </p>
+            <p className="text-sm text-amber-600 font-semibold mt-2 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+              ⚠️ Each access code is locked to one device only
+            </p>
           </div>
 
           {/* Form */}

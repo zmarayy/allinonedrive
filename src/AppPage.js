@@ -204,9 +204,9 @@ function AppPage() {
                 Learn anytime, anywhere – on your phone like a real app
               </p>
               <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed animate-fade-in-up animation-delay-400">
-                Our Progressive Web App (PWA) is fully installable on your device, works offline 
-                once downloaded, and automatically saves your progress across all your devices. 
-                Experience seamless learning with no app store required!
+                Our Progressive Web App (PWA) is fully installable on your device and works offline 
+                once downloaded. <strong className="text-gray-900">Each access code is locked to one device only</strong> - 
+                your progress is saved on the device where you install the app. Experience seamless learning with no app store required!
               </p>
             </div>
 
@@ -219,11 +219,12 @@ function AppPage() {
                 {/* Step 1 */}
                 <div className="flex flex-col items-center flex-1 max-w-xs">
                   <div className="relative w-full">
-                    <div className="aspect-[9/16] rounded-xl border-2 border-primary-300/50 overflow-hidden shadow-lg">
+                    <div className="rounded-xl border-2 border-primary-300/50 overflow-hidden shadow-lg bg-transparent">
                       <img 
                         src="/images/app-install-guide/guide1.jpg" 
                         alt="Step 1: How to install the app"
-                        className="w-full h-full object-cover"
+                        className="w-full h-auto block"
+                        style={{ maxWidth: '100%', height: 'auto' }}
                         onError={(e) => {
                           // Fallback if image doesn't exist
                           e.target.style.display = 'none';
@@ -260,11 +261,12 @@ function AppPage() {
                 {/* Step 2 */}
                 <div className="flex flex-col items-center flex-1 max-w-xs">
                   <div className="relative w-full">
-                    <div className="aspect-[9/16] rounded-xl border-2 border-primary-300/50 overflow-hidden shadow-lg">
+                    <div className="rounded-xl border-2 border-primary-300/50 overflow-hidden shadow-lg bg-transparent">
                       <img 
                         src="/images/app-install-guide/guide2.jpg" 
                         alt="Step 2: How to install the app"
-                        className="w-full h-full object-cover"
+                        className="w-full h-auto block"
+                        style={{ maxWidth: '100%', height: 'auto' }}
                         onError={(e) => {
                           // Fallback if image doesn't exist
                           e.target.style.display = 'none';
@@ -301,11 +303,12 @@ function AppPage() {
                 {/* Step 3 */}
                 <div className="flex flex-col items-center flex-1 max-w-xs">
                   <div className="relative w-full">
-                    <div className="aspect-[9/16] rounded-xl border-2 border-primary-300/50 overflow-hidden shadow-lg">
+                    <div className="rounded-xl border-2 border-primary-300/50 overflow-hidden shadow-lg bg-transparent">
                       <img 
                         src="/images/app-install-guide/guide3.jpg" 
                         alt="Step 3: How to install the app"
-                        className="w-full h-full object-cover"
+                        className="w-full h-auto block"
+                        style={{ maxWidth: '100%', height: 'auto' }}
                         onError={(e) => {
                           // Fallback if image doesn't exist
                           e.target.style.display = 'none';
