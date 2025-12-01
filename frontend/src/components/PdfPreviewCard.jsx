@@ -34,19 +34,22 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
       }
     }
     
-    // Set timeout to stop loading after 10 seconds
+    // Set timeout to stop loading after 15 seconds (longer for mobile)
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
     timeoutRef.current = setTimeout(() => {
       setIsLoading(prev => {
         if (prev) {
-          setLoadError(true);
+          // Don't set error immediately on mobile - PDFs can take longer to load
+          if (!isMobile) {
+            setLoadError(true);
+          }
           return false;
         }
         return prev;
       });
-    }, 10000);
+    }, isMobile ? 15000 : 10000);
   };
   
   useEffect(() => {
@@ -89,41 +92,22 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
       clearTimeout(timeoutRef.current);
     }
     
-    // Check if iframe actually loaded content (for mobile PDF issues)
+    // Disable right-click and download in iframe
     try {
       const iframe = iframeRef.current;
-      if (iframe) {
-        // For mobile, check if iframe has content after a short delay
-        if (isMobile) {
-          setTimeout(() => {
-            try {
-              if (iframe.contentDocument && iframe.contentDocument.body) {
-                const bodyContent = iframe.contentDocument.body.innerHTML;
-                // If body is empty or just whitespace, PDF might not have loaded
-                if (!bodyContent || bodyContent.trim().length === 0) {
-                  console.log('PDF iframe appears empty on mobile, may need fallback');
-                }
-              }
-            } catch (e) {
-              // Cross-origin - this is expected
-            }
-          }, 1000);
-        }
-        
-        // Disable right-click and download in iframe
-        if (iframe.contentDocument) {
-          // Disable context menu
-          iframe.contentDocument.addEventListener('contextmenu', (e) => e.preventDefault());
-          // Disable text selection
+      if (iframe && iframe.contentDocument) {
+        // Disable context menu
+        iframe.contentDocument.addEventListener('contextmenu', (e) => e.preventDefault());
+        // Disable text selection
+        if (iframe.contentDocument.body) {
           iframe.contentDocument.body.style.userSelect = 'none';
           iframe.contentDocument.body.style.webkitUserSelect = 'none';
-          // Disable drag
-          iframe.contentDocument.addEventListener('dragstart', (e) => e.preventDefault());
         }
+        // Disable drag
+        iframe.contentDocument.addEventListener('dragstart', (e) => e.preventDefault());
       }
     } catch (e) {
-      // Cross-origin restrictions may prevent access
-      console.log('Cannot access iframe content (expected for security)');
+      // Cross-origin restrictions may prevent access - this is expected
     }
   };
   
@@ -307,7 +291,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 position: 'relative',
                 width: '100%',
                 height: '100%',
-                overflow: 'hidden'
+                overflow: 'auto'
               }}
             >
               {isLoading && !loadError && (
@@ -350,23 +334,36 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                     const basePath = filePath.startsWith('/') ? filePath : '/' + filePath;
                     // Use encodeURI which preserves slashes but encodes spaces and special chars
                     const encodedPath = encodeURI(basePath);
-                    // Use appropriate zoom for device
-                    const zoomParam = isMobile ? 'zoom=auto' : 'zoom=page-width';
-                    return `${encodedPath}#toolbar=0&navpanes=0&scrollbar=1&${zoomParam}`;
+                    // For mobile, use simpler parameters - some mobile browsers don't support complex PDF parameters
+                    if (isMobile) {
+                      // Try with minimal parameters for mobile compatibility
+                      return encodedPath;
+                    }
+                    // Desktop can use full parameters
+                    return `${encodedPath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width`;
                   })()}
                   className="w-full h-full bg-white"
                   title={title}
                   onLoad={handleIframeLoad}
                   onError={handleIframeError}
                   style={{ 
-                    display: isLoading ? 'none' : 'block',
                     width: '100%',
                     height: '100%',
                     minHeight: '400px',
                     border: 'none',
-                    backgroundColor: '#ffffff'
+                    backgroundColor: '#ffffff',
+                    opacity: isLoading ? 0 : 1,
+                    visibility: isLoading ? 'hidden' : 'visible',
+                    transition: 'opacity 0.3s ease-in-out',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0
                   }}
                   allow="fullscreen"
+                  frameBorder="0"
+                  scrolling="auto"
                 />
               )}
               {!filePath && !loadError && (
