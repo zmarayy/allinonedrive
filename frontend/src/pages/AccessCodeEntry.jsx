@@ -177,13 +177,20 @@ function AccessCodeEntry() {
             {/* Development Mode - Enabled for client testing */}
             <div className="pt-4 border-t border-gray-200">
               <p className="text-xs text-gray-400 mb-3">Try the app here</p>
-              <div className="flex justify-center">
+              <div className="flex justify-center gap-2 flex-wrap">
                 <button
                   type="button"
                   onClick={() => handleDevMode('standard')}
                   className="px-4 py-2 text-sm bg-gray-200 hover:bg-gray-300 text-gray-700 rounded transition-colors"
                 >
                   Test: Standard
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleDevMode('elite_self_study')}
+                  className="px-4 py-2 text-sm bg-amber-200 hover:bg-amber-300 text-amber-900 rounded transition-colors font-semibold"
+                >
+                  Test: Elite
                 </button>
               </div>
             </div>

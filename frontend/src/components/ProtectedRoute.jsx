@@ -28,7 +28,7 @@ function ProtectedRoute({ children }) {
         return;
       }
 
-      // DEV MODE: Skip IP validation for dev codes
+      // DEV MODE: Skip IP validation for dev codes or localhost
       const isDevMode = storedCode.startsWith('DEV') || 
                        process.env.NODE_ENV === 'development' || 
                        window.location.hostname === 'localhost';
@@ -41,12 +41,21 @@ function ProtectedRoute({ children }) {
       }
 
       // PRODUCTION: Validate IP lock by re-verifying code
+      // Only make API call if not in dev mode
       try {
-        const response = await verifyAccessCode(storedCode);
+        // Add timeout to prevent hanging
+        const timeoutPromise = new Promise((_, reject) => {
+          setTimeout(() => reject(new Error('Request timeout')), 5000); // 5 second timeout
+        });
+        
+        const response = await Promise.race([
+          verifyAccessCode(storedCode),
+          timeoutPromise
+        ]);
         
         if (response.success && response.valid) {
           // Check if IP matches
-          if (storedIp && response.ipAddress && storedIp !== response.ipAddress) {
+          if (storedIp && response.ipAddress && storedIp !== response.ipAddress && response.ipAddress !== 'dev-mode') {
             // IP changed - clear access and redirect
             localStorage.clear();
             navigate('/access-code');
@@ -55,7 +64,7 @@ function ProtectedRoute({ children }) {
           }
           
           // Update stored IP if it's the first time
-          if (!storedIp && response.ipAddress) {
+          if (!storedIp && response.ipAddress && response.ipAddress !== 'dev-mode') {
             localStorage.setItem('verified_ip_address', response.ipAddress);
           }
           
@@ -74,8 +83,8 @@ function ProtectedRoute({ children }) {
           return;
         }
         
-        // For network errors in dev mode, allow access if code is verified
-        if (isDevMode && error.message && error.message.includes('Failed to fetch')) {
+        // For network errors or timeouts in dev mode, allow access if code is verified
+        if (isDevMode && (error.message && (error.message.includes('Failed to fetch') || error.message.includes('timeout')))) {
           console.warn('API unavailable in dev mode, allowing access with verified code');
           setIsAuthorized(true);
           setIsValidating(false);

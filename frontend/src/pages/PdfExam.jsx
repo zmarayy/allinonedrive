@@ -87,8 +87,12 @@ function PdfExam() {
   const [isExamComplete, setIsExamComplete] = useState(false);
   const [score, setScore] = useState(0);
   
-  // Check if user can take exam (must have studied PDF and completed flashcards, video is optional)
-  const canTakeExam = isPdfOpened(dayNumber, pdfIdx) && areFlashcardsCompleted(dayNumber, pdfIdx);
+  // Individual PDF exams are no longer part of the flow - redirect to course content
+  useEffect(() => {
+    navigate('/course-content');
+  }, [navigate]);
+  
+  const canTakeExam = false; // Individual PDF exams removed
 
   // ALL HOOKS MUST BE CALLED BEFORE ANY CONDITIONAL RETURNS
   useEffect(() => {
@@ -181,8 +185,8 @@ function PdfExam() {
       setScore(finalScore);
       setIsExamComplete(true);
       
-      // Save score
-      savePdfExamScore(dayNumber, pdfIdx, finalScore, totalQuestions);
+      // Individual PDF exams are no longer part of the flow
+      // Score saving removed - only end-of-day exams are used now
     }
   };
 

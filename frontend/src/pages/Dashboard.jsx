@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getUserPackage, getPackageDisplayName } from '../utils/packageAccess';
 import { clearCodeAccess } from '../utils/codeAccess';
 import { getOverallProgress, getCompletedDaysCount, getDayStatus, isDayCompleted, isQuizPassed, resetProgress } from '../utils/progressManager';
-import { getCompletedPdfsForDay, areAllPdfsCompleted, resetPdfProgress } from '../utils/pdfLearningFlow';
+import { resetPdfProgress } from '../utils/pdfLearningFlow';
 import { DAY_CONTENT } from '../data/courseContent';
 import BottomNavbar from '../components/BottomNavbar';
 
@@ -59,11 +59,7 @@ function Dashboard() {
 
   // Get current day info
   const currentDayData = DAY_CONTENT[currentDay];
-  const totalPdfs = currentDayData?.pdfNotes?.length || 0;
-  const completedPdfs = getCompletedPdfsForDay(currentDay, totalPdfs);
-  const allPdfsCompleted = areAllPdfsCompleted(currentDay, totalPdfs);
   const quizPassed = isQuizPassed(currentDay);
-  const canComplete = allPdfsCompleted && quizPassed;
   const isCompleted = isDayCompleted(currentDay);
 
   // Determine what action to show
@@ -84,40 +80,19 @@ function Dashboard() {
           onClick: () => navigate('/course-content')
         };
       }
-    } else if (canComplete) {
+    } else if (quizPassed) {
       return {
-        text: `Complete Day ${currentDay}`,
-        subtitle: 'You\'ve studied all materials and passed the quiz',
+        text: `Day ${currentDay} Completed`,
+        subtitle: 'You passed the exam! Next day is unlocked.',
         color: 'bg-green-600 active:bg-green-700',
-        onClick: () => navigate('/course-content')
-      };
-    } else if (quizPassed && !allPdfsCompleted) {
-      return {
-        text: `Continue Studying Day ${currentDay}`,
-        subtitle: 'Quiz passed! Complete all PDFs to finish the day',
-        color: 'bg-emerald-600 active:bg-emerald-700',
-        onClick: () => navigate('/course-content')
-      };
-    } else if (allPdfsCompleted && !quizPassed) {
-      return {
-        text: `Take Day ${currentDay} Quiz`,
-        subtitle: 'All materials completed! Take the day quiz now.',
-        color: 'bg-amber-600 active:bg-amber-700',
-        onClick: () => navigate(`/quiz/${currentDay}`)
-      };
-    } else if (completedPdfs > 0) {
-      return {
-        text: `Continue Studying Day ${currentDay}`,
-        subtitle: `${completedPdfs}/${totalPdfs} materials completed`,
-        color: 'bg-primary-600 active:bg-primary-700',
         onClick: () => navigate('/course-content')
       };
     } else {
       return {
-        text: `Start Day ${currentDay}`,
-        subtitle: `Begin your ${currentDay === 1 ? 'first' : 'next'} day of learning`,
-        color: 'bg-primary-600 active:bg-primary-700',
-        onClick: () => navigate('/course-content')
+        text: `Take Day ${currentDay} Exam`,
+        subtitle: 'Take the end-of-day exam to unlock next day (70%+ required)',
+        color: 'bg-amber-600 active:bg-amber-700',
+        onClick: () => navigate(`/quiz/${currentDay}`)
       };
     }
   };
@@ -195,7 +170,7 @@ function Dashboard() {
         <div className="mb-6 animate-slide-up">
           <div className={`glass-card p-5 sm:p-6 border-2 ${
             isCompleted ? 'border-green-400' : 
-            canComplete ? 'border-green-300' : 
+            quizPassed ? 'border-green-300' : 
             'border-primary-200'
           }`}>
             <div className="text-center mb-4">
@@ -215,29 +190,12 @@ function Dashboard() {
               </h2>
               {!isCompleted && (
                 <p className="text-sm sm:text-base text-gray-600 font-medium">
-                  {completedPdfs > 0 
-                    ? `${completedPdfs} of ${totalPdfs} materials completed`
-                    : `Start studying ${totalPdfs} materials`}
+                  {quizPassed 
+                    ? 'Exam passed! Day completed.' 
+                    : 'All materials are unlocked. Study at your own pace, then take the end-of-day exam.'}
                 </p>
               )}
             </div>
-
-            {/* Progress Bar for Current Day */}
-            {!isCompleted && totalPdfs > 0 && (
-              <div className="mb-4">
-                <div className="w-full bg-gray-200 rounded-full h-2 mb-1">
-                  <div
-                    className="bg-primary-600 h-2 rounded-full transition-all duration-300"
-                    style={{ width: `${totalPdfs > 0 ? (completedPdfs / totalPdfs) * 100 : 0}%` }}
-                  ></div>
-                </div>
-                <p className="text-xs text-gray-500 text-center">
-                  {completedPdfs === totalPdfs && allPdfsCompleted 
-                    ? 'All materials completed! Ready for day quiz.' 
-                    : `${completedPdfs}/${totalPdfs} materials completed (Study → Flashcards → Exam)`}
-                </p>
-              </div>
-            )}
 
             {/* Main Action Button */}
             <button
@@ -357,7 +315,7 @@ function Dashboard() {
               </div>
               <div className="flex items-center justify-between text-xs sm:text-sm">
                 <span className="text-gray-600 font-medium">Learning Path</span>
-                <span className="font-bold text-emerald-600">Study → Flashcards → Exam</span>
+                <span className="font-bold text-emerald-600">Study → Exam</span>
               </div>
             </div>
           </div>

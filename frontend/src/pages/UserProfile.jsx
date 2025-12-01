@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { clearCodeAccess, getStoredCode, getStoredPackage } from '../utils/codeAccess';
 import { getPackageDisplayName } from '../utils/packageAccess';
-import { getOverallProgress, getCompletedDaysCount, isDayCompleted, getDayStatus } from '../utils/progressManager';
-import { getCompletedPdfsForDay, isPdfCompleted } from '../utils/pdfLearningFlow';
+import { getOverallProgress, getCompletedDaysCount, isDayCompleted, getDayStatus, isQuizPassed } from '../utils/progressManager';
+import { isPdfOpened } from '../utils/pdfLearningFlow';
 import { DAY_CONTENT } from '../data/courseContent';
 import BottomNavbar from '../components/BottomNavbar';
 
@@ -28,9 +28,10 @@ function UserProfile() {
       const overallProgress = getOverallProgress();
       
       // Calculate materials and exams stats
+      // NEW SYSTEM: All materials are open, progress is based on exams passed
       let totalMaterials = 0;
-      let completedMaterials = 0;
-      let totalExams = 0;
+      let completedMaterials = 0; // Count viewed materials (optional tracking)
+      let totalExams = 7; // One exam per day
       let passedExams = 0;
       
       for (let day = 1; day <= 7; day++) {
@@ -38,15 +39,17 @@ function UserProfile() {
         if (dayData && dayData.pdfNotes) {
           const dayPdfs = dayData.pdfNotes.length;
           totalMaterials += dayPdfs;
-          const completed = getCompletedPdfsForDay(day, dayPdfs);
-          completedMaterials += completed;
-          totalExams += dayPdfs;
-          
-          // Count passed exams (completed PDFs)
+          // Count opened PDFs (optional viewing progress - all are available)
+          let openedCount = 0;
           for (let i = 0; i < dayPdfs; i++) {
-            if (isPdfCompleted(day, i)) {
-              passedExams++;
+            if (isPdfOpened(day, i)) {
+              openedCount++;
             }
+          }
+          completedMaterials += openedCount;
+          // Count passed exams
+          if (isQuizPassed(day)) {
+            passedExams += 1;
           }
         }
       }
@@ -122,16 +125,16 @@ function UserProfile() {
           <div className="glass-card p-4 sm:p-5 text-center hover:shadow-lg transition-shadow">
             <div className="text-2xl sm:text-3xl mb-2">📚</div>
             <div className="text-xl sm:text-2xl font-bold text-primary-600 mb-1">
-              {stats.completedMaterials}/{stats.totalMaterials}
+              {stats.totalMaterials}
             </div>
             <div className="text-xs sm:text-sm text-gray-600 font-medium">
-              Materials
+              Materials Available
             </div>
           </div>
           <div className="glass-card p-4 sm:p-5 text-center hover:shadow-lg transition-shadow">
             <div className="text-2xl sm:text-3xl mb-2">✅</div>
             <div className="text-xl sm:text-2xl font-bold text-green-600 mb-1">
-              {stats.passedExams}
+              {stats.passedExams}/{stats.totalExams}
             </div>
             <div className="text-xs sm:text-sm text-gray-600 font-medium">
               Exams Passed
@@ -168,9 +171,9 @@ function UserProfile() {
               {[1, 2, 3, 4, 5, 6, 7].map((day) => {
                 const isCompleted = isDayCompleted(day);
                 const status = getDayStatus(day);
+                const examPassed = isQuizPassed(day);
                 const dayData = DAY_CONTENT[day];
                 const totalPdfs = dayData?.pdfNotes?.length || 0;
-                const completedPdfs = getCompletedPdfsForDay(day, totalPdfs);
                 
                 return (
                   <div
@@ -184,7 +187,7 @@ function UserProfile() {
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center space-x-3">
+                      <div className="flex items-center space-x-3 flex-1">
                         <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
                           isCompleted
                             ? 'bg-green-100'
@@ -200,7 +203,7 @@ function UserProfile() {
                             <span className="text-sm sm:text-base font-bold text-gray-500">🔒</span>
                           )}
                         </div>
-                        <div>
+                        <div className="flex-1 min-w-0">
                           <p className={`font-semibold text-sm sm:text-base ${
                             isCompleted ? 'text-green-800' : status === 'in-progress' ? 'text-primary-800' : 'text-gray-500'
                           }`}>
@@ -208,16 +211,31 @@ function UserProfile() {
                           </p>
                           {status === 'in-progress' && (
                             <p className="text-xs sm:text-sm text-gray-600">
-                              {completedPdfs}/{totalPdfs} materials
+                              {examPassed ? '✅ Exam Passed' : '📝 Exam Available'}
+                            </p>
+                          )}
+                          {isCompleted && (
+                            <p className="text-xs sm:text-sm text-green-700 font-medium">
+                              ✅ Exam Passed - Day Complete
                             </p>
                           )}
                         </div>
                       </div>
-                      {status === 'in-progress' && totalPdfs > 0 && (
-                        <div className="w-20 sm:w-24 bg-gray-200 rounded-full h-2">
+                      {status === 'in-progress' && (
+                        <div className="w-20 sm:w-24 bg-gray-200 rounded-full h-2 flex-shrink-0">
                           <div
-                            className="bg-primary-600 h-2 rounded-full transition-all"
-                            style={{ width: `${(completedPdfs / totalPdfs) * 100}%` }}
+                            className={`h-2 rounded-full transition-all ${
+                              examPassed ? 'bg-green-600' : 'bg-amber-500'
+                            }`}
+                            style={{ width: examPassed ? '100%' : '0%' }}
+                          ></div>
+                        </div>
+                      )}
+                      {isCompleted && (
+                        <div className="w-20 sm:w-24 bg-gray-200 rounded-full h-2 flex-shrink-0">
+                          <div
+                            className="bg-green-600 h-2 rounded-full transition-all"
+                            style={{ width: '100%' }}
                           ></div>
                         </div>
                       )}

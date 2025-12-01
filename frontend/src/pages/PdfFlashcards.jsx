@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { PDF_FLASHCARDS } from '../data/pdfContent';
-import { markFlashcardsCompleted, isPdfOpened } from '../utils/pdfLearningFlow';
+import { isPdfOpened } from '../utils/pdfLearningFlow';
 import BottomNavbar from '../components/BottomNavbar';
 
 function PdfFlashcards() {
@@ -57,8 +57,9 @@ function PdfFlashcards() {
   };
 
   const handleComplete = () => {
-    markFlashcardsCompleted(dayNumber, pdfIdx);
-    navigate(`/pdf-exam/${dayNumber}/${pdfIdx}`);
+    // Individual flashcards are no longer part of the flow
+    // Redirect to course content instead
+    navigate('/course-content');
   };
 
   // Redirect if hasn't studied PDF first

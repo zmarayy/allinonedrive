@@ -14,6 +14,7 @@ function Packages() {
   const [emailForCheckout, setEmailForCheckout] = useState('');
   const [packageForCheckout, setPackageForCheckout] = useState(null);
   const [showLaunchDayModal, setShowLaunchDayModal] = useState(false);
+  const [selectedTimeSlot, setSelectedTimeSlot] = useState('morning'); // 'morning' or 'evening'
   const [formData, setFormData] = useState({
     location: '',
     transmission: '',
@@ -571,20 +572,61 @@ function Packages() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            {/* Morning Power Session */}
-            <div className="glass-card p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 border-2 border-purple-200 flex flex-col">
+          {/* Single Combined Package with Time Selector */}
+          <div className="max-w-3xl mx-auto mb-8">
+            <div className="glass-card p-6 hover:bg-white/20 transition-all duration-300 border-2 border-purple-200 flex flex-col">
               <div className="text-center mb-4">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-3">
-                  <span className="text-2xl">🌅</span>
-                </div>
                 <div className="flex items-center justify-center gap-2 mb-2">
                   <span className="text-2xl">🔥</span>
                   <span className="text-sm font-bold text-orange-600">Launch Offer: £349.99</span>
                 </div>
                 <p className="text-xs text-green-600 font-semibold mb-2">→ You save £150</p>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Morning Power Session</h3>
-                <p className="text-sm text-gray-600 italic">Perfect for: people who want to start the day productive and finish theory study before lunch.</p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Elite 5-Day Theory Accelerator</h3>
+                
+                {/* Time Slot Selector */}
+                <div className="mb-4">
+                  <p className="text-sm font-semibold text-gray-700 mb-3">Choose Your Session Time:</p>
+                  <div className="grid grid-cols-2 gap-3 max-w-md mx-auto">
+                    <button
+                      onClick={() => setSelectedTimeSlot('morning')}
+                      className={`p-4 rounded-lg border-2 transition-all duration-300 ${
+                        selectedTimeSlot === 'morning'
+                          ? 'border-purple-500 bg-purple-50 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-purple-300'
+                      }`}
+                    >
+                      <div className="flex flex-col items-center">
+                        <span className="text-3xl mb-2">🌅</span>
+                        <span className={`font-semibold text-sm ${
+                          selectedTimeSlot === 'morning' ? 'text-purple-700' : 'text-gray-700'
+                        }`}>
+                          Morning
+                        </span>
+                        <span className="text-xs text-gray-600 mt-1">10:00am - 2:00pm</span>
+                        <span className="text-xs text-gray-500 italic mt-1">Start productive, finish before lunch</span>
+                      </div>
+                    </button>
+                    <button
+                      onClick={() => setSelectedTimeSlot('evening')}
+                      className={`p-4 rounded-lg border-2 transition-all duration-300 ${
+                        selectedTimeSlot === 'evening'
+                          ? 'border-indigo-500 bg-indigo-50 shadow-md'
+                          : 'border-gray-200 bg-white hover:border-indigo-300'
+                      }`}
+                    >
+                      <div className="flex flex-col items-center">
+                        <span className="text-3xl mb-2">🌙</span>
+                        <span className={`font-semibold text-sm ${
+                          selectedTimeSlot === 'evening' ? 'text-indigo-700' : 'text-gray-700'
+                        }`}>
+                          Evening
+                        </span>
+                        <span className="text-xs text-gray-600 mt-1">7:30pm - 10:30pm</span>
+                        <span className="text-xs text-gray-500 italic mt-1">Study after work in calm environment</span>
+                      </div>
+                    </button>
+                  </div>
+                </div>
               </div>
               
               <div className="space-y-3 mb-6 text-left flex-1">
@@ -597,7 +639,12 @@ function Packages() {
                     </li>
                     <li className="flex items-center">
                       <span className="text-purple-500 mr-2">⏰</span>
-                      <span>10:00am – 2:00pm (online, live)</span>
+                      <span>
+                        {selectedTimeSlot === 'morning' 
+                          ? '10:00am – 2:00pm (online, live)'
+                          : '7:30pm – 10:30pm (online, live)'
+                        }
+                      </span>
                     </li>
                   </ul>
                 </div>
@@ -671,123 +718,22 @@ function Packages() {
               </div>
               
               <div className="mt-auto">
-                <p className="text-xs text-gray-500 text-center mb-2">Limited to only 5 seats per group.</p>
+                <p className="text-xs text-gray-500 text-center mb-2">
+                  Limited to only 5 seats per {selectedTimeSlot === 'morning' ? 'morning' : 'evening'} group.
+                </p>
                 <button 
-                  onClick={() => openEmailModal('accelerator_morning')}
-                  disabled={loading === 'accelerator_morning'}
-                  className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  onClick={() => openEmailModal(selectedTimeSlot === 'morning' ? 'accelerator_morning' : 'accelerator_evening')}
+                  disabled={loading === 'accelerator_morning' || loading === 'accelerator_evening'}
+                  className={`w-full font-semibold py-3 px-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed ${
+                    selectedTimeSlot === 'morning'
+                      ? 'bg-purple-600 hover:bg-purple-700 text-white'
+                      : 'bg-indigo-600 hover:bg-indigo-700 text-white'
+                  }`}
                 >
-                  {loading === 'accelerator_morning' ? 'Loading...' : 'Buy Now'}
-                </button>
-              </div>
-            </div>
-
-            {/* Evening Power Session */}
-            <div className="glass-card p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105 border-2 border-indigo-200 flex flex-col">
-              <div className="text-center mb-4">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-3">
-                  <span className="text-2xl">🌙</span>
-                </div>
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <span className="text-2xl">🔥</span>
-                  <span className="text-sm font-bold text-orange-600">Launch Offer: £349.99</span>
-                </div>
-                <p className="text-xs text-green-600 font-semibold mb-2">→ You save £150</p>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Evening Power Session</h3>
-                <p className="text-sm text-gray-600 italic">Perfect for: people who work or study in the day and want to study after work in a calm environment.</p>
-              </div>
-              
-              <div className="space-y-3 mb-6 text-left flex-1">
-                <div>
-                  <p className="text-sm font-semibold text-gray-700 mb-2">Schedule:</p>
-                  <ul className="space-y-1 text-sm text-gray-600">
-                    <li className="flex items-center">
-                      <span className="text-indigo-500 mr-2">📅</span>
-                      <span>Mon-Fri</span>
-                    </li>
-                    <li className="flex items-center">
-                      <span className="text-indigo-500 mr-2">⏰</span>
-                      <span>7:30pm – 10:30pm (online, live)</span>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div>
-                  <p className="text-sm font-semibold text-gray-700 mb-2">What's included:</p>
-                  <ul className="space-y-1.5 text-sm text-gray-600">
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2">✅</span>
-                      <span>5 days live online course, intensive, structured lessons to make theory simple</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2">✅</span>
-                      <span>7 days WhatsApp support, ask questions anytime during the week</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2">✅</span>
-                      <span>Very small group, max 5 people</span>
-                    </li>
-                    <li className="flex items-start pl-5">
-                      <span className="text-gray-400 mr-2">→</span>
-                      <span className="text-xs italic">More attention, more questions, more confidence</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2">✅</span>
-                      <span>Explained in your own language (where possible)</span>
-                    </li>
-                    <li className="flex items-start pl-5">
-                      <span className="text-gray-400 mr-2">→</span>
-                      <span className="text-xs italic">No stress about difficult English words</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2">✅</span>
-                      <span>Application for provisional licence (if needed) done for you</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2">✅</span>
-                      <span>One theory exam booking included</span>
-                    </li>
-                    <li className="flex items-start pl-5">
-                      <span className="text-gray-400 mr-2">→</span>
-                      <span className="text-xs italic">We book the test for you, no hassle</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2">✅</span>
-                      <span>If you fail, you can repeat the course once for FREE</span>
-                    </li>
-                    <li className="flex items-start pl-5">
-                      <span className="text-gray-400 mr-2">→</span>
-                      <span className="text-xs italic">One extra full course, no extra charge</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-green-500 mr-2">✅</span>
-                      <span>Access to learning app included</span>
-                    </li>
-                    <li className="flex items-start pl-5">
-                      <span className="text-gray-400 mr-2">→</span>
-                      <span className="text-xs italic">Practise questions and mock exams anytime</span>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div className="mt-4 p-3 bg-indigo-50 rounded-lg border border-indigo-200">
-                  <p className="text-xs font-semibold text-indigo-800 mb-1">Investment:</p>
-                  <ul className="space-y-1 text-xs text-indigo-700">
-                    <li>Launch price: £349.99</li>
-                    <li>Normal price: £499.99</li>
-                    <li className="font-bold">Save: £150</li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div className="mt-auto">
-                <p className="text-xs text-gray-500 text-center mb-2">Only 5 seats per evening group.</p>
-                <button 
-                  onClick={() => openEmailModal('accelerator_evening')}
-                  disabled={loading === 'accelerator_evening'}
-                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {loading === 'accelerator_evening' ? 'Loading...' : 'Buy Now'}
+                  {loading === 'accelerator_morning' || loading === 'accelerator_evening' 
+                    ? 'Loading...' 
+                    : `Buy Now - ${selectedTimeSlot === 'morning' ? 'Morning' : 'Evening'} Session`
+                  }
                 </button>
               </div>
             </div>

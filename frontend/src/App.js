@@ -15,6 +15,7 @@ import PdfFlashcards from './pages/PdfFlashcards';
 import PdfExam from './pages/PdfExam';
 import ProgressDashboard from './pages/ProgressDashboard';
 import UserProfile from './pages/UserProfile';
+import MultiLanguageContent from './pages/MultiLanguageContent';
 import FAQ from './pages/FAQ';
 import { isCodeVerified } from './utils/codeAccess';
 import './App.css';
@@ -143,6 +144,14 @@ function App() {
           element={
             <ProtectedRoute>
               <UserProfile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/multi-language"
+          element={
+            <ProtectedRoute>
+              <MultiLanguageContent />
             </ProtectedRoute>
           }
         />

@@ -1,39 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import VideoCard from './VideoCard';
 import PdfPreviewCard from './PdfPreviewCard';
 import { isDayUnlocked, isDayCompleted, isQuizPassed } from '../utils/progressManager';
-import { getOpenedPdfsForDay } from '../utils/pdfLearningFlow';
 import { useNavigate } from 'react-router-dom';
 
 function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packageType }) {
   const navigate = useNavigate();
-  const [completedPdfs, setCompletedPdfs] = useState(0);
-  const [canComplete, setCanComplete] = useState(false);
   
   const dayNumber = day.day;
-  const totalPdfs = dayData.pdfNotes ? dayData.pdfNotes.length : 0;
   const isUnlocked = isDayUnlocked(dayNumber);
   const isCompleted = isDayCompleted(dayNumber);
   
-  useEffect(() => {
-    const updateProgress = () => {
-      setCompletedPdfs(getOpenedPdfsForDay(dayNumber, totalPdfs));
-      // Day completion is now handled by quiz passing (70%+)
-      // Quiz automatically completes the day when passed
-      setCanComplete(isQuizPassed(dayNumber));
-    };
-    
-    updateProgress();
-    
-    // Refresh every second to update progress
-    const interval = setInterval(updateProgress, 1000);
-    
-    return () => clearInterval(interval);
-  }, [dayNumber, totalPdfs]);
-  
   const handlePdfViewed = (dayNum, pdfIdx) => {
-    // Refresh progress when PDF status changes
-    setCompletedPdfs(getOpenedPdfsForDay(dayNum, totalPdfs));
+    // PDF viewed callback (can be used for future features if needed)
   };
   
   const handleStartQuiz = () => {
@@ -91,11 +69,6 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
                 </h3>
                 {isCompleted && <span className="text-green-600 text-sm">✓ Completed</span>}
               </div>
-              {!isCompleted && (
-                <p className="text-xs sm:text-sm text-gray-600 font-medium">
-                  {completedPdfs}/{totalPdfs} PDFs viewed
-                </p>
-              )}
             </div>
           </div>
           <svg
@@ -136,41 +109,6 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
                   ))}
                 </div>
                 
-                {/* Progress Indicator */}
-                <div className="mt-4 bg-white rounded-lg p-3 border border-emerald-200">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-semibold text-gray-700">Viewing Progress</span>
-                    <span className="text-sm font-bold text-emerald-600">{completedPdfs}/{totalPdfs}</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-emerald-600 h-2 rounded-full transition-all duration-300"
-                      style={{ width: `${totalPdfs > 0 ? (completedPdfs / totalPdfs) * 100 : 0}%` }}
-                    ></div>
-                  </div>
-                  <p className="text-xs text-gray-500 mt-2">
-                    All materials are unlocked. Study at your own pace, then take the end-of-day exam (70%+ to unlock next day).
-                  </p>
-                </div>
-                
-                {/* End-of-Day Exam Section - Mandatory */}
-                {!isQuizPassed(dayNumber) && (
-                  <div className="mt-4 bg-amber-50 rounded-lg p-4 border-2 border-amber-300">
-                    <h4 className="text-sm sm:text-base font-bold text-gray-900 mb-2 flex items-center">
-                      <span className="mr-2">📝</span>
-                      End-of-Day Exam Required
-                    </h4>
-                    <p className="text-xs sm:text-sm text-gray-600 font-medium mb-3">
-                      Complete the exam with 70% or higher to unlock Day {dayNumber + 1}. All materials are available for study.
-                    </p>
-                    <button
-                      onClick={handleStartQuiz}
-                      className="w-full bg-amber-600 active:bg-amber-700 text-white font-semibold text-sm sm:text-base px-4 py-3 rounded-lg transition-colors min-h-[48px] touch-manipulation shadow-lg"
-                    >
-                      Take Day {dayNumber} Exam
-                    </button>
-                  </div>
-                )}
                 
                 {/* Day Completed Message */}
                 {isCompleted && (
@@ -186,49 +124,6 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
                 )}
               </div>
             )}
-
-            {/* Videos - Elite packages and above */}
-            {contentVisibility.videos && dayData.videos && dayData.videos.length > 0 && (
-              <div className="bg-indigo-50 rounded-lg p-4 border border-indigo-200">
-                <h4 className="text-base font-bold text-gray-900 mb-3 flex items-center">
-                  <span className="mr-2">🎥</span>
-                  Embedded Videos
-                </h4>
-                <div className="space-y-3">
-                  {dayData.videos.map((video, index) => (
-                    <VideoCard
-                      key={index}
-                      video={video}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Quiz - Elite packages and above */}
-            {contentVisibility.quiz && dayData.quiz && (
-              <div className="bg-amber-50 rounded-lg p-4 border border-amber-200">
-                <h4 className="text-base font-bold text-gray-900 mb-3 flex items-center">
-                  <span className="mr-2">❓</span>
-                  Quiz
-                </h4>
-                <div className="bg-white rounded p-3 border border-amber-100">
-                  <p className="font-semibold text-gray-900 text-sm mb-1">
-                    {dayData.quiz.title}
-                  </p>
-                  <p className="text-xs text-gray-600 font-medium mb-2">
-                    {dayData.quiz.description}
-                  </p>
-                  <p className="text-xs text-gray-500 font-medium mb-3">
-                    {dayData.quiz.questions} questions
-                  </p>
-                  <button className="w-full bg-amber-600 hover:bg-amber-700 text-white text-xs font-semibold px-4 py-2 rounded transition-colors">
-                    Start Quiz
-                  </button>
-                </div>
-              </div>
-            )}
-
 
             {/* Live Support - Elite Live Support and Full Package */}
             {contentVisibility.liveSupport && dayData.liveSupport && (
@@ -275,6 +170,25 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
                     Book Lesson
                   </button>
                 </div>
+              </div>
+            )}
+            
+            {/* End-of-Day Exam Section - At Bottom of Each Day */}
+            {!isQuizPassed(dayNumber) && isUnlocked && (
+              <div className="mt-4 bg-amber-50 rounded-lg p-4 border-2 border-amber-300">
+                <h4 className="text-sm sm:text-base font-bold text-gray-900 mb-2 flex items-center">
+                  <span className="mr-2">📝</span>
+                  End-of-Day Exam Required
+                </h4>
+                <p className="text-xs sm:text-sm text-gray-600 font-medium mb-3">
+                  Complete the exam with 70% or higher to unlock Day {dayNumber + 1}. All materials are available for study.
+                </p>
+                <button
+                  onClick={handleStartQuiz}
+                  className="w-full bg-amber-600 active:bg-amber-700 text-white font-semibold text-sm sm:text-base px-4 py-3 rounded-lg transition-colors min-h-[48px] touch-manipulation shadow-lg"
+                >
+                  Take Day {dayNumber} Exam
+                </button>
               </div>
             )}
           </div>

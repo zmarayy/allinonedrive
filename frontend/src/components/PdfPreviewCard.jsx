@@ -134,7 +134,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
   const [statusUpdate, setStatusUpdate] = useState(0);
   
   // Recalculate status on every render to ensure it's up-to-date
-  const isUnlocked = isPdfUnlocked(dayNumber, pdfIndex);
+  // All materials are now open - no locking system
+  const isUnlocked = true; // Always unlocked - all study materials are open
   const isCompleted = isPdfCompleted(dayNumber, pdfIndex);
   const hasVideo = videoPath || youtubeVideoId;
   const videoWatched = hasVideo ? isVideoWatched(dayNumber, pdfIndex) : true; // If no video, consider it "watched"
@@ -167,9 +168,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
     <>
       <div 
         ref={cardRef}
-        className={`bg-white rounded-lg p-3 sm:p-4 border border-gray-200 shadow-sm transition-all duration-300 select-none ${
-          !isUnlocked ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-md'
-        }`}
+        className="bg-white rounded-lg p-3 sm:p-4 border border-gray-200 shadow-sm transition-all duration-300 select-none hover:shadow-md"
         onContextMenu={(e) => e.preventDefault()}
         style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
       >
@@ -247,33 +246,43 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
         >
           <div 
             className={`bg-white rounded-lg shadow-2xl w-full flex flex-col select-none ${
-              isMobile ? 'max-w-sm max-h-[90vh]' : 'max-w-2xl max-h-[90vh]'
+              isMobile ? 'max-w-full max-h-[95vh] m-2' : 'max-w-2xl max-h-[90vh]'
             }`}
             onClick={(e) => e.stopPropagation()}
             onContextMenu={(e) => e.preventDefault()}
             onDragStart={(e) => e.preventDefault()}
-            style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
+            style={{ 
+              userSelect: 'none', 
+              WebkitUserSelect: 'none',
+              height: isMobile ? '95vh' : 'auto'
+            }}
           >
             {/* Modal Header - Mobile Optimized */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 bg-white flex-shrink-0">
-              <h3 className="text-sm font-bold text-gray-900 flex-1 truncate pr-2">{title}</h3>
+            <div className="flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 border-b border-gray-200 bg-white flex-shrink-0">
+              <h3 className="text-xs sm:text-sm font-bold text-gray-900 flex-1 truncate pr-2">{title}</h3>
               <button
                 onClick={handleClosePreview}
-                className="text-gray-500 active:text-gray-700 transition-colors p-1 min-w-[36px] min-h-[36px] flex items-center justify-center touch-manipulation"
+                className="text-gray-500 active:text-gray-700 transition-colors p-1.5 min-w-[40px] min-h-[40px] flex items-center justify-center touch-manipulation rounded-lg hover:bg-gray-100 active:bg-gray-200"
                 aria-label="Close preview"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
-            {/* PDF Viewer - Download Disabled */}
+            {/* PDF Viewer - Download Disabled - Mobile Optimized */}
             <div 
-              className="overflow-auto bg-gray-50 select-none"
+              className="overflow-hidden bg-gray-50 select-none flex-1"
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
-              style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
+              style={{ 
+                userSelect: 'none', 
+                WebkitUserSelect: 'none',
+                height: isMobile ? 'calc(95vh - 140px)' : 'calc(90vh - 140px)',
+                minHeight: isMobile ? '400px' : '500px',
+                maxHeight: isMobile ? 'calc(95vh - 140px)' : 'calc(90vh - 140px)'
+              }}
             >
               {isLoading && !loadError && (
                 <div className="flex flex-col items-center justify-center h-64 sm:h-96">
@@ -297,14 +306,18 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               )}
               {!loadError && filePath && (
                 <div 
-                  className="relative"
+                  className="relative w-full"
                   onContextMenu={(e) => e.preventDefault()}
                   onDragStart={(e) => e.preventDefault()}
+                  style={{
+                    height: isMobile ? 'calc(95vh - 140px)' : 'calc(90vh - 140px)',
+                    minHeight: isMobile ? '400px' : '500px'
+                  }}
                 >
                   <iframe
                     ref={iframeRef}
                     src={`${filePath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width`}
-                    className="w-full h-full min-h-[400px] sm:min-h-[600px] rounded-lg border border-gray-200 pointer-events-auto"
+                    className="w-full h-full rounded-lg border border-gray-200 pointer-events-auto"
                     title={title}
                     onLoad={handleIframeLoad}
                     onError={handleIframeError}
@@ -312,7 +325,10 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                       display: isLoading ? 'none' : 'block',
                       touchAction: 'pan-x pan-y pinch-zoom',
                       userSelect: 'none',
-                      WebkitUserSelect: 'none'
+                      WebkitUserSelect: 'none',
+                      width: '100%',
+                      height: '100%',
+                      border: 'none'
                     }}
                     allow="fullscreen"
                   />
@@ -334,10 +350,10 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
             </div>
 
             {/* Modal Footer - Mobile Optimized */}
-            <div className="p-3 sm:p-4 border-t border-gray-200 bg-gray-50 sticky bottom-0">
+            <div className="p-3 sm:p-4 border-t border-gray-200 bg-gray-50 flex-shrink-0">
               <button
                 onClick={handleClosePreview}
-                className="bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-8 py-3 rounded-lg transition-colors min-h-[48px] touch-manipulation w-full"
+                className="bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm sm:text-base px-6 py-3 rounded-lg transition-colors min-h-[48px] sm:min-h-[52px] touch-manipulation w-full shadow-md active:shadow-lg"
               >
                 Close
               </button>

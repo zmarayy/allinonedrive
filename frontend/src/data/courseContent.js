@@ -26,12 +26,14 @@ export function getContentForDay(dayNumber, packageLevel) {
     flashcards: true,            // All packages (if available)
   };
 
+  // Videos and Quiz sections removed - all packages show same content
+  // Only difference is multi-language feature (separate page)
   const videoContent = {
-    videos: packageLevel !== "standard",
+    videos: false,  // Disabled for all packages
   };
 
   const quizContent = {
-    quiz: packageLevel !== "standard",
+    quiz: false,  // Disabled for all packages
   };
 
   const liveSupport = {
