@@ -218,7 +218,9 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
       {/* PDF Preview Modal - Mobile Optimized */}
       {showPreview && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto"
+          className={`fixed inset-0 z-50 flex items-center justify-center animate-fade-in overflow-y-auto ${
+            isMultiLanguage ? 'p-1 sm:p-2' : 'p-3 sm:p-4'
+          }`}
           onClick={handleClosePreview}
           style={{ 
             paddingTop: 'env(safe-area-inset-top)', 
@@ -229,7 +231,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
           <div 
             className={`bg-white rounded-lg shadow-2xl w-full flex flex-col select-none border-4 border-gray-300 ${
               isMultiLanguage 
-                ? (isMobile ? 'max-w-full max-h-[105vh] m-1' : 'max-w-6xl max-h-[105vh]')
+                ? (isMobile ? 'max-w-full max-h-[99vh] m-0.5' : 'max-w-6xl max-h-[99vh]')
                 : (isMobile ? 'max-w-full max-h-[95vh] m-2' : 'max-w-4xl max-h-[95vh]')
             }`}
             onClick={(e) => e.stopPropagation()}
@@ -238,7 +240,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
             style={{ 
               userSelect: 'none', 
               WebkitUserSelect: 'none',
-              height: isMultiLanguage ? (isMobile ? '105vh' : '105vh') : (isMobile ? '95vh' : '95vh'),
+              height: isMultiLanguage ? (isMobile ? '99vh' : '99vh') : (isMobile ? '95vh' : '95vh'),
               boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.75)'
             }}
           >
@@ -265,8 +267,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               style={{ 
                 userSelect: 'none', 
                 WebkitUserSelect: 'none',
-                height: isMultiLanguage ? 'calc(105vh - 160px)' : 'calc(95vh - 160px)',
-                minHeight: isMultiLanguage ? '500px' : '400px',
+                height: isMultiLanguage ? 'calc(99vh - 150px)' : 'calc(95vh - 160px)',
+                minHeight: isMultiLanguage ? '550px' : '400px',
                 backgroundColor: '#ffffff',
                 position: 'relative',
                 WebkitOverflowScrolling: 'touch',
