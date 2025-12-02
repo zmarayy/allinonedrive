@@ -188,13 +188,6 @@ function AccessCodeEntry() {
                 >
                   Test: Standard
                 </button>
-                <button
-                  type="button"
-                  onClick={() => handleDevMode('elite_self_study')}
-                  className="px-4 py-2 text-sm bg-amber-200 hover:bg-amber-300 text-amber-900 rounded transition-colors font-semibold"
-                >
-                  Test: Elite
-                </button>
               </div>
             </div>
           </div>
