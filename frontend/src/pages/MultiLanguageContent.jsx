@@ -652,7 +652,7 @@ function MultiLanguageContent() {
 
               {/* Day Content */}
               {expandedDay === day && (
-                <div className="px-4 pb-4 animate-fade-in">
+                <div className="px-4 pb-8 sm:pb-10 animate-fade-in min-h-[200px]">
                   {activeTab === 'pdfs' ? (
                     <div className="space-y-3 mt-3">
                       {currentContent.length > 0 ? (
@@ -668,7 +668,6 @@ function MultiLanguageContent() {
                               dayNumber={day}
                               pdfIndex={index}
                               onPdfViewed={() => {}}
-                              isMultiLanguage={true}
                             />
                           ))}
                         </div>
