@@ -254,18 +254,20 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               </button>
             </div>
 
-            {/* PDF Viewer - Simple container that shows FULL PDF */}
+            {/* PDF Viewer - COMPLETELY REBUILT for mobile and desktop */}
+            {/* Scrollable container that shows FULL PDF with all pages */}
             <div 
-              className="bg-white select-none flex-1 relative"
+              className="bg-white select-none flex-1 overflow-auto"
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
               style={{ 
                 userSelect: 'none', 
                 WebkitUserSelect: 'none',
-                height: isMobile ? 'calc(95vh - 160px)' : 'calc(95vh - 160px)',
-                minHeight: isMobile ? '400px' : '500px',
+                height: 'calc(95vh - 160px)',
+                minHeight: '400px',
                 backgroundColor: '#ffffff',
-                position: 'relative'
+                position: 'relative',
+                WebkitOverflowScrolling: 'touch'
               }}
             >
               {isLoading && !loadError && (
@@ -290,44 +292,68 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               )}
               {!loadError && filePath && (
                 <div 
-                  className="absolute inset-0 w-full h-full"
+                  className="w-full"
                   onContextMenu={(e) => e.preventDefault()}
                   onDragStart={(e) => e.preventDefault()}
                   style={{
                     width: '100%',
-                    height: '100%',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0
+                    minHeight: '100vh', // Large height to ensure all pages are accessible
+                    height: 'auto'
                   }}
                 >
-                  {/* EXACT SAME CODE FOR MOBILE AND DESKTOP - iframe with direct PDF URL */}
-                  {/* Browser's native PDF viewer will handle rendering - shows all pages with controls */}
-                  <iframe
-                    ref={iframeRef}
-                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
-                    className="w-full h-full border-2 border-gray-300 bg-white"
-                    title={title}
-                    onLoad={handleIframeLoad}
-                    onError={(e) => {
-                      console.error('PDF load error:', e, 'File path:', filePath);
-                      handleIframeError();
-                    }}
+                  {/* Use object tag - works better on mobile for showing all pages */}
+                  {/* Object tag displays PDF with continuous scrolling through all pages */}
+                  <object
+                    data={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
+                    type="application/pdf"
+                    className="w-full border-2 border-gray-300 bg-white"
                     style={{ 
                       display: isLoading ? 'none' : 'block',
                       width: '100%',
-                      height: '100%',
+                      minHeight: '100vh',
+                      height: 'auto',
                       border: '2px solid #d1d5db',
-                      backgroundColor: '#ffffff',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0
+                      backgroundColor: '#ffffff'
                     }}
-                    allow="fullscreen"
-                  />
+                    onLoad={handleIframeLoad}
+                    onError={(e) => {
+                      console.error('PDF load error:', e, 'File path:', filePath);
+                      // Fallback to iframe if object fails
+                      const objectElement = e.target;
+                      if (objectElement && objectElement.parentNode) {
+                        objectElement.style.display = 'none';
+                        const fallbackIframe = document.createElement('iframe');
+                        fallbackIframe.src = `${filePath.startsWith('/') ? filePath : '/' + filePath}`;
+                        fallbackIframe.className = 'w-full border-2 border-gray-300 bg-white';
+                        fallbackIframe.style.cssText = 'width: 100%; min-height: 100vh; height: auto; border: 2px solid #d1d5db; background-color: #ffffff;';
+                        fallbackIframe.title = title;
+                        fallbackIframe.onload = handleIframeLoad;
+                        fallbackIframe.onerror = handleIframeError;
+                        objectElement.parentNode.appendChild(fallbackIframe);
+                      } else {
+                        handleIframeError();
+                      }
+                    }}
+                  >
+                    {/* Fallback: iframe if object doesn't work */}
+                    <iframe
+                      ref={iframeRef}
+                      src={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
+                      className="w-full border-2 border-gray-300 bg-white"
+                      title={title}
+                      onLoad={handleIframeLoad}
+                      onError={handleIframeError}
+                      style={{ 
+                        display: isLoading ? 'none' : 'block',
+                        width: '100%',
+                        minHeight: '100vh',
+                        height: 'auto',
+                        border: '2px solid #d1d5db',
+                        backgroundColor: '#ffffff'
+                      }}
+                      allow="fullscreen"
+                    />
+                  </object>
                 </div>
               )}
               {!filePath && !loadError && (
