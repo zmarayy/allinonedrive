@@ -310,9 +310,9 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               </button>
             </div>
 
-            {/* PDF Viewer - Download Disabled - Mobile Optimized - Full Scrollable */}
+            {/* PDF Viewer - Download Disabled - Mobile Optimized - Full Document Scrollable */}
             <div 
-              className="bg-white select-none flex-1 relative"
+              className="bg-white select-none flex-1 relative overflow-hidden"
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
               style={{ 
@@ -360,15 +360,15 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                   }}
                 >
                   {/* Use iframe with proper attributes for mobile PDF viewing - Full scrollable through ALL pages */}
-                  {/* PDF parameters: 
+                  {/* PDF parameters for FULL DOCUMENT VIEW (not single page):
                       toolbar=0 (hide toolbar to prevent download),
                       navpanes=0 (hide navigation panes),
                       scrollbar=1 (show scrollbar for scrolling),
                       zoom=page-width (fit page to width for mobile),
-                      view=FitH (fit horizontally) */}
+                      pagemode=none (continuous scrolling mode - shows all pages) */}
                   <iframe
                     ref={iframeRef}
-                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width&view=FitH`}
+                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width&pagemode=none`}
                     className="w-full h-full rounded-lg border-2 border-gray-300 pointer-events-auto bg-white"
                     title={title}
                     onLoad={handleIframeLoad}
@@ -386,9 +386,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                       top: 0,
                       left: 0,
                       right: 0,
-                      bottom: 0,
-                      overflow: 'auto',
-                      WebkitOverflowScrolling: 'touch'
+                      bottom: 0
                     }}
                     allow="fullscreen"
                     scrolling="yes"
