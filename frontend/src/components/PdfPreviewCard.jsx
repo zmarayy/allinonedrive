@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { markPdfOpened, isPdfOpened, isVideoWatched, markVideoWatched } from '../utils/pdfLearningFlow';
 import VideoPlayer from './VideoPlayer';
 
-function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, videoPath, youtubeVideoId, dayNumber, pdfIndex, onPdfViewed, isMultiLanguage = false }) {
+function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, videoPath, youtubeVideoId, dayNumber, pdfIndex, onPdfViewed }) {
   const [showPreview, setShowPreview] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
@@ -218,7 +218,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
       {/* PDF Preview Modal - Mobile Optimized */}
       {showPreview && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto"
+          className="fixed inset-0 z-50 flex items-center justify-center p-1 sm:p-2 animate-fade-in overflow-y-auto"
           onClick={handleClosePreview}
           style={{ 
             paddingTop: 'env(safe-area-inset-top)', 
@@ -228,9 +228,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
         >
           <div 
             className={`bg-white rounded-lg shadow-2xl w-full flex flex-col select-none border-4 border-gray-300 ${
-              isMultiLanguage 
-                ? (isMobile ? 'max-w-full max-h-[98vh] m-1' : 'max-w-6xl max-h-[98vh]')
-                : (isMobile ? 'max-w-full max-h-[95vh] m-2' : 'max-w-4xl max-h-[95vh]')
+              isMobile ? 'max-w-full max-h-[98vh] m-1' : 'max-w-6xl max-h-[98vh]'
             }`}
             onClick={(e) => e.stopPropagation()}
             onContextMenu={(e) => e.preventDefault()}
@@ -238,7 +236,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
             style={{ 
               userSelect: 'none', 
               WebkitUserSelect: 'none',
-              height: isMultiLanguage ? (isMobile ? '98vh' : '98vh') : (isMobile ? '95vh' : '95vh'),
+              height: isMobile ? '98vh' : '98vh',
               boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.75)'
             }}
           >
@@ -265,8 +263,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               style={{ 
                 userSelect: 'none', 
                 WebkitUserSelect: 'none',
-                height: isMultiLanguage ? 'calc(98vh - 160px)' : 'calc(95vh - 160px)',
-                minHeight: isMultiLanguage ? '500px' : '400px',
+                height: 'calc(98vh - 140px)',
+                minHeight: '500px',
                 backgroundColor: '#ffffff',
                 position: 'relative',
                 WebkitOverflowScrolling: 'touch',
