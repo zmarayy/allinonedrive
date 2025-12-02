@@ -12,15 +12,9 @@ if (!admin.apps.length) {
         credential: admin.credential.cert(serviceAccount)
       });
     } 
-    // Option 2: Use individual environment variables
-    else if (process.env.FIREBASE_PROJECT_ID) {
-      admin.initializeApp({
-        projectId: process.env.FIREBASE_PROJECT_ID,
-        // Note: For production, use service account key file
-        // This is a fallback for development
-      });
-    } else {
-      throw new Error('Firebase Admin not configured. Please set FIREBASE_SERVICE_ACCOUNT_KEY or FIREBASE_PROJECT_ID');
+    // Option 2: For production, require service account key (no fallback)
+    else {
+      throw new Error('Firebase Admin not configured. FIREBASE_SERVICE_ACCOUNT_KEY is required for production.');
     }
   } catch (error) {
     console.error('Firebase Admin initialization error:', error);
