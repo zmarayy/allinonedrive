@@ -229,7 +229,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
           <div 
             className={`bg-white rounded-lg shadow-2xl w-full flex flex-col select-none border-4 border-gray-300 ${
               isMultiLanguage 
-                ? (isMobile ? 'max-w-full max-h-[98vh] m-1' : 'max-w-6xl max-h-[98vh]')
+                ? (isMobile ? 'max-w-full max-h-[105vh] m-1' : 'max-w-6xl max-h-[105vh]')
                 : (isMobile ? 'max-w-full max-h-[95vh] m-2' : 'max-w-4xl max-h-[95vh]')
             }`}
             onClick={(e) => e.stopPropagation()}
@@ -238,7 +238,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
             style={{ 
               userSelect: 'none', 
               WebkitUserSelect: 'none',
-              height: isMultiLanguage ? (isMobile ? '98vh' : '98vh') : (isMobile ? '95vh' : '95vh'),
+              height: isMultiLanguage ? (isMobile ? '105vh' : '105vh') : (isMobile ? '95vh' : '95vh'),
               boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.75)'
             }}
           >
@@ -265,7 +265,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               style={{ 
                 userSelect: 'none', 
                 WebkitUserSelect: 'none',
-                height: isMultiLanguage ? 'calc(98vh - 160px)' : 'calc(95vh - 160px)',
+                height: isMultiLanguage ? 'calc(105vh - 160px)' : 'calc(95vh - 160px)',
                 minHeight: isMultiLanguage ? '500px' : '400px',
                 backgroundColor: '#ffffff',
                 position: 'relative',
