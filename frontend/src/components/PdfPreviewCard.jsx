@@ -215,20 +215,24 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
         </div>
       </div>
 
-      {/* PDF Preview Modal - Mobile Optimized */}
+      {/* PDF Preview Modal - Full Screen on Mobile */}
       {showPreview && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto"
+          className="fixed inset-0 z-50 flex items-center justify-center animate-fade-in overflow-y-auto"
           onClick={handleClosePreview}
           style={{ 
-            paddingTop: 'env(safe-area-inset-top)', 
-            paddingBottom: 'env(safe-area-inset-bottom)',
+            paddingTop: isMobile ? '0' : 'env(safe-area-inset-top)', 
+            paddingBottom: isMobile ? '0' : 'env(safe-area-inset-bottom)',
+            paddingLeft: isMobile ? '0' : '1rem',
+            paddingRight: isMobile ? '0' : '1rem',
             backgroundColor: 'rgba(0, 0, 0, 0.85)'
           }}
         >
           <div 
-            className={`bg-white rounded-lg shadow-2xl w-full flex flex-col select-none border-4 border-gray-300 ${
-              isMobile ? 'max-w-full max-h-[95vh] m-2' : 'max-w-4xl max-h-[95vh]'
+            className={`bg-white shadow-2xl w-full flex flex-col select-none ${
+              isMobile 
+                ? 'h-screen rounded-none border-0' 
+                : 'rounded-lg border-4 border-gray-300 max-w-4xl max-h-[95vh]'
             }`}
             onClick={(e) => e.stopPropagation()}
             onContextMenu={(e) => e.preventDefault()}
@@ -236,8 +240,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
             style={{ 
               userSelect: 'none', 
               WebkitUserSelect: 'none',
-              height: isMobile ? '95vh' : '95vh',
-              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.75)'
+              height: isMobile ? '100vh' : '95vh',
+              boxShadow: isMobile ? 'none' : '0 25px 50px -12px rgba(0, 0, 0, 0.75)'
             }}
           >
             {/* Modal Header - Mobile Optimized */}
@@ -254,8 +258,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               </button>
             </div>
 
-            {/* PDF Viewer - REBUILT: Scrollable container with iframe that shows ALL pages */}
-            {/* Container scrolls, iframe is very tall so all PDF pages are accessible */}
+            {/* PDF Viewer - Full Screen Container */}
             <div 
               className="bg-white select-none flex-1 overflow-auto"
               onContextMenu={(e) => e.preventDefault()}
@@ -263,8 +266,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               style={{ 
                 userSelect: 'none', 
                 WebkitUserSelect: 'none',
-                height: 'calc(95vh - 160px)',
-                minHeight: '400px',
+                height: isMobile ? 'calc(100vh - 80px)' : 'calc(95vh - 160px)',
+                minHeight: isMobile ? 'calc(100vh - 80px)' : '400px',
                 backgroundColor: '#ffffff',
                 position: 'relative',
                 WebkitOverflowScrolling: 'touch',
