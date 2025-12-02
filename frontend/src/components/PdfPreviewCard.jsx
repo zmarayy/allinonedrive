@@ -302,8 +302,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                     bottom: 0
                   }}
                 >
-                  {/* Use iframe for both mobile and desktop - iframe works better than embed */}
-                  {/* Direct PDF URL - browser's native PDF viewer will handle rendering */}
+                  {/* EXACT SAME CODE FOR MOBILE AND DESKTOP - iframe with direct PDF URL */}
+                  {/* Browser's native PDF viewer will handle rendering - shows all pages with controls */}
                   <iframe
                     ref={iframeRef}
                     src={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
@@ -320,12 +320,11 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                       height: '100%',
                       border: '2px solid #d1d5db',
                       backgroundColor: '#ffffff',
-                      position: isMobile ? 'relative' : 'absolute',
-                      top: isMobile ? 'auto' : 0,
-                      left: isMobile ? 'auto' : 0,
-                      right: isMobile ? 'auto' : 0,
-                      bottom: isMobile ? 'auto' : 0,
-                      minHeight: isMobile ? '100vh' : '100%'
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0
                     }}
                     allow="fullscreen"
                   />
