@@ -244,21 +244,21 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               boxShadow: isMobile ? 'none' : '0 25px 50px -12px rgba(0, 0, 0, 0.75)'
             }}
           >
-            {/* Modal Header - Compact for more PDF space */}
-            <div className="flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 border-b-2 border-gray-300 bg-gray-50 flex-shrink-0">
-              <h3 className="text-sm sm:text-base font-bold text-gray-900 flex-1 truncate pr-2">{title}</h3>
+            {/* Modal Header - Minimal for maximum PDF space */}
+            <div className="flex items-center justify-between px-3 sm:px-4 py-1.5 sm:py-2 border-b border-gray-300 bg-gray-50 flex-shrink-0">
+              <h3 className="text-xs sm:text-sm font-bold text-gray-900 flex-1 truncate pr-2">{title}</h3>
               <button
                 onClick={handleClosePreview}
-                className="text-gray-700 active:text-gray-900 transition-colors p-2 min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation rounded-lg hover:bg-gray-200 active:bg-gray-300 bg-white border border-gray-300"
+                className="text-gray-700 active:text-gray-900 transition-colors p-1.5 min-w-[36px] min-h-[36px] flex items-center justify-center touch-manipulation rounded-lg hover:bg-gray-200 active:bg-gray-300 bg-white border border-gray-300"
                 aria-label="Close preview"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
-            {/* PDF Viewer - Full Screen Container (25% larger) */}
+            {/* PDF Viewer - Full Screen Container (30% larger) */}
             <div 
               className="bg-white select-none flex-1 overflow-auto"
               onContextMenu={(e) => e.preventDefault()}
@@ -266,8 +266,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               style={{ 
                 userSelect: 'none', 
                 WebkitUserSelect: 'none',
-                height: isMobile ? 'calc(100vh - 60px)' : 'calc(95vh - 120px)',
-                minHeight: isMobile ? 'calc(100vh - 60px)' : '500px',
+                height: isMobile ? 'calc(100vh - 50px)' : 'calc(95vh - 100px)',
+                minHeight: isMobile ? 'calc(100vh - 50px)' : '550px',
                 backgroundColor: '#ffffff',
                 position: 'relative',
                 WebkitOverflowScrolling: 'touch',
