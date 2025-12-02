@@ -626,7 +626,7 @@ function MultiLanguageContent() {
               <button
                 onClick={() => setExpandedDay(expandedDay === day ? null : day)}
                 className="w-full p-4 flex items-center justify-between hover:bg-white/10 transition-colors"
-                style={{ minHeight: '290px' }}
+                style={{ minHeight: '300px' }}
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center">
