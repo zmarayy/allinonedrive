@@ -32,6 +32,22 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
+# Allow PDFs to be embedded in iframes (needed for PDF viewer)
+[[headers]]
+  for = "/*.pdf"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    Content-Type = "application/pdf"
+    Cache-Control = "public, max-age=31536000"
+
+# Allow PDFs in course-materials folder to be embedded
+[[headers]]
+  for = "/course-materials/**/*.pdf"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    Content-Type = "application/pdf"
+    Cache-Control = "public, max-age=31536000"
+
 [[headers]]
   for = "/static/*"
   [headers.values]
