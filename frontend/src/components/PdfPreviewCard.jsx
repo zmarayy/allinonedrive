@@ -112,7 +112,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
       console.log('Cannot access iframe content (expected for security)');
     }
     
-    // Force iframe to allow full height for scrolling
+    // Force iframe to allow full height for scrolling - especially important for mobile
     if (iframeRef.current) {
       // Set iframe to allow full document height for scrolling
       setTimeout(() => {
@@ -131,15 +131,24 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 html.offsetHeight
               );
               if (height > 0) {
-                iframeRef.current.style.height = `${height}px`;
+                // Set height to actual content height or very large for mobile
+                const isMobileDevice = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                iframeRef.current.style.height = `${Math.max(height, isMobileDevice ? window.innerHeight * 10 : window.innerHeight * 5)}px`;
+              } else {
+                // If can't determine height, set very large for mobile
+                const isMobileDevice = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                iframeRef.current.style.height = isMobileDevice ? '300vh' : '200vh';
               }
             }
           } catch (e) {
-            // If we can't access, set a large height to allow scrolling
-            iframeRef.current.style.height = '200vh';
+            // If we can't access, set a very large height to allow scrolling through all pages
+            // Mobile needs larger height to show all pages
+            const isMobileDevice = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            iframeRef.current.style.height = isMobileDevice ? '300vh' : '200vh';
+            iframeRef.current.style.minHeight = isMobileDevice ? '300vh' : '200vh';
           }
         }
-      }, 500);
+      }, 1000);
     }
   };
   
@@ -307,7 +316,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
             {/* PDF Viewer - Download Disabled - Mobile Optimized - Full Document Scrollable */}
             {/* Container allows scrolling - PDF will show ALL pages continuously */}
             <div 
-              className="bg-white select-none flex-1 relative"
+              className="bg-white select-none flex-1 relative overflow-auto"
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
               style={{ 
@@ -317,7 +326,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 minHeight: isMobile ? '400px' : '500px',
                 backgroundColor: '#ffffff',
                 overflow: 'auto',
-                position: 'relative'
+                position: 'relative',
+                WebkitOverflowScrolling: 'touch'
               }}
             >
               {isLoading && !loadError && (
@@ -347,50 +357,33 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                   onDragStart={(e) => e.preventDefault()}
                   style={{
                     width: '100%',
-                    minHeight: '100%',
+                    minHeight: isMobile ? '300vh' : '200vh',
                     height: 'auto'
                   }}
                 >
-                  {/* Use object tag for PDF - Shows ALL pages in continuous scroll mode by default */}
-                  {/* Object tag works better than iframe for showing entire PDF documents */}
-                  {/* Set large height to allow all pages to be visible and scrollable */}
-                  <object
-                    data={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
-                    type="application/pdf"
-                    className="w-full rounded-lg border-2 border-gray-300 bg-white"
+                  {/* Use iframe with very large height to ensure ALL pages are accessible */}
+                  {/* Mobile browsers need large height to show all pages - container will scroll */}
+                  <iframe
+                    ref={iframeRef}
+                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
+                    className="w-full rounded-lg border-2 border-gray-300 pointer-events-auto bg-white"
+                    title={title}
+                    onLoad={handleIframeLoad}
+                    onError={handleIframeError}
                     style={{ 
                       display: isLoading ? 'none' : 'block',
+                      touchAction: 'pan-x pan-y pinch-zoom',
+                      userSelect: 'none',
+                      WebkitUserSelect: 'none',
                       width: '100%',
-                      minHeight: '200vh',
+                      minHeight: isMobile ? '300vh' : '200vh',
                       height: 'auto',
                       border: '2px solid #d1d5db',
                       backgroundColor: '#ffffff'
                     }}
-                    onLoad={handleIframeLoad}
-                    onError={handleIframeError}
-                  >
-                    {/* Fallback to iframe if object doesn't work */}
-                    <iframe
-                      ref={iframeRef}
-                      src={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
-                      className="w-full rounded-lg border-2 border-gray-300 pointer-events-auto bg-white"
-                      title={title}
-                      onLoad={handleIframeLoad}
-                      onError={handleIframeError}
-                      style={{ 
-                        display: isLoading ? 'none' : 'block',
-                        touchAction: 'pan-x pan-y pinch-zoom',
-                        userSelect: 'none',
-                        WebkitUserSelect: 'none',
-                        width: '100%',
-                        minHeight: '200vh',
-                        height: 'auto',
-                        border: '2px solid #d1d5db',
-                        backgroundColor: '#ffffff'
-                      }}
-                      allow="fullscreen"
-                    />
-                  </object>
+                    allow="fullscreen"
+                    scrolling="yes"
+                  />
                 </div>
               )}
               {!filePath && !loadError && (
