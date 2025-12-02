@@ -246,7 +246,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
           >
             {/* Modal Header - Mobile Optimized */}
             <div className={`flex items-center justify-between px-4 sm:px-6 border-b-2 border-gray-300 bg-gray-50 flex-shrink-0 ${
-              isMultiLanguage ? 'py-2 sm:py-2' : 'py-3 sm:py-4'
+              isMultiLanguage ? 'py-1.5 sm:py-1.5' : 'py-3 sm:py-4'
             }`}>
               <h3 className="text-sm sm:text-base font-bold text-gray-900 flex-1 truncate pr-2">{title}</h3>
               <button
@@ -269,8 +269,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               style={{ 
                 userSelect: 'none', 
                 WebkitUserSelect: 'none',
-                height: isMultiLanguage ? 'calc(100vh - 100px)' : 'calc(95vh - 160px)',
-                minHeight: isMultiLanguage ? '700px' : '400px',
+                height: isMultiLanguage ? 'calc(100vh - 70px)' : 'calc(95vh - 160px)',
+                minHeight: isMultiLanguage ? '800px' : '400px',
                 backgroundColor: '#ffffff',
                 position: 'relative',
                 WebkitOverflowScrolling: 'touch',
