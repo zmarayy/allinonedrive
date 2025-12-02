@@ -668,6 +668,7 @@ function MultiLanguageContent() {
                               dayNumber={day}
                               pdfIndex={index}
                               onPdfViewed={() => {}}
+                              isMultiLanguage={true}
                             />
                           ))}
                         </div>

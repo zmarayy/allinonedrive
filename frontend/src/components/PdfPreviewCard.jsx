@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { markPdfOpened, isPdfOpened, isVideoWatched, markVideoWatched } from '../utils/pdfLearningFlow';
 import VideoPlayer from './VideoPlayer';
 
-function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, videoPath, youtubeVideoId, dayNumber, pdfIndex, onPdfViewed }) {
+function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, videoPath, youtubeVideoId, dayNumber, pdfIndex, onPdfViewed, isMultiLanguage = false }) {
   const [showPreview, setShowPreview] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
@@ -215,24 +215,22 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
         </div>
       </div>
 
-      {/* PDF Preview Modal - Full Screen on Mobile */}
+      {/* PDF Preview Modal - Mobile Optimized */}
       {showPreview && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center animate-fade-in overflow-y-auto"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto"
           onClick={handleClosePreview}
           style={{ 
-            paddingTop: isMobile ? '0' : 'env(safe-area-inset-top)', 
-            paddingBottom: isMobile ? '0' : 'env(safe-area-inset-bottom)',
-            paddingLeft: isMobile ? '0' : '1rem',
-            paddingRight: isMobile ? '0' : '1rem',
+            paddingTop: 'env(safe-area-inset-top)', 
+            paddingBottom: 'env(safe-area-inset-bottom)',
             backgroundColor: 'rgba(0, 0, 0, 0.85)'
           }}
         >
           <div 
-            className={`bg-white shadow-2xl w-full flex flex-col select-none ${
-              isMobile 
-                ? 'h-screen rounded-none border-0' 
-                : 'rounded-lg border-4 border-gray-300 max-w-4xl max-h-[95vh]'
+            className={`bg-white rounded-lg shadow-2xl w-full flex flex-col select-none border-4 border-gray-300 ${
+              isMultiLanguage 
+                ? (isMobile ? 'max-w-full max-h-[98vh] m-1' : 'max-w-6xl max-h-[98vh]')
+                : (isMobile ? 'max-w-full max-h-[95vh] m-2' : 'max-w-4xl max-h-[95vh]')
             }`}
             onClick={(e) => e.stopPropagation()}
             onContextMenu={(e) => e.preventDefault()}
@@ -240,25 +238,26 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
             style={{ 
               userSelect: 'none', 
               WebkitUserSelect: 'none',
-              height: isMobile ? '100vh' : '95vh',
-              boxShadow: isMobile ? 'none' : '0 25px 50px -12px rgba(0, 0, 0, 0.75)'
+              height: isMultiLanguage ? (isMobile ? '98vh' : '98vh') : (isMobile ? '95vh' : '95vh'),
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.75)'
             }}
           >
-            {/* Modal Header - Minimal for maximum PDF space */}
-            <div className="flex items-center justify-between px-3 sm:px-4 py-1.5 sm:py-2 border-b border-gray-300 bg-gray-50 flex-shrink-0">
-              <h3 className="text-xs sm:text-sm font-bold text-gray-900 flex-1 truncate pr-2">{title}</h3>
+            {/* Modal Header - Mobile Optimized */}
+            <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b-2 border-gray-300 bg-gray-50 flex-shrink-0">
+              <h3 className="text-sm sm:text-base font-bold text-gray-900 flex-1 truncate pr-2">{title}</h3>
               <button
                 onClick={handleClosePreview}
-                className="text-gray-700 active:text-gray-900 transition-colors p-1.5 min-w-[36px] min-h-[36px] flex items-center justify-center touch-manipulation rounded-lg hover:bg-gray-200 active:bg-gray-300 bg-white border border-gray-300"
+                className="text-gray-700 active:text-gray-900 transition-colors p-2 min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation rounded-lg hover:bg-gray-200 active:bg-gray-300 bg-white border border-gray-300"
                 aria-label="Close preview"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
-            {/* PDF Viewer - Full Screen Container (30% larger) */}
+            {/* PDF Viewer - REBUILT: Scrollable container with iframe that shows ALL pages */}
+            {/* Container scrolls, iframe is very tall so all PDF pages are accessible */}
             <div 
               className="bg-white select-none flex-1 overflow-auto"
               onContextMenu={(e) => e.preventDefault()}
@@ -266,8 +265,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               style={{ 
                 userSelect: 'none', 
                 WebkitUserSelect: 'none',
-                height: isMobile ? 'calc(100vh - 50px)' : 'calc(95vh - 100px)',
-                minHeight: isMobile ? 'calc(100vh - 50px)' : '550px',
+                height: isMultiLanguage ? 'calc(98vh - 160px)' : 'calc(95vh - 160px)',
+                minHeight: isMultiLanguage ? '500px' : '400px',
                 backgroundColor: '#ffffff',
                 position: 'relative',
                 WebkitOverflowScrolling: 'touch',
