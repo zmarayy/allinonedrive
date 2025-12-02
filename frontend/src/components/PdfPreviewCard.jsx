@@ -99,10 +99,47 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
         iframe.contentDocument.body.style.webkitUserSelect = 'none';
         // Disable drag
         iframe.contentDocument.addEventListener('dragstart', (e) => e.preventDefault());
+        
+        // Ensure PDF can scroll - remove any height restrictions
+        const pdfViewer = iframe.contentDocument.querySelector('embed') || iframe.contentDocument.querySelector('object');
+        if (pdfViewer) {
+          pdfViewer.style.height = 'auto';
+          pdfViewer.style.minHeight = '100vh';
+        }
       }
     } catch (e) {
       // Cross-origin restrictions may prevent access
       console.log('Cannot access iframe content (expected for security)');
+    }
+    
+    // Force iframe to allow full height for scrolling
+    if (iframeRef.current) {
+      // Set iframe to allow full document height for scrolling
+      setTimeout(() => {
+        if (iframeRef.current) {
+          try {
+            // Try to access iframe document to get actual content height
+            const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow?.document;
+            if (iframeDoc) {
+              const body = iframeDoc.body;
+              const html = iframeDoc.documentElement;
+              const height = Math.max(
+                body.scrollHeight,
+                body.offsetHeight,
+                html.clientHeight,
+                html.scrollHeight,
+                html.offsetHeight
+              );
+              if (height > 0) {
+                iframeRef.current.style.height = `${height}px`;
+              }
+            }
+          } catch (e) {
+            // If we can't access, set a large height to allow scrolling
+            iframeRef.current.style.height = '200vh';
+          }
+        }
+      }, 500);
     }
   };
   
@@ -267,9 +304,9 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               </button>
             </div>
 
-            {/* PDF Viewer - Download Disabled - Mobile Optimized */}
+            {/* PDF Viewer - Download Disabled - Mobile Optimized - Full Document Scrollable */}
             <div 
-              className="overflow-hidden bg-white select-none flex-1"
+              className="bg-white select-none flex-1 relative overflow-hidden"
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
               style={{ 
@@ -277,8 +314,9 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 WebkitUserSelect: 'none',
                 height: isMobile ? 'calc(95vh - 160px)' : 'calc(95vh - 160px)',
                 minHeight: isMobile ? '400px' : '500px',
-                maxHeight: isMobile ? 'calc(95vh - 160px)' : 'calc(95vh - 160px)',
-                backgroundColor: '#ffffff'
+                backgroundColor: '#ffffff',
+                overflow: 'hidden',
+                position: 'relative'
               }}
             >
               {isLoading && !loadError && (
@@ -303,18 +341,28 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               )}
               {!loadError && filePath && (
                 <div 
-                  className="relative w-full"
+                  className="absolute inset-0 w-full h-full"
                   onContextMenu={(e) => e.preventDefault()}
                   onDragStart={(e) => e.preventDefault()}
                   style={{
-                    height: isMobile ? 'calc(95vh - 160px)' : 'calc(95vh - 160px)',
-                    minHeight: isMobile ? '400px' : '500px'
+                    width: '100%',
+                    height: '100%',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0
                   }}
                 >
-                  {/* Use iframe with proper attributes for mobile PDF viewing - Full document scrollable */}
+                  {/* Use iframe with proper attributes for mobile PDF viewing - Full scrollable through ALL pages */}
+                  {/* PDF parameters for FULL DOCUMENT VIEW (continuous scroll through all pages):
+                      toolbar=0 (hide toolbar to prevent download),
+                      navpanes=0 (hide navigation panes),
+                      scrollbar=1 (show scrollbar for scrolling),
+                      zoom=page-width (fit page to width for mobile) */}
+                  {/* Note: Removed view parameter to allow continuous scrolling through all pages */}
                   <iframe
                     ref={iframeRef}
-                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
+                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width`}
                     className="w-full h-full rounded-lg border-2 border-gray-300 pointer-events-auto bg-white"
                     title={title}
                     onLoad={handleIframeLoad}
@@ -327,15 +375,15 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                       width: '100%',
                       height: '100%',
                       border: '2px solid #d1d5db',
-                      backgroundColor: '#ffffff'
+                      backgroundColor: '#ffffff',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0
                     }}
                     allow="fullscreen"
-                  />
-                  {/* Overlay to prevent right-click and text selection */}
-                  <div 
-                    className="absolute inset-0 pointer-events-none"
-                    onContextMenu={(e) => e.preventDefault()}
-                    style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
+                    scrolling="yes"
                   />
                 </div>
               )}
