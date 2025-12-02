@@ -621,7 +621,7 @@ function MultiLanguageContent() {
         {/* Content by Day */}
         <div className="space-y-4 animate-slide-up">
           {[1, 2, 3, 4, 5, 6, 7].map((day) => (
-            <div key={day} className="glass-card overflow-hidden">
+            <div key={day} className="glass-card overflow-hidden" style={{ minHeight: expandedDay === day ? 'auto' : '80px' }}>
               {/* Day Header */}
               <button
                 onClick={() => setExpandedDay(expandedDay === day ? null : day)}
