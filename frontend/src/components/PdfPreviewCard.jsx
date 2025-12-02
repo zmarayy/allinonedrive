@@ -360,15 +360,15 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                   }}
                 >
                   {/* Use iframe with proper attributes for mobile PDF viewing - Full scrollable through ALL pages */}
-                  {/* PDF parameters for FULL DOCUMENT VIEW (not single page):
+                  {/* PDF parameters for FULL DOCUMENT VIEW (continuous scroll through all pages):
                       toolbar=0 (hide toolbar to prevent download),
                       navpanes=0 (hide navigation panes),
                       scrollbar=1 (show scrollbar for scrolling),
-                      zoom=page-width (fit page to width for mobile),
-                      pagemode=none (continuous scrolling mode - shows all pages) */}
+                      zoom=page-width (fit page to width for mobile) */}
+                  {/* Note: Removed view parameter to allow continuous scrolling through all pages */}
                   <iframe
                     ref={iframeRef}
-                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width&pagemode=none`}
+                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width`}
                     className="w-full h-full rounded-lg border-2 border-gray-300 pointer-events-auto bg-white"
                     title={title}
                     onLoad={handleIframeLoad}
