@@ -254,8 +254,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               </button>
             </div>
 
-            {/* PDF Viewer - COMPLETELY REBUILT for mobile and desktop */}
-            {/* Scrollable container that shows FULL PDF with all pages */}
+            {/* PDF Viewer - REBUILT: Scrollable container with iframe that shows ALL pages */}
+            {/* Container scrolls, iframe is very tall so all PDF pages are accessible */}
             <div 
               className="bg-white select-none flex-1 overflow-auto"
               onContextMenu={(e) => e.preventDefault()}
@@ -267,7 +267,9 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 minHeight: '400px',
                 backgroundColor: '#ffffff',
                 position: 'relative',
-                WebkitOverflowScrolling: 'touch'
+                WebkitOverflowScrolling: 'touch',
+                overflowY: 'auto',
+                overflowX: 'hidden'
               }}
             >
               {isLoading && !loadError && (
@@ -292,68 +294,78 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               )}
               {!loadError && filePath && (
                 <div 
-                  className="w-full"
+                  className="absolute inset-0 w-full h-full"
                   onContextMenu={(e) => e.preventDefault()}
                   onDragStart={(e) => e.preventDefault()}
                   style={{
                     width: '100%',
-                    minHeight: '100vh', // Large height to ensure all pages are accessible
-                    height: 'auto'
+                    height: '100%',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0
                   }}
                 >
-                  {/* Use object tag - works better on mobile for showing all pages */}
-                  {/* Object tag displays PDF with continuous scrolling through all pages */}
-                  <object
-                    data={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
-                    type="application/pdf"
-                    className="w-full border-2 border-gray-300 bg-white"
-                    style={{ 
-                      display: isLoading ? 'none' : 'block',
-                      width: '100%',
-                      minHeight: '100vh',
-                      height: 'auto',
-                      border: '2px solid #d1d5db',
-                      backgroundColor: '#ffffff'
-                    }}
-                    onLoad={handleIframeLoad}
-                    onError={(e) => {
-                      console.error('PDF load error:', e, 'File path:', filePath);
-                      // Fallback to iframe if object fails
-                      const objectElement = e.target;
-                      if (objectElement && objectElement.parentNode) {
-                        objectElement.style.display = 'none';
-                        const fallbackIframe = document.createElement('iframe');
-                        fallbackIframe.src = `${filePath.startsWith('/') ? filePath : '/' + filePath}`;
-                        fallbackIframe.className = 'w-full border-2 border-gray-300 bg-white';
-                        fallbackIframe.style.cssText = 'width: 100%; min-height: 100vh; height: auto; border: 2px solid #d1d5db; background-color: #ffffff;';
-                        fallbackIframe.title = title;
-                        fallbackIframe.onload = handleIframeLoad;
-                        fallbackIframe.onerror = handleIframeError;
-                        objectElement.parentNode.appendChild(fallbackIframe);
-                      } else {
-                        handleIframeError();
-                      }
-                    }}
-                  >
-                    {/* Fallback: iframe if object doesn't work */}
+                  {/* Mobile: Use Google Docs Viewer (shows all pages) */}
+                  {/* Desktop: Use direct PDF iframe */}
+                  {isMobile ? (
                     <iframe
                       ref={iframeRef}
-                      src={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
-                      className="w-full border-2 border-gray-300 bg-white"
+                      src={`https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + (filePath.startsWith('/') ? filePath : '/' + filePath))}&embedded=true`}
+                      className="w-full h-full border-2 border-gray-300 bg-white"
                       title={title}
                       onLoad={handleIframeLoad}
-                      onError={handleIframeError}
+                      onError={(e) => {
+                        console.error('Google Docs Viewer failed, trying direct PDF:', filePath);
+                        // Fallback to direct PDF if Google Docs Viewer fails
+                        const iframe = iframeRef.current;
+                        if (iframe) {
+                          iframe.src = `${filePath.startsWith('/') ? filePath : '/' + filePath}`;
+                          iframe.onerror = handleIframeError;
+                        } else {
+                          handleIframeError();
+                        }
+                      }}
                       style={{ 
                         display: isLoading ? 'none' : 'block',
                         width: '100%',
-                        minHeight: '100vh',
-                        height: 'auto',
+                        height: '100%',
                         border: '2px solid #d1d5db',
-                        backgroundColor: '#ffffff'
+                        backgroundColor: '#ffffff',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0
                       }}
                       allow="fullscreen"
                     />
-                  </object>
+                  ) : (
+                    <iframe
+                      ref={iframeRef}
+                      src={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
+                      className="w-full h-full border-2 border-gray-300 bg-white"
+                      title={title}
+                      onLoad={handleIframeLoad}
+                      onError={(e) => {
+                        console.error('PDF load error:', e, 'File path:', filePath);
+                        handleIframeError();
+                      }}
+                      style={{ 
+                        display: isLoading ? 'none' : 'block',
+                        width: '100%',
+                        height: '100%',
+                        border: '2px solid #d1d5db',
+                        backgroundColor: '#ffffff',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0
+                      }}
+                      allow="fullscreen"
+                    />
+                  )}
                 </div>
               )}
               {!filePath && !loadError && (
