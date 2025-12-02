@@ -305,8 +305,9 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
             </div>
 
             {/* PDF Viewer - Download Disabled - Mobile Optimized - Full Document Scrollable */}
+            {/* Container allows scrolling - PDF will show ALL pages continuously */}
             <div 
-              className="bg-white select-none flex-1 relative overflow-hidden"
+              className="bg-white select-none flex-1 relative"
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
               style={{ 
@@ -315,7 +316,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 height: isMobile ? 'calc(95vh - 160px)' : 'calc(95vh - 160px)',
                 minHeight: isMobile ? '400px' : '500px',
                 backgroundColor: '#ffffff',
-                overflow: 'hidden',
+                overflow: 'auto',
                 position: 'relative'
               }}
             >
@@ -341,50 +342,55 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               )}
               {!loadError && filePath && (
                 <div 
-                  className="absolute inset-0 w-full h-full"
+                  className="w-full"
                   onContextMenu={(e) => e.preventDefault()}
                   onDragStart={(e) => e.preventDefault()}
                   style={{
                     width: '100%',
-                    height: '100%',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0
+                    minHeight: '100%',
+                    height: 'auto'
                   }}
                 >
-                  {/* Use iframe with proper attributes for mobile PDF viewing - Full scrollable through ALL pages */}
-                  {/* PDF parameters for FULL DOCUMENT VIEW (continuous scroll through all pages):
-                      toolbar=0 (hide toolbar to prevent download),
-                      navpanes=0 (hide navigation panes),
-                      scrollbar=1 (show scrollbar for scrolling),
-                      zoom=page-width (fit page to width for mobile) */}
-                  {/* Note: Removed view parameter to allow continuous scrolling through all pages */}
-                  <iframe
-                    ref={iframeRef}
-                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width`}
-                    className="w-full h-full rounded-lg border-2 border-gray-300 pointer-events-auto bg-white"
-                    title={title}
-                    onLoad={handleIframeLoad}
-                    onError={handleIframeError}
+                  {/* Use object tag for PDF - Shows ALL pages in continuous scroll mode by default */}
+                  {/* Object tag works better than iframe for showing entire PDF documents */}
+                  {/* Set large height to allow all pages to be visible and scrollable */}
+                  <object
+                    data={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
+                    type="application/pdf"
+                    className="w-full rounded-lg border-2 border-gray-300 bg-white"
                     style={{ 
                       display: isLoading ? 'none' : 'block',
-                      touchAction: 'pan-x pan-y pinch-zoom',
-                      userSelect: 'none',
-                      WebkitUserSelect: 'none',
                       width: '100%',
-                      height: '100%',
+                      minHeight: '200vh',
+                      height: 'auto',
                       border: '2px solid #d1d5db',
-                      backgroundColor: '#ffffff',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0
+                      backgroundColor: '#ffffff'
                     }}
-                    allow="fullscreen"
-                    scrolling="yes"
-                  />
+                    onLoad={handleIframeLoad}
+                    onError={handleIframeError}
+                  >
+                    {/* Fallback to iframe if object doesn't work */}
+                    <iframe
+                      ref={iframeRef}
+                      src={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
+                      className="w-full rounded-lg border-2 border-gray-300 pointer-events-auto bg-white"
+                      title={title}
+                      onLoad={handleIframeLoad}
+                      onError={handleIframeError}
+                      style={{ 
+                        display: isLoading ? 'none' : 'block',
+                        touchAction: 'pan-x pan-y pinch-zoom',
+                        userSelect: 'none',
+                        WebkitUserSelect: 'none',
+                        width: '100%',
+                        minHeight: '200vh',
+                        height: 'auto',
+                        border: '2px solid #d1d5db',
+                        backgroundColor: '#ffffff'
+                      }}
+                      allow="fullscreen"
+                    />
+                  </object>
                 </div>
               )}
               {!filePath && !loadError && (
