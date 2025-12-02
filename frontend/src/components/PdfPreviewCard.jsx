@@ -244,8 +244,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               boxShadow: isMobile ? 'none' : '0 25px 50px -12px rgba(0, 0, 0, 0.75)'
             }}
           >
-            {/* Modal Header - Mobile Optimized */}
-            <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b-2 border-gray-300 bg-gray-50 flex-shrink-0">
+            {/* Modal Header - Compact for more PDF space */}
+            <div className="flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 border-b-2 border-gray-300 bg-gray-50 flex-shrink-0">
               <h3 className="text-sm sm:text-base font-bold text-gray-900 flex-1 truncate pr-2">{title}</h3>
               <button
                 onClick={handleClosePreview}
@@ -258,7 +258,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               </button>
             </div>
 
-            {/* PDF Viewer - Full Screen Container */}
+            {/* PDF Viewer - Full Screen Container (25% larger) */}
             <div 
               className="bg-white select-none flex-1 overflow-auto"
               onContextMenu={(e) => e.preventDefault()}
@@ -266,8 +266,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               style={{ 
                 userSelect: 'none', 
                 WebkitUserSelect: 'none',
-                height: isMobile ? 'calc(100vh - 80px)' : 'calc(95vh - 160px)',
-                minHeight: isMobile ? 'calc(100vh - 80px)' : '400px',
+                height: isMobile ? 'calc(100vh - 60px)' : 'calc(95vh - 120px)',
+                minHeight: isMobile ? 'calc(100vh - 60px)' : '500px',
                 backgroundColor: '#ffffff',
                 position: 'relative',
                 WebkitOverflowScrolling: 'touch',
