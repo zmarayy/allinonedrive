@@ -619,21 +619,21 @@ function MultiLanguageContent() {
         )}
 
         {/* Content by Day */}
-        <div className="space-y-4 animate-slide-up">
+        <div className="space-y-5 animate-slide-up">
           {[1, 2, 3, 4, 5, 6, 7].map((day) => (
-            <div key={day} className="glass-card overflow-hidden" style={{ minHeight: expandedDay === day ? 'auto' : '80px' }}>
+            <div key={day} className="glass-card overflow-hidden">
               {/* Day Header */}
               <button
                 onClick={() => setExpandedDay(expandedDay === day ? null : day)}
-                className="w-full p-4 flex items-center justify-between hover:bg-white/10 transition-colors"
+                className="w-full p-5 flex items-center justify-between hover:bg-white/10 transition-colors"
               >
-                <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center">
-                    <span className="text-lg font-bold text-primary-700">{day}</span>
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 rounded-lg bg-primary-100 flex items-center justify-center">
+                    <span className="text-xl font-bold text-primary-700">{day}</span>
                   </div>
                   <div className="text-left">
-                    <h3 className="text-base font-bold text-gray-900">Day {day}</h3>
-                    <p className="text-xs text-gray-600">
+                    <h3 className="text-lg font-bold text-gray-900">Day {day}</h3>
+                    <p className="text-sm text-gray-600">
                       {activeTab === 'pdfs' ? 'PDF Materials (All Languages)' : `Video Lessons in ${selectedLanguageData?.name}`}
                     </p>
                   </div>
@@ -652,7 +652,7 @@ function MultiLanguageContent() {
 
               {/* Day Content */}
               {expandedDay === day && (
-                <div className="px-4 pb-8 sm:pb-10 animate-fade-in min-h-[200px]">
+                <div className="px-5 pb-5 animate-fade-in">
                   {activeTab === 'pdfs' ? (
                     <div className="space-y-3 mt-3">
                       {currentContent.length > 0 ? (
