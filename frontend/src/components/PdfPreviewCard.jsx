@@ -301,22 +301,16 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                     bottom: 0
                   }}
                 >
-                  {/* Use Google Docs Viewer to ensure FULL PDF loads and is scrollable */}
-                  {/* This guarantees all pages are visible and scrollable */}
+                  {/* Direct PDF iframe - Browser's native PDF viewer will show ALL pages */}
+                  {/* Using #toolbar=0&navpanes=0&scrollbar=1&zoom=page-width to ensure continuous scrolling */}
+                  {/* NO view parameter = continuous scroll mode (all pages visible) */}
                   <iframe
                     ref={iframeRef}
-                    src={`https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + (filePath.startsWith('/') ? filePath : '/' + filePath))}&embedded=true`}
+                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width`}
                     className="w-full h-full border-2 border-gray-300 bg-white"
                     title={title}
                     onLoad={handleIframeLoad}
-                    onError={(e) => {
-                      // If Google Docs Viewer fails, fallback to direct PDF
-                      const iframe = iframeRef.current;
-                      if (iframe) {
-                        iframe.src = `${filePath.startsWith('/') ? filePath : '/' + filePath}`;
-                        iframe.onerror = handleIframeError;
-                      }
-                    }}
+                    onError={handleIframeError}
                     style={{ 
                       display: isLoading ? 'none' : 'block',
                       width: '100%',
