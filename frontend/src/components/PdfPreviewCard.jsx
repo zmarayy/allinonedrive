@@ -88,68 +88,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
       clearTimeout(timeoutRef.current);
     }
     
-    // Disable right-click and download in iframe
-    try {
-      const iframe = iframeRef.current;
-      if (iframe && iframe.contentDocument) {
-        // Disable context menu
-        iframe.contentDocument.addEventListener('contextmenu', (e) => e.preventDefault());
-        // Disable text selection
-        iframe.contentDocument.body.style.userSelect = 'none';
-        iframe.contentDocument.body.style.webkitUserSelect = 'none';
-        // Disable drag
-        iframe.contentDocument.addEventListener('dragstart', (e) => e.preventDefault());
-        
-        // Ensure PDF can scroll - remove any height restrictions
-        const pdfViewer = iframe.contentDocument.querySelector('embed') || iframe.contentDocument.querySelector('object');
-        if (pdfViewer) {
-          pdfViewer.style.height = 'auto';
-          pdfViewer.style.minHeight = '100vh';
-        }
-      }
-    } catch (e) {
-      // Cross-origin restrictions may prevent access
-      console.log('Cannot access iframe content (expected for security)');
-    }
-    
-    // Force iframe to allow full height for scrolling - especially important for mobile
-    if (iframeRef.current) {
-      // Set iframe to allow full document height for scrolling
-      setTimeout(() => {
-        if (iframeRef.current) {
-          try {
-            // Try to access iframe document to get actual content height
-            const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow?.document;
-            if (iframeDoc) {
-              const body = iframeDoc.body;
-              const html = iframeDoc.documentElement;
-              const height = Math.max(
-                body.scrollHeight,
-                body.offsetHeight,
-                html.clientHeight,
-                html.scrollHeight,
-                html.offsetHeight
-              );
-              if (height > 0) {
-                // Set height to actual content height or very large for mobile
-                const isMobileDevice = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                iframeRef.current.style.height = `${Math.max(height, isMobileDevice ? window.innerHeight * 10 : window.innerHeight * 5)}px`;
-              } else {
-                // If can't determine height, set very large for mobile
-                const isMobileDevice = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-                iframeRef.current.style.height = isMobileDevice ? '300vh' : '200vh';
-              }
-            }
-          } catch (e) {
-            // If we can't access, set a very large height to allow scrolling through all pages
-            // Mobile needs larger height to show all pages
-            const isMobileDevice = typeof navigator !== 'undefined' && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-            iframeRef.current.style.height = isMobileDevice ? '300vh' : '200vh';
-            iframeRef.current.style.minHeight = isMobileDevice ? '300vh' : '200vh';
-          }
-        }
-      }, 1000);
-    }
+    // Simple approach - let the browser's PDF viewer handle everything
+    // The iframe will display the full PDF and handle scrolling internally
   };
   
   const handleIframeError = () => {
@@ -313,10 +253,9 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               </button>
             </div>
 
-            {/* PDF Viewer - Download Disabled - Mobile Optimized - Full Document Scrollable */}
-            {/* Container allows scrolling - PDF will show ALL pages continuously */}
+            {/* PDF Viewer - Simple iframe container that shows FULL PDF */}
             <div 
-              className="bg-white select-none flex-1 relative overflow-auto"
+              className="bg-white select-none flex-1 relative"
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
               style={{ 
@@ -325,9 +264,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 height: isMobile ? 'calc(95vh - 160px)' : 'calc(95vh - 160px)',
                 minHeight: isMobile ? '400px' : '500px',
                 backgroundColor: '#ffffff',
-                overflow: 'auto',
-                position: 'relative',
-                WebkitOverflowScrolling: 'touch'
+                position: 'relative'
               }}
             >
               {isLoading && !loadError && (
@@ -352,37 +289,47 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               )}
               {!loadError && filePath && (
                 <div 
-                  className="w-full"
+                  className="absolute inset-0 w-full h-full"
                   onContextMenu={(e) => e.preventDefault()}
                   onDragStart={(e) => e.preventDefault()}
                   style={{
                     width: '100%',
-                    minHeight: isMobile ? '300vh' : '200vh',
-                    height: 'auto'
+                    height: '100%',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0
                   }}
                 >
-                  {/* Use iframe with very large height to ensure ALL pages are accessible */}
-                  {/* Mobile browsers need large height to show all pages - container will scroll */}
+                  {/* Use Google Docs Viewer to ensure FULL PDF loads and is scrollable */}
+                  {/* This guarantees all pages are visible and scrollable */}
                   <iframe
                     ref={iframeRef}
-                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
-                    className="w-full rounded-lg border-2 border-gray-300 pointer-events-auto bg-white"
+                    src={`https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + (filePath.startsWith('/') ? filePath : '/' + filePath))}&embedded=true`}
+                    className="w-full h-full border-2 border-gray-300 bg-white"
                     title={title}
                     onLoad={handleIframeLoad}
-                    onError={handleIframeError}
+                    onError={(e) => {
+                      // If Google Docs Viewer fails, fallback to direct PDF
+                      const iframe = iframeRef.current;
+                      if (iframe) {
+                        iframe.src = `${filePath.startsWith('/') ? filePath : '/' + filePath}`;
+                        iframe.onerror = handleIframeError;
+                      }
+                    }}
                     style={{ 
                       display: isLoading ? 'none' : 'block',
-                      touchAction: 'pan-x pan-y pinch-zoom',
-                      userSelect: 'none',
-                      WebkitUserSelect: 'none',
                       width: '100%',
-                      minHeight: isMobile ? '300vh' : '200vh',
-                      height: 'auto',
+                      height: '100%',
                       border: '2px solid #d1d5db',
-                      backgroundColor: '#ffffff'
+                      backgroundColor: '#ffffff',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0
                     }}
                     allow="fullscreen"
-                    scrolling="yes"
                   />
                 </div>
               )}
