@@ -253,9 +253,11 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               </button>
             </div>
 
-            {/* PDF Viewer - Simple iframe container that shows FULL PDF */}
+            {/* PDF Viewer - Mobile Optimized - Full Document Scrollable */}
+            {/* For mobile: Container scrolls, PDF element is very tall to show all pages */}
+            {/* For desktop: Fixed height container */}
             <div 
-              className="bg-white select-none flex-1 relative"
+              className={`bg-white select-none flex-1 ${isMobile ? 'overflow-auto' : 'relative'}`}
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
               style={{ 
@@ -264,7 +266,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 height: isMobile ? 'calc(95vh - 160px)' : 'calc(95vh - 160px)',
                 minHeight: isMobile ? '400px' : '500px',
                 backgroundColor: '#ffffff',
-                position: 'relative'
+                position: 'relative',
+                WebkitOverflowScrolling: isMobile ? 'touch' : 'auto'
               }}
             >
               {isLoading && !loadError && (
@@ -289,10 +292,14 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               )}
               {!loadError && filePath && (
                 <div 
-                  className="absolute inset-0 w-full h-full"
+                  className={isMobile ? "w-full" : "absolute inset-0 w-full h-full"}
                   onContextMenu={(e) => e.preventDefault()}
                   onDragStart={(e) => e.preventDefault()}
-                  style={{
+                  style={isMobile ? {
+                    width: '100%',
+                    minHeight: '500vh', // Very tall for mobile so all pages are accessible
+                    height: 'auto'
+                  } : {
                     width: '100%',
                     height: '100%',
                     top: 0,
@@ -301,30 +308,47 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                     bottom: 0
                   }}
                 >
-                  {/* Direct PDF iframe - Browser's native PDF viewer will show ALL pages */}
-                  {/* Using #toolbar=0&navpanes=0&scrollbar=1&zoom=page-width to ensure continuous scrolling */}
-                  {/* NO view parameter = continuous scroll mode (all pages visible) */}
-                  <iframe
-                    ref={iframeRef}
-                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width`}
-                    className="w-full h-full border-2 border-gray-300 bg-white"
-                    title={title}
-                    onLoad={handleIframeLoad}
-                    onError={handleIframeError}
-                    style={{ 
-                      display: isLoading ? 'none' : 'block',
-                      width: '100%',
-                      height: '100%',
-                      border: '2px solid #d1d5db',
-                      backgroundColor: '#ffffff',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0
-                    }}
-                    allow="fullscreen"
-                  />
+                  {/* Mobile: Use embed with very large height so all pages are scrollable */}
+                  {/* Desktop: Use iframe with direct PDF */}
+                  {isMobile ? (
+                    <embed
+                      src={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
+                      type="application/pdf"
+                      className="w-full border-2 border-gray-300 bg-white"
+                      style={{ 
+                        display: isLoading ? 'none' : 'block',
+                        width: '100%',
+                        minHeight: '500vh', // Very tall to show all pages
+                        height: 'auto',
+                        border: '2px solid #d1d5db',
+                        backgroundColor: '#ffffff'
+                      }}
+                      onLoad={handleIframeLoad}
+                      onError={handleIframeError}
+                    />
+                  ) : (
+                    <iframe
+                      ref={iframeRef}
+                      src={`${filePath.startsWith('/') ? filePath : '/' + filePath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width`}
+                      className="w-full h-full border-2 border-gray-300 bg-white"
+                      title={title}
+                      onLoad={handleIframeLoad}
+                      onError={handleIframeError}
+                      style={{ 
+                        display: isLoading ? 'none' : 'block',
+                        width: '100%',
+                        height: '100%',
+                        border: '2px solid #d1d5db',
+                        backgroundColor: '#ffffff',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0
+                      }}
+                      allow="fullscreen"
+                    />
+                  )}
                 </div>
               )}
               {!filePath && !loadError && (
