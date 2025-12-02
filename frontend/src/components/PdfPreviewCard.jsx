@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
 import { markPdfOpened, isPdfOpened, isVideoWatched, markVideoWatched } from '../utils/pdfLearningFlow';
 import VideoPlayer from './VideoPlayer';
 
@@ -100,47 +99,10 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
         iframe.contentDocument.body.style.webkitUserSelect = 'none';
         // Disable drag
         iframe.contentDocument.addEventListener('dragstart', (e) => e.preventDefault());
-        
-        // Ensure PDF can scroll - remove any height restrictions
-        const pdfViewer = iframe.contentDocument.querySelector('embed') || iframe.contentDocument.querySelector('object');
-        if (pdfViewer) {
-          pdfViewer.style.height = 'auto';
-          pdfViewer.style.minHeight = '100vh';
-        }
       }
     } catch (e) {
       // Cross-origin restrictions may prevent access
       console.log('Cannot access iframe content (expected for security)');
-    }
-    
-    // Force iframe to allow full height for scrolling
-    if (iframeRef.current) {
-      // Set iframe to allow full document height for scrolling
-      setTimeout(() => {
-        if (iframeRef.current) {
-          try {
-            // Try to access iframe document to get actual content height
-            const iframeDoc = iframeRef.current.contentDocument || iframeRef.current.contentWindow?.document;
-            if (iframeDoc) {
-              const body = iframeDoc.body;
-              const html = iframeDoc.documentElement;
-              const height = Math.max(
-                body.scrollHeight,
-                body.offsetHeight,
-                html.clientHeight,
-                html.scrollHeight,
-                html.offsetHeight
-              );
-              if (height > 0) {
-                iframeRef.current.style.height = `${height}px`;
-              }
-            }
-          } catch (e) {
-            // If we can't access, set a large height to allow scrolling
-            iframeRef.current.style.height = '200vh';
-          }
-        }
-      }, 500);
     }
   };
   
@@ -266,20 +228,15 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
         </div>
       </div>
 
-      {/* PDF Preview Modal - Mobile Optimized - Rendered via Portal to escape parent containers */}
-      {showPreview && typeof document !== 'undefined' && createPortal(
+      {/* PDF Preview Modal - Mobile Optimized */}
+      {showPreview && (
         <div 
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto"
           onClick={handleClosePreview}
           style={{ 
             paddingTop: 'env(safe-area-inset-top)', 
             paddingBottom: 'env(safe-area-inset-bottom)',
-            backgroundColor: 'rgba(0, 0, 0, 0.85)',
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0
+            backgroundColor: 'rgba(0, 0, 0, 0.85)'
           }}
         >
           <div 
@@ -310,9 +267,9 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               </button>
             </div>
 
-            {/* PDF Viewer - Download Disabled - Mobile Optimized - Full Document Scrollable */}
+            {/* PDF Viewer - Download Disabled - Mobile Optimized */}
             <div 
-              className="bg-white select-none flex-1 relative overflow-hidden"
+              className="overflow-hidden bg-white select-none flex-1"
               onContextMenu={(e) => e.preventDefault()}
               onDragStart={(e) => e.preventDefault()}
               style={{ 
@@ -320,9 +277,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                 WebkitUserSelect: 'none',
                 height: isMobile ? 'calc(95vh - 160px)' : 'calc(95vh - 160px)',
                 minHeight: isMobile ? '400px' : '500px',
-                backgroundColor: '#ffffff',
-                overflow: 'hidden',
-                position: 'relative'
+                maxHeight: isMobile ? 'calc(95vh - 160px)' : 'calc(95vh - 160px)',
+                backgroundColor: '#ffffff'
               }}
             >
               {isLoading && !loadError && (
@@ -347,28 +303,18 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               )}
               {!loadError && filePath && (
                 <div 
-                  className="absolute inset-0 w-full h-full"
+                  className="relative w-full"
                   onContextMenu={(e) => e.preventDefault()}
                   onDragStart={(e) => e.preventDefault()}
                   style={{
-                    width: '100%',
-                    height: '100%',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0
+                    height: isMobile ? 'calc(95vh - 160px)' : 'calc(95vh - 160px)',
+                    minHeight: isMobile ? '400px' : '500px'
                   }}
                 >
-                  {/* Use iframe with proper attributes for mobile PDF viewing - Full scrollable through ALL pages */}
-                  {/* PDF parameters for FULL DOCUMENT VIEW (continuous scroll through all pages):
-                      toolbar=0 (hide toolbar to prevent download),
-                      navpanes=0 (hide navigation panes),
-                      scrollbar=1 (show scrollbar for scrolling),
-                      zoom=page-width (fit page to width for mobile) */}
-                  {/* Note: Removed view parameter to allow continuous scrolling through all pages */}
+                  {/* Use iframe with proper attributes for mobile PDF viewing - Full document scrollable */}
                   <iframe
                     ref={iframeRef}
-                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}#toolbar=0&navpanes=0&scrollbar=1&zoom=page-width`}
+                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}#toolbar=0&navpanes=0&scrollbar=1&view=FitH`}
                     className="w-full h-full rounded-lg border-2 border-gray-300 pointer-events-auto bg-white"
                     title={title}
                     onLoad={handleIframeLoad}
@@ -381,15 +327,15 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                       width: '100%',
                       height: '100%',
                       border: '2px solid #d1d5db',
-                      backgroundColor: '#ffffff',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0
+                      backgroundColor: '#ffffff'
                     }}
                     allow="fullscreen"
-                    scrolling="yes"
+                  />
+                  {/* Overlay to prevent right-click and text selection */}
+                  <div 
+                    className="absolute inset-0 pointer-events-none"
+                    onContextMenu={(e) => e.preventDefault()}
+                    style={{ userSelect: 'none', WebkitUserSelect: 'none' }}
                   />
                 </div>
               )}
@@ -413,24 +359,14 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
             </div>
           </div>
         </div>
-        , document.body
       )}
 
-      {/* Video Player Modal - Mobile Optimized - Rendered via Portal */}
-      {showVideoModal && hasVideo && typeof document !== 'undefined' && createPortal(
+      {/* Video Player Modal - Mobile Optimized */}
+      {showVideoModal && hasVideo && (
         <div 
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto"
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 animate-fade-in overflow-y-auto"
           onClick={() => setShowVideoModal(false)}
-          style={{ 
-            paddingTop: 'env(safe-area-inset-top)', 
-            paddingBottom: 'env(safe-area-inset-bottom)',
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.85)'
-          }}
+          style={{ paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' }}
         >
           <div 
             className={`bg-white rounded-lg shadow-2xl w-full flex flex-col ${
@@ -481,7 +417,6 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
             </div>
           </div>
         </div>
-        , document.body
       )}
     </>
   );
