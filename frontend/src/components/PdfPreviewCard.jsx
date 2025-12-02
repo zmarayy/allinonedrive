@@ -231,7 +231,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
           <div 
             className={`bg-white rounded-lg shadow-2xl w-full flex flex-col select-none border-4 border-gray-300 ${
               isMultiLanguage 
-                ? (isMobile ? 'max-w-full max-h-[100vh] m-0' : 'max-w-6xl max-h-[100vh]')
+                ? (isMobile ? 'max-w-full' : 'max-w-6xl')
                 : (isMobile ? 'max-w-full max-h-[95vh] m-2' : 'max-w-4xl max-h-[95vh]')
             }`}
             onClick={(e) => e.stopPropagation()}
@@ -240,7 +240,9 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
             style={{ 
               userSelect: 'none', 
               WebkitUserSelect: 'none',
-              height: isMultiLanguage ? (isMobile ? '100vh' : '100vh') : (isMobile ? '95vh' : '95vh'),
+              height: isMultiLanguage ? '100vh' : (isMobile ? '95vh' : '95vh'),
+              maxHeight: isMultiLanguage ? '100vh' : undefined,
+              margin: isMultiLanguage ? '0' : undefined,
               boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.75)'
             }}
           >
