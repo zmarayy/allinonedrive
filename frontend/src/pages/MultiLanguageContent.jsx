@@ -652,23 +652,25 @@ function MultiLanguageContent() {
 
               {/* Day Content */}
               {expandedDay === day && (
-                <div className="px-5 pb-5 animate-fade-in">
+                <div className="px-6 pb-10 pt-4 animate-fade-in">
                   {activeTab === 'pdfs' ? (
-                    <div className="space-y-3 mt-3">
+                    <div className="space-y-6 mt-6">
                       {currentContent.length > 0 ? (
-                        <div className="space-y-2 sm:space-y-3">
+                        <div className="space-y-5">
                           {currentContent.map((pdf, index) => (
-                            <PdfPreviewCard
-                              key={index}
-                              title={pdf.title}
-                              description={pdf.description}
-                              fileSize={pdf.fileSize}
-                              filePath={pdf.filePath}
-                              downloadPath={pdf.downloadPath || pdf.filePath}
-                              dayNumber={day}
-                              pdfIndex={index}
-                              onPdfViewed={() => {}}
-                            />
+                            <div className="transform scale-[1.2] origin-top">
+                              <PdfPreviewCard
+                                key={index}
+                                title={pdf.title}
+                                description={pdf.description}
+                                fileSize={pdf.fileSize}
+                                filePath={pdf.filePath}
+                                downloadPath={pdf.downloadPath || pdf.filePath}
+                                dayNumber={day}
+                                pdfIndex={index}
+                                onPdfViewed={() => {}}
+                              />
+                            </div>
                           ))}
                         </div>
                       ) : (
