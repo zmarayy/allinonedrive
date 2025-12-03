@@ -10,7 +10,6 @@ const sendAccessCodeEmail = async (email, code, packageName) => {
     const packageDisplayNames = {
       'standard': 'Standard Package',
       'elite_self_study': 'Elite Self-Study Package',
-      'elite_live_support': 'Elite Live Support Package',
       'elite_live_support': 'Pro Package',
       'ultimate_pro': 'Ultimate Pro Package',
       'driving_theory_full': 'Driving + Theory Full Package',
