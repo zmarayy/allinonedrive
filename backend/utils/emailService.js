@@ -11,6 +11,8 @@ const sendAccessCodeEmail = async (email, code, packageName) => {
       'standard': 'Standard Package',
       'elite_self_study': 'Elite Self-Study Package',
       'elite_live_support': 'Elite Live Support Package',
+      'elite_live_support': 'Pro Package',
+      'ultimate_pro': 'Ultimate Pro Package',
       'driving_theory_full': 'Driving + Theory Full Package',
       'complete': 'Complete Package - From Nothing to Full UK License',
       'accelerator_morning': 'Elite 5-Day Theory Accelerator - Morning Power Session',
@@ -19,96 +21,118 @@ const sendAccessCodeEmail = async (email, code, packageName) => {
 
     const packageDescriptions = {
       'standard': {
-        title: 'Welcome to Your Standard Theory Package!',
-        intro: 'You now have access to our comprehensive Standard Theory Package, perfect for mastering the DVSA theory test at your own pace.',
+        title: 'Welcome to Your Standard Theory Package! 🎉',
+        intro: 'You now have access to our comprehensive Standard Theory Package, perfect for mastering the DVSA theory test at your own pace. This package gives you everything you need to pass your theory test with confidence.',
         features: [
-          'All 307 Highway Code Rules (PDF)',
-          'Interactive Flashcards',
-          'DVSA Questions & Answers',
-          '5-Minute Short Video Lessons',
-          '7-Day Structured Learning Path'
+          'All 307 Highway Code Rules (PDF) - Complete reference guide',
+          'Interactive Flashcards - Test your knowledge on the go',
+          'DVSA Questions & Answers - Practice with real exam questions',
+          '5-Minute Short Video Lessons - Quick, digestible learning',
+          '7-Day Structured Learning Path - Organized daily study plan'
         ],
-        nextSteps: 'Start with Day 1 in the app and work through each day systematically. Complete the study materials, flashcards, and exams to unlock the next day.'
+        nextSteps: 'Start with Day 1 in the app and work through each day systematically. Complete the study materials, flashcards, and exams to unlock the next day. Take your time and master each topic before moving forward.'
       },
       'elite_self_study': {
-        title: 'Welcome to Your Elite Self-Study Package!',
-        intro: 'Congratulations on choosing our Elite Self-Study Package! You now have access to premium video content and comprehensive study materials.',
+        title: 'Welcome to Your Elite Self-Study Package! 🎉',
+        intro: 'Congratulations on choosing our Elite Self-Study Package! You now have access to premium video content and comprehensive study materials that will make learning the theory test easier and more engaging.',
         features: [
-          'Everything in Standard Package',
-          '307 Rules recorded and explained (Video)',
-          'Exam Topics explained (Video)',
-          'Essential Driving Skills (EDS) topics explained (Video)',
+          'Everything in Standard Package - All PDFs, flashcards, and questions',
+          '307 Rules recorded and explained (Video) - Watch and learn at your pace',
+          'Exam Topics explained (Video) - Visual explanations of key concepts',
+          'Essential Driving Skills (EDS) topics explained (Video) - Master hazard perception',
+          'Multi-language support - Access materials in English, Pashto, Dari, and Urdu',
           'Enhanced learning experience with visual explanations'
         ],
-        nextSteps: 'Begin with Day 1 and watch the video lessons first, then study the materials, complete flashcards, and take the exams. The video explanations will make everything clearer!'
+        nextSteps: 'Begin with Day 1 and watch the video lessons first - they make everything clearer! Then study the PDF materials, complete flashcards, and take the exams. The video explanations will help you understand concepts much faster.'
       },
       'elite_live_support': {
-        title: 'Welcome to Your Elite Live Support Package!',
-        intro: 'Excellent choice! Your Elite Live Support Package includes everything you need plus live teaching sessions to guide you through the most important days.',
+        title: 'Welcome to Your Elite Live Support Package! 🎉',
+        intro: 'Excellent choice! Your Elite Live Support Package includes everything you need plus live teaching sessions to guide you through the most important days. Get personalized help from expert instructors.',
         features: [
-          'Everything in Elite Self-Study Package',
-          '2 days of online teaching via Google Meet',
-          'Day 1: 4 hours of live instruction',
-          'Day 7: 4 hours of live instruction',
-          'Direct access to expert teachers'
+          'Everything in Elite Self-Study Package - All videos, PDFs, and materials',
+          '2 days of online teaching via Google Meet - Interactive live sessions',
+          'Day 1: 4 hours of live instruction - Get started with expert guidance',
+          'Day 7: 4 hours of live instruction - Final preparation before your test',
+          'Direct access to expert teachers - Ask questions and get immediate answers',
+          'Multi-language support - Learn in your preferred language'
         ],
-        nextSteps: 'You\'ll receive separate emails with details about your live teaching sessions. In the meantime, start with Day 1 in the app and complete the self-study materials.'
+        nextSteps: 'You\'ll receive separate emails with details about your live teaching sessions, including Google Meet links and schedules. In the meantime, start with Day 1 in the app and complete the self-study materials. This will prepare you for the live sessions!'
+      },
+      'ultimate_pro': {
+        title: 'Welcome to Your Ultimate Pro Package! 🎉',
+        intro: 'Congratulations! You\'ve chosen our Ultimate Pro Package - the most comprehensive theory package we offer. You now have access to everything including additional live sessions and direct WhatsApp support.',
+        features: [
+          'Everything in Pro Package - All videos, PDFs, and live sessions',
+          '3 days of online teaching via Google Meet - Day 1, Day 2, and Day 7',
+          'Day 1: 4 hours of live instruction - Get started with expert guidance',
+          'Day 2: 4 hours of live instruction - Deep dive into key topics',
+          'Day 7: 4 hours of live instruction - Final preparation before your test',
+          '1 week of WhatsApp support - Direct contact with our team anytime',
+          'Direct access to expert teachers - Ask questions and get immediate answers',
+          'Multi-language support - Learn in your preferred language'
+        ],
+        nextSteps: 'You\'ll receive separate emails with details about all your live teaching sessions, including Google Meet links and schedules. Start with Day 1 in the app and complete the self-study materials. Use WhatsApp support anytime you need help!'
       },
       'driving_theory_full': {
-        title: 'Welcome to Your Driving + Theory Full Package!',
-        intro: 'Fantastic! You\'ve chosen our comprehensive Driving + Theory Full Package. This includes everything you need for both theory and practical driving.',
+        title: 'Welcome to Your Driving + Theory Full Package! 🎉',
+        intro: 'Fantastic! You\'ve chosen our comprehensive Driving + Theory Full Package. This includes everything you need for both theory and practical driving - we\'ll guide you from start to finish.',
         features: [
-          'Full access to Ultimate Pro Theory Package',
-          'Theory test booking included',
-          'Application for provisional license',
-          'Practical driving lessons',
-          'Practical driving test booking',
-          'Full support from start to finish'
+          'Full access to Ultimate Pro Theory Package - All theory materials and live sessions',
+          'Theory test booking included - We handle the booking for you',
+          'Application for provisional license - We complete the paperwork',
+          'Practical driving lessons - Professional instruction with qualified instructors',
+          'Practical driving test booking - We book your test at the right time',
+          'Full support from start to finish - Our team is with you every step',
+          'Multi-language support - Learn in your preferred language'
         ],
-        nextSteps: 'Start with the theory materials in the app. Our team will contact you soon to arrange your theory test booking and practical lessons. We\'ll handle everything!'
+        nextSteps: 'Start with the theory materials in the app today. Our team will contact you within 24 hours to arrange your theory test booking and discuss your practical driving lesson schedule. We\'ll handle all the bookings and paperwork - you just focus on learning!'
       },
       'complete': {
-        title: 'Welcome to Your Complete Package - From Nothing to Full UK License!',
-        intro: 'Congratulations! You\'ve chosen our complete end-to-end service. We\'ll guide you every step of the way from signing up to getting your full UK driving license.',
+        title: 'Welcome to Your Complete Package - From Nothing to Full UK License! 🎉',
+        intro: 'Congratulations! You\'ve chosen our complete end-to-end service. We\'ll guide you every step of the way from signing up to getting your full UK driving license. This is the ultimate package for complete beginners.',
         features: [
-          'Full access to Ultimate Pro Theory Package',
-          'Theory test booking',
-          'Application for provisional license',
-          '45 hours of in-person driving lessons',
-          'Practical driving test booking',
-          'Full support from start to finish'
+          'Full access to Ultimate Pro Theory Package - All theory materials, videos, and live sessions',
+          'Theory test booking - We book it at the perfect time for you',
+          'Application for provisional license - We complete all paperwork',
+          '45 hours of in-person driving lessons - Comprehensive practical training',
+          'Practical driving test booking - We book when you\'re ready',
+          'Full support from start to finish - Our team guides you through everything',
+          'Multi-language support - Learn in English, Pashto, Dari, or Urdu',
+          'WhatsApp support - Direct contact with our team anytime'
         ],
-        nextSteps: 'Start with Day 1 in the app to begin your theory studies. Our team will contact you within 24 hours to arrange your theory test booking and discuss your driving lesson schedule. We\'ll handle everything - you just focus on learning!'
+        nextSteps: 'Start with Day 1 in the app to begin your theory studies. Our team will contact you within 24 hours to arrange your theory test booking and discuss your driving lesson schedule. We\'ll handle everything - bookings, paperwork, scheduling - you just focus on learning and passing your tests!'
       },
       'accelerator_morning': {
-        title: 'Welcome to Your Elite 5-Day Theory Accelerator - Morning Power Session!',
-        intro: 'Great choice! You\'re enrolled in our intensive Morning Power Session. This accelerated program will help you master the theory test in just 5 days with live online classes.',
+        title: 'Welcome to Your Elite 5-Day Theory Accelerator - Morning Power Session! 🎉',
+        intro: 'Great choice! You\'re enrolled in our intensive Morning Power Session. This accelerated program will help you master the theory test in just 5 days with live online classes. Start your day productive and finish before lunch!',
         features: [
-          '5 days live online course (Mon-Fri, 10:00am - 2:00pm)',
-          '7 days WhatsApp support - ask questions anytime',
-          'Very small group (max 5 people) for personalized attention',
-          'Theory explained in your own language (where possible)',
-          'Application for provisional licence (if needed) done for you',
-          'One theory exam booking included',
-          'Free course repeat if you fail',
-          'Access to learning app included'
+          '5 days live online course (Mon-Fri, 10:00am - 2:00pm) - Intensive, structured lessons',
+          '7 days WhatsApp support - Ask questions anytime during the week',
+          'Very small group (max 5 people) - More attention, more questions, more confidence',
+          'Theory explained in your own language (where possible) - No stress about difficult English words',
+          'Application for provisional licence (if needed) - We do it for you, no hassle',
+          'One theory exam booking included - We book the test for you',
+          'Free course repeat if you fail - One extra full course, no extra charge',
+          'Access to learning app included - Practice questions and mock exams anytime',
+          'Multi-language materials - PDFs and videos in English, Pashto, Dari, and Urdu'
         ],
-        nextSteps: 'You\'ll receive a separate email with your class schedule and Google Meet link. Classes start on Monday at 10:00am. In the meantime, download the app and explore the materials. See you in class!'
+        nextSteps: 'You\'ll receive a separate email within 24 hours with your class schedule, Google Meet link, and all course details. Classes start on Monday at 10:00am. In the meantime, download the app and explore the materials to get a head start. See you in class!'
       },
       'accelerator_evening': {
-        title: 'Welcome to Your Elite 5-Day Theory Accelerator - Evening Power Session!',
-        intro: 'Perfect for busy schedules! You\'re enrolled in our Evening Power Session. Study after work in a calm environment with our intensive 5-day program.',
+        title: 'Welcome to Your Elite 5-Day Theory Accelerator - Evening Power Session! 🎉',
+        intro: 'Perfect for busy schedules! You\'re enrolled in our Evening Power Session. Study after work in a calm environment with our intensive 5-day program. Learn at your most relaxed time of day.',
         features: [
-          '5 days live online course (Mon-Fri, 7:30pm - 10:30pm)',
-          '7 days WhatsApp support - ask questions anytime',
-          'Very small group (max 5 people) for personalized attention',
-          'Theory explained in your own language (where possible)',
-          'Application for provisional licence (if needed) done for you',
-          'One theory exam booking included',
-          'Free course repeat if you fail',
-          'Access to learning app included'
+          '5 days live online course (Mon-Fri, 7:30pm - 10:30pm) - Intensive, structured lessons',
+          '7 days WhatsApp support - Ask questions anytime during the week',
+          'Very small group (max 5 people) - More attention, more questions, more confidence',
+          'Theory explained in your own language (where possible) - No stress about difficult English words',
+          'Application for provisional licence (if needed) - We do it for you, no hassle',
+          'One theory exam booking included - We book the test for you',
+          'Free course repeat if you fail - One extra full course, no extra charge',
+          'Access to learning app included - Practice questions and mock exams anytime',
+          'Multi-language materials - PDFs and videos in English, Pashto, Dari, and Urdu'
         ],
-        nextSteps: 'You\'ll receive a separate email with your class schedule and Google Meet link. Classes start on Monday at 7:30pm. In the meantime, download the app and explore the materials. See you in class!'
+        nextSteps: 'You\'ll receive a separate email within 24 hours with your class schedule, Google Meet link, and all course details. Classes start on Monday at 7:30pm. In the meantime, download the app and explore the materials to get a head start. See you in class!'
       }
     };
 
@@ -123,7 +147,7 @@ const sendAccessCodeEmail = async (email, code, packageName) => {
   const { data, error } = await resend.emails.send({
     from: process.env.RESEND_FROM_EMAIL || 'All In One Drive <linawahidi@allinonedrive.com>',
     to: [email],
-    subject: 'Your All In One Drive Access Code',
+    subject: `🎉 Your ${displayName} Access Code - All In One Drive`,
     html: `
       <!DOCTYPE html>
       <html>
@@ -267,6 +291,10 @@ linawahidi@allinonedrive.com
   }
 
   return data;
+  } catch (error) {
+    console.error('Error sending access code email:', error);
+    throw error;
+  }
 };
 
 module.exports = { sendAccessCodeEmail };
