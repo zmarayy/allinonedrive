@@ -2,30 +2,30 @@
  * PDF Learning Flow Management
  * New simplified flow: Video (optional) → PDF (all unlocked from start)
  * End-of-day exam (70%+) unlocks next day
+ * Now code-specific - each access code has its own progress
  */
+
+import { setProgressItem, getProgressItem, removeProgressItem } from './progressStorage';
 
 /**
  * Check if PDF was opened
  */
 export const isPdfOpened = (dayNumber, pdfIndex) => {
-  const key = `day-${dayNumber}-pdf-${pdfIndex}-opened`;
-  return localStorage.getItem(key) === 'true';
+  return getProgressItem(`day-${dayNumber}-pdf-${pdfIndex}-opened`) === 'true';
 };
 
 /**
  * Check if video was watched
  */
 export const isVideoWatched = (dayNumber, pdfIndex) => {
-  const key = `day-${dayNumber}-pdf-${pdfIndex}-video-watched`;
-  return localStorage.getItem(key) === 'true';
+  return getProgressItem(`day-${dayNumber}-pdf-${pdfIndex}-video-watched`) === 'true';
 };
 
 /**
  * Mark video as watched
  */
 export const markVideoWatched = (dayNumber, pdfIndex) => {
-  const key = `day-${dayNumber}-pdf-${pdfIndex}-video-watched`;
-  localStorage.setItem(key, 'true');
+  setProgressItem(`day-${dayNumber}-pdf-${pdfIndex}-video-watched`, 'true');
 };
 
 /**
@@ -49,8 +49,7 @@ export const isPdfCompleted = (dayNumber, pdfIndex) => {
  * Mark PDF as viewed (just opened)
  */
 export const markPdfOpened = (dayNumber, pdfIndex) => {
-  const key = `day-${dayNumber}-pdf-${pdfIndex}-opened`;
-  localStorage.setItem(key, 'true');
+  setProgressItem(`day-${dayNumber}-pdf-${pdfIndex}-opened`, 'true');
   return true;
 };
 
@@ -82,10 +81,10 @@ export const getOpenedPdfsForDay = (dayNumber, totalPdfs) => {
  */
 export const resetPdfProgress = () => {
   for (let day = 1; day <= 7; day++) {
-    // Clear all PDF-related data for up to 20 PDFs per day
+    // Clear all PDF-related data for up to 20 PDFs per day (code-specific)
     for (let pdfIndex = 0; pdfIndex < 20; pdfIndex++) {
-      localStorage.removeItem(`day-${day}-pdf-${pdfIndex}-opened`);
-      localStorage.removeItem(`day-${day}-pdf-${pdfIndex}-video-watched`);
+      removeProgressItem(`day-${day}-pdf-${pdfIndex}-opened`);
+      removeProgressItem(`day-${day}-pdf-${pdfIndex}-video-watched`);
     }
   }
 };

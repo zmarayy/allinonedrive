@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { verifyAccessCode } from '../utils/api';
-import { storeCodeAccess, validateCodeFormat, normalizeCode } from '../utils/codeAccess';
+import { storeCodeAccess, validateCodeFormat, normalizeCode, getStoredCode } from '../utils/codeAccess';
+import { clearAllProgressOnCodeChange } from '../utils/progressStorage';
 
 function AccessCodeEntry() {
   const navigate = useNavigate();
@@ -29,6 +30,13 @@ function AccessCodeEntry() {
       const response = await verifyAccessCode(normalizedCode);
 
       if (response.success && response.valid) {
+        // Check if this is a different code than the current one
+        const currentCode = getStoredCode();
+        if (currentCode && currentCode !== normalizedCode) {
+          // New code entered - clear all old progress
+          clearAllProgressOnCodeChange();
+        }
+        
         // Store code, package, expiration date, and IP address
         storeCodeAccess(normalizedCode, response.package, response.expiresAt, response.ipAddress);
 

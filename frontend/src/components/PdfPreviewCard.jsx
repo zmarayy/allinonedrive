@@ -312,66 +312,32 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                     bottom: 0
                   }}
                 >
-                  {/* Mobile: Use Google Docs Viewer (shows all pages) */}
-                  {/* Desktop: Use direct PDF iframe */}
-                  {isMobile ? (
-                    <iframe
-                      ref={iframeRef}
-                      src={`https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + (filePath.startsWith('/') ? filePath : '/' + filePath))}&embedded=true`}
-                      className="w-full h-full border-2 border-gray-300 bg-white"
-                      title={title}
-                      onLoad={handleIframeLoad}
-                      onError={(e) => {
-                        console.error('Google Docs Viewer failed, trying direct PDF:', filePath);
-                        // Fallback to direct PDF if Google Docs Viewer fails
-                        const iframe = iframeRef.current;
-                        if (iframe) {
-                          iframe.src = `${filePath.startsWith('/') ? filePath : '/' + filePath}`;
-                          iframe.onerror = handleIframeError;
-                        } else {
-                          handleIframeError();
-                        }
-                      }}
-                      style={{ 
-                        display: isLoading ? 'none' : 'block',
-                        width: '100%',
-                        height: '100%',
-                        border: '2px solid #d1d5db',
-                        backgroundColor: '#ffffff',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0
-                      }}
-                      allow="fullscreen"
-                    />
-                  ) : (
-                    <iframe
-                      ref={iframeRef}
-                      src={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
-                      className="w-full h-full border-2 border-gray-300 bg-white"
-                      title={title}
-                      onLoad={handleIframeLoad}
-                      onError={(e) => {
-                        console.error('PDF load error:', e, 'File path:', filePath);
-                        handleIframeError();
-                      }}
-                      style={{ 
-                        display: isLoading ? 'none' : 'block',
-                        width: '100%',
-                        height: '100%',
-                        border: '2px solid #d1d5db',
-                        backgroundColor: '#ffffff',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0
-                      }}
-                      allow="fullscreen"
-                    />
-                  )}
+                  {/* Use direct PDF iframe for both mobile and desktop */}
+                  <iframe
+                    ref={iframeRef}
+                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}#toolbar=0&navpanes=0&scrollbar=1`}
+                    className="w-full h-full border-2 border-gray-300 bg-white"
+                    title={title}
+                    onLoad={handleIframeLoad}
+                    onError={(e) => {
+                      console.error('PDF load error:', e, 'File path:', filePath);
+                      handleIframeError();
+                    }}
+                    style={{ 
+                      display: isLoading ? 'none' : 'block',
+                      width: '100%',
+                      height: '100%',
+                      border: '2px solid #d1d5db',
+                      backgroundColor: '#ffffff',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0
+                    }}
+                    allow="fullscreen"
+                    type="application/pdf"
+                  />
                 </div>
               )}
               {!filePath && !loadError && (
