@@ -245,7 +245,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
             }}
           >
             {/* Modal Header - Mobile Optimized */}
-            <div className={`flex items-center justify-between px-4 sm:px-6 border-b-2 border-gray-300 bg-gray-50 flex-shrink-0 ${
+            <div className={`flex items-center justify-between px-3 sm:px-4 border-b-2 border-gray-300 bg-gray-50 flex-shrink-0 ${
               isMultiLanguage ? 'py-1.5 sm:py-1.5' : 'py-3 sm:py-4'
             }`}>
               <h3 className="text-sm sm:text-base font-bold text-gray-900 flex-1 truncate pr-2">{title}</h3>
@@ -312,32 +312,66 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
                     bottom: 0
                   }}
                 >
-                  {/* Use direct PDF iframe for both mobile and desktop */}
-                  <iframe
-                    ref={iframeRef}
-                    src={`${filePath.startsWith('/') ? filePath : '/' + filePath}#toolbar=0&navpanes=0&scrollbar=1`}
-                    className="w-full h-full border-2 border-gray-300 bg-white"
-                    title={title}
-                    onLoad={handleIframeLoad}
-                    onError={(e) => {
-                      console.error('PDF load error:', e, 'File path:', filePath);
-                      handleIframeError();
-                    }}
-                    style={{ 
-                      display: isLoading ? 'none' : 'block',
-                      width: '100%',
-                      height: '100%',
-                      border: '2px solid #d1d5db',
-                      backgroundColor: '#ffffff',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0
-                    }}
-                    allow="fullscreen"
-                    type="application/pdf"
-                  />
+                  {/* Mobile: Use Google Docs Viewer (shows all pages) */}
+                  {/* Desktop: Use direct PDF iframe */}
+                  {isMobile ? (
+                    <iframe
+                      ref={iframeRef}
+                      src={`https://docs.google.com/viewer?url=${encodeURIComponent(window.location.origin + (filePath.startsWith('/') ? filePath : '/' + filePath))}&embedded=true`}
+                      className="w-full h-full border-2 border-gray-300 bg-white"
+                      title={title}
+                      onLoad={handleIframeLoad}
+                      onError={(e) => {
+                        console.error('Google Docs Viewer failed, trying direct PDF:', filePath);
+                        // Fallback to direct PDF if Google Docs Viewer fails
+                        const iframe = iframeRef.current;
+                        if (iframe) {
+                          iframe.src = `${filePath.startsWith('/') ? filePath : '/' + filePath}`;
+                          iframe.onerror = handleIframeError;
+                        } else {
+                          handleIframeError();
+                        }
+                      }}
+                      style={{ 
+                        display: isLoading ? 'none' : 'block',
+                        width: '100%',
+                        height: '100%',
+                        border: '2px solid #d1d5db',
+                        backgroundColor: '#ffffff',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0
+                      }}
+                      allow="fullscreen"
+                    />
+                  ) : (
+                    <iframe
+                      ref={iframeRef}
+                      src={`${filePath.startsWith('/') ? filePath : '/' + filePath}`}
+                      className="w-full h-full border-2 border-gray-300 bg-white"
+                      title={title}
+                      onLoad={handleIframeLoad}
+                      onError={(e) => {
+                        console.error('PDF load error:', e, 'File path:', filePath);
+                        handleIframeError();
+                      }}
+                      style={{ 
+                        display: isLoading ? 'none' : 'block',
+                        width: '100%',
+                        height: '100%',
+                        border: '2px solid #d1d5db',
+                        backgroundColor: '#ffffff',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0
+                      }}
+                      allow="fullscreen"
+                    />
+                  )}
                 </div>
               )}
               {!filePath && !loadError && (
