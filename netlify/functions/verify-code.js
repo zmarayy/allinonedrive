@@ -104,25 +104,50 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // IP LOCK VALIDATION - Only one IP can use a code
+    // IP LOCK VALIDATION - Strict one-device enforcement
+    // Each code can ONLY be used on ONE device (IP address)
     const lastVerifiedIp = codeData.lastVerifiedIp;
+    const lockedIp = codeData.lockedIp || lastVerifiedIp; // Use lockedIp if set, otherwise lastVerifiedIp
     
-    if (lastVerifiedIp && lastVerifiedIp !== ipAddress && ipAddress !== 'unknown') {
-      // Code is already in use by a different IP
+    // If IP is unknown, reject (can't lock to unknown IP)
+    if (ipAddress === 'unknown' || !ipAddress) {
+      return {
+        statusCode: 403,
+        headers,
+        body: JSON.stringify({
+          error: 'IP detection failed',
+          message: 'Unable to detect your device. Please try again or contact support.',
+          ipLocked: false
+        })
+      };
+    }
+
+    // If code is already locked to a different IP, reject
+    if (lockedIp && lockedIp !== ipAddress) {
       return {
         statusCode: 403,
         headers,
         body: JSON.stringify({
           error: 'Code already in use',
-          message: 'This access code is already in use on another device. Each access code can only be used on one device at a time. Please contact support if you need to transfer access.',
-          ipLocked: true
+          message: 'This access code is already in use on another device. Each access code can only be used on one device. Please contact support if you need to transfer access to a new device.',
+          ipLocked: true,
+          lockedToIp: lockedIp
         })
       };
     }
 
-    // If this is the first verification or same IP, lock it to this IP
-    if (!lastVerifiedIp || lastVerifiedIp === ipAddress || ipAddress === 'unknown') {
-      // Update the code document to lock it to this IP
+    // If this is the FIRST verification, lock it to this IP immediately
+    if (!lockedIp) {
+      // First time use - lock it to this IP permanently
+      await db.collection('codes').doc(codeDocId).update({
+        lockedIp: ipAddress, // Permanent lock
+        lastVerifiedIp: ipAddress,
+        lastVerifiedAt: now.toISOString(),
+        verificationCount: (codeData.verificationCount || 0) + 1,
+        firstVerifiedAt: now.toISOString()
+      });
+    } else if (lockedIp === ipAddress) {
+      // Same IP - allow access and update last verified time
       await db.collection('codes').doc(codeDocId).update({
         lastVerifiedIp: ipAddress,
         lastVerifiedAt: now.toISOString(),

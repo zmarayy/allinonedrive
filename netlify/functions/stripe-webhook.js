@@ -107,9 +107,10 @@ async function handleCheckoutSessionCompleted(session) {
       package: packageType,
       createdAt: createdAt.toISOString(),
       expiresAt: expiresAt.toISOString(),
-      lockedIp: null,
-      lastVerifiedIp: null,
+      lockedIp: null, // Will be set to first verification IP (client device)
+      lastVerifiedIp: null, // Will be set when code is first verified
       isActive: true,
+      verificationCount: 0,
       metadata: {
         stripeSessionId: session.id,
         stripeCustomerId: fullSession.customer,

@@ -66,16 +66,17 @@ router.post('/generate-code', async (req, res) => {
     const clientIp = req.ip || req.connection.remoteAddress || req.headers['x-forwarded-for'] || req.headers['x-real-ip'] || 'unknown';
     const ipAddress = Array.isArray(clientIp) ? clientIp[0] : clientIp.split(',')[0].trim();
 
-    // Save to Firestore with IP lock
+    // Save to Firestore - IP will be locked on first verification (not here)
     const codeData = {
       code,
       email,
       package: packageType,
       createdAt: createdAt.toISOString(),
       expiresAt: expiresAt.toISOString(),
-      lockedIp: ipAddress, // Lock to the IP that generated the code (usually from Stripe webhook)
+      lockedIp: null, // Will be set to first verification IP (client device)
       lastVerifiedIp: null, // Will be set when code is first verified
       isActive: true,
+      verificationCount: 0,
       metadata: metadata || {}
     };
 
@@ -176,21 +177,40 @@ router.post('/verify-code', async (req, res) => {
       });
     }
 
-    // IP LOCK VALIDATION - Only one IP can use a code
-    const lastVerifiedIp = codeData.lastVerifiedIp;
+    // STRICT IP LOCK VALIDATION - One device per code, enforced permanently
+    // Reject if IP cannot be determined
+    if (ipAddress === 'unknown' || !ipAddress) {
+      return res.status(403).json({
+        error: 'IP detection failed',
+        message: 'Unable to detect your device. Please try again or contact support.',
+        ipLocked: false
+      });
+    }
+
+    // Check if code is already locked to a different IP
+    const lockedIp = codeData.lockedIp || codeData.lastVerifiedIp;
     
-    if (lastVerifiedIp && lastVerifiedIp !== ipAddress) {
-      // Code is already in use by a different IP
+    if (lockedIp && lockedIp !== ipAddress) {
+      // Code is already locked to a different device/IP
       return res.status(403).json({
         error: 'Code already in use',
-        message: 'This access code is already in use on another device. Each access code can only be used on one device at a time. Please contact support if you need to transfer access.',
+        message: 'This access code is already in use on another device. Each access code can only be used on one device. Please contact support if you need to transfer access to a new device.',
         ipLocked: true
       });
     }
 
-    // If this is the first verification or same IP, lock it to this IP
-    if (!lastVerifiedIp || lastVerifiedIp === ipAddress) {
-      // Update the code document to lock it to this IP
+    // If code is not yet locked, lock it to this IP permanently (first verification)
+    if (!lockedIp) {
+      // FIRST TIME USE - Lock permanently to this IP
+      await db.collection('codes').doc(codeDocId).update({
+        lockedIp: ipAddress, // Permanent lock - never changes
+        lastVerifiedIp: ipAddress,
+        lastVerifiedAt: now.toISOString(),
+        firstVerifiedAt: now.toISOString(),
+        verificationCount: (codeData.verificationCount || 0) + 1
+      });
+    } else if (lockedIp === ipAddress) {
+      // Same IP - allow access and update last verified time
       await db.collection('codes').doc(codeDocId).update({
         lastVerifiedIp: ipAddress,
         lastVerifiedAt: now.toISOString(),

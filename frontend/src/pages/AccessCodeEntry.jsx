@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { verifyAccessCode } from '../utils/api';
-import { storeCodeAccess, validateCodeFormat, normalizeCode, getStoredCode } from '../utils/codeAccess';
-import { clearAllProgressOnCodeChange } from '../utils/progressStorage';
+import { storeCodeAccess, validateCodeFormat, normalizeCode } from '../utils/codeAccess';
 
 function AccessCodeEntry() {
   const navigate = useNavigate();
@@ -30,13 +29,6 @@ function AccessCodeEntry() {
       const response = await verifyAccessCode(normalizedCode);
 
       if (response.success && response.valid) {
-        // Check if this is a different code than the current one
-        const currentCode = getStoredCode();
-        if (currentCode && currentCode !== normalizedCode) {
-          // New code entered - clear all old progress
-          clearAllProgressOnCodeChange();
-        }
-        
         // Store code, package, expiration date, and IP address
         storeCodeAccess(normalizedCode, response.package, response.expiresAt, response.ipAddress);
 
@@ -47,10 +39,19 @@ function AccessCodeEntry() {
       }
     } catch (err) {
       console.error('Code verification error:', err);
+      // Check if it's an IP locked error
+      if (err.ipLocked || (err.message && err.message.includes('already in use'))) {
+        setError('This access code is already in use on another device. Each code can only be used on one device. Please contact support if you need to transfer access.');
+      } 
       // Check if it's an expired code error
-      if (err.expired || (err.message && err.message.includes('expired'))) {
+      else if (err.expired || (err.message && err.message.includes('expired'))) {
         setError('This access code has expired. Access codes are valid for 1 month from purchase. Please contact support if you need assistance.');
-      } else {
+      } 
+      // Check if IP detection failed
+      else if (err.message && err.message.includes('IP detection')) {
+        setError('Unable to detect your device. Please try again or contact support.');
+      }
+      else {
         setError(err.message || 'Invalid or expired code. Please check and try again.');
       }
     } finally {
@@ -64,6 +65,30 @@ function AccessCodeEntry() {
     const limitedValue = value.slice(0, 8);
     setCode(limitedValue);
     setError('');
+  };
+
+  // Development mode: Skip access code and use test package
+  const handleDevMode = (packageType = 'standard') => {
+    // Create unique dev code based on package type
+    let testCode;
+    if (packageType === 'standard') {
+      testCode = 'DEVSTAND';
+    } else if (packageType === 'elite_self_study') {
+      testCode = 'DEVELITE';
+    } else if (packageType === 'elite_live_support') {
+      testCode = 'DEVLIVE';
+    } else if (packageType === 'driving_theory_full') {
+      testCode = 'DEVDRIV';
+    } else {
+      testCode = 'DEVSTAND'; // default
+    }
+    
+    const expiresAt = new Date();
+    expiresAt.setMonth(expiresAt.getMonth() + 1);
+    
+    // Store with dev mode flag (no IP validation needed)
+    storeCodeAccess(testCode, packageType, expiresAt.toISOString(), 'dev-mode');
+    navigate('/dashboard');
   };
 
   return (
@@ -160,6 +185,20 @@ function AccessCodeEntry() {
                 Purchase a package
               </a>
             </p>
+            
+            {/* Development Mode - Enabled for client testing */}
+            <div className="pt-4 border-t border-gray-200">
+              <p className="text-xs text-gray-400 mb-3">Try the app here</p>
+              <div className="flex justify-center gap-2 flex-wrap">
+                <button
+                  type="button"
+                  onClick={() => handleDevMode('standard')}
+                  className="px-4 py-2 text-sm bg-gray-200 hover:bg-gray-300 text-gray-700 rounded transition-colors"
+                >
+                  Test: Standard
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
