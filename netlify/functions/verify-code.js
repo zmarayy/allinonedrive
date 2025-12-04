@@ -87,27 +87,35 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Check if code has expired
+    // Check if code has expired - Accurate date comparison
     const now = new Date();
     const expiresAt = codeData.expiresAt ? new Date(codeData.expiresAt) : null;
     
-    if (expiresAt && now > expiresAt) {
+    // Accurate expiration check: code expires if current time is >= expiration time
+    if (expiresAt && now >= expiresAt) {
+      // Calculate how long the code was valid for (for better error message)
+      const createdAt = codeData.createdAt ? new Date(codeData.createdAt) : null;
+      const durationMs = createdAt ? expiresAt.getTime() - createdAt.getTime() : null;
+      const durationDays = durationMs ? Math.round(durationMs / (1000 * 60 * 60 * 24)) : null;
+      const durationText = durationDays === 1 ? '1 day' : durationDays ? `${durationDays} days` : 'the specified period';
+      
       return {
         statusCode: 403,
         headers,
         body: JSON.stringify({
           error: 'Code expired',
-          message: 'This access code has expired. Access codes are valid for 1 month from purchase.',
+          message: `This access code has expired. The code was valid for ${durationText} from purchase.`,
           expired: true,
-          expiresAt: expiresAt.toISOString()
+          expiresAt: expiresAt.toISOString(),
+          createdAt: createdAt ? createdAt.toISOString() : null
         })
       };
     }
 
-    // IP LOCK VALIDATION - Strict one-device enforcement
-    // Each code can ONLY be used on ONE device (IP address)
-    const lastVerifiedIp = codeData.lastVerifiedIp;
-    const lockedIp = codeData.lockedIp || lastVerifiedIp; // Use lockedIp if set, otherwise lastVerifiedIp
+    // STRICT IP LOCK VALIDATION - One code = One device (IP address)
+    // BUT: Same device can login/logout multiple times with same code
+    // AND: Same device can use different codes (user buys multiple packages)
+    const lockedIp = codeData.lockedIp; // Only check lockedIp (permanent lock)
     
     // If IP is unknown, reject (can't lock to unknown IP)
     if (ipAddress === 'unknown' || !ipAddress) {
@@ -122,7 +130,7 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // If code is already locked to a different IP, reject
+    // If code is already locked to a DIFFERENT IP, reject (different device trying to use same code)
     if (lockedIp && lockedIp !== ipAddress) {
       return {
         statusCode: 403,
@@ -130,24 +138,24 @@ exports.handler = async (event, context) => {
         body: JSON.stringify({
           error: 'Code already in use',
           message: 'This access code is already in use on another device. Each access code can only be used on one device. Please contact support if you need to transfer access to a new device.',
-          ipLocked: true,
-          lockedToIp: lockedIp
+          ipLocked: true
         })
       };
     }
 
-    // If this is the FIRST verification, lock it to this IP immediately
+    // If code is NOT locked yet (first verification), lock it to this IP permanently
     if (!lockedIp) {
-      // First time use - lock it to this IP permanently
+      // FIRST TIME USE - Lock permanently to this IP
       await db.collection('codes').doc(codeDocId).update({
-        lockedIp: ipAddress, // Permanent lock
+        lockedIp: ipAddress, // Permanent lock - this code is now tied to this IP forever
         lastVerifiedIp: ipAddress,
         lastVerifiedAt: now.toISOString(),
-        verificationCount: (codeData.verificationCount || 0) + 1,
-        firstVerifiedAt: now.toISOString()
+        firstVerifiedAt: now.toISOString(),
+        verificationCount: (codeData.verificationCount || 0) + 1
       });
     } else if (lockedIp === ipAddress) {
-      // Same IP - allow access and update last verified time
+      // SAME IP (same device) - Allow access (user can login/logout multiple times)
+      // This allows: same device + same code = unlimited logins
       await db.collection('codes').doc(codeDocId).update({
         lastVerifiedIp: ipAddress,
         lastVerifiedAt: now.toISOString(),

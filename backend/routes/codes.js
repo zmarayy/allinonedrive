@@ -164,20 +164,32 @@ router.post('/verify-code', async (req, res) => {
       });
     }
 
-    // Check if code has expired
+    // Check if code has expired - Accurate date comparison
     const now = new Date();
     const expiresAt = codeData.expiresAt ? new Date(codeData.expiresAt) : null;
     
-    if (expiresAt && now > expiresAt) {
+    // Accurate expiration check: code expires if current time is >= expiration time
+    if (expiresAt && now >= expiresAt) {
+      // Calculate how long the code was valid for (for better error message)
+      const createdAt = codeData.createdAt ? new Date(codeData.createdAt) : null;
+      const durationMs = createdAt ? expiresAt.getTime() - createdAt.getTime() : null;
+      const durationDays = durationMs ? Math.round(durationMs / (1000 * 60 * 60 * 24)) : null;
+      const durationText = durationDays === 1 ? '1 day' : durationDays ? `${durationDays} days` : 'the specified period';
+      
       return res.status(403).json({
         error: 'Code expired',
-        message: 'This access code has expired. Access codes are valid for 1 month from purchase.',
+        message: `This access code has expired. The code was valid for ${durationText} from purchase.`,
         expired: true,
-        expiresAt: expiresAt.toISOString()
+        expiresAt: expiresAt.toISOString(),
+        createdAt: createdAt ? createdAt.toISOString() : null
       });
     }
 
-    // STRICT IP LOCK VALIDATION - One device per code, enforced permanently
+    // STRICT IP LOCK VALIDATION - One code = One device (IP address)
+    // BUT: Same device can login/logout multiple times with same code
+    // AND: Same device can use different codes (user buys multiple packages)
+    const lockedIp = codeData.lockedIp; // Only check lockedIp (permanent lock)
+    
     // Reject if IP cannot be determined
     if (ipAddress === 'unknown' || !ipAddress) {
       return res.status(403).json({
@@ -187,11 +199,8 @@ router.post('/verify-code', async (req, res) => {
       });
     }
 
-    // Check if code is already locked to a different IP
-    const lockedIp = codeData.lockedIp || codeData.lastVerifiedIp;
-    
+    // If code is already locked to a DIFFERENT IP, reject (different device trying to use same code)
     if (lockedIp && lockedIp !== ipAddress) {
-      // Code is already locked to a different device/IP
       return res.status(403).json({
         error: 'Code already in use',
         message: 'This access code is already in use on another device. Each access code can only be used on one device. Please contact support if you need to transfer access to a new device.',
@@ -199,18 +208,19 @@ router.post('/verify-code', async (req, res) => {
       });
     }
 
-    // If code is not yet locked, lock it to this IP permanently (first verification)
+    // If code is NOT locked yet (first verification), lock it to this IP permanently
     if (!lockedIp) {
       // FIRST TIME USE - Lock permanently to this IP
       await db.collection('codes').doc(codeDocId).update({
-        lockedIp: ipAddress, // Permanent lock - never changes
+        lockedIp: ipAddress, // Permanent lock - this code is now tied to this IP forever
         lastVerifiedIp: ipAddress,
         lastVerifiedAt: now.toISOString(),
         firstVerifiedAt: now.toISOString(),
         verificationCount: (codeData.verificationCount || 0) + 1
       });
     } else if (lockedIp === ipAddress) {
-      // Same IP - allow access and update last verified time
+      // SAME IP (same device) - Allow access (user can login/logout multiple times)
+      // This allows: same device + same code = unlimited logins
       await db.collection('codes').doc(codeDocId).update({
         lastVerifiedIp: ipAddress,
         lastVerifiedAt: now.toISOString(),
