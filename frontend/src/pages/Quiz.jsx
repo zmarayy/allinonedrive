@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { saveQuizScore, isDayUnlocked } from '../utils/progressManager';
+import { saveQuizScore } from '../utils/progressManager';
 // DAY_CONTENT import removed - not used in this file
 import BottomNavbar from '../components/BottomNavbar';
 
