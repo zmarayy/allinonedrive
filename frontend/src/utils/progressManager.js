@@ -1,10 +1,7 @@
 /**
  * Progress Management for Learning App
  * Tracks day completion and unlocks next days
- * Now code-specific - each access code has its own progress
  */
-
-import { setProgressItem, getProgressItem, removeProgressItem } from './progressStorage';
 
 /**
  * Check if a day is unlocked
@@ -15,8 +12,8 @@ export const isDayUnlocked = (dayNumber) => {
     return true; // Day 1 is always unlocked
   }
   
-  // Check if previous day is completed (code-specific)
-  const previousDayCompleted = getProgressItem(`day-${dayNumber - 1}-completed`) === 'true';
+  // Check if previous day is completed
+  const previousDayCompleted = localStorage.getItem(`day-${dayNumber - 1}-completed`) === 'true';
   return previousDayCompleted;
 };
 
@@ -24,12 +21,12 @@ export const isDayUnlocked = (dayNumber) => {
  * Mark a day as completed
  */
 export const completeDay = (dayNumber) => {
-  setProgressItem(`day-${dayNumber}-completed`, 'true');
-  setProgressItem(`day-${dayNumber}-completed-date`, new Date().toISOString());
+  localStorage.setItem(`day-${dayNumber}-completed`, 'true');
+  localStorage.setItem(`day-${dayNumber}-completed-date`, new Date().toISOString());
   
   // Unlock next day if exists
   if (dayNumber < 7) {
-    setProgressItem(`day-${dayNumber + 1}-unlocked`, 'true');
+    localStorage.setItem(`day-${dayNumber + 1}-unlocked`, 'true');
   }
 };
 
@@ -37,7 +34,7 @@ export const completeDay = (dayNumber) => {
  * Check if a day is completed
  */
 export const isDayCompleted = (dayNumber) => {
-  return getProgressItem(`day-${dayNumber}-completed`) === 'true';
+  return localStorage.getItem(`day-${dayNumber}-completed`) === 'true';
 };
 
 /**
@@ -83,14 +80,16 @@ export const getCompletedDaysCount = () => {
  * Mark PDF as viewed for a day
  */
 export const markPdfViewed = (dayNumber, pdfIndex) => {
-  setProgressItem(`day-${dayNumber}-pdf-${pdfIndex}-viewed`, 'true');
+  const key = `day-${dayNumber}-pdf-${pdfIndex}-viewed`;
+  localStorage.setItem(key, 'true');
 };
 
 /**
  * Check if PDF was viewed
  */
 export const isPdfViewed = (dayNumber, pdfIndex) => {
-  return getProgressItem(`day-${dayNumber}-pdf-${pdfIndex}-viewed`) === 'true';
+  const key = `day-${dayNumber}-pdf-${pdfIndex}-viewed`;
+  return localStorage.getItem(key) === 'true';
 };
 
 /**
@@ -118,13 +117,13 @@ export const areAllPdfsViewed = (dayNumber, totalPdfs) => {
  * NEW: Requires 70% to pass and unlock next day
  */
 export const saveQuizScore = (dayNumber, score, totalQuestions) => {
-  setProgressItem(`day-${dayNumber}-quiz-score`, `${score}/${totalQuestions}`);
-  setProgressItem(`day-${dayNumber}-quiz-date`, new Date().toISOString());
+  localStorage.setItem(`day-${dayNumber}-quiz-score`, `${score}/${totalQuestions}`);
+  localStorage.setItem(`day-${dayNumber}-quiz-date`, new Date().toISOString());
   
   // If score is 70% or higher, mark as quiz passed and complete the day
   const percentage = (score / totalQuestions) * 100;
   if (percentage >= 70) {
-    setProgressItem(`day-${dayNumber}-quiz-passed`, 'true');
+    localStorage.setItem(`day-${dayNumber}-quiz-passed`, 'true');
     // Automatically complete the day and unlock next day
     completeDay(dayNumber);
     return true; // Passed
@@ -136,7 +135,7 @@ export const saveQuizScore = (dayNumber, score, totalQuestions) => {
  * Get quiz score for a day
  */
 export const getQuizScore = (dayNumber) => {
-  const score = getProgressItem(`day-${dayNumber}-quiz-score`);
+  const score = localStorage.getItem(`day-${dayNumber}-quiz-score`);
   return score ? score.split('/') : null;
 };
 
@@ -144,7 +143,7 @@ export const getQuizScore = (dayNumber) => {
  * Check if quiz is passed (70% or higher)
  */
 export const isQuizPassed = (dayNumber) => {
-  return getProgressItem(`day-${dayNumber}-quiz-passed`) === 'true';
+  return localStorage.getItem(`day-${dayNumber}-quiz-passed`) === 'true';
 };
 
 /**
@@ -161,19 +160,19 @@ export const canCompleteDay = (dayNumber) => {
  */
 export const resetProgress = () => {
   for (let day = 1; day <= 7; day++) {
-    // Day completion data (code-specific)
-    removeProgressItem(`day-${day}-completed`);
-    removeProgressItem(`day-${day}-completed-date`);
-    removeProgressItem(`day-${day}-unlocked`);
+    // Day completion data
+    localStorage.removeItem(`day-${day}-completed`);
+    localStorage.removeItem(`day-${day}-completed-date`);
+    localStorage.removeItem(`day-${day}-unlocked`);
     
-    // Quiz data (code-specific)
-    removeProgressItem(`day-${day}-quiz-score`);
-    removeProgressItem(`day-${day}-quiz-date`);
-    removeProgressItem(`day-${day}-quiz-passed`);
+    // Quiz data
+    localStorage.removeItem(`day-${day}-quiz-score`);
+    localStorage.removeItem(`day-${day}-quiz-date`);
+    localStorage.removeItem(`day-${day}-quiz-passed`);
     
-    // Old PDF viewed flags (code-specific)
+    // Old PDF viewed flags (legacy)
     for (let i = 0; i < 20; i++) {
-      removeProgressItem(`day-${day}-pdf-${i}-viewed`);
+      localStorage.removeItem(`day-${day}-pdf-${i}-viewed`);
     }
   }
 };

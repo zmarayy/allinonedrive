@@ -57,9 +57,36 @@ const MULTI_LANGUAGE_CONTENT = {
     },
     videos: {
       en: [
+        // Standard package videos (in order from courseContent.js)
         {
-          title: 'Day 1 - English Video',
-          description: 'Day 1 course content in English language',
+          title: 'Introduction - Who The Highway Code is for (Rules H1 to H3)',
+          description: 'Who The Highway Code is for, how it is worded, consequences of not following the rules, self-driving vehicles and the hierarchy of road users',
+          youtubeVideoId: 'plBDx890hN4',
+        },
+        {
+          title: 'Rules for Pedestrians (Rules 1 to 35)',
+          description: 'PDF notes covering rules for pedestrians',
+          youtubeVideoId: 'lvO12abEQ8I',
+        },
+        {
+          title: 'Rules about Animals (Rules 47 to 58)',
+          description: 'PDF notes about animals on the road',
+          youtubeVideoId: 'Lo-70wgI_Jk',
+        },
+        {
+          title: 'Rules for Cyclists (Rules 59 to 82)',
+          description: 'PDF notes covering rules for cyclists',
+          youtubeVideoId: 'MGA7K8GzABQ',
+        },
+        {
+          title: 'Rules for Drivers and Motorcyclists (Rules 89 to 102)',
+          description: 'Vehicle condition, fitness to drive, alcohol and drugs, what to do before setting off, vehicle towing and loading, seat belts and child restraints',
+          youtubeVideoId: 'B9HAtcdwZEc',
+        },
+        // Exam preparation video (at the end)
+        {
+          title: 'Day 1 - Exam Preparation Video',
+          description: 'Day 1 exam preparation content in English language',
           youtubeVideoId: 'xTm0KNYfWWk',
         },
       ],
@@ -127,9 +154,31 @@ const MULTI_LANGUAGE_CONTENT = {
     },
     videos: {
       en: [
+        // Standard package videos (in order from courseContent.js)
         {
-          title: 'Day 2 - English Video',
-          description: 'Day 2 course content in English language',
+          title: 'Rules for users of powered wheelchairs and mobility scooters (Rules 36 to 46)',
+          description: 'Rules for users of powered wheelchairs and mobility scooters',
+          youtubeVideoId: 'Ouh-bVYZIoU',
+        },
+        {
+          title: 'Rules for motorcyclists (Rules 83 to 88)',
+          description: 'Rules specifically for motorcyclists',
+          youtubeVideoId: '7hybereviRY',
+        },
+        {
+          title: 'General rules, techniques and advice for all drivers and riders (Rules 103 to 158)',
+          description: 'Signals, stopping procedures, lighting, control of the vehicle, speed limits, stopping distances, lines and lane markings, multi-lane carriageways, smoking, mobile phones and sat nav',
+          youtubeVideoId: 'VjbPbeh1jBI',
+        },
+        {
+          title: 'Traffic signs',
+          description: 'Signs giving orders, warning signs, direction signs, information signs and road works signs',
+          youtubeVideoId: '2SLBoP9DJRc',
+        },
+        // Exam preparation video (at the end)
+        {
+          title: 'Day 2 - Exam Preparation Video',
+          description: 'Day 2 exam preparation content in English language',
           youtubeVideoId: 'SHR3YiPYHMY',
         },
       ],
@@ -197,9 +246,16 @@ const MULTI_LANGUAGE_CONTENT = {
     },
     videos: {
       en: [
+        // Standard package videos (in order from courseContent.js)
         {
-          title: 'Day 3 - English Video',
-          description: 'Day 3 course content in English language',
+          title: 'Driving in adverse weather conditions (Rules 226 to 237)',
+          description: 'Wet weather, icy and snowy weather, windy weather, fog and hot weather',
+          youtubeVideoId: 'FlPcxxXyjDk',
+        },
+        // Exam preparation video (at the end)
+        {
+          title: 'Day 3 - Exam Preparation Video',
+          description: 'Day 3 exam preparation content in English language',
           youtubeVideoId: '-VAtBeJnK-s',
         },
       ],
@@ -267,9 +323,21 @@ const MULTI_LANGUAGE_CONTENT = {
     },
     videos: {
       en: [
+        // Standard package videos (in order from courseContent.js)
         {
-          title: 'Day 4 - English Video',
-          description: 'Day 4 course content in English language',
+          title: 'Using the road (Rules 159 to 203)',
+          description: 'General rules, overtaking, road junctions, roundabouts, pedestrian crossings and reversing',
+          youtubeVideoId: '3i8jNQLaMQk',
+        },
+        {
+          title: 'Road users requiring extra care (Rules 204 to 225)',
+          description: 'Pedestrians, motorcyclists and cyclists, horses and other animals, children, older and disabled people and other vulnerable road users',
+          youtubeVideoId: 'AyJskzi7spI',
+        },
+        // Exam preparation video (at the end)
+        {
+          title: 'Day 4 - Exam Preparation Video',
+          description: 'Day 4 exam preparation content in English language',
           youtubeVideoId: 'r8xcGUkXGcs',
         },
       ],
@@ -337,9 +405,16 @@ const MULTI_LANGUAGE_CONTENT = {
     },
     videos: {
       en: [
+        // Standard package videos (in order from courseContent.js)
         {
-          title: 'Day 5 - English Video',
-          description: 'Day 5 course content in English language',
+          title: 'Waiting and parking (Rules 238 to 252)',
+          description: 'General parking rules, parking at night, visibility and enforcement',
+          youtubeVideoId: 'rgyxXM1qvMY',
+        },
+        // Exam preparation video (at the end)
+        {
+          title: 'Day 5 - Exam Preparation Video',
+          description: 'Day 5 exam preparation content in English language',
           youtubeVideoId: 'n6u9Rk5L48k',
         },
       ],
@@ -407,9 +482,16 @@ const MULTI_LANGUAGE_CONTENT = {
     },
     videos: {
       en: [
+        // Standard package videos (in order from courseContent.js)
         {
-          title: 'Day 6 - English Video',
-          description: 'Day 6 course content in English language',
+          title: 'Motorways (Rules 253 to 274)',
+          description: 'Motorway signals, joining, driving on the motorway, lane discipline, overtaking, stopping and leaving the motorway',
+          youtubeVideoId: 'VRjdHZe8Gho',
+        },
+        // Exam preparation video (at the end)
+        {
+          title: 'Day 6 - Exam Preparation Video',
+          description: 'Day 6 exam preparation content in English language',
           youtubeVideoId: 'D2nTvR_-FrU',
         },
       ],
@@ -477,9 +559,21 @@ const MULTI_LANGUAGE_CONTENT = {
     },
     videos: {
       en: [
+        // Standard package videos (in order from courseContent.js)
         {
-          title: 'Day 7 - English Video',
-          description: 'Day 7 course content in English language',
+          title: 'Breakdowns and incidents (Rules 275 to 287)',
+          description: 'Breakdowns on all roads and motorways, obstructions, incidents, incidents involving dangerous goods and documents',
+          youtubeVideoId: 'gmZj4jUanvM',
+        },
+        {
+          title: 'Road works, level crossings and tramways (Rules 288 to 307)',
+          description: 'Rules at road works, on motorways and other high-speed roads, level crossings and tramways',
+          youtubeVideoId: 'iOqdzjmnecE',
+        },
+        // Exam preparation video (at the end)
+        {
+          title: 'Day 7 - Exam Preparation Video',
+          description: 'Day 7 exam preparation content in English language',
           youtubeVideoId: 'robG74jPkF4',
         },
       ],
@@ -626,7 +720,6 @@ function MultiLanguageContent() {
               <button
                 onClick={() => setExpandedDay(expandedDay === day ? null : day)}
                 className="w-full p-4 flex items-center justify-between hover:bg-white/10 transition-colors"
-                style={{ minHeight: '300px' }}
               >
                 <div className="flex items-center space-x-3">
                   <div className="w-10 h-10 rounded-lg bg-primary-100 flex items-center justify-center">
