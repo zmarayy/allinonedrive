@@ -5,16 +5,11 @@
 
 /**
  * Check if a day is unlocked
- * Day 1 is always unlocked, others require previous day completion
+ * ALL DAYS ARE NOW UNLOCKED - Client wants all content accessible from start
  */
 export const isDayUnlocked = (dayNumber) => {
-  if (dayNumber === 1) {
-    return true; // Day 1 is always unlocked
-  }
-  
-  // Check if previous day is completed
-  const previousDayCompleted = localStorage.getItem(`day-${dayNumber - 1}-completed`) === 'true';
-  return previousDayCompleted;
+  // All days are unlocked - no restrictions
+  return true;
 };
 
 /**
@@ -39,15 +34,14 @@ export const isDayCompleted = (dayNumber) => {
 
 /**
  * Get day progress status
+ * All days are unlocked, so status is either 'completed' or 'in-progress'
  */
 export const getDayStatus = (dayNumber) => {
   if (isDayCompleted(dayNumber)) {
     return 'completed';
   }
-  if (isDayUnlocked(dayNumber)) {
-    return 'in-progress';
-  }
-  return 'locked';
+  // All days are unlocked, so if not completed, it's in-progress
+  return 'in-progress';
 };
 
 /**

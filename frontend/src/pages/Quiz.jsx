@@ -9273,19 +9273,12 @@ function Quiz() {
   const [isQuizComplete, setIsQuizComplete] = useState(false);
   const [score, setScore] = useState(0);
   
-  // Quiz is available if day is unlocked (all PDFs are available from start)
-  const canTakeQuiz = isDayUnlocked(dayNumber);
+  // All days are now unlocked - quiz is always available
+  const canTakeQuiz = true;
 
   const currentQuestion = quiz.questions[currentQuestionIndex];
   const totalQuestions = quiz.questions.length;
   const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
-  
-  // Redirect if can't take quiz
-  useEffect(() => {
-    if (!canTakeQuiz && dayNumber) {
-      navigate('/course-content');
-    }
-  }, [canTakeQuiz, dayNumber, navigate]);
 
   useEffect(() => {
     // Reset and randomize questions when day changes
@@ -9380,13 +9373,13 @@ function Quiz() {
                 {passed ? (
                   <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
                     <p className="text-green-800 font-semibold text-sm sm:text-base">
-                      ✅ Great job! You passed with {percentage}%. Day {dayNumber + 1} is now unlocked!
+                      ✅ Great job! You passed with {percentage}%. Day {dayNumber} is now marked as completed!
                     </p>
                   </div>
                 ) : (
                   <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
                     <p className="text-amber-800 font-semibold text-sm sm:text-base">
-                      You need 70% to pass and unlock Day {dayNumber + 1}. You got {percentage}%. Review the materials and try again!
+                      You need 70% to pass and mark this day as completed. You got {percentage}%. Review the materials and try again!
                     </p>
                   </div>
                 )}
@@ -9437,12 +9430,13 @@ function Quiz() {
         <div className="container mx-auto px-4 py-6">
           <div className="max-w-2xl mx-auto">
             <div className="glass-card p-8 text-center">
+              {/* All days are now unlocked - this section should not appear */}
               <div className="text-5xl mb-4">📚</div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Study First!
+                Ready to Start!
               </h2>
               <p className="text-gray-600 font-medium mb-6">
-                Day {dayNumber} is not unlocked yet. Complete Day {dayNumber - 1} exam (70%+) to unlock this day.
+                All course materials are available. Study at your own pace, then take the exam when ready.
               </p>
               <button
                 onClick={() => navigate('/course-content')}

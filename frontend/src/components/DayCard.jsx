@@ -20,31 +20,7 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
   
   if (!dayData) return null;
 
-  // Don't render if day is locked and not completed
-  if (!isUnlocked && !isCompleted) {
-    return (
-      <div className="mb-4 animate-slide-up opacity-60">
-        <div className="glass-card overflow-hidden border-2 border-gray-300">
-          <div className="w-full p-4 sm:p-5 flex items-center justify-between">
-            <div className="flex items-center space-x-3 sm:space-x-4 flex-1 min-w-0">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gray-200 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-lg sm:text-xl font-bold text-gray-500">{day.day}</span>
-              </div>
-              <div className="text-left flex-1 min-w-0">
-                <h3 className="text-base sm:text-lg font-bold text-gray-500 mb-0.5 sm:mb-1">
-                  {day.label}
-                </h3>
-                <p className="text-xs sm:text-sm text-gray-400 font-medium">
-                  🔒 Complete Day {dayNumber - 1} to unlock
-                </p>
-              </div>
-            </div>
-            <div className="text-2xl flex-shrink-0 ml-2">🔒</div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // All days are now accessible - no locking mechanism
 
   return (
     <div className="mb-4 animate-slide-up">
@@ -105,6 +81,7 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
                       dayNumber={dayNumber}
                       pdfIndex={index}
                       onPdfViewed={handlePdfViewed}
+                      isMultiLanguage={false}
                     />
                   ))}
                 </div>
@@ -118,7 +95,7 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
                       Day {dayNumber} Completed!
                     </h4>
                     <p className="text-xs sm:text-sm text-gray-600 font-medium">
-                      You passed the exam! Day {dayNumber + 1} is now unlocked.
+                      You passed the exam! Day {dayNumber} is now marked as completed.
                     </p>
                   </div>
                 )}
@@ -181,7 +158,7 @@ function DayCard({ day, dayData, contentVisibility, isExpanded, onToggle, packag
                   End-of-Day Exam Required
                 </h4>
                 <p className="text-xs sm:text-sm text-gray-600 font-medium mb-3">
-                  Complete the exam with 70% or higher to unlock Day {dayNumber + 1}. All materials are available for study.
+                  Complete the exam with 70% or higher to mark this day as completed. All materials are available for study.
                 </p>
                 <button
                   onClick={handleStartQuiz}

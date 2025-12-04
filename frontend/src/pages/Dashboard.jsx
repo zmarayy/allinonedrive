@@ -21,11 +21,12 @@ function Dashboard() {
       setCompletedDays(getCompletedDaysCount());
       setOverallProgress(getOverallProgress());
       
-      // Find the current active day (first unlocked but not completed)
+      // Find the current active day (first day that's not completed)
+      // All days are now unlocked, so we just find the first incomplete day
       let activeDay = 1;
       for (let day = 1; day <= 7; day++) {
         const status = getDayStatus(day);
-        if (status === 'in-progress' || (status === 'locked' && day === 1)) {
+        if (status === 'in-progress') {
           activeDay = day;
           break;
         }
@@ -82,14 +83,14 @@ function Dashboard() {
     } else if (quizPassed) {
       return {
         text: `Day ${currentDay} Completed`,
-        subtitle: 'You passed the exam! Next day is unlocked.',
+        subtitle: 'You passed the exam! Day is marked as completed.',
         color: 'bg-green-600 active:bg-green-700',
         onClick: () => navigate('/course-content')
       };
     } else {
       return {
         text: `Take Day ${currentDay} Exam`,
-        subtitle: 'Take the end-of-day exam to unlock next day (70%+ required)',
+        subtitle: 'Take the end-of-day exam to mark this day as completed (70%+ required)',
         color: 'bg-amber-600 active:bg-amber-700',
         onClick: () => navigate(`/quiz/${currentDay}`)
       };

@@ -242,12 +242,12 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.75)'
             }}
           >
-            {/* Modal Header - Mobile Optimized */}
-            <div className="flex items-center justify-between px-3 sm:px-4 border-b-2 border-gray-300 bg-gray-50 flex-shrink-0 py-1.5 sm:py-1.5">
+            {/* Modal Header - Mobile Optimized - Consistent across all days */}
+            <div className="flex items-center justify-between px-3 sm:px-4 border-b-2 border-gray-300 bg-gray-50 flex-shrink-0 py-1.5 sm:py-1.5" style={{ minHeight: '56px' }}>
               <h3 className="text-sm sm:text-base font-bold text-gray-900 flex-1 truncate pr-2">{title}</h3>
               <button
                 onClick={handleClosePreview}
-                className="text-gray-700 active:text-gray-900 transition-colors p-2 min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation rounded-lg hover:bg-gray-200 active:bg-gray-300 bg-white border border-gray-300"
+                className="text-gray-700 active:text-gray-900 transition-colors p-2 min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation rounded-lg hover:bg-gray-200 active:bg-gray-300 bg-white border border-gray-300 flex-shrink-0"
                 aria-label="Close preview"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -265,7 +265,7 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               style={{ 
                 userSelect: 'none', 
                 WebkitUserSelect: 'none',
-                height: 'calc(100vh - 70px)',
+                height: 'calc(100vh - 120px)', // Account for header (56px) + footer (64px)
                 minHeight: '800px',
                 backgroundColor: '#ffffff',
                 position: 'relative',
@@ -379,8 +379,8 @@ function PdfPreviewCard({ title, description, fileSize, filePath, downloadPath, 
               )}
             </div>
 
-            {/* Modal Footer - Mobile Optimized */}
-            <div className="p-4 sm:p-5 border-t-2 border-gray-300 bg-gray-50 flex-shrink-0">
+            {/* Modal Footer - Mobile Optimized - Consistent across all days */}
+            <div className="px-4 sm:px-5 py-3 sm:py-4 border-t-2 border-gray-300 bg-gray-50 flex-shrink-0" style={{ minHeight: '64px' }}>
               <button
                 onClick={handleClosePreview}
                 className="bg-emerald-600 active:bg-emerald-700 text-white font-bold text-base sm:text-lg px-8 py-3.5 rounded-lg transition-colors min-h-[52px] sm:min-h-[56px] touch-manipulation w-full shadow-lg active:shadow-xl border-2 border-emerald-700"
